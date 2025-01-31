@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class ColorString : MonoBehaviour, IColorable
 {
-    [field: SerializeField] public Color Color { get; private set; }
+    [SerializeField] private MeshRenderer _meshRenderer;
+
+    public Color Color => _meshRenderer.material.color;
 
     public void SetColor(Color color)
     {
-        Color = color; //пока что без валидации
+        _meshRenderer.material.color = color; //пока что без валидации
     }
 }
