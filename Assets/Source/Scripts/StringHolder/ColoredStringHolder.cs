@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class ColoredStringHolder : StringHolder
 {
-    private Color _requiredColor; // пока что так, потом сделаем отдельный скрипт под цвета
-
-    public Color RequiredColor => _requiredColor;
+    // пока что так, потом сделаем отдельный скрипт под цвета
+    public Color RequiredColor { get; private set; }
 
     private void Awake()
     {
-        _requiredColor = GetComponent<MeshRenderer>().sharedMaterial.color;
+        RequiredColor = Strings.First().Color;
     }
 
-    protected override void PrepareString(ColorString freeString, ColorString newString)
+    protected override void PrepareString(IColorable freeString, IColorable newString)
     {
-        if (Strings.First().Color != _requiredColor)
+        if (newString.Color != freeString.Color)
             throw new ArgumentException(nameof(newString));
     }
 }

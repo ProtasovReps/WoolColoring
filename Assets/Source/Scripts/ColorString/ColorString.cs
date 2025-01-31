@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ColorString : MonoBehaviour
+public class ColorString : MonoBehaviour, IColorable
 {
     [field: SerializeField] public Color Color { get; private set; }
 
