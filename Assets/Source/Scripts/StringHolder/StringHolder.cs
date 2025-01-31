@@ -11,7 +11,7 @@ public abstract class StringHolder : MonoBehaviour
     public int MaxCapacity => _strings.Length;
     protected IReadOnlyCollection<IColorable> Strings => _strings;
 
-    public void Add(ColorString newString)
+    public void Add(IColorable newString)
     {
         ColorString freeString = GetFreeString();
 
