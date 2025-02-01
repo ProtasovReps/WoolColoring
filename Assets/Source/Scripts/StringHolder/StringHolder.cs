@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class StringHolder : MonoBehaviour
+public abstract class StringHolder : MonoBehaviour, IFillable<StringHolder>
 {
     [SerializeField] private ColorString[] _strings;
+
+    public event Action<StringHolder> Filled;
 
     public int StringCount => _strings.Where(colorString => colorString.gameObject.activeSelf).Count();
     public int MaxCapacity => _strings.Length;
@@ -13,11 +15,14 @@ public abstract class StringHolder : MonoBehaviour
 
     public void Add(IColorable newString)
     {
-        ColorString freeString = GetFreeString();
+        ColorString colorString = GetFreeString();
 
-        PrepareString(freeString, newString);
+        PrepareString(colorString, newString);
 
-        freeString.gameObject.SetActive(true);
+        colorString.gameObject.SetActive(true);
+
+        if (StringCount >= MaxCapacity)
+            Filled?.Invoke(this);
     }
 
     protected abstract void PrepareString(IColorable freeString, IColorable newString);
