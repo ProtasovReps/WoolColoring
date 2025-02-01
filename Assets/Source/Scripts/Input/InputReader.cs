@@ -27,7 +27,9 @@ public class InputReader : MonoBehaviour
 
     private void OnClickPerformed(InputAction.CallbackContext context)
     {
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(_playerInput.PlayerClick.ScreenPosition.ReadValue<Vector2>()), out RaycastHit hit))
+        Ray ray = Camera.main.ScreenPointToRay(_playerInput.PlayerClick.ScreenPosition.ReadValue<Vector2>());
+
+        if (Physics.Raycast(ray, out RaycastHit hit))
             Clicked?.Invoke(hit);
     }
 }
