@@ -1,16 +1,21 @@
+using System;
 using UnityEngine;
 
 public class StringDistributor : MonoBehaviour
 {
     [SerializeField] private WhiteStringHolder _whiteHolder;
-    //[SerializeField] private PlatformaSKatushkami;
+    [SerializeField] private ColoredStringHolderStash _coloredHolderStash;
 
     public void Distribute(StringBolt bolt)
     {
-        //if(v platforme est' katushka s neobhodimim cvetom)
-            //pizduem v cvetnuiu katushku
-        //else if
-        if(_whiteHolder.StringCount < _whiteHolder.MaxCapacity)
-            _whiteHolder.Add(bolt.GetString());
+        if (bolt == null)
+            throw new ArgumentNullException(nameof(bolt));
+
+        IColorable colorString = bolt.ColorString;
+
+        if (_coloredHolderStash.TryGetColoredStringHolder(colorString.Color, out ColoredStringHolder holder))
+            holder.Add(colorString);
+        else
+            _whiteHolder.Add(colorString);
     }
 }
