@@ -11,12 +11,6 @@ public abstract class StringHolder : MonoBehaviour, IFillable<StringHolder>
     public int MaxStringCount => _strings.Length;
     public int StringCount => _strings.Where(colorString => colorString.gameObject.activeSelf).Count();
 
-    public virtual void Initialize()
-    {
-        foreach (ColorString colorString in _strings)
-            colorString.Initialize();
-    }
-
     public void Add(IColorable newString)
     {
         ColorString colorString = GetFreeString();
