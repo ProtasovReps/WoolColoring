@@ -12,12 +12,14 @@ public class CompositeRoot : MonoBehaviour
     private ColoredStringHolderStash _stash;
     private ColoredStringHolderSwitcher _switcher;
     private StringDistributor _stringDistributor;
+    private StringDistributorPresenter _distributorPresenter;
 
     private void Awake()
     {
         _stash = new ColoredStringHolderStash(_unlockedStringHolders, _lockedStringHolders);
         _switcher = new ColoredStringHolderSwitcher();
         _stringDistributor = new StringDistributor(_stash, _whiteStringHolder);
+        _distributorPresenter = new StringDistributorPresenter(_inputReader, _stringDistributor);
 
         _picture.Initialize();
         _painter.Initialize(_switcher, _stash);
@@ -30,6 +32,6 @@ public class CompositeRoot : MonoBehaviour
             _switcher.Switch(requiredColor, holder);
         }
 
-        _inputReader.Initialize();
+        _inputReader.Initialize(_distributorPresenter);
     }
 }
