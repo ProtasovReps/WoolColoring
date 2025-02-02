@@ -4,35 +4,56 @@ using UnityEngine;
 public class Painter : MonoBehaviour
 {
     [SerializeField] private Picture _picture;
-    [SerializeField] private ColoredStringHolderStash _holderStash;
-    [SerializeField] private ColoredStringHolderSwitcher _switcher;
 
-    private void Awake()
+    private ColoredStringHolderStash _holderStash;
+    private ColoredStringHolderSwitcher _switcher;
+
+    public void Initialize(ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash)
     {
-        if (_holderStash == null)
+        if (_picture == null)
             throw new NullReferenceException(nameof(_holderStash));
+
+        if (switcher == null)
+            throw new NullReferenceException(nameof(switcher));
+
+        if(stash == null)
+            throw new NullReferenceException(nameof(stash));
+
+        _holderStash = stash;
+        _switcher = switcher;
     }
 
     private void OnEnable()
     {
-        foreach (IFillable<ColoredStringHolder> holder in _holderStash.ColoredStringHolders)
+        foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
             holder.Filled += OnFilled;
     }
 
     private void OnDisable()
     {
-        foreach (IFillable<ColoredStringHolder> holder in _holderStash.ColoredStringHolders)
+        foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
             holder.Filled -= OnFilled;
     }
 
-    private void OnFilled(ColoredStringHolder holder) => FillImage(holder);
+    private void OnFilled(StringHolder holder)
+    {
+        if (holder is ColoredStringHolder coloderHolder == false)
+            throw new InvalidCastException();
+
+        FillImage(coloderHolder);
+    }
 
     private void FillImage(ColoredStringHolder holder)
     {
-        foreach (IColorable colorString in holder.Strings)
-            _picture.Colorize(colorString.Color);
+        for (int i = 0; i < holder.StringCount; i++)
+        {
+            Color color = holder.GetColorable().GetColor();
+
+            _picture.Colorize(color);
+        }
 
         Color requiredColor = _picture.GetRequiredColor();
+
         _switcher.Switch(requiredColor, holder);
     }
 }

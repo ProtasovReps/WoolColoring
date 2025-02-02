@@ -8,7 +8,7 @@ public class InputReader : MonoBehaviour
 
     public event Action<RaycastHit> Clicked;
 
-    private void Awake()
+    public void Initialize()
     {
         _playerInput = new PlayerInput();
     }

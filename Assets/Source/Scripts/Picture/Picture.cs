@@ -9,25 +9,7 @@ public class Picture : MonoBehaviour
 
     private Dictionary<Color, Queue<ColorBlock>> _requiredColors;
 
-    private void Awake() => Initialize();
-
-    public Color GetRequiredColor()
-        => _requiredColors.Keys.ToArray()[Random.Range(0, _requiredColors.Count)];
-
-    public void Colorize(Color color)
-    {
-        if (_requiredColors.ContainsKey(color) == false)
-            return;
-
-        ColorBlock colorBlock = _requiredColors[color].Dequeue();
-
-        colorBlock.SetColor(color);
-
-        if (_requiredColors[color].Count == 0)
-            _requiredColors.Remove(color);
-    }
-
-    private void Initialize()
+    public void Initialize()
     {
         if (_colorBlocks.Length == 0)
         {
@@ -52,5 +34,24 @@ public class Picture : MonoBehaviour
         {
             queue.Shuffle();
         }
+    }
+
+    public Color GetRequiredColor()
+        => _requiredColors.Keys.ToArray()[Random.Range(0, _requiredColors.Count)];
+
+    public void Colorize(Color color)
+    {
+        if (_requiredColors.ContainsKey(color) == false)
+        {
+            Debug.Log("Немв");
+            return;
+        }
+
+        ColorBlock colorBlock = _requiredColors[color].Dequeue();
+
+        colorBlock.SetColor(color);
+
+        if (_requiredColors[color].Count == 0)
+            _requiredColors.Remove(color);
     }
 }

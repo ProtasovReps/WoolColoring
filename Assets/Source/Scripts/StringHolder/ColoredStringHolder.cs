@@ -8,9 +8,10 @@ public class ColoredStringHolder : StringHolder
 
     public Color RequiredColor { get; private set; }
 
-    private void Awake()
+    public override void Initialize()
     {
         _meshRenderer = GetComponent<MeshRenderer>();
+        base.Initialize();
     }
 
     public void SetRequiredColor(Color requiredColor)
@@ -21,9 +22,11 @@ public class ColoredStringHolder : StringHolder
 
     protected override void PrepareString(IColorable freeString, IColorable newString)
     {
-        if (newString.Color != RequiredColor)
+        Color newColor = newString.GetColor();
+
+        if (newColor != RequiredColor)
             throw new ArgumentException(nameof(newString));
 
-        freeString.SetColor(newString.Color);
+        freeString.SetColor(newColor);
     }
 }
