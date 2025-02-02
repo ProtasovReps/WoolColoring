@@ -9,9 +9,9 @@ public abstract class StringHolder : MonoBehaviour, IFillable<StringHolder>
 
     public event Action<StringHolder> Filled;
 
+    public int MaxStringCount => _strings.Length;
     public int StringCount => _strings.Where(colorString => colorString.gameObject.activeSelf).Count();
-    public int MaxCapacity => _strings.Length;
-    protected IReadOnlyCollection<IColorable> Strings => _strings;
+    public IReadOnlyCollection<IColorable> Strings => _strings;
 
     public void Add(IColorable newString)
     {
@@ -21,7 +21,7 @@ public abstract class StringHolder : MonoBehaviour, IFillable<StringHolder>
 
         colorString.gameObject.SetActive(true);
 
-        if (StringCount >= MaxCapacity)
+        if (StringCount == MaxStringCount)
             Filled?.Invoke(this);
     }
 

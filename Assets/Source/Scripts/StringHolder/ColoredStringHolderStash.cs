@@ -12,7 +12,7 @@ public class ColoredStringHolderStash : MonoBehaviour
     private void Awake()
     {
         if(_stringHolders.Length == 0)
-            throw new ArgumentException($"{nameof(_stringHolders)} is empty");
+            throw new EmptyCollectionException();
     }
 
     public bool TryGetColoredStringHolder(Color requiredColor, out ColoredStringHolder holder)

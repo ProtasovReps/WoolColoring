@@ -7,7 +7,5 @@ public class ColorString : MonoBehaviour, IColorable
     public Color Color => _meshRenderer.material.color;
 
     public void SetColor(Color color)
-    {
-        _meshRenderer.material.color = color; //пока что без валидации
-    }
+       => _meshRenderer.material.color = color;
 }
