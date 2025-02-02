@@ -7,13 +7,14 @@ public static class QueueExtension
     {
         T[] array = queue.ToArray();
 
+        queue.Clear();
+
         for (int i = 0; i < array.Length; i++)
         {
             int randomIndex = Random.Range(0, array.Length);
 
             (array[i], array[randomIndex]) = (array[randomIndex], array[i]);
+            queue.Enqueue(array[i]);
         }
-
-        queue = new Queue<T>(array);
     }
 }
