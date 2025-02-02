@@ -1,6 +1,7 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Picture : MonoBehaviour
 {
@@ -8,8 +9,31 @@ public class Picture : MonoBehaviour
 
     private Dictionary<Color, Queue<ColorBlock>> _requiredColors;
 
-    private void Awake()
+    private void Awake() => Initialize();
+
+    public Color GetRequiredColor()
+        => _requiredColors.Keys.ToArray()[Random.Range(0, _requiredColors.Count)];
+
+    public void Colorize(Color color)
     {
+        if (_requiredColors.ContainsKey(color) == false)
+            return;
+
+        ColorBlock colorBlock = _requiredColors[color].Dequeue();
+
+        colorBlock.SetColor(color);
+
+        if (_requiredColors[color].Count == 0)
+            _requiredColors.Remove(color);
+    }
+
+    private void Initialize()
+    {
+        if (_colorBlocks.Length == 0)
+        {
+            throw new EmptyCollectionException();
+        }
+
         _requiredColors = new Dictionary<Color, Queue<ColorBlock>>();
 
         foreach (ColorBlock colorBlock in _colorBlocks)
@@ -28,18 +52,5 @@ public class Picture : MonoBehaviour
         {
             queue.Shuffle();
         }
-    }
-
-    public void Colorize(Color color)
-    {
-        if (_requiredColors.ContainsKey(color) == false)
-            throw new ArgumentException(nameof(color));
-
-        if (_requiredColors[color].Count == 0)
-            return;
-
-        ColorBlock colorBlock = _requiredColors[color].Dequeue();
-
-        colorBlock.SetColor(color);
     }
 }
