@@ -23,8 +23,9 @@ public class StringDistributor
             throw new ArgumentNullException(nameof(bolt));
 
         IColorable colorString = bolt.ColorString;
+        bolt.gameObject.SetActive(false); // Temp!!!
 
-        if (_coloredHolderStash.TryGetColoredStringHolder(colorString.GetColor(), out ColoredStringHolder holder))
+        if (_coloredHolderStash.TryGetColoredStringHolder(colorString.Color, out ColoredStringHolder holder))
             holder.Add(colorString);
         else
             _whiteHolder.Add(colorString);

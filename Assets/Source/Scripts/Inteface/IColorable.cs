@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IColorable
 {
-    void SetColor(Color color);
+    Color Color { get; }
 
-    Color GetColor();
+    void SetColor(Color color);
 }

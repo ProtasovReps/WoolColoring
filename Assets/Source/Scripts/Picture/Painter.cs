@@ -47,7 +47,7 @@ public class Painter : MonoBehaviour
     {
         for (int i = 0; i < holder.StringCount; i++)
         {
-            Color color = holder.GetColorable().GetColor();
+            Color color = holder.GetColorable().Color;
 
             _picture.Colorize(color);
         }

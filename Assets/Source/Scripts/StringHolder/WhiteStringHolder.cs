@@ -2,6 +2,6 @@ public class WhiteStringHolder : StringHolder
 {
     protected override void PrepareString(IColorable freeString, IColorable newString)
     {
-        freeString.SetColor(newString.GetColor());
+        freeString.SetColor(newString.Color);
     }
 }
