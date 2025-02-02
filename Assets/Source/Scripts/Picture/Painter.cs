@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Painter : MonoBehaviour
 {
-    //[SerializeField] private Kartinka
+    [SerializeField] private Picture _picture;
     [SerializeField] private ColoredStringHolderStash _holderStash;
     [SerializeField] private ColoredStringHolderSwitcher _switcher;
 
@@ -25,18 +25,14 @@ public class Painter : MonoBehaviour
             holder.Filled -= OnFilled;
     }
 
-    private void OnFilled(ColoredStringHolder holder)
-    {
-        FillImage(holder);
-    }
+    private void OnFilled(ColoredStringHolder holder) => FillImage(holder);
 
     private void FillImage(ColoredStringHolder holder)
     {
-        // Логика заполнения картинки...
+        foreach (IColorable colorString in holder.Strings)
+            _picture.Colorize(colorString.Color);
 
-
-        // Холдер исчерпан
-        Color requiredColor = Color.black; //Получить рандомный необходимый цвет у картинки
+        Color requiredColor = _picture.GetRequiredColor();
         _switcher.Switch(requiredColor, holder);
     }
 }
