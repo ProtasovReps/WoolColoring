@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ColoredStringHolderSwitcher : MonoBehaviour
+public class ColoredStringHolderSwitcher
 {
     public void Switch(Color requiredColor,  ColoredStringHolder coloredHolder)
     {

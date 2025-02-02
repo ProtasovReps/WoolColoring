@@ -1,10 +1,21 @@
 using System;
-using UnityEngine;
 
-public class StringDistributor : MonoBehaviour
+public class StringDistributor
 {
-    [SerializeField] private WhiteStringHolder _whiteHolder;
-    [SerializeField] private ColoredStringHolderStash _coloredHolderStash;
+    private ColoredStringHolderStash _coloredHolderStash;
+    private WhiteStringHolder _whiteHolder;
+
+    public StringDistributor(ColoredStringHolderStash stash, WhiteStringHolder whiteHolder)
+    {
+        if (stash == null)
+            throw new ArgumentNullException(nameof(stash));
+
+        if(whiteHolder == null)
+            throw new ArgumentNullException(nameof(whiteHolder));
+
+        _coloredHolderStash = stash;
+        _whiteHolder = whiteHolder;
+    }
 
     public void Distribute(StringBolt bolt)
     {
@@ -13,7 +24,7 @@ public class StringDistributor : MonoBehaviour
 
         IColorable colorString = bolt.ColorString;
 
-        if (_coloredHolderStash.TryGetColoredStringHolder(colorString.Color, out ColoredStringHolder holder))
+        if (_coloredHolderStash.TryGetColoredStringHolder(colorString.GetColor(), out ColoredStringHolder holder))
             holder.Add(colorString);
         else
             _whiteHolder.Add(colorString);
