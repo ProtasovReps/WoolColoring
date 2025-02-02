@@ -4,7 +4,7 @@ public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private Picture _picture;
     [SerializeField] private Painter _painter;
-    [SerializeField] private InputReader _inputReader;
+    [SerializeField] private PlayerClickView _clickView;
     [SerializeField] private WhiteStringHolder _whiteStringHolder;
     [SerializeField] private ColoredStringHolder[] _unlockedStringHolders;
     [SerializeField] private ColoredStringHolder[] _lockedStringHolders;
@@ -12,15 +12,16 @@ public class CompositeRoot : MonoBehaviour
     private ColoredStringHolderStash _stash;
     private ColoredStringHolderSwitcher _switcher;
     private StringDistributor _stringDistributor;
-    private StringDistributorPresenter _distributorPresenter;
+    private BoltPressPresenter _distributorPresenter;
 
     private void Awake()
     {
         _stash = new ColoredStringHolderStash(_unlockedStringHolders, _lockedStringHolders);
         _switcher = new ColoredStringHolderSwitcher();
         _stringDistributor = new StringDistributor(_stash, _whiteStringHolder);
-        _distributorPresenter = new StringDistributorPresenter(_inputReader, _stringDistributor);
+        _distributorPresenter = new BoltPressPresenter(_clickView, _stringDistributor);
 
+        _clickView.Initialize(_distributorPresenter);
         _picture.Initialize();
         _painter.Initialize(_switcher, _stash);
 
@@ -31,7 +32,5 @@ public class CompositeRoot : MonoBehaviour
             holder.Initialize();
             _switcher.Switch(requiredColor, holder);
         }
-
-        _inputReader.Initialize(_distributorPresenter);
     }
 }
