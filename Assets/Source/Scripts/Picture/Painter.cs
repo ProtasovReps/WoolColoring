@@ -1,35 +1,37 @@
 using System;
 using UnityEngine;
 
-public class Painter : MonoBehaviour
+public class Painter : IDisposable
 {
-    [SerializeField] private Picture _picture;
+    private readonly Picture _picture;
+    private readonly ColoredStringHolderStash _holderStash;
+    private readonly ColoredStringHolderSwitcher _switcher;
 
-    private ColoredStringHolderStash _holderStash;
-    private ColoredStringHolderSwitcher _switcher;
-
-    public void Initialize(ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash)
+    public Painter(Picture picture, ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash)
     {
-        if (_picture == null)
+        if (picture == null)
             throw new NullReferenceException(nameof(_holderStash));
 
         if (switcher == null)
             throw new NullReferenceException(nameof(switcher));
 
-        if(stash == null)
+        if (stash == null)
             throw new NullReferenceException(nameof(stash));
 
+        _picture = picture;
         _holderStash = stash;
         _switcher = switcher;
+
+        Subscribe();
     }
 
-    private void OnEnable()
+    public void Subscribe()
     {
         foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
             holder.Filled += OnFilled;
     }
 
-    private void OnDisable()
+    public void Dispose()
     {
         foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
             holder.Filled -= OnFilled;

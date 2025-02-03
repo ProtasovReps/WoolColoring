@@ -2,8 +2,8 @@ using System;
 
 public class StringDistributor
 {
-    private ColoredStringHolderStash _coloredHolderStash;
-    private WhiteStringHolder _whiteHolder;
+    private readonly ColoredStringHolderStash _coloredHolderStash;
+    private readonly WhiteStringHolder _whiteHolder;
 
     public StringDistributor(ColoredStringHolderStash stash, WhiteStringHolder whiteHolder)
     {

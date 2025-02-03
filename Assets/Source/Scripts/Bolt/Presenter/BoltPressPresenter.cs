@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class BoltPressPresenter
 {
-    private PlayerClickView _inputReader;
-    private StringDistributor _distributor;
+    private readonly PlayerClickView _inputReader;
+    private readonly StringDistributor _distributor;
 
     public BoltPressPresenter(PlayerClickView inputReader, StringDistributor distributor)
     {

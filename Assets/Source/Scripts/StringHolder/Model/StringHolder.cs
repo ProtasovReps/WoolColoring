@@ -1,15 +1,25 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
-public abstract class StringHolder : MonoBehaviour, IFillable<StringHolder>
+public abstract class StringHolder : IFillable<StringHolder>
 {
-    [SerializeField] private ColorString[] _strings;
+    private IReadOnlyCollection<ColorString> _strings;
 
     public event Action<StringHolder> Filled;
+    public event Action<ColorString> StringAdded;
+    public event Action<ColorString> StringRemoved;
 
-    public int MaxStringCount => _strings.Length;
+    public int MaxStringCount => _strings.Count;
     public int StringCount => _strings.Where(colorString => colorString.gameObject.activeSelf).Count();
+
+    public void Initialize(IReadOnlyCollection<ColorString> strings)
+    {
+        if (strings == null)
+            throw new ArgumentNullException(nameof(strings));
+
+        _strings = strings;
+    }
 
     public void Add(IColorable newString)
     {
@@ -17,7 +27,7 @@ public abstract class StringHolder : MonoBehaviour, IFillable<StringHolder>
 
         PrepareString(colorString, newString);
 
-        colorString.gameObject.SetActive(true);
+        StringAdded?.Invoke(colorString);
 
         if (StringCount == MaxStringCount)
             Filled?.Invoke(this);
@@ -30,7 +40,7 @@ public abstract class StringHolder : MonoBehaviour, IFillable<StringHolder>
         if (colorString == null)
             throw new ArgumentNullException(nameof(colorString));
 
-        colorString.gameObject.SetActive(false);
+        StringRemoved?.Invoke(colorString);
         return colorString;
     }
 

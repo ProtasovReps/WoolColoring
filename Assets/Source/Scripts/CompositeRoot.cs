@@ -3,34 +3,57 @@ using UnityEngine;
 public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private Picture _picture;
-    [SerializeField] private Painter _painter;
     [SerializeField] private PlayerClickView _clickView;
-    [SerializeField] private WhiteStringHolder _whiteStringHolder;
-    [SerializeField] private ColoredStringHolder[] _unlockedStringHolders;
-    [SerializeField] private ColoredStringHolder[] _lockedStringHolders;
+    [SerializeField] private StringHolderView _whiteStringHolder;
+    [SerializeField] private ColoredStringHolderView[] _stringHolders;
+    [SerializeField, Range(1, 4)] private int _startHoldersCount;
 
+    private StringHolderBinder _binder;
+    private Painter _painter;
     private ColoredStringHolderStash _stash;
     private ColoredStringHolderSwitcher _switcher;
     private StringDistributor _stringDistributor;
-    private BoltPressPresenter _distributorPresenter;
+    private BoltPressPresenter _boltPressPresenter;
 
     private void Awake()
     {
-        _stash = new ColoredStringHolderStash(_unlockedStringHolders, _lockedStringHolders);
-        _switcher = new ColoredStringHolderSwitcher();
-        _stringDistributor = new StringDistributor(_stash, _whiteStringHolder);
-        _distributorPresenter = new BoltPressPresenter(_clickView, _stringDistributor);
-
-        _clickView.Initialize(_distributorPresenter);
         _picture.Initialize();
-        _painter.Initialize(_switcher, _stash);
 
-        foreach (var holder in _unlockedStringHolders)
+        BindHolders();
+
+        _boltPressPresenter = new BoltPressPresenter(_clickView, _stringDistributor);
+        _clickView.Initialize(_boltPressPresenter);
+        _painter = new Painter(_picture, _switcher, _stash);
+    }
+
+    private void BindHolders()
+    {
+        _binder = new StringHolderBinder();
+        var holders = new ColoredStringHolder[_stringHolders.Length];
+
+        for (int i = 0; i < _stringHolders.Length; i++)
         {
-            Color requiredColor = _picture.GetRequiredColor();
+            ColoredStringHolder holder = _binder.Bind(_stringHolders[i]);
 
-            holder.Initialize();
-            _switcher.Switch(requiredColor, holder);
+            holders[i] = holder;
         }
+
+        WhiteStringHolder whiteHolder = _binder.Bind(_whiteStringHolder);
+
+        _stash = new ColoredStringHolderStash(holders, _startHoldersCount);
+        _stringDistributor = new StringDistributor(_stash, whiteHolder);
+        _switcher = new ColoredStringHolderSwitcher();
+
+        foreach (var holder in _stash.ColoredStringHolders)
+        {
+            SetStartHolderColor(holder as ColoredStringHolder);
+        }
+    }
+
+    private void SetStartHolderColor(ColoredStringHolder holder)
+    {
+        Color requiredColor = _picture.GetRequiredColor();
+
+        _switcher.Switch(requiredColor, holder);
     }
 }

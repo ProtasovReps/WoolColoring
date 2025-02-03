@@ -1,22 +1,16 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(MeshRenderer))]
 public class ColoredStringHolder : StringHolder
 {
-    private MeshRenderer _meshRenderer;
+    public event Action ColorChanged;
 
     public Color RequiredColor { get; private set; }
-
-    public void Initialize()
-    {
-        _meshRenderer = GetComponent<MeshRenderer>();
-    }
 
     public void SetRequiredColor(Color requiredColor)
     {
         RequiredColor = requiredColor;
-        _meshRenderer.material.color = RequiredColor;
+        ColorChanged?.Invoke();
     }
 
     protected override void PrepareString(IColorable freeString, IColorable newString)

@@ -42,10 +42,7 @@ public class Picture : MonoBehaviour
     public void Colorize(Color color)
     {
         if (_requiredColors.ContainsKey(color) == false)
-        {
-            Debug.Log("Немв");
             return;
-        }
 
         ColorBlock colorBlock = _requiredColors[color].Dequeue();
 
