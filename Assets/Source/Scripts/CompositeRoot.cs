@@ -6,10 +6,11 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private PlayerClickView _clickView;
     [SerializeField] private StringHolderView _whiteStringHolder;
     [SerializeField] private ColoredStringHolderView[] _stringHolders;
+    [SerializeField] private BoltStash _boltStash;
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
 
     private Picture _picture;
-    private ColoredStringHolderStash _stash;
+    private ColoredStringHolderStash _coloredStringHolderStash;
     private ColoredStringHolderSwitcher _switcher;
     private StringDistributor _stringDistributor;
 
@@ -19,7 +20,7 @@ public class CompositeRoot : MonoBehaviour
         BindHolders();
         BindBolt();
 
-        var painter = new Painter(_picture, _switcher, _stash);
+        var painter = new Painter(_picture, _switcher, _coloredStringHolderStash);
     }
 
     private void BindPicture()
@@ -43,11 +44,13 @@ public class CompositeRoot : MonoBehaviour
 
         WhiteStringHolder whiteHolder = stringBinder.Bind(_whiteStringHolder);
 
-        _stash = new ColoredStringHolderStash(holders, _startHoldersCount);
-        _stringDistributor = new StringDistributor(_stash, whiteHolder);
+        _coloredStringHolderStash = new ColoredStringHolderStash(holders, _startHoldersCount);
+        _stringDistributor = new StringDistributor(_coloredStringHolderStash, whiteHolder);
         _switcher = new ColoredStringHolderSwitcher();
 
-        foreach (var holder in _stash.ColoredStringHolders)
+        var colorPresenter = new StringHolderColorPresenter(_coloredStringHolderStash, _picture);
+
+        foreach (var holder in _coloredStringHolderStash.ColoredStringHolders)
         {
             SetStartHolderColor(holder as ColoredStringHolder);
         }
@@ -55,9 +58,10 @@ public class CompositeRoot : MonoBehaviour
 
     private void BindBolt()
     {
-        var boltPresenter = new BoltPressPresenter(_clickView, _stringDistributor);
+        var boltPressPresenter = new BoltPressPresenter(_clickView, _stringDistributor);
+        var boltColorPresenter = new BoltColorPresenter(_boltStash, _picture);
 
-        _clickView.Initialize(boltPresenter);
+        _clickView.Initialize(boltPressPresenter);
     }
 
     private void SetStartHolderColor(ColoredStringHolder holder)

@@ -10,6 +10,8 @@ public class Picture
 
     private Dictionary<Color, Queue<ColorBlock>> _requiredColors;
 
+    public event Action<Color> ColorFilled;
+
     public void Initialize(IReadOnlyCollection<ColorBlock> colorBlocks)
     {
         if (colorBlocks == null)
@@ -40,7 +42,10 @@ public class Picture
         colorBlock.SetColor(color);
 
         if (_requiredColors[color].Count == 0)
+        {
             _requiredColors.Remove(color);
+            ColorFilled?.Invoke(color);
+        }
     }
 
     private void FillDictionary()
