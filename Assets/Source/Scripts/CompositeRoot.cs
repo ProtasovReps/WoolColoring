@@ -9,7 +9,6 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
 
     private Picture _picture;
-    private Painter _painter;
     private ColoredStringHolderStash _stash;
     private ColoredStringHolderSwitcher _switcher;
     private StringDistributor _stringDistributor;
@@ -20,7 +19,7 @@ public class CompositeRoot : MonoBehaviour
         BindHolders();
         BindBolt();
 
-        _painter = new Painter(_picture, _switcher, _stash);
+        var painter = new Painter(_picture, _switcher, _stash);
     }
 
     private void BindPicture()

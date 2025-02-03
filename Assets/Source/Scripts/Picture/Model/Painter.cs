@@ -47,7 +47,7 @@ public class Painter : IDisposable
 
     private void FillImage(ColoredStringHolder holder)
     {
-        for (int i = 0; i < holder.StringCount; i++)
+        for (int i = 0; i < holder.MaxStringCount; i++)
         {
             Color color = holder.GetColorable().Color;
 
