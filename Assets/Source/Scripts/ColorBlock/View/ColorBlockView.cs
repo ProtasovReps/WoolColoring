@@ -1,8 +1,7 @@
 using UnityEngine;
-using System;
 
 [RequireComponent(typeof(MeshRenderer))]
-public class ColorBlock : MonoBehaviour
+public class ColorBlockView : MonoBehaviour
 {
     [SerializeField] private Color _requiredColor;
 
@@ -15,11 +14,8 @@ public class ColorBlock : MonoBehaviour
         _renderer = GetComponent<MeshRenderer>();
     }
 
-    public void SetColor(Color color)
+    public void SetRenderColor(Color color)
     {
-        if (color != _requiredColor)
-            throw new ArgumentException(nameof(color));
-
         _renderer.material.color = color;
     }
 }
