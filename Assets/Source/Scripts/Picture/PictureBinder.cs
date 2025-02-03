@@ -2,17 +2,12 @@ using System.Collections.Generic;
 
 public class PictureBinder
 {
-    public Picture Bind(PictureView view, ColorBlockBinder colorBlockBinder)
+    public Picture Bind(PictureView pictureView, List<ColorBlock> blockModels)
     {
-        var blocks = new List<ColorBlock>(view.ColorBlocks.Count);
-        var model = new Picture();
-        var presenter = new PicturePresenter(model, view);
+        var pictureModel = new Picture();
+        var picturePresenter = new PicturePresenter(pictureModel, pictureView);
+        picturePresenter.Initialize(blockModels);
 
-        foreach (ColorBlockView blockView in view.ColorBlocks)
-            blocks.Add(colorBlockBinder.Bind(blockView));
-
-        view.Initialize(presenter, blocks);
-
-        return model;
+        return pictureModel;
     }
 }

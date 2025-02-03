@@ -1,12 +1,20 @@
+using System.Collections.Generic;
 
 public class ColorBlockBinder
 {
-    public ColorBlock Bind(ColorBlockView view)
+    public List<ColorBlock> Bind(IReadOnlyCollection<ColorBlockView> views)
     {
-        var model = new ColorBlock(view.RequiredColor);
-        var presenter = new ColorBlockPresenter(view, model);
+        var colorBlockModels = new List<ColorBlock>();
 
-        presenter.Subscribe();
-        return model;
+        foreach (ColorBlockView view in views)
+        {
+            var model = new ColorBlock(view.RequiredColor);
+            var presenter = new ColorBlockPresenter(view, model);
+
+            presenter.Subscribe();
+            colorBlockModels.Add(model);
+        }
+
+        return colorBlockModels;
     }
 }

@@ -1,11 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private PictureView _pictureView;
     [SerializeField] private PlayerClickView _clickView;
-    [SerializeField] private StringHolderView _whiteStringHolder;
-    [SerializeField] private ColoredStringHolderView[] _stringHolders;
+    [SerializeField] private StringHolderView _whiteStringHolderView;
+    [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
     [SerializeField] private BoltStash _boltStash;
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
 
@@ -26,26 +27,28 @@ public class CompositeRoot : MonoBehaviour
     private void BindPicture()
     {
         var pictureBinder = new PictureBinder();
+        var colorBlockBinder = new ColorBlockBinder();
+        List<ColorBlock> colorBlocks = colorBlockBinder.Bind(_pictureView.ColorBlocks);
 
-        _picture = pictureBinder.Bind(_pictureView, new ColorBlockBinder());
+        _picture = pictureBinder.Bind(_pictureView, colorBlocks);
     }
 
     private void BindHolders()
     {
         var stringBinder = new StringHolderBinder();
-        var holders = new ColoredStringHolder[_stringHolders.Length];
+        var holderModels = new ColoredStringHolder[_stringHolderViews.Length];
 
-        for (int i = 0; i < _stringHolders.Length; i++)
+        for (int i = 0; i < _stringHolderViews.Length; i++)
         {
-            ColoredStringHolder holder = stringBinder.Bind(_stringHolders[i]);
+            ColoredStringHolder holderModel = stringBinder.Bind(_stringHolderViews[i]);
 
-            holders[i] = holder;
+            holderModels[i] = holderModel;
         }
 
-        WhiteStringHolder whiteHolder = stringBinder.Bind(_whiteStringHolder);
+        WhiteStringHolder whiteHolderModel = stringBinder.Bind(_whiteStringHolderView);
 
-        _coloredStringHolderStash = new ColoredStringHolderStash(holders, _startHoldersCount);
-        _stringDistributor = new StringDistributor(_coloredStringHolderStash, whiteHolder);
+        _coloredStringHolderStash = new ColoredStringHolderStash(holderModels, _startHoldersCount);
+        _stringDistributor = new StringDistributor(_coloredStringHolderStash, whiteHolderModel);
         _switcher = new ColoredStringHolderSwitcher();
 
         var colorPresenter = new StringHolderColorPresenter(_coloredStringHolderStash, _picture);

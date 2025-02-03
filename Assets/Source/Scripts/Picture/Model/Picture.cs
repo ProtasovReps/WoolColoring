@@ -63,10 +63,5 @@ public class Picture
 
             _requiredColors[requiredColor].Enqueue(colorBlock);
         }
-
-        foreach (Queue<ColorBlock> queue in _requiredColors.Values)
-        {
-            queue.Shuffle();
-        }
     }
 }
