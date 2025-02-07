@@ -1,27 +1,42 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private PictureView _pictureView;
-    [SerializeField] private PlayerClickView _clickView;
+    [SerializeField] private BoltClickReader _clickView;
     [SerializeField] private StringHolderView _whiteStringHolderView;
+    [SerializeField] private ConveyerPosition[] _conveyerPositions;
     [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
-    [SerializeField] private BoltStash _boltStash;
+    [SerializeField] private FigureFactory _figureFactory;
+    [SerializeField, Min(1)] private int _minFiguresCount;
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
 
     private Picture _picture;
     private ColoredStringHolderStash _coloredStringHolderStash;
     private ColoredStringHolderSwitcher _switcher;
     private StringDistributor _stringDistributor;
+    private BoltStash _boltStash;
 
     private void Awake()
     {
+        BindFigures();
         BindPicture();
         BindHolders();
         BindBolt();
 
         var painter = new Painter(_picture, _switcher, _coloredStringHolderStash);
+    }
+
+    private void BindFigures()
+    {
+        _boltStash = new BoltStash();
+
+        _figureFactory.Initialize(_boltStash);
+
+        int minFiguresCount = Mathf.Clamp(_minFiguresCount, 0, _conveyerPositions.Length - 1);
+        var conveyer = new FigureConveyer(_figureFactory, _conveyerPositions, minFiguresCount);
     }
 
     private void BindPicture()
@@ -62,7 +77,7 @@ public class CompositeRoot : MonoBehaviour
     private void BindBolt()
     {
         var boltPressPresenter = new BoltPressPresenter(_clickView, _stringDistributor);
-        var boltColorPresenter = new BoltColorPresenter(_boltStash, _picture);
+        var boltColorPresenter = new BoltColorSetter(_boltStash, _picture);
 
         _clickView.Initialize(boltPressPresenter);
     }
