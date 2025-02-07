@@ -5,6 +5,9 @@ public class FigureBin : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        collision.gameObject.SetActive(false);
+        if (collision.collider.TryGetComponent(out FigureView fallable) == false)
+            return;
+
+        fallable.Fall();
     }
 }
