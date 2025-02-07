@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
 
-public class BoltColorPresenter : IDisposable
+public class BoltColorSetter : IUnsubscribable
 {
     private readonly BoltStash _boltStash;
     private readonly Picture _picture;
 
-    public BoltColorPresenter(BoltStash boltStash, Picture picture)
+    public BoltColorSetter(BoltStash boltStash, Picture picture)
     {
         if(boltStash == null)
             throw new NullReferenceException(nameof(boltStash));
@@ -21,21 +21,19 @@ public class BoltColorPresenter : IDisposable
         SetColors();
     }
 
-    public void Dispose() => Unsubscribe();
+    public void Unsubscribe()
+    {
+        _picture.ColorFilled -= OnColorFilled;
+    }
 
     private void Subscribe()
     {
         _picture.ColorFilled += OnColorFilled;
     }
 
-    private void Unsubscribe()
-    {
-        _picture.ColorFilled -= OnColorFilled;
-    }
-
     private void SetColors()
     {
-        foreach (StringBolt bolt in _boltStash.Bolts)
+        foreach (BoltView bolt in _boltStash.Bolts)
         {
             Color color = _picture.GetRequiredColor();
 
@@ -45,7 +43,7 @@ public class BoltColorPresenter : IDisposable
 
     private void OnColorFilled(Color color)
     {
-        foreach (StringBolt bolt in _boltStash.Bolts)
+        foreach (BoltView bolt in _boltStash.Bolts)
         {
             if (bolt.ColorString.Color == color)
             {

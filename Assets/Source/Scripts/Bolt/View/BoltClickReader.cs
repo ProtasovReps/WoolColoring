@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerClickView : MonoBehaviour
+public class BoltClickReader : MonoBehaviour
 {
     private PlayerInput _playerInput;
     private BoltPressPresenter _presenter;
