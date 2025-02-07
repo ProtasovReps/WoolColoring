@@ -23,7 +23,7 @@ public class ColoredStringHolderPresenter : StringHolderPresenter
         base.Subscribe();
     }
 
-    protected override void Unsubscribe()
+    public override void Unsubscribe()
     {
         _model.ColorChanged -= OnColorChanged;
         base.Unsubscribe();

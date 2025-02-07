@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ColorBlockPresenter : IDisposable
+public class ColorBlockPresenter : IEventListener
 {
     private readonly ColorBlockView _view;
     private readonly ColorBlock _model;
@@ -23,9 +23,7 @@ public class ColorBlockPresenter : IDisposable
         _model.ColorSetted += OnColorSetted;
     }
 
-    public void Dispose() => Unsubscribe();
-
-    private void Unsubscribe()
+    public void Unsubscribe()
     {
         _model.ColorSetted -= OnColorSetted;
     }

@@ -1,6 +1,6 @@
 using System;
 
-public class StringHolderPresenter : IDisposable
+public class StringHolderPresenter : IEventListener
 {
     private readonly StringHolderView _view;
     private readonly StringHolder _model;
@@ -23,9 +23,7 @@ public class StringHolderPresenter : IDisposable
         _model.StringRemoved += OnStringRemoved;
     }
 
-    public void Dispose() => Unsubscribe();
-
-    protected virtual void Unsubscribe()
+    public virtual void Unsubscribe()
     {
         _model.StringAdded -= OnStringAdded;
         _model.StringRemoved -= OnStringRemoved;

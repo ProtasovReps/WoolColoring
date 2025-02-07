@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class StringHolderColorPresenter : IDisposable
+public class StringHolderColorPresenter : IUnsubscribable
 {
     private readonly ColoredStringHolderStash _stash;
     private readonly Picture _picture;
@@ -20,16 +20,14 @@ public class StringHolderColorPresenter : IDisposable
         Subscribe();
     }
 
+    public void Unsubscribe()
+    {
+        _picture.ColorFilled -= OnColorFilled;
+    }
+
     private void Subscribe()
     {
         _picture.ColorFilled += OnColorFilled;
-    }
-
-    public void Dispose() => Unsubscribe();
-
-    private void Unsubscribe()
-    {
-        _picture.ColorFilled -= OnColorFilled;
     }
 
     private void OnColorFilled(Color color)

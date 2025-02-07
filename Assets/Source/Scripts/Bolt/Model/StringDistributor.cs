@@ -17,7 +17,7 @@ public class StringDistributor
         _whiteHolder = whiteHolder;
     }
 
-    public void Distribute(StringBolt bolt)
+    public void Distribute(BoltView bolt)
     {
         if (bolt == null)
             throw new ArgumentNullException(nameof(bolt));

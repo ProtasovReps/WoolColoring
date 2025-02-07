@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class BoltPressPresenter
 {
-    private readonly PlayerClickView _inputReader;
+    private readonly BoltClickReader _inputReader;
     private readonly StringDistributor _distributor;
 
-    public BoltPressPresenter(PlayerClickView inputReader, StringDistributor distributor)
+    public BoltPressPresenter(BoltClickReader inputReader, StringDistributor distributor)
     {
         if (inputReader == null)
             throw new ArgumentNullException(nameof(inputReader));
@@ -20,7 +20,7 @@ public class BoltPressPresenter
 
     public void ProcessClick(RaycastHit hit)
     {
-        if (hit.collider.TryGetComponent(out StringBolt bolt) == false)
+        if (hit.collider.TryGetComponent(out BoltView bolt) == false)
             return;
 
         _distributor.Distribute(bolt);

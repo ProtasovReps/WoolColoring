@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Painter : IDisposable
+public class Painter : IUnsubscribable
 {
     private readonly Picture _picture;
     private readonly ColoredStringHolderStash _holderStash;
@@ -25,16 +25,16 @@ public class Painter : IDisposable
         Subscribe();
     }
 
-    public void Subscribe()
-    {
-        foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
-            holder.Filled += OnFilled;
-    }
-
-    public void Dispose()
+    public void Unsubscribe()
     {
         foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
             holder.Filled -= OnFilled;
+    }
+
+    private void Subscribe()
+    {
+        foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
+            holder.Filled += OnFilled;
     }
 
     private void OnFilled(StringHolder holder)
