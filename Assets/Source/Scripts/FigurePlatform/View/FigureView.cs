@@ -13,7 +13,7 @@ public class FigureView : MonoBehaviour, IFallable
     private FigurePresenter _presenter;
     private Coroutine _coroutine;
 
-    public IReadOnlyCollection<BoltView> Bolts => _boltContainer.Bolts;
+    public IEnumerable<BoltView> Bolts => _boltContainer.Bolts;
 
     public void Initialize(FigurePresenter figurePresenter)
     {

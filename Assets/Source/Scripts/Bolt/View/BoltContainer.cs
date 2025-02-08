@@ -5,5 +5,5 @@ public class BoltContainer : MonoBehaviour
 {
     [SerializeField] private BoltView[] _bolts;
 
-    public IReadOnlyCollection<BoltView> Bolts => _bolts;
+    public IEnumerable<BoltView> Bolts => _bolts;
 }

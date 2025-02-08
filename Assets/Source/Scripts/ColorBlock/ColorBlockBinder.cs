@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 public class ColorBlockBinder
 {
-    public List<ColorBlock> Bind(IReadOnlyCollection<ColorBlockView> views)
+    public List<ColorBlock> Bind(IEnumerable<ColorBlockView> views)
     {
         var colorBlockModels = new List<ColorBlock>();
 

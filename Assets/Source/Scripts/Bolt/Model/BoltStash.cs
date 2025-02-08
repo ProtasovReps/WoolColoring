@@ -6,7 +6,7 @@ public class BoltStash
 
     public BoltStash() => _bolts = new List<BoltView>();
 
-    public void Add(IReadOnlyCollection<BoltView> bolts) => _bolts.AddRange(bolts);
+    public void Add(IEnumerable<BoltView> bolts) => _bolts.AddRange(bolts);
 
-    public IReadOnlyCollection<BoltView> Bolts => _bolts;
+    public IEnumerable<BoltView> Bolts => _bolts;
 }

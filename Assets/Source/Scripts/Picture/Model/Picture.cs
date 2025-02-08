@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 public class Picture
 {
-    private IReadOnlyCollection<ColorBlock> _colorBlocks;
+    private IEnumerable<ColorBlock> _colorBlocks;
 
     private Dictionary<Color, Queue<ColorBlock>> _requiredColors;
 
