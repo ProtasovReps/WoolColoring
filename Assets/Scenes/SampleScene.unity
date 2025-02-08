@@ -2972,16 +2972,17 @@ MonoBehaviour:
   _clickView: {fileID: 1999060525}
   _whiteStringHolderView: {fileID: 543450651807921639}
   _conveyerPositions:
-  - {fileID: 1269362996}
-  - {fileID: 276987096}
   - {fileID: 297588648}
   - {fileID: 1322514152}
+  - {fileID: 1269362996}
+  - {fileID: 276987096}
   _stringHolderViews:
   - {fileID: 543450652158031600}
   - {fileID: 1646377972}
   - {fileID: 2024720405}
   - {fileID: 1633380287}
   _figureFactory: {fileID: 446517873}
+  _minFiguresCount: 3
   _startHoldersCount: 2
 --- !u!4 &398913775
 Transform:

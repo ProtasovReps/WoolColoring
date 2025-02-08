@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _boltContainer: {fileID: 8757211786854600456}
-  _moveSpeed: 10
+  _moveSpeed: 5
   _collider: {fileID: 6980129356394813612}
 --- !u!114 &8757211786854600456
 MonoBehaviour:

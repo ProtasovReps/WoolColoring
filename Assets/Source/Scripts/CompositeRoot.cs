@@ -19,7 +19,7 @@ public class CompositeRoot : MonoBehaviour
     private StringDistributor _stringDistributor;
     private BoltStash _boltStash;
 
-    private void Awake()
+    private void Start()
     {
         BindFigures();
         BindPicture();

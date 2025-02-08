@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using System;
-using System.Linq;
 using UnityEngine;
+using System.Linq;
 
 public class PositionDatabase
 {
-    private ConveyerPosition[] _positions;
+    private readonly ConveyerPosition[] _positions;
     private ITransformable[] _transformables;
 
     public event Action<ITransformable, Vector3> PositionChanged;
@@ -38,8 +38,6 @@ public class PositionDatabase
             throw new InvalidOperationException(nameof(transformable));
 
         _transformables[lastIndex] = transformable;
-
-        PositionChanged?.Invoke(transformable, _positions[lastIndex].Position);
 
         Sort();
     }
