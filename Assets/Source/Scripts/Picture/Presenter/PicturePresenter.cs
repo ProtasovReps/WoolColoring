@@ -10,9 +10,4 @@ public class PicturePresenter
         _picture = picture;
         _pictureView = pictureView;
     }
-
-    public void Initialize(List<ColorBlock> colorBlocks)
-    {
-        _picture.Initialize(colorBlocks);
-    }
 }

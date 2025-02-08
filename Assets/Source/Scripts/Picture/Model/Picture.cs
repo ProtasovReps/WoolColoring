@@ -7,12 +7,11 @@ using Random = UnityEngine.Random;
 public class Picture
 {
     private IEnumerable<ColorBlock> _colorBlocks;
-
     private Dictionary<Color, Queue<ColorBlock>> _requiredColors;
 
     public event Action<Color> ColorFilled;
 
-    public void Initialize(IReadOnlyCollection<ColorBlock> colorBlocks)
+    public Picture(IReadOnlyCollection<ColorBlock> colorBlocks)
     {
         if (colorBlocks == null)
             throw new NullReferenceException();
