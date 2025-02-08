@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 
 public class BoltClickReader : MonoBehaviour
 {
+    [SerializeField] private Camera _mainCamera;
+    [SerializeField] private LayerMask _layer;
+    [SerializeField] private float _maxRaycastDistance;
+
     private PlayerInput _playerInput;
     private BoltPressPresenter _presenter;
 
@@ -34,9 +38,9 @@ public class BoltClickReader : MonoBehaviour
 
     private void OnClickPerformed(InputAction.CallbackContext context)
     {
-        Ray ray = Camera.main.ScreenPointToRay(_playerInput.PlayerClick.ScreenPosition.ReadValue<Vector2>());
+        Ray ray = _mainCamera.ScreenPointToRay(_playerInput.PlayerClick.ScreenPosition.ReadValue<Vector2>());
 
-        if (Physics.Raycast(ray, out RaycastHit hit) == false)
+        if (Physics.Raycast(ray, out RaycastHit hit, _maxRaycastDistance, _layer) == false)
             return;
 
         _presenter.ProcessClick(hit);

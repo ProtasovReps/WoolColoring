@@ -7,7 +7,7 @@ public class StringHolderView : MonoBehaviour
 
     private StringHolderPresenter _presenter;
 
-    public IReadOnlyCollection<ColorString> Strings => _strings;
+    public IEnumerable<ColorString> Strings => _strings;
 
     public virtual void Initialize(StringHolderPresenter presenter)
     {

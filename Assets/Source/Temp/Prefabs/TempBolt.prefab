@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2654643969124095345}
   - component: {fileID: 6222143767915709613}
   - component: {fileID: 8919426777247834273}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: TempBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 5208046720452605167}
   - component: {fileID: 3935949608606378854}
   - component: {fileID: 4575200203003243284}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 5701228366732641026}
   - component: {fileID: 5402666289907123313}
   - component: {fileID: 64403446524968794}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,6 +315,10 @@ PrefabInstance:
     - target: {fileID: 5580548120403544838, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
       propertyPath: m_Name
       value: String
+      objectReference: {fileID: 0}
+    - target: {fileID: 5580548120403544838, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6071228230069062077, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
       propertyPath: m_LocalScale.x

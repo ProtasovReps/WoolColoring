@@ -4,7 +4,18 @@ public class ColorString : MonoBehaviour, IColorable
 {
     [SerializeField] private MeshRenderer _meshRenderer;
 
-    public Color Color => _meshRenderer.material.color;
+    private MaterialPropertyBlock _propertyBlock;
 
-    public void SetColor(Color color) => _meshRenderer.material.color = color;
+    public Color Color { get; private set; }
+
+    public void SetColor(Color color)
+    {
+        if (_propertyBlock == null)
+            _propertyBlock = new MaterialPropertyBlock();
+
+        Color = color;
+
+        _propertyBlock.SetColor(MaterialPropertyBlockParameters.Color, color);
+        _meshRenderer.SetPropertyBlock(_propertyBlock);
+    }
 }

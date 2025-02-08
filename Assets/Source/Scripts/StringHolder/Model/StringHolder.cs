@@ -1,19 +1,15 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 
 public abstract class StringHolder : IFillable<StringHolder>
 {
-    private IReadOnlyCollection<ColorString> _strings;
+    private ColorString[] _strings;
+    private int _stringCount;
 
     public event Action<StringHolder> Filled;
     public event Action<ColorString> StringAdded;
     public event Action<ColorString> StringRemoved;
 
-    public int MaxStringCount => _strings.Count;
-    public int StringCount => _strings.Where(colorString => colorString.gameObject.activeSelf).Count();
-
-    public void Initialize(IReadOnlyCollection<ColorString> strings)
+    public StringHolder(ColorString[] strings)
     {
         if (strings == null)
             throw new ArgumentNullException(nameof(strings));
@@ -21,24 +17,27 @@ public abstract class StringHolder : IFillable<StringHolder>
         _strings = strings;
     }
 
+    public int MaxStringCount => _strings.Length;
+
     public void Add(IColorable newString)
     {
         ColorString colorString = GetFreeString();
 
         PrepareString(colorString, newString);
 
+        _stringCount++;
+
         StringAdded?.Invoke(colorString);
 
-        if (StringCount == MaxStringCount)
+        if (_stringCount == MaxStringCount)
             Filled?.Invoke(this);
     }
 
     public IColorable GetColorable()
     {
-        ColorString colorString = _strings.LastOrDefault(colorString => colorString.gameObject.activeSelf == true);
+        ColorString colorString = GetLastString();
 
-        if (colorString == null)
-            throw new ArgumentNullException(nameof(colorString));
+        _stringCount--;
 
         StringRemoved?.Invoke(colorString);
         return colorString;
@@ -48,11 +47,32 @@ public abstract class StringHolder : IFillable<StringHolder>
 
     private ColorString GetFreeString()
     {
-        ColorString freeString = _strings.FirstOrDefault(colorString => colorString.gameObject.activeSelf == false);
+        for (int i = 0; i < _strings.Length; i++)
+        {
+            if (IsActiveString(_strings[i], false))
+            {
+                return _strings[i];
+            }
+        }
 
-        if (freeString == null)
-            throw new ArgumentNullException(nameof(freeString));
+        throw new InvalidOperationException();
+    }
 
-        return freeString;
+    private ColorString GetLastString()
+    {
+        for (int i = _strings.Length - 1; i >= 0; i--)
+        {
+            if (IsActiveString(_strings[i], true))
+            {
+                return _strings[i];
+            }
+        }
+
+        throw new InvalidOperationException();
+    }
+
+    private bool IsActiveString(ColorString colorString, bool isActive)
+    {
+        return colorString.gameObject.activeSelf == isActive;
     }
 }

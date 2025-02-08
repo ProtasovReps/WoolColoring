@@ -1,14 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using System.Linq;
 
 public class ColoredStringHolderStash
 {
     private readonly ColoredStringHolder[] _activeStringHolders;
     private readonly ColoredStringHolder[] _lockedStringHolders;
 
-    public IReadOnlyCollection<IFillable<StringHolder>> ColoredStringHolders => _activeStringHolders;
+    public IEnumerable<IFillable<StringHolder>> ColoredStringHolders => _activeStringHolders;
 
     public ColoredStringHolderStash(ColoredStringHolder[] stringHolders, int activeCount)
     {
@@ -32,7 +31,7 @@ public class ColoredStringHolderStash
         if (requiredColor == null)
             throw new ArgumentNullException(nameof(requiredColor));
 
-        holder = _activeStringHolders.FirstOrDefault(holder => holder.RequiredColor == requiredColor);
+        holder = GetActiveHolder(requiredColor);
         return holder != null;
     }
 
@@ -54,5 +53,16 @@ public class ColoredStringHolderStash
                 lockedIndex++;
             }
         }
+    }
+
+    private ColoredStringHolder GetActiveHolder(Color requiredColor)
+    {
+        for (int i = 0; i < _activeStringHolders.Length; i++)
+        {
+            if(_activeStringHolders[i].RequiredColor == requiredColor)
+                return _activeStringHolders[i];
+        }
+
+        return null;
     }
 }
