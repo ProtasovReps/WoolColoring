@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FigureView : MonoBehaviour, IFallable
+public class FigureView : MonoBehaviour, IFallable, IColorSettable
 {
     [SerializeField] private BoltContainer _boltContainer;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private Collider _collider;
+    [SerializeField] private MeshRenderer _renderer;
 
+    private MaterialPropertyBlock _propertyBlock;
     private Transform _transform;
     private FigurePresenter _presenter;
     private Coroutine _coroutine;
@@ -26,8 +28,15 @@ public class FigureView : MonoBehaviour, IFallable
         if (figurePresenter == null)
             throw new ArgumentNullException(nameof(figurePresenter));
 
+        _propertyBlock = new MaterialPropertyBlock();
         _transform = transform;
         _presenter = figurePresenter;
+    }
+
+    public void SetColor(Color color)
+    {
+        _propertyBlock.SetColor(MaterialPropertyBlockParameters.Color, color);
+        _renderer.SetPropertyBlock(_propertyBlock);
     }
 
     public void ChangePosition(Vector3 position)

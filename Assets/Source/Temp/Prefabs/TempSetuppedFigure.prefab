@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8757211786854600456}
   - component: {fileID: 4082360440356730567}
   - component: {fileID: 4117742806087671212}
+  - component: {fileID: 2354247585513410102}
   m_Layer: 0
   m_Name: TempSetuppedFigure
   m_TagString: Untagged
@@ -54,6 +55,7 @@ MonoBehaviour:
   _boltContainer: {fileID: 8757211786854600456}
   _moveSpeed: 5
   _collider: {fileID: 6980129356394813612}
+  _renderer: {fileID: 1288396088827176029}
 --- !u!114 &8757211786854600456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -118,6 +120,48 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.06
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2354247585513410102
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065605902938599410}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1001 &2205161476330254856
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -179,6 +223,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f20fa3da8747ffa4082743f634ba34a3, type: 3}
+--- !u!23 &1288396088827176029 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1115489487036716629, guid: f20fa3da8747ffa4082743f634ba34a3, type: 3}
+  m_PrefabInstance: {fileID: 2205161476330254856}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3852035203215698629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3165858148136442061, guid: f20fa3da8747ffa4082743f634ba34a3, type: 3}
