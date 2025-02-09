@@ -3268,6 +3268,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _viewPrefabs:
   - {fileID: 7437601440716550513, guid: aabd61c59e3716942a269e66e0bb22d1, type: 3}
+  _figureColors:
+  - {r: 0.44980422, g: 0.15895337, b: 0.7169812, a: 1}
+  - {r: 0.4716981, g: 0.3473453, b: 0.23362406, a: 1}
+  - {r: 0.6415094, g: 0.1724813, b: 0.42102605, a: 1}
+  - {r: 0.509434, g: 0.23432238, b: 0.17061234, a: 1}
+  - {r: 0.10893556, g: 0.4528302, b: 0.14221565, a: 1}
 --- !u!4 &453984295 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2510611199525465431, guid: 645133bf639ddb0449abcc4ae532e792, type: 3}

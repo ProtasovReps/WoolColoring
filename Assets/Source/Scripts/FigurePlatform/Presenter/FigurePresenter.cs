@@ -25,27 +25,27 @@ public class FigurePresenter : IEventListener
 
     public void Subscribe()
     {
-        _model.PositionChanged += OnPositionChanged;
         _model.Appeared += OnAppeared;
+        _model.PositionChanged += OnPositionChanged;
     }
 
     public void Unsubscribe()
     {
-        _model.PositionChanged -= OnPositionChanged;
         _model.Appeared -= OnAppeared;
-    }
-
-    public void OnAppeared()
-    {
-        Color newColor = _colorizer.GetRandomColor();
-
-        _view.SetColor(newColor);
-        _view.Appear();
+        _model.PositionChanged -= OnPositionChanged;
     }
 
     public void Fall()
     {
         _model.Fall();
+    }
+
+    private void OnAppeared()
+    {
+        Color newColor = _colorizer.GetRandomColor();
+
+        _view.Appear();
+        _view.SetColor(newColor);
     }
 
     private void OnPositionChanged()

@@ -10,6 +10,8 @@ public class PositionDatabase
 
     public event Action<ITransformable, Vector3> PositionChanged;
 
+    public int TransformablesCount { get; private set; }
+
     public PositionDatabase(IReadOnlyCollection<ConveyerPosition> positions)
     {
         if (positions == null)
@@ -38,6 +40,7 @@ public class PositionDatabase
             throw new InvalidOperationException(nameof(transformable));
 
         _transformables[lastIndex] = transformable;
+        TransformablesCount++;
 
         Sort();
     }
@@ -53,6 +56,7 @@ public class PositionDatabase
             throw new InvalidOperationException(nameof(transformableToRemove));
 
         _transformables[searchedIndex] = null;
+        TransformablesCount--;
 
         Sort();
     }

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 9065605902938599410}
   serializedVersion: 2
   m_LocalRotation: {x: 0.20022908, y: -0, z: -0, w: 0.9797492}
-  m_LocalPosition: {x: 0, y: -0.009972003, z: -0.0026875883}
+  m_LocalPosition: {x: 0, y: -5, z: -0.0026875883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53,7 +53,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _boltContainer: {fileID: 8757211786854600456}
-  _moveSpeed: 5
+  _moveSpeed: 6
   _collider: {fileID: 6980129356394813612}
   _renderer: {fileID: 1288396088827176029}
 --- !u!114 &8757211786854600456
@@ -170,6 +170,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7329140198732575892}
     m_Modifications:
+    - target: {fileID: 1115489487036716629, guid: f20fa3da8747ffa4082743f634ba34a3, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 03cf2c5c95b5aac4494f33fb10262881, type: 2}
     - target: {fileID: 3165858148136442061, guid: f20fa3da8747ffa4082743f634ba34a3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

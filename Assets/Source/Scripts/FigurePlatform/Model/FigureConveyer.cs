@@ -21,6 +21,7 @@ public class FigureConveyer : IUnsubscribable
 
         _positionDatabase = new PositionDatabase(positions);
         _figurePool = new FigurePool(factory);
+        _minFiguresCount = minFiguresCount;
 
         Subscribe();
         FillAllFigures();
@@ -34,12 +35,6 @@ public class FigureConveyer : IUnsubscribable
     private void Subscribe()
     {
         _positionDatabase.PositionChanged += OnPositionChanged;
-    }
-
-    private void FillAllFigures()
-    {
-        for (int i = 0; i < _positionDatabase.PositionsCount; i++)
-            AddFigure();
     }
 
     private void AddFigure()
@@ -56,6 +51,15 @@ public class FigureConveyer : IUnsubscribable
 
         _positionDatabase.Remove(figure);
         _figurePool.Release(figure);
+
+        if (_positionDatabase.TransformablesCount < _minFiguresCount)
+            FillAllFigures();
+    }
+
+    private void FillAllFigures()
+    {
+        while (_positionDatabase.PositionsCount > _positionDatabase.TransformablesCount)
+            AddFigure();
     }
 
     private void OnPositionChanged(ITransformable transformable, Vector3 position)
