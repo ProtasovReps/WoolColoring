@@ -37,7 +37,7 @@ public class BoltColorSetter : IUnsubscribable
         {
             Color color = _picture.GetRequiredColor();
 
-            bolt.ColorString.SetColor(color);
+            bolt.ColorSettable.SetColor(color);
         }
     }
 
@@ -45,11 +45,11 @@ public class BoltColorSetter : IUnsubscribable
     {
         foreach (BoltView bolt in _boltStash.Bolts)
         {
-            if (bolt.ColorString.Color == color)
+            if (bolt.Colorable.Color == color)
             {
                 Color newColor = _picture.GetRequiredColor();
 
-                bolt.ColorString.SetColor(newColor);
+                bolt.ColorSettable.SetColor(newColor);
             }
         }
     }

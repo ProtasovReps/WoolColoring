@@ -1,7 +1,7 @@
 using UnityEngine;
 using System;
 
-public class ColorBlock
+public class ColorBlock : IColorSettable
 {
     private readonly Color _requiredColor;
 

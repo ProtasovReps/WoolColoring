@@ -1,21 +1,19 @@
 using UnityEngine;
 
-public class ColorString : MonoBehaviour, IColorable
+public class ColorString : MonoBehaviour, IColorable, IColorSettable
 {
-    [SerializeField] private MeshRenderer _meshRenderer;
-
-    private MaterialPropertyBlock _propertyBlock;
+    [SerializeField] private ColorView _colorView;
 
     public Color Color { get; private set; }
 
+    public void Initialize()
+    {
+        _colorView.Initialize();
+    }
+
     public void SetColor(Color color)
     {
-        if (_propertyBlock == null)
-            _propertyBlock = new MaterialPropertyBlock();
-
         Color = color;
-
-        _propertyBlock.SetColor(MaterialPropertyBlockParameters.Color, color);
-        _meshRenderer.SetPropertyBlock(_propertyBlock);
+        _colorView.SetColor(color);
     }
 }

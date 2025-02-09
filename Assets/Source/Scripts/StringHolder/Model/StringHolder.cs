@@ -43,7 +43,7 @@ public abstract class StringHolder : IFillable<StringHolder>
         return colorString;
     }
 
-    protected abstract void PrepareString(IColorable freeString, IColorable newString);
+    protected abstract void PrepareString(IColorSettable freeString, IColorable newString);
 
     private ColorString GetFreeString()
     {

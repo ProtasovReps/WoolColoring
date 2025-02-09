@@ -22,7 +22,7 @@ public class StringDistributor
         if (bolt == null)
             throw new ArgumentNullException(nameof(bolt));
 
-        IColorable colorString = bolt.ColorString;
+        IColorable colorString = bolt.Colorable;
 
         if (_coloredHolderStash.TryGetColoredStringHolder(colorString.Color, out ColoredStringHolder holder))
             holder.Add(colorString);

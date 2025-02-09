@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IColorable : IColorSettable
+public interface IColorable
 {
     Color Color { get; }
 }

@@ -1,21 +1,17 @@
 using UnityEngine;
 
-[RequireComponent(typeof(MeshRenderer))]
-public class ColoredStringHolderView : StringHolderView
+public class ColoredStringHolderView : StringHolderView, IColorSettable
 {
-    private MeshRenderer _meshRenderer;
-    private MaterialPropertyBlock _propertyBlock;
+    [SerializeField] private ColorView _colorView;
 
     public override void Initialize(StringHolderPresenter presenter)
     {
-        _propertyBlock = new MaterialPropertyBlock();
-        _meshRenderer = GetComponent<MeshRenderer>();
+        _colorView.Initialize();
         base.Initialize(presenter);
     }
 
     public void SetColor(Color color)
     {
-        _propertyBlock.SetColor(MaterialPropertyBlockParameters.Color, color);
-        _meshRenderer.SetPropertyBlock(_propertyBlock);
+        _colorView.SetColor(color);
     }
 }

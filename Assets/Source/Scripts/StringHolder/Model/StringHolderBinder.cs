@@ -27,7 +27,10 @@ public class StringHolderBinder
         var tempList = new List<ColorString>();
 
         foreach (ColorString colorString in view.Strings)
+        {
+            colorString.Initialize();
             tempList.Add(colorString);
+        }
 
         return tempList.ToArray();
     }

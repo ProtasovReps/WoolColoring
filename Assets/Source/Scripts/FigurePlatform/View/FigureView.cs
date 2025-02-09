@@ -1,21 +1,18 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(TransformView))]
+[RequireComponent(typeof(ColorView))]
 public class FigureView : MonoBehaviour, IFallable, IColorSettable
 {
     [SerializeField] private BoltContainer _boltContainer;
     [SerializeField] private float _moveSpeed;
     [SerializeField] private Collider _collider;
-    [SerializeField] private MeshRenderer _renderer;
 
-    private MaterialPropertyBlock _propertyBlock;
     private FigurePresenter _presenter;
-    private Coroutine _coroutine;
-    private Transform _transform;
-    private Vector3 _startPosition;
-    private Quaternion _startRotation;
+    private ColorView _colorView;
+    private TransformView _transformView;
 
     public IEnumerable<BoltView> Bolts => _boltContainer.Bolts;
 
@@ -30,65 +27,34 @@ public class FigureView : MonoBehaviour, IFallable, IColorSettable
         if (figurePresenter == null)
             throw new ArgumentNullException(nameof(figurePresenter));
 
-        _propertyBlock = new MaterialPropertyBlock();
-        _transform = transform;
-        _startRotation = _transform.rotation;
-        _startPosition = _transform.position;
+        _transformView = GetComponent<TransformView>();
+        _colorView = GetComponent<ColorView>();
         _presenter = figurePresenter;
-    }
 
-    public void SetColor(Color color)
-    {
-        _propertyBlock.SetColor(MaterialPropertyBlockParameters.Color, color);
-        _renderer.SetPropertyBlock(_propertyBlock);
+        _colorView.Initialize();
+        _transformView.Initialize(_collider);
     }
 
     public void Appear()
     {
-        SetActive(true);
+        _transformView.SetActive(true);
     }
 
     public void Fall()
     {
-        _transform.position = _startPosition;
-        _transform.rotation = _startRotation;
+        _transformView.SetStartTransform();
+        _transformView.SetActive(false);
 
-        SetActive(false);
         _presenter.Fall();
+    }
+
+    public void SetColor(Color color)
+    {
+        _colorView.SetColor(color);
     }
 
     public void ChangePosition(Vector3 position)
     {
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(MoveSmoothly(position));
-    }
-
-    private void SetActive(bool isActive)
-    {
-        _transform.gameObject.SetActive(isActive);
-    }
-
-    private IEnumerator MoveSmoothly(Vector3 position)
-    {
-        float minDistance = 0.01f;
-
-        _collider.enabled = false;
-
-        while (GetSquareMagnitude(position) > minDistance)
-        {
-            _transform.position = Vector3.Lerp(_transform.position, position, _moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-
-        _collider.enabled = true;
-        _coroutine = null;
-    }
-
-    private float GetSquareMagnitude(Vector3 position)
-    {
-        Vector3 offset = position - _transform.position;
-        return Vector3.SqrMagnitude(offset);
+        _transformView.ChangePosition(position, _moveSpeed);
     }
 }

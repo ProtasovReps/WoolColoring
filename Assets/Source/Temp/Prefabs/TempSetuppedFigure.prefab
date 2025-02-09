@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 4082360440356730567}
   - component: {fileID: 4117742806087671212}
   - component: {fileID: 2354247585513410102}
+  - component: {fileID: 5208132492971137692}
+  - component: {fileID: 3910922051751471196}
   m_Layer: 0
   m_Name: TempSetuppedFigure
   m_TagString: Untagged
@@ -55,7 +57,6 @@ MonoBehaviour:
   _boltContainer: {fileID: 8757211786854600456}
   _moveSpeed: 6
   _collider: {fileID: 6980129356394813612}
-  _renderer: {fileID: 1288396088827176029}
 --- !u!114 &8757211786854600456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +163,31 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5208132492971137692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065605902938599410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f872ad176079d39449b42d98a7fda452, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3910922051751471196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9065605902938599410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f70409f58113c44b000fad4dd924da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 1288396088827176029}
 --- !u!1001 &2205161476330254856
 PrefabInstance:
   m_ObjectHideFlags: 0

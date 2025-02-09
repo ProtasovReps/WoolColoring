@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ColoredStringHolder : StringHolder
+public class ColoredStringHolder : StringHolder, IColorSettable
 {
     public event Action ColorChanged;
 
@@ -9,13 +9,13 @@ public class ColoredStringHolder : StringHolder
 
     public Color RequiredColor { get; private set; }
 
-    public void SetRequiredColor(Color requiredColor)
+    public void SetColor(Color color)
     {
-        RequiredColor = requiredColor;
+        RequiredColor = color;
         ColorChanged?.Invoke();
     }
 
-    protected override void PrepareString(IColorable freeString, IColorable newString)
+    protected override void PrepareString(IColorSettable freeString, IColorable newString)
     {
         Color newColor = newString.Color;
 

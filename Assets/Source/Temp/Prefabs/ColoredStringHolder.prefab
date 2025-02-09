@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6403680338172090427}
   - component: {fileID: 4001576987107870759}
   - component: {fileID: 1397916301311602972}
+  - component: {fileID: 7446603228729498148}
   m_Layer: 0
   m_Name: ColoredStringHolder
   m_TagString: Untagged
@@ -106,6 +107,20 @@ MonoBehaviour:
   - {fileID: 552197636419516608}
   - {fileID: 2785121077586558312}
   - {fileID: 6132411937479273831}
+  _colorView: {fileID: 7446603228729498148}
+--- !u!114 &7446603228729498148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4662065341727230343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5f70409f58113c44b000fad4dd924da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 4001576987107870759}
 --- !u!1 &8342869197069327150
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,6 +30,6 @@ public class ColorBlockPresenter : IEventListener
 
     private void OnColorSetted(Color color)
     {
-        _view.SetRenderColor(color);
+        _view.SetColor(color);
     }
 }

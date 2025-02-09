@@ -1,24 +1,20 @@
 using UnityEngine;
 
 [RequireComponent(typeof(MeshRenderer))]
-public class ColorBlockView : MonoBehaviour
+public class ColorBlockView : MonoBehaviour, IColorSettable
 {
     [SerializeField] private Color _requiredColor;
-
-    private MeshRenderer _renderer;
-    private MaterialPropertyBlock _materialPropertyBlock;
+    [SerializeField] private ColorView _colorView;
 
     public Color RequiredColor => _requiredColor;
 
     private void Awake()
     {
-        _renderer = GetComponent<MeshRenderer>();
-        _materialPropertyBlock = new MaterialPropertyBlock();
+        _colorView.Initialize();
     }
 
-    public void SetRenderColor(Color color)
+    public void SetColor(Color color)
     {
-        _materialPropertyBlock.SetColor(MaterialPropertyBlockParameters.Color, color);
-        _renderer.SetPropertyBlock(_materialPropertyBlock);
+        _colorView.SetColor(color);
     }
 }

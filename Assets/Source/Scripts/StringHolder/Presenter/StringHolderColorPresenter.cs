@@ -38,7 +38,7 @@ public class StringHolderColorPresenter : IUnsubscribable
             {
                 Color newColor = _picture.GetRequiredColor();
 
-                holder.SetRequiredColor(newColor);
+                holder.SetColor(newColor);
             }
         }
     }
