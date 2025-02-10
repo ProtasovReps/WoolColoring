@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.ComponentModel;
 using UnityEngine;
 
 public class CompositeRoot : MonoBehaviour
@@ -60,7 +59,7 @@ public class CompositeRoot : MonoBehaviour
             holderModels[i] = holderModel;
         }
 
-        WhiteStringHolder whiteHolderModel = stringBinder.Bind(_whiteStringHolderView);
+        WhiteStringHolder whiteHolderModel = stringBinder.Bind(_whiteStringHolderView, _picture);
 
         _switcher = new ColoredStringHolderSwitcher(_picture);
         _coloredStringHolderStash = new ColoredStringHolderStash(holderModels, _startHoldersCount);

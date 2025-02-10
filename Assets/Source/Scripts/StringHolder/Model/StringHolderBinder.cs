@@ -12,11 +12,12 @@ public class StringHolderBinder
         return model;
     }
 
-    public WhiteStringHolder Bind(StringHolderView view)
+    public WhiteStringHolder Bind(StringHolderView view, Picture picture)
     {
         var strings = GetColorStrings(view);
         var model = new WhiteStringHolder(strings);
-        var presenter = new StringHolderPresenter(view, model);
+        var stringRemover = new ExtraStringRemover(picture, model);
+        var presenter = new WhiteStringHolderPresenter(view, model);
 
         Prepare(view, presenter);
         return model;

@@ -2984,8 +2984,8 @@ MonoBehaviour:
   - {fileID: 2024720405}
   - {fileID: 1633380287}
   _figureFactory: {fileID: 446517873}
-  _minFiguresCount: 3
-  _startHoldersCount: 2
+  _minFiguresCount: 6
+  _startHoldersCount: 1
 --- !u!4 &398913775
 Transform:
   m_ObjectHideFlags: 0
@@ -7828,7 +7828,7 @@ Transform:
   m_GameObject: {fileID: 1118767233}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.1816905, y: -7.1244006, z: 0.22132015}
+  m_LocalPosition: {x: 3.1816905, y: -5, z: 0.22132015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

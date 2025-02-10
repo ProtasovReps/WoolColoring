@@ -5,6 +5,9 @@ public class StringHolderPresenter : IEventListener
     private readonly StringHolderView _view;
     private readonly StringHolder _model;
 
+    protected StringHolder Model => _model;
+    protected StringHolderView View => _view;
+
     public StringHolderPresenter(StringHolderView view, StringHolder model)
     {
         if (view == null)

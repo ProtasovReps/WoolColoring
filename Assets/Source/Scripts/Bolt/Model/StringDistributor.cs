@@ -50,9 +50,8 @@ public class StringDistributor : IUnsubscribable
 
     private void OnColorChanged(ColoredStringHolder holder)
     {
-        _whiteHolder.SetRequiredColor(holder.Color);
-
-        int requiredStringCount = _whiteHolder.GetRequiredColorsCount();
+        Color requiredColor = holder.Color;
+        int requiredStringCount = _whiteHolder.GetRequiredColorsCount(requiredColor);
 
         if (requiredStringCount == 0)
             return;
@@ -61,7 +60,7 @@ public class StringDistributor : IUnsubscribable
 
         for (int i = 0; i < requiredStringCount; i++)
         {
-            IColorable colorable = _whiteHolder.GetColorable();
+            IColorable colorable = _whiteHolder.GetRequiredColorable(requiredColor);
             holder.Add(colorable);
         }
     }

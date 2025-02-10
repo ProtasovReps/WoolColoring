@@ -3,9 +3,14 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class FigureBin : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision)
+    private void Awake()
     {
-        if (collision.collider.TryGetComponent(out FigureView fallable) == false)
+        GetComponent<BoxCollider>().isTrigger = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out FigureView fallable) == false)
             return;
 
         fallable.Fall();

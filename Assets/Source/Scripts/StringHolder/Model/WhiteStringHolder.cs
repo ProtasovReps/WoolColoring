@@ -6,9 +6,13 @@ public class WhiteStringHolder : StringHolder
 
     public WhiteStringHolder(ColorString[] strings) : base(strings) { }
 
-    public void SetRequiredColor(Color color) => _requiredColor = color;
+    public IColorable GetRequiredColorable(Color color)
+    {
+        _requiredColor = color;
+        return GetColorable();
+    }
 
-    public int GetRequiredColorsCount()
+    public int GetRequiredColorsCount(Color color)
     {
         int requiredColorsCount = 0;
 
@@ -17,7 +21,7 @@ public class WhiteStringHolder : StringHolder
             if (IsActiveString(colorString, false))
                 continue;
 
-            if (colorString.Color != _requiredColor)
+            if (colorString.Color != color)
                 continue;
 
             requiredColorsCount++;
