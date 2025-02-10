@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 public abstract class StringHolder : IFillable<StringHolder>
 {
@@ -18,10 +19,11 @@ public abstract class StringHolder : IFillable<StringHolder>
     }
 
     public int MaxStringCount => _strings.Length;
+    protected IEnumerable<ColorString> Strings => _strings;
 
     public void Add(IColorable newString)
     {
-        ColorString colorString = GetFreeString();
+        ColorString colorString = GetInactiveString();
 
         PrepareString(colorString, newString);
 
@@ -45,7 +47,25 @@ public abstract class StringHolder : IFillable<StringHolder>
 
     protected abstract void PrepareString(IColorSettable freeString, IColorable newString);
 
-    private ColorString GetFreeString()
+    protected abstract bool IsValidString(IColorable colorString);
+
+    protected bool IsActiveString(ColorString colorString, bool isActive)
+       => colorString.gameObject.activeSelf == isActive;
+
+    private ColorString GetLastString()
+    {
+        for (int i = _strings.Length - 1; i >= 0; i--)
+        {
+            if (IsActiveString(_strings[i], true) && IsValidString(_strings[i]))
+            {
+                return _strings[i];
+            }
+        }
+
+        throw new InvalidOperationException();
+    }
+
+    private ColorString GetInactiveString()
     {
         for (int i = 0; i < _strings.Length; i++)
         {
@@ -56,23 +76,5 @@ public abstract class StringHolder : IFillable<StringHolder>
         }
 
         throw new InvalidOperationException();
-    }
-
-    private ColorString GetLastString()
-    {
-        for (int i = _strings.Length - 1; i >= 0; i--)
-        {
-            if (IsActiveString(_strings[i], true))
-            {
-                return _strings[i];
-            }
-        }
-
-        throw new InvalidOperationException();
-    }
-
-    private bool IsActiveString(ColorString colorString, bool isActive)
-    {
-        return colorString.gameObject.activeSelf == isActive;
     }
 }

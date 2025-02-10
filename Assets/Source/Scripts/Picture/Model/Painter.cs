@@ -50,12 +50,9 @@ public class Painter : IUnsubscribable
         for (int i = 0; i < holder.MaxStringCount; i++)
         {
             Color color = holder.GetColorable().Color;
-
             _picture.Colorize(color);
         }
 
-        Color requiredColor = _picture.GetRequiredColor();
-
-        _switcher.Switch(requiredColor, holder);
+        _switcher.ChangeStringHolderColor(holder);
     }
 }

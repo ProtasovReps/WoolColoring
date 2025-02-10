@@ -17,4 +17,10 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
     {
         _colorView.SetColor(color);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = _requiredColor;
+        Gizmos.DrawCube(transform.position, transform.localScale);
+    }
 }

@@ -1,17 +1,17 @@
 using System;
 using UnityEngine;
 
-public class ColoredStringHolder : StringHolder, IColorSettable
+public class ColoredStringHolder : StringHolder
 {
     public event Action ColorChanged;
 
     public ColoredStringHolder(ColorString[] strings) : base(strings) { }
 
-    public Color RequiredColor { get; private set; }
+    public Color Color { get; private set; }
 
     public void SetColor(Color color)
     {
-        RequiredColor = color;
+        Color = color;
         ColorChanged?.Invoke();
     }
 
@@ -19,9 +19,11 @@ public class ColoredStringHolder : StringHolder, IColorSettable
     {
         Color newColor = newString.Color;
 
-        if (newColor != RequiredColor)
+        if (newColor != Color)
             throw new ArgumentException(nameof(newString));
 
         freeString.SetColor(newColor);
     }
+
+    protected override bool IsValidString(IColorable colorString) => true;
 }

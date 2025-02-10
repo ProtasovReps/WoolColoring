@@ -24,10 +24,14 @@ public class Picture
         FillDictionary();
     }
 
-    public Color GetRequiredColor()
-    {
-        int randomIndex = Random.Range(0, _requiredColors.Count);
+    public int RequiredColorsCount => _requiredColors.Keys.Count;
 
+    public Color GetRandomColor()
+    {
+        if (_requiredColors.Keys.Count == 0)
+            throw new InvalidOperationException();
+
+        int randomIndex = Random.Range(0, _requiredColors.Count);
         return _requiredColors.Keys.ToArray()[randomIndex];
     }
 

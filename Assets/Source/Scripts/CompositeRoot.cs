@@ -62,15 +62,15 @@ public class CompositeRoot : MonoBehaviour
 
         WhiteStringHolder whiteHolderModel = stringBinder.Bind(_whiteStringHolderView);
 
+        _switcher = new ColoredStringHolderSwitcher(_picture);
         _coloredStringHolderStash = new ColoredStringHolderStash(holderModels, _startHoldersCount);
-        _stringDistributor = new StringDistributor(_coloredStringHolderStash, whiteHolderModel);
-        _switcher = new ColoredStringHolderSwitcher();
+        _stringDistributor = new StringDistributor(_coloredStringHolderStash, whiteHolderModel, _switcher);
 
         var colorPresenter = new StringHolderColorPresenter(_coloredStringHolderStash, _picture);
 
         foreach (var holder in _coloredStringHolderStash.ColoredStringHolders)
         {
-            SetStartHolderColor(holder as ColoredStringHolder);
+            _switcher.ChangeStringHolderColor(holder as ColoredStringHolder);
         }
     }
 
@@ -80,12 +80,5 @@ public class CompositeRoot : MonoBehaviour
         var boltColorPresenter = new BoltColorSetter(_boltStash, _picture);
 
         _clickView.Initialize(boltPressPresenter);
-    }
-
-    private void SetStartHolderColor(ColoredStringHolder holder)
-    {
-        Color requiredColor = _picture.GetRequiredColor();
-
-        _switcher.Switch(requiredColor, holder);
     }
 }

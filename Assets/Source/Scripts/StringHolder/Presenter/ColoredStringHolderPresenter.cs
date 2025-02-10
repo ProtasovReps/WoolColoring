@@ -31,6 +31,6 @@ public class ColoredStringHolderPresenter : StringHolderPresenter
 
     private void OnColorChanged()
     {
-        _view.SetColor(_model.RequiredColor);
+        _view.SetColor(_model.Color);
     }
 }

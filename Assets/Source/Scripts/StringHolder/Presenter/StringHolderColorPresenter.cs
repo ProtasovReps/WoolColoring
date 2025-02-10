@@ -34,9 +34,9 @@ public class StringHolderColorPresenter : IUnsubscribable
     {
         foreach (ColoredStringHolder holder in _stash.ColoredStringHolders)
         {
-            if(holder.RequiredColor == color)
+            if(holder.Color == color)
             {
-                Color newColor = _picture.GetRequiredColor();
+                Color newColor = _picture.GetRandomColor();
 
                 holder.SetColor(newColor);
             }

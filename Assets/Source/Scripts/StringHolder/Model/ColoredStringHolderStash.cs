@@ -59,7 +59,7 @@ public class ColoredStringHolderStash
     {
         for (int i = 0; i < _activeStringHolders.Length; i++)
         {
-            if(_activeStringHolders[i].RequiredColor == requiredColor)
+            if(_activeStringHolders[i].Color == requiredColor)
                 return _activeStringHolders[i];
         }
 
