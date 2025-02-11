@@ -6,8 +6,9 @@ public class Painter : IUnsubscribable
     private readonly Picture _picture;
     private readonly ColoredStringHolderStash _holderStash;
     private readonly ColoredStringHolderSwitcher _switcher;
+    private int _blocksPerHolder;
 
-    public Painter(Picture picture, ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash)
+    public Painter(Picture picture, ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash, int blocksPerHolder)
     {
         if (picture == null)
             throw new NullReferenceException(nameof(_holderStash));
@@ -18,9 +19,13 @@ public class Painter : IUnsubscribable
         if (stash == null)
             throw new NullReferenceException(nameof(stash));
 
+        if (blocksPerHolder <= 0)
+            throw new ArgumentException(nameof(blocksPerHolder));
+
         _picture = picture;
         _holderStash = stash;
         _switcher = switcher;
+        _blocksPerHolder = blocksPerHolder;
 
         Subscribe();
     }
@@ -47,11 +52,13 @@ public class Painter : IUnsubscribable
 
     private void FillImage(ColoredStringHolder holder)
     {
+        Color color = Color.black;
+
         for (int i = 0; i < holder.MaxStringCount; i++)
-        {
-            Color color = holder.GetColorable().Color;
+            color = holder.GetColorable().Color;
+
+        for (int i = 0; i < _blocksPerHolder; i++)
             _picture.Colorize(color);
-        }
 
         _switcher.ChangeStringHolderColor(holder);
     }

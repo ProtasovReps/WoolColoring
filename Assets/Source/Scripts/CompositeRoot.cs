@@ -4,6 +4,7 @@ using UnityEngine;
 public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private PictureView _pictureView;
+    [SerializeField, Range(1, 4)] private int _blocksPerHolder;
     [SerializeField] private BoltClickReader _clickView;
     [SerializeField] private StringHolderView _whiteStringHolderView;
     [SerializeField] private ConveyerPosition[] _conveyerPositions;
@@ -25,7 +26,7 @@ public class CompositeRoot : MonoBehaviour
         BindHolders();
         BindBolt();
 
-        var painter = new Painter(_picture, _switcher, _coloredStringHolderStash);
+        var painter = new Painter(_picture, _switcher, _coloredStringHolderStash, _blocksPerHolder);
     }
 
     private void BindFigures()

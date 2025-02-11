@@ -2969,6 +2969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pictureView: {fileID: 2079901634}
+  _blocksPerHolder: 2
   _clickView: {fileID: 1999060525}
   _whiteStringHolderView: {fileID: 543450651807921639}
   _conveyerPositions:
@@ -2985,7 +2986,7 @@ MonoBehaviour:
   - {fileID: 1633380287}
   _figureFactory: {fileID: 446517873}
   _minFiguresCount: 6
-  _startHoldersCount: 1
+  _startHoldersCount: 2
 --- !u!4 &398913775
 Transform:
   m_ObjectHideFlags: 0
