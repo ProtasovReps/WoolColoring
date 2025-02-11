@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.6925448, y: -0.20240691, z: -0.66724956, w: 0.1849083}
   m_LocalPosition: {x: 0.24626243, y: 3.2269287, z: -0.96300375}
-  m_LocalScale: {x: 211.85446, y: 137.50632, z: 175.81581}
+  m_LocalScale: {x: 224.96826, y: 146.01796, z: 186.6988}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3763404777368708228}
@@ -56,7 +56,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4662065341727230343}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -132,7 +132,6 @@ GameObject:
   - component: {fileID: 123593919903374042}
   - component: {fileID: 2390603756616538771}
   - component: {fileID: 7393123239154060201}
-  - component: {fileID: 3069229728871894191}
   m_Layer: 0
   m_Name: Shadow
   m_TagString: Untagged
@@ -171,7 +170,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8342869197069327150}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -205,28 +204,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3069229728871894191
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8342869197069327150}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &1010700007683831582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -235,6 +212,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4729521906056045627}
     m_Modifications:
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5580548120403544838, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
       propertyPath: m_Name
       value: String (3)
@@ -324,6 +313,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4729521906056045627}
     m_Modifications:
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5580548120403544838, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
       propertyPath: m_Name
       value: String (1)
@@ -413,6 +414,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4729521906056045627}
     m_Modifications:
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5580548120403544838, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
       propertyPath: m_Name
       value: String
@@ -502,6 +515,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4729521906056045627}
     m_Modifications:
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941568637097134512, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5580548120403544838, guid: 4bb84b012696156448d4c1a4b841be24, type: 3}
       propertyPath: m_Name
       value: String (2)

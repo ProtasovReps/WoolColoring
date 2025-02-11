@@ -4,13 +4,13 @@ using UnityEngine;
 public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private PictureView _pictureView;
-    [SerializeField, Range(1, 4)] private int _blocksPerHolder;
     [SerializeField] private BoltClickReader _clickView;
     [SerializeField] private StringHolderView _whiteStringHolderView;
     [SerializeField] private ConveyerPosition[] _conveyerPositions;
     [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
     [SerializeField] private FigureFactory _figureFactory;
     [SerializeField, Min(1)] private int _minFiguresCount;
+    [SerializeField, Range(1, 4)] private int _blocksPerHolder;
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
 
     private Picture _picture;
@@ -62,8 +62,8 @@ public class CompositeRoot : MonoBehaviour
 
         WhiteStringHolder whiteHolderModel = stringBinder.Bind(_whiteStringHolderView, _picture);
 
-        _switcher = new ColoredStringHolderSwitcher(_picture);
         _coloredStringHolderStash = new ColoredStringHolderStash(holderModels, _startHoldersCount);
+        _switcher = new ColoredStringHolderSwitcher(_picture, _coloredStringHolderStash);
         _stringDistributor = new StringDistributor(_coloredStringHolderStash, whiteHolderModel, _switcher);
 
         var colorPresenter = new StringHolderColorPresenter(_coloredStringHolderStash, _picture);

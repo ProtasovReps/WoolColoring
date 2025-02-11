@@ -14,6 +14,7 @@ public class ColorView : MonoBehaviour, IColorSettable
     public void SetColor(Color color)
     {
         _propertyBlock.SetColor(MaterialPropertyBlockParameters.Color, color);
+
         _renderer.SetPropertyBlock(_propertyBlock);
     }
 }

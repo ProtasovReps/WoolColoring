@@ -4,10 +4,7 @@ using System;
 
 public class ColoredStringHolderStash
 {
-    private readonly ColoredStringHolder[] _activeStringHolders;
-    private readonly ColoredStringHolder[] _lockedStringHolders;
-
-    public IEnumerable<IFillable<StringHolder>> ColoredStringHolders => _activeStringHolders;
+    private readonly Dictionary<bool, List<ColoredStringHolder>> _stringHolders;
 
     public ColoredStringHolderStash(ColoredStringHolder[] stringHolders, int activeCount)
     {
@@ -20,10 +17,22 @@ public class ColoredStringHolderStash
         if (activeCount <= 0)
             throw new ArgumentOutOfRangeException(nameof(activeCount));
 
-        _activeStringHolders = new ColoredStringHolder[activeCount];
-        _lockedStringHolders = new ColoredStringHolder[stringHolders.Length - activeCount];
+        _stringHolders = new Dictionary<bool, List<ColoredStringHolder>>();
 
-        InitializeArrays(stringHolders, activeCount);
+        FillDictionary(stringHolders, activeCount);
+    }
+
+    public IEnumerable<IFillable<StringHolder>> ColoredStringHolders => _stringHolders[true];
+
+    public void DeactivateHolder(ColoredStringHolder stringHolder)
+    {
+        if (_stringHolders[true].Contains(stringHolder) == false)
+            throw new InvalidOperationException(nameof(stringHolder));
+
+        _stringHolders[true].Remove(stringHolder);
+        _stringHolders[false].Add(stringHolder);
+
+        stringHolder.SetColor(ColorStates.InactiveColor);
     }
 
     public bool TryGetColoredStringHolder(Color requiredColor, out ColoredStringHolder holder)
@@ -35,32 +44,40 @@ public class ColoredStringHolderStash
         return holder != null;
     }
 
-    private void InitializeArrays(ColoredStringHolder[] stringHolders, int activeCount)
+    private void FillDictionary(ColoredStringHolder[] stringHolders, int activeCount)
     {
-        int unlockedIndex = 0;
-        int lockedIndex = 0;
+        ColoredStringHolder stringHolder;
+
+        _stringHolders.Add(true, new List<ColoredStringHolder>());
+        _stringHolders.Add(false, new List<ColoredStringHolder>());
 
         for (int i = 0; i < stringHolders.Length; i++)
         {
+            stringHolder = stringHolders[i];
+
             if (i < activeCount)
             {
-                _activeStringHolders[unlockedIndex] = stringHolders[i];
-                unlockedIndex++;
+                _stringHolders[true].Add(stringHolder);
             }
             else
             {
-                _lockedStringHolders[lockedIndex] = stringHolders[i];
-                lockedIndex++;
+                _stringHolders[false].Add(stringHolder);
+                stringHolder.SetColor(ColorStates.InactiveColor);
             }
         }
     }
 
     private ColoredStringHolder GetActiveHolder(Color requiredColor)
     {
-        for (int i = 0; i < _activeStringHolders.Length; i++)
+        ColoredStringHolder stringHolder;
+        int activeCount = _stringHolders[true].Count;
+
+        for (int i = 0; i < activeCount; i++)
         {
-            if(_activeStringHolders[i].Color == requiredColor)
-                return _activeStringHolders[i];
+            stringHolder = _stringHolders[true][i];
+
+            if (stringHolder.Color == requiredColor)
+                return stringHolder;
         }
 
         return null;
