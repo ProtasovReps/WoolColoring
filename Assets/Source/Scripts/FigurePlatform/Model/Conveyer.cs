@@ -2,13 +2,13 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
-public class FigureConveyer : IUnsubscribable
+public class Conveyer : IUnsubscribable
 {
     private readonly PositionDatabase _positionDatabase;
-    private readonly FigurePool _figurePool;
+    private readonly FigureCompositionPool _figurePool;
     private readonly int _minFiguresCount;
 
-    public FigureConveyer(FigureFactory factory, IReadOnlyCollection<ConveyerPosition> positions, int minFiguresCount)
+    public Conveyer(FigureCompositionFactory factory, IReadOnlyCollection<ConveyerPosition> positions, int minFiguresCount)
     {
         if (positions.Count == 0)
             throw new EmptyCollectionException();
@@ -20,7 +20,7 @@ public class FigureConveyer : IUnsubscribable
             throw new ArgumentException(nameof(minFiguresCount));
 
         _positionDatabase = new PositionDatabase(positions);
-        _figurePool = new FigurePool(factory);
+        _figurePool = new FigureCompositionPool(factory);
         _minFiguresCount = minFiguresCount;
 
         Subscribe();
@@ -39,20 +39,20 @@ public class FigureConveyer : IUnsubscribable
 
     private void AddFigure()
     {
-        Figure newFigure = _figurePool.Get();
+        FigureComposition newComposition = _figurePool.Get();
 
-        newFigure.Falled += RemoveFigure;
-        _positionDatabase.Add(newFigure);
+        newComposition.Emptied += RemoveFigure;
+        _positionDatabase.Add(newComposition);
     }
 
-    private void RemoveFigure(Figure figure)
+    private void RemoveFigure(FigureComposition composition)
     {
-        figure.Falled -= RemoveFigure;
+        composition.Emptied -= RemoveFigure;
 
-        _positionDatabase.Remove(figure);
-        _figurePool.Release(figure);
+        _positionDatabase.Remove(composition);
+        _figurePool.Release(composition);
 
-        if (_positionDatabase.TransformablesCount < _minFiguresCount)
+        if (_positionDatabase.TransformablesCount <= _minFiguresCount)
             FillAllFigures();
     }
 

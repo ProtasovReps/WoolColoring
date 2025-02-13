@@ -5,9 +5,8 @@ public class FigurePresenter : IEventListener
 {
     private readonly Figure _model;
     private readonly FigureView _view;
-    private readonly ColorPallete _colorizer;
 
-    public FigurePresenter(Figure model, FigureView view, ColorPallete colorizer)
+    public FigurePresenter(Figure model, FigureView view)
     {
         if (model == null)
             throw new ArgumentNullException(nameof(model));
@@ -15,24 +14,20 @@ public class FigurePresenter : IEventListener
         if (view == null)
             throw new ArgumentNullException(nameof(view));
 
-        if (colorizer == null)
-            throw new ArgumentNullException(nameof(colorizer));
-
         _model = model;
         _view = view;
-        _colorizer = colorizer;
     }
 
     public void Subscribe()
     {
         _model.Appeared += OnAppeared;
-        _model.PositionChanged += OnPositionChanged;
+        _model.ColorChanged += OnColorChanged;
     }
 
     public void Unsubscribe()
     {
         _model.Appeared -= OnAppeared;
-        _model.PositionChanged -= OnPositionChanged;
+        _model.ColorChanged -= OnColorChanged;
     }
 
     public void Fall()
@@ -42,14 +37,11 @@ public class FigurePresenter : IEventListener
 
     private void OnAppeared()
     {
-        Color newColor = _colorizer.GetRandomColor();
-
         _view.Appear();
-        _view.SetColor(newColor);
     }
 
-    private void OnPositionChanged()
+    private void OnColorChanged(Color color)
     {
-        _view.ChangePosition(_model.Position);
+        _view.SetColor(color);
     }
 }

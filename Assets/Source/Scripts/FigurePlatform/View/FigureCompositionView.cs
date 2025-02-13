@@ -1,0 +1,49 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(TransformView))]
+[RequireComponent(typeof(ActiveStateSwitcher))]
+public class FigureCompositionView : MonoBehaviour
+{
+    [SerializeField] private FigureView[] _figureViews;
+    [SerializeField] private float _moveSpeed;
+
+    private Collider[] _colliders;
+    private TransformView _transformView;
+    private ActiveStateSwitcher _activeStateSwitcher;
+
+    public IEnumerable<FigureView> FigureViews => _figureViews;
+
+    public void Initialize()
+    {
+        if (_figureViews.Length == 0)
+            throw new EmptyCollectionException();
+
+        _transformView = GetComponent<TransformView>();
+        _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
+
+        _transformView.Initialize();
+        _activeStateSwitcher.Initialize();
+
+        _colliders = new Collider[_figureViews.Length];
+
+        for (int i = 0; i < _colliders.Length; i++)
+            _colliders[i] = _figureViews[i].Collider;
+    }
+
+    public void Enable()
+    {
+        _activeStateSwitcher.SetActive(true);
+    }
+
+    public void Disable()
+    {
+        _transformView.SetStartTransform();
+        _activeStateSwitcher.SetActive(false);
+    }
+
+    public void Move(Vector3 targetPosition)
+    {
+        _transformView.ChangePosition(targetPosition, _moveSpeed, _colliders);
+    }
+}

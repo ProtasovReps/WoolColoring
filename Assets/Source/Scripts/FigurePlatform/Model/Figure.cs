@@ -1,27 +1,15 @@
 using System;
 using UnityEngine;
 
-public class Figure : ITransformable
+public class Figure
 {
-    public event Action PositionChanged;
     public event Action Appeared;
-    public event Action<Figure> Falled;
+    public event Action<Color> ColorChanged;
+    public event Action Falled;
 
-    public Vector3 Position { get; private set; }
+    public void SetColor(Color color) => ColorChanged?.Invoke(color);
 
-    public void SetPosition(Vector3 position)
-    {
-        Position = position;
-        PositionChanged?.Invoke();
-    }
+    public void Appear() => Appeared?.Invoke();
 
-    public void Appear()
-    {
-        Appeared?.Invoke();
-    }
-
-    public void Fall()
-    {
-        Falled?.Invoke(this);
-    }
+    public void Fall() => Falled?.Invoke();
 }

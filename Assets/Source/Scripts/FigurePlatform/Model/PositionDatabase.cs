@@ -20,7 +20,7 @@ public class PositionDatabase
         if (positions.Count == 0)
             throw new EmptyCollectionException();
 
-        _transformables = new Figure[positions.Count];
+        _transformables = new FigureComposition[positions.Count];
         var tempPositions = new List<ConveyerPosition>(positions.Count);
 
         foreach (var position in positions)
