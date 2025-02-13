@@ -22,6 +22,8 @@ public class ColoredStringHolderStash
         FillDictionary(stringHolders, activeCount);
     }
 
+    public int ActiveCount => _stringHolders[true].Count;
+
     public IEnumerable<IFillable<StringHolder>> ColoredStringHolders => _stringHolders[true];
 
     public void DeactivateHolder(ColoredStringHolder stringHolder)

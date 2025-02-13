@@ -9,6 +9,7 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private ConveyerPosition[] _conveyerPositions;
     [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
     [SerializeField] private FigureFactory _figureFactory;
+    [SerializeField] private FigureCompositionFactory _figureCompositionFactory;
     [SerializeField, Min(1)] private int _minFiguresCount;
     [SerializeField, Range(1, 4)] private int _blocksPerHolder;
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
@@ -34,9 +35,10 @@ public class CompositeRoot : MonoBehaviour
         _boltStash = new BoltStash();
 
         _figureFactory.Initialize(_boltStash);
+        _figureCompositionFactory.Initialize(_figureFactory);
 
         int minFiguresCount = Mathf.Clamp(_minFiguresCount, 0, _conveyerPositions.Length - 1);
-        var conveyer = new FigureConveyer(_figureFactory, _conveyerPositions, minFiguresCount);
+        var conveyer = new Conveyer(_figureCompositionFactory, _conveyerPositions, minFiguresCount);
     }
 
     private void BindPicture()
