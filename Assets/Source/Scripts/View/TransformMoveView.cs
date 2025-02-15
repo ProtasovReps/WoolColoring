@@ -7,6 +7,7 @@ public class TransformMoveView : MonoBehaviour
     private Quaternion _startRotation;
     private Vector3 _startPosition;
     private Coroutine _coroutine;
+    private float _minDistance = 0.01f;
 
     public void Initialize()
     {
@@ -37,11 +38,9 @@ public class TransformMoveView : MonoBehaviour
 
     private IEnumerator MoveSmoothly(Vector3 position, Collider[] colliders, float moveSpeed)
     {
-        float minDistance = 0.01f;
-
         SetColliderEnableState(false, colliders);
 
-        while (GetSquareMagnitude(position, _transform.position) > minDistance)
+        while (GetSquareMagnitude(position, _transform.position) > _minDistance)
         {
             _transform.position = Vector3.Lerp(_transform.position, position, moveSpeed * Time.deltaTime);
             yield return null;
@@ -54,9 +53,7 @@ public class TransformMoveView : MonoBehaviour
 
     private IEnumerator MoveSmoothly(Transform comparer, Vector3 targetPosition, float moveSpeed)
     {
-        float minDistance = 0.01f;
-
-        while (GetSquareMagnitude(targetPosition, comparer.position, out Vector3 offset) > minDistance)
+        while (GetSquareMagnitude(targetPosition, comparer.position, out Vector3 offset) > _minDistance)
         {
             Vector3 finalPosition = _transform.position + new Vector3(0f, offset.y, 0f);
 

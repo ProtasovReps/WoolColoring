@@ -11,8 +11,5 @@ public class PicturePresenter
         _pictureView = pictureView;
     }
 
-    public void Move(Transform colorBlock, Vector3 tasrgetBound)
-    {
-        _pictureView.Move(colorBlock, tasrgetBound);
-    }
+    public void Move(Transform colorBlock, Vector3 tasrgetBound) => _pictureView.Move(colorBlock, tasrgetBound);
 }

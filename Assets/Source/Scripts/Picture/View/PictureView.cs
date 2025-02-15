@@ -9,13 +9,7 @@ public class PictureView : MonoBehaviour
 
     public IEnumerable<ColorBlockView> ColorBlocks => _colorBlocks.ColorBlockViews;
 
-    private void Awake()
-    {
-        _transformView.Initialize();
-    }
+    private void Awake() => _transformView.Initialize();
 
-    public void Move(Transform colorBlock, Vector3 targetBound)
-    {
-        _transformView.ChangePosition(colorBlock, targetBound, _moveSpeed);
-    }
+    public void Move(Transform colorBlock, Vector3 targetBound) => _transformView.ChangePosition(colorBlock, targetBound, _moveSpeed);
 }
