@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private PictureView _pictureView;
+    [SerializeField] private Malbert _malbert;
     [SerializeField] private BoltClickReader _clickView;
     [SerializeField] private StringHolderView _whiteStringHolderView;
     [SerializeField] private ConveyerPosition[] _conveyerPositions;
@@ -47,7 +49,7 @@ public class CompositeRoot : MonoBehaviour
         var colorBlockBinder = new ColorBlockBinder();
         List<ColorBlock> colorBlocks = colorBlockBinder.Bind(_pictureView.ColorBlocks);
 
-        _picture = pictureBinder.Bind(_pictureView, colorBlocks);
+        _picture = pictureBinder.Bind(_pictureView, colorBlocks, _malbert);
     }
 
     private void BindHolders()

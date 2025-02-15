@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ActiveStateSwitcher))]
-[RequireComponent(typeof(TransformView))]
+[RequireComponent(typeof(TransformMoveView))]
 [RequireComponent(typeof(ColorView))]
 public class FigureView : MonoBehaviour, IFallable, IColorSettable
 {
@@ -11,7 +11,7 @@ public class FigureView : MonoBehaviour, IFallable, IColorSettable
     [SerializeField] private Collider _collider;
 
     private FigurePresenter _presenter;
-    private TransformView _transformView;
+    private TransformMoveView _transformView;
     private ColorView _colorView;
     private ActiveStateSwitcher _activeStateSwitcher;
 
@@ -26,7 +26,7 @@ public class FigureView : MonoBehaviour, IFallable, IColorSettable
         if (figurePresenter == null)
             throw new ArgumentNullException(nameof(figurePresenter));
 
-        _transformView = GetComponent<TransformView>();
+        _transformView = GetComponent<TransformMoveView>();
         _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
         _colorView = GetComponent<ColorView>();
         _presenter = figurePresenter;

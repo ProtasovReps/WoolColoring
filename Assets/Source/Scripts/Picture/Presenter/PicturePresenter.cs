@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using UnityEngine;
 
 public class PicturePresenter
 {
@@ -9,5 +9,10 @@ public class PicturePresenter
     {
         _picture = picture;
         _pictureView = pictureView;
+    }
+
+    public void Move(Transform colorBlock, Vector3 tasrgetBound)
+    {
+        _pictureView.Move(colorBlock, tasrgetBound);
     }
 }
