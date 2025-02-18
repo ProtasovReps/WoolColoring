@@ -40,6 +40,9 @@ public class FigureView : MonoBehaviour, IFallable, IColorSettable
     {
         _transformView.SetStartTransform();
 
+        foreach (BoltView bolt in _boltContainer.Bolts)
+            bolt.SetActive(true);
+
         _activeStateSwitcher.SetActive(true);
     }
 
