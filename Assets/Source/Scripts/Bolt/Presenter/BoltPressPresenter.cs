@@ -24,6 +24,6 @@ public class BoltPressPresenter
             return;
 
         _distributor.Distribute(bolt);
-        bolt.Unscrew(() => bolt.SetActive(false));
+        bolt.Unscrew();
     }
 }

@@ -1,18 +1,30 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EffectsPlayer : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private ParticleSystem _effect;
+
+    private Transform _transform;
+
+    private void Awake()
     {
-        
+        _transform = transform;
+        _effect = Instantiate(_effect);
+
+        _effect.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Play() => StartCoroutine(PlayEffect());
+
+    private IEnumerator PlayEffect()
     {
-        
+        _effect.transform.position = _transform.position;
+
+        _effect.gameObject.SetActive(true);
+        _effect.Play();
+        yield return new WaitForSeconds(_effect.main.duration);
+
+        _effect.gameObject.SetActive(false);
     }
 }
