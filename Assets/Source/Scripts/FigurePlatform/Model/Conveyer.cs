@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System;
 
-public class Conveyer : IUnsubscribable
+public class Conveyer : IDisposable
 {
     private readonly PositionDatabase _positionDatabase;
     private readonly FigureCompositionPool _figurePool;
@@ -23,18 +23,14 @@ public class Conveyer : IUnsubscribable
         _figurePool = new FigureCompositionPool(factory);
         _minFiguresCount = minFiguresCount;
 
-        Subscribe();
+        _positionDatabase.PositionChanged += OnPositionChanged;
+
         FillAllFigures();
     }
 
-    public void Unsubscribe()
+    public void Dispose()
     {
         _positionDatabase.PositionChanged -= OnPositionChanged;
-    }
-
-    private void Subscribe()
-    {
-        _positionDatabase.PositionChanged += OnPositionChanged;
     }
 
     private void AddFigure()

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class BoltColorSetter : IUnsubscribable
+public class BoltColorSetter : IDisposable
 {
     private readonly BoltStash _boltStash;
     private readonly Picture _picture;
@@ -17,18 +17,14 @@ public class BoltColorSetter : IUnsubscribable
         _boltStash = boltStash;
         _picture = picture;
 
-        Subscribe();
+        _picture.Filled += OnColorFilled;
+
         SetColors();
     }
 
-    public void Unsubscribe()
+    public void Dispose()
     {
         _picture.Filled -= OnColorFilled;
-    }
-
-    private void Subscribe()
-    {
-        _picture.Filled += OnColorFilled;
     }
 
     private void SetColors()

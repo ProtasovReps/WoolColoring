@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class FigureCompositionPresenter : IEventListener
+public class FigureCompositionPresenter : IDisposable
 {
     private readonly FigureComposition _model;
     private readonly FigureCompositionView _view;
@@ -21,16 +21,13 @@ public class FigureCompositionPresenter : IEventListener
         _model = model;
         _view = view;
         _colorPallete = colorPallete;
-    }
 
-    public void Subscribe()
-    {
         _model.Appeared += OnAppeared;
         _model.PositionChanged += OnPositionChanged;
         _model.Emptied += OnEmptied;
     }
 
-    public void Unsubscribe()
+    public void Dispose()
     {
         _model.Appeared -= OnAppeared;
         _model.PositionChanged -= OnPositionChanged;

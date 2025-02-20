@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class FigurePresenter : IEventListener
+public class FigurePresenter : IDisposable
 {
     private readonly Figure _model;
     private readonly FigureView _view;
@@ -16,15 +16,12 @@ public class FigurePresenter : IEventListener
 
         _model = model;
         _view = view;
-    }
 
-    public void Subscribe()
-    {
         _model.Appeared += OnAppeared;
         _model.ColorChanged += OnColorChanged;
     }
 
-    public void Unsubscribe()
+    public void Dispose()
     {
         _model.Appeared -= OnAppeared;
         _model.ColorChanged -= OnColorChanged;

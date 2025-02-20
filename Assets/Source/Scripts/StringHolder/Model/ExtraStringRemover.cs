@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class ExtraStringRemover : IUnsubscribable
+public class ExtraStringRemover : IDisposable
 {
     private readonly Picture _picture;
     private readonly WhiteStringHolder _whiteStringHolder;
@@ -17,17 +17,12 @@ public class ExtraStringRemover : IUnsubscribable
         _picture = picture;
         _whiteStringHolder = holder;
 
-        Subscribe();
+        _picture.Filled += OnColorFilled;
     }
 
-    public void Unsubscribe()
+    public void Dispose()
     {
         _picture.Filled -= OnColorFilled;
-    }
-
-    private void Subscribe()
-    {
-        _picture.Filled += OnColorFilled;
     }
 
     private void OnColorFilled(Color color)

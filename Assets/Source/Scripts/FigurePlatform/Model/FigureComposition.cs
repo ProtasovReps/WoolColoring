@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class FigureComposition : ITransformable, IUnsubscribable, IColorSettable
+public class FigureComposition : ITransformable, IDisposable, IColorSettable
 {
     private readonly Figure[] _figures;
     private int _falledCount;
@@ -20,7 +20,8 @@ public class FigureComposition : ITransformable, IUnsubscribable, IColorSettable
 
         _figures = figures;
 
-        Subscribe();
+        for (int i = 0; i < _figures.Length; i++)
+            _figures[i].Falled += OnFigureFalled;
     }
 
     public Vector3 Position { get; private set; }
@@ -44,16 +45,10 @@ public class FigureComposition : ITransformable, IUnsubscribable, IColorSettable
         Appeared?.Invoke();
     }
 
-    public void Unsubscribe()
+    public void Dispose()
     {
         for (int i = 0; i < _figures.Length; i++)
             _figures[i].Falled -= OnFigureFalled;
-    }
-
-    private void Subscribe()
-    {
-        for (int i = 0; i < _figures.Length; i++)
-            _figures[i].Falled += OnFigureFalled;
     }
 
     private void EnableAllFigures()

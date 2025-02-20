@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class StringDistributor : IUnsubscribable
+public class StringDistributor : IDisposable
 {
     private readonly ColoredStringHolderStash _coloredHolderStash;
     private readonly WhiteStringHolder _whiteHolder;
@@ -22,10 +22,10 @@ public class StringDistributor : IUnsubscribable
         _whiteHolder = whiteHolder;
         _switcher = switcher;
 
-        Subscribe();
+        _switcher.HolderSwitched += OnHolderSwitched;
     }
 
-    public void Unsubscribe()
+    public void Dispose()
     {
         _switcher.HolderSwitched -= OnHolderSwitched;
     }
@@ -41,11 +41,6 @@ public class StringDistributor : IUnsubscribable
             holder.Add(colorString);
         else
             _whiteHolder.Add(colorString);
-    }
-
-    private void Subscribe()
-    {
-        _switcher.HolderSwitched += OnHolderSwitched;
     }
 
     private void OnHolderSwitched(ColoredStringHolder holder)
