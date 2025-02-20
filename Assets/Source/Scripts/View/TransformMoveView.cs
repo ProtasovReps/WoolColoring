@@ -1,26 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-public class TransformMoveView : MonoBehaviour
+public class TransformMoveView : TransformView
 {
-    private Transform _transform;
-    private Quaternion _startRotation;
-    private Vector3 _startPosition;
     private Coroutine _coroutine;
     private float _minDistance = 0.01f;
-
-    public void Initialize()
-    {
-        _transform = transform;
-        _startRotation = _transform.rotation;
-        _startPosition = _transform.position;
-    }
-
-    public void SetStartTransform()
-    {
-        _transform.position = _startPosition;
-        _transform.rotation = _startRotation;
-    }
 
     public void ChangePosition(Vector3 targetPosition, Collider[] colliders, float moveSpeed)
     {
@@ -40,9 +24,9 @@ public class TransformMoveView : MonoBehaviour
     {
         SetColliderEnableState(false, colliders);
 
-        while (GetSquareMagnitude(position, _transform.position) > _minDistance)
+        while (GetSquareMagnitude(position, Transform.position) > _minDistance)
         {
-            _transform.position = Vector3.Lerp(_transform.position, position, moveSpeed * Time.deltaTime);
+            Transform.position = Vector3.Lerp(Transform.position, position, moveSpeed * Time.deltaTime);
             yield return null;
         }
 
@@ -55,9 +39,9 @@ public class TransformMoveView : MonoBehaviour
     {
         while (GetSquareMagnitude(targetPosition, comparer.position, out Vector3 offset) > _minDistance)
         {
-            Vector3 finalPosition = _transform.position + new Vector3(0f, offset.y, 0f);
+            Vector3 finalPosition = Transform.position + new Vector3(0f, offset.y, 0f);
 
-            _transform.position = Vector3.Lerp(_transform.position, finalPosition, moveSpeed * Time.deltaTime);
+            Transform.position = Vector3.Lerp(Transform.position, finalPosition, moveSpeed * Time.deltaTime);
             yield return null;
         }
 

@@ -26,10 +26,13 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
 
     public void SetColor(Color color)
     {
+        if(color !=  _requiredColor)
+            throw new InvalidOperationException(nameof(color));
+
         Colloring?.Invoke(this);
+        _colorView.SetColor(color);
 
         Decrease();
-        _colorView.SetColor(color);
     }
 
     private void Decrease()
@@ -39,7 +42,7 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
 
     private void Increase()
     {
-        LMotion.Create(_transform.localScale, _startScale, 0.2f).WithEase(Ease.InQuart).WithDelay(0.5f).BindToLocalScale(_transform);
+        LMotion.Create(_transform.localScale, _startScale, 0.2f).WithEase(Ease.InQuart).WithDelay(0.2f).BindToLocalScale(_transform);
     }
 
     private void OnDrawGizmos()

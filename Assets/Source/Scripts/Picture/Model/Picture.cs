@@ -4,12 +4,12 @@ using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class Picture
+public class Picture : IFillable<Color>
 {
     private IEnumerable<ColorBlock> _colorBlocks;
     private Dictionary<Color, Queue<ColorBlock>> _requiredColors;
 
-    public event Action<Color> ColorFilled;
+    public event Action<Color> Filled;
 
     public Picture(IReadOnlyCollection<ColorBlock> colorBlocks)
     {
@@ -47,7 +47,7 @@ public class Picture
         if (_requiredColors[color].Count == 0)
         {
             _requiredColors.Remove(color);
-            ColorFilled?.Invoke(color);
+            Filled?.Invoke(color);
         }
     }
 

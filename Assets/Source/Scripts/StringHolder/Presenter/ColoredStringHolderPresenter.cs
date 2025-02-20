@@ -1,28 +1,25 @@
-public class ColoredStringHolderPresenter : StringHolderPresenter
+using System;
+
+public class ColoredStringHolderPresenter : IDisposable
 {
-    public ColoredStringHolderPresenter(ColoredStringHolderView view, ColoredStringHolder model) : base(view, model) { }
+    private readonly ColoredStringHolder _model;
+    private readonly ColoredStringHolderView _view;
 
-    public override void Subscribe()
+    public ColoredStringHolderPresenter(ColoredStringHolderView view, ColoredStringHolder model)
     {
-        ColoredStringHolder model = Model as ColoredStringHolder;
+        if (view == null)
+            throw new ArgumentNullException(nameof(view));
 
-        model.ColorChanged += OnColorChanged;
-        base.Subscribe();
+        if (model == null)
+            throw new ArgumentNullException(nameof(model));
+
+        _view = view;
+        _model = model;
+
+        _model.ColorChanged += OnColorChanged;
     }
 
-    public override void Unsubscribe()
-    {
-        ColoredStringHolder model = Model as ColoredStringHolder;
+    public void Dispose() => _model.ColorChanged -= OnColorChanged;
 
-        model.ColorChanged -= OnColorChanged;
-        base.Unsubscribe();
-    }
-
-    private void OnColorChanged()
-    {
-        ColoredStringHolder model = Model as ColoredStringHolder;
-        ColoredStringHolderView view = View as ColoredStringHolderView;
-
-        view.SetColor(model.Color);
-    }
+    private void OnColorChanged() => _view.SetColor(_model.Color);
 }

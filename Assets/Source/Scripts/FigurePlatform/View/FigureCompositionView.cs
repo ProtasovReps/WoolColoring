@@ -9,7 +9,7 @@ public class FigureCompositionView : MonoBehaviour
     [SerializeField] private float _moveSpeed;
 
     private Collider[] _colliders;
-    private TransformMoveView _transformView;
+    private TransformMoveView _transformMoveView;
     private ActiveStateSwitcher _activeStateSwitcher;
 
     public IEnumerable<FigureView> FigureViews => _figureViews;
@@ -19,10 +19,10 @@ public class FigureCompositionView : MonoBehaviour
         if (_figureViews.Length == 0)
             throw new EmptyCollectionException();
 
-        _transformView = GetComponent<TransformMoveView>();
+        _transformMoveView = GetComponent<TransformMoveView>();
         _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
 
-        _transformView.Initialize();
+        _transformMoveView.Initialize();
         _activeStateSwitcher.Initialize();
 
         _colliders = new Collider[_figureViews.Length];
@@ -38,12 +38,12 @@ public class FigureCompositionView : MonoBehaviour
 
     public void Disable()
     {
-        _transformView.SetStartTransform();
+        _transformMoveView.SetStartTransform();
         _activeStateSwitcher.SetActive(false);
     }
 
     public void Move(Vector3 targetPosition)
     {
-        _transformView.ChangePosition(targetPosition, _colliders, _moveSpeed);
+        _transformMoveView.ChangePosition(targetPosition, _colliders, _moveSpeed);
     }
 }

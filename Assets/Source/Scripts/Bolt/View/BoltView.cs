@@ -8,11 +8,10 @@ using UnityEngine;
 [RequireComponent(typeof(HingeJoint))]
 public class BoltView : MonoBehaviour
 {
-    [SerializeField] private ColorString _colorString;
+    [SerializeField] private ColorStringView _colorString;
 
     private EffectsPlayer _effectPlayer;
     private HingeJoint _hingeJoint;
-    private Transform _transform;
     private Rigidbody _connectedBody;
     private ActiveStateSwitcher _activeStateSwitcher;
     private TransformMoveView _moveView;
@@ -26,7 +25,6 @@ public class BoltView : MonoBehaviour
         _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
         _effectPlayer = GetComponent<EffectsPlayer>();
         _moveView = GetComponent<TransformMoveView>();
-        _transform = transform;
         _connectedBody = _hingeJoint.connectedBody;
 
         _activeStateSwitcher.Initialize();
@@ -42,10 +40,10 @@ public class BoltView : MonoBehaviour
 
     public void Unscrew()
     {
-        Vector3 rotation = _transform.localRotation.eulerAngles;
+        Vector3 rotation = _moveView.Transform.localRotation.eulerAngles;
         float targetRotation = rotation.y + 360f;
-        Vector3 targetPosition = new(_transform.position.x, 4.3f, -6.5f);
-        Vector3 targetScale = _transform.localScale * 1.2f;
+        Vector3 targetPosition = new(_moveView.Transform.position.x, 4.3f, -6.5f);
+        Vector3 targetScale = _moveView.Transform.localScale * 1.2f;
         float duration = 0.25f;
         int loopCount = 4;
 
@@ -56,13 +54,13 @@ public class BoltView : MonoBehaviour
             .Join(LMotion.Create(rotation, new Vector3(rotation.x, targetRotation, rotation.z), duration)
                 .WithLoops(loopCount, LoopType.Incremental)
                 .WithOnComplete(Disable)
-                .BindToLocalEulerAngles(_transform))
-            .Join(LMotion.Create(_transform.position, targetPosition, duration)
+                .BindToLocalEulerAngles(_moveView.Transform))
+            .Join(LMotion.Create(_moveView.Transform.position, targetPosition, duration)
                 .WithEase(Ease.InOutQuint)
-                .BindToPosition(_transform))
-            .Join(LMotion.Create(_transform.localScale, targetScale, duration)
+                .BindToPosition(_moveView.Transform))
+            .Join(LMotion.Create(_moveView.Transform.localScale, targetScale, duration)
                 .WithLoops(loopCount, LoopType.Yoyo)
-                .BindToLocalScale(_transform))
+                .BindToLocalScale(_moveView.Transform))
             .Run();
     }
 

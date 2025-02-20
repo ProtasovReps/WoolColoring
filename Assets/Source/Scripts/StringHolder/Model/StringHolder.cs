@@ -7,8 +7,6 @@ public abstract class StringHolder : IFillable<StringHolder>
     private int _stringCount;
 
     public event Action<StringHolder> Filled;
-    public event Action<ColorString> StringAdded;
-    public event Action<ColorString> StringRemoved;
 
     public StringHolder(ColorString[] strings)
     {
@@ -19,6 +17,7 @@ public abstract class StringHolder : IFillable<StringHolder>
     }
 
     public int MaxStringCount => _strings.Length;
+    protected int StringCount => _stringCount;
     protected IEnumerable<ColorString> Strings => _strings;
 
     public void Add(IColorable newString)
@@ -27,21 +26,20 @@ public abstract class StringHolder : IFillable<StringHolder>
 
         PrepareString(colorString, newString);
 
+        colorString.SetEnable(true);
         _stringCount++;
-
-        StringAdded?.Invoke(colorString);
 
         if (_stringCount == MaxStringCount)
             Filled?.Invoke(this);
     }
 
-    public IColorable GetColorable()
+    protected IColorable GetString()
     {
         ColorString colorString = GetLastString();
 
+        colorString.SetEnable(false);
         _stringCount--;
 
-        StringRemoved?.Invoke(colorString);
         return colorString;
     }
 
@@ -50,7 +48,7 @@ public abstract class StringHolder : IFillable<StringHolder>
     protected abstract bool IsValidString(IColorable colorString);
 
     protected bool IsActiveString(ColorString colorString, bool isActive)
-       => colorString.gameObject.activeSelf == isActive;
+       => colorString.IsEnabled == isActive;
 
     private ColorString GetLastString()
     {

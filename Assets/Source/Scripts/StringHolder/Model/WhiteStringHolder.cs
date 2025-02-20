@@ -9,7 +9,7 @@ public class WhiteStringHolder : StringHolder
     public IColorable GetRequiredColorable(Color color)
     {
         _requiredColor = color;
-        return GetColorable();
+        return GetString();
     }
 
     public int GetRequiredColorsCount(Color color)

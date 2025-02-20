@@ -27,7 +27,7 @@ public class StringDistributor : IUnsubscribable
 
     public void Unsubscribe()
     {
-        _switcher.ColorSwitched -= OnColorChanged;
+        _switcher.HolderSwitched -= OnHolderSwitched;
     }
 
     public void Distribute(BoltView bolt)
@@ -39,16 +39,16 @@ public class StringDistributor : IUnsubscribable
 
         if (_coloredHolderStash.TryGetColoredStringHolder(colorString.Color, out ColoredStringHolder holder))
             holder.Add(colorString);
-        //else
-        //    _whiteHolder.Add(colorString);
+        else
+            _whiteHolder.Add(colorString);
     }
 
     private void Subscribe()
     {
-        _switcher.ColorSwitched += OnColorChanged;
+        _switcher.HolderSwitched += OnHolderSwitched;
     }
 
-    private void OnColorChanged(ColoredStringHolder holder)
+    private void OnHolderSwitched(ColoredStringHolder holder)
     {
         Color requiredColor = holder.Color;
         int requiredStringCount = _whiteHolder.GetRequiredColorsCount(requiredColor);

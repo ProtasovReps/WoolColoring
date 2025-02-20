@@ -3,24 +3,13 @@ using UnityEngine;
 
 public class StringHolderView : MonoBehaviour
 {
-    [SerializeField] private ColorString[] _strings;
+    [SerializeField] private ColorStringView[] _strings;
 
-    private StringHolderPresenter _presenter;
+    public IEnumerable<ColorStringView> Strings => _strings;
 
-    public IEnumerable<ColorString> Strings => _strings;
-
-    public virtual void Initialize(StringHolderPresenter presenter)
+    public virtual void Initialize()
     {
-        _presenter = presenter;
-    }
-
-    public void AddString(ColorString colorString)
-    {
-        colorString.gameObject.SetActive(true);
-    }
-
-    public void RemoveString(ColorString colorString)
-    {
-        colorString.gameObject.SetActive(false);
+        for (int i = 0; i < _strings.Length; i++)
+            _strings[i].transform.localScale = Vector3.zero;
     }
 }

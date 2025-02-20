@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private PictureView _pictureView;
+    [SerializeField] private Painter _painter;
     [SerializeField] private Malbert _malbert;
     [SerializeField] private BoltClickReader _clickView;
-    [SerializeField] private StringHolderView _whiteStringHolderView;
+    [SerializeField] private WhiteStringHolderView _whiteStringHolderView;
     [SerializeField] private ConveyerPosition[] _conveyerPositions;
     [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
     [SerializeField] private FigureFactory _figureFactory;
@@ -29,7 +29,7 @@ public class CompositeRoot : MonoBehaviour
         BindHolders();
         BindBolt();
 
-        var painter = new Painter(_picture, _switcher, _coloredStringHolderStash, _blocksPerHolder);
+        _painter.Initialize(_picture, _switcher, _coloredStringHolderStash, _blocksPerHolder);
     }
 
     private void BindFigures()
@@ -69,8 +69,6 @@ public class CompositeRoot : MonoBehaviour
         _coloredStringHolderStash = new ColoredStringHolderStash(holderModels, _startHoldersCount);
         _switcher = new ColoredStringHolderSwitcher(_picture, _coloredStringHolderStash);
         _stringDistributor = new StringDistributor(_coloredStringHolderStash, whiteHolderModel, _switcher);
-
-        var colorPresenter = new StringHolderColorPresenter(_coloredStringHolderStash, _picture);
 
         foreach (var holder in _coloredStringHolderStash.ColoredStringHolders)
         {

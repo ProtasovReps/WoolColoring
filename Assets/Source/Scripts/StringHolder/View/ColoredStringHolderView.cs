@@ -4,14 +4,11 @@ public class ColoredStringHolderView : StringHolderView, IColorSettable
 {
     [SerializeField] private ColorView _colorView;
 
-    public override void Initialize(StringHolderPresenter presenter)
+    public override void Initialize()
     {
         _colorView.Initialize();
-        base.Initialize(presenter);
+        base.Initialize();
     }
 
-    public void SetColor(Color color)
-    {
-        _colorView.SetColor(color);
-    }
+    public void SetColor(Color color) => _colorView.SetColor(color);
 }

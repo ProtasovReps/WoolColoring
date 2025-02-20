@@ -1,14 +1,16 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
-public class Painter : IUnsubscribable
+public class Painter : MonoBehaviour
 {
-    private readonly Picture _picture;
-    private readonly ColoredStringHolderStash _holderStash;
-    private readonly ColoredStringHolderSwitcher _switcher;
+    private Picture _picture;
+    private ColoredStringHolderStash _holderStash;
+    private ColoredStringHolderSwitcher _switcher;
+    private WaitForSeconds _colorizeDelay;
     private int _blocksPerHolder;
 
-    public Painter(Picture picture, ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash, int blocksPerHolder)
+    public void Initialize(Picture picture, ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash, int blocksPerHolder)
     {
         if (picture == null)
             throw new NullReferenceException(nameof(_holderStash));
@@ -26,39 +28,37 @@ public class Painter : IUnsubscribable
         _holderStash = stash;
         _switcher = switcher;
         _blocksPerHolder = blocksPerHolder;
+        _colorizeDelay = new WaitForSeconds(0.1f);
 
-        Subscribe();
+        foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
+            holder.Filled += OnHolderFilled;
     }
 
-    public void Unsubscribe()
+    private void OnDestroy()
     {
         foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
-            holder.Filled -= OnFilled;
+            holder.Filled -= OnHolderFilled;
     }
 
-    private void Subscribe()
-    {
-        foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
-            holder.Filled += OnFilled;
-    }
-
-    private void OnFilled(StringHolder holder)
+    private void OnHolderFilled(StringHolder holder)
     {
         if (holder is ColoredStringHolder coloderHolder == false)
             throw new InvalidCastException();
 
-        FillImage(coloderHolder);
+        StartCoroutine(FillImage(coloderHolder));
     }
 
-    private void FillImage(ColoredStringHolder holder)
+    private IEnumerator FillImage(ColoredStringHolder holder)
     {
-        Color color = Color.black;
+        Color color = holder.Color;
 
-        for (int i = 0; i < holder.MaxStringCount; i++)
-            color = holder.GetColorable().Color;
+        holder.GetAllStrings();
 
-        for (int i = 0; i < _blocksPerHolder; i++)
+        for (int j = 0; j < _blocksPerHolder; j++)
+        {
             _picture.Colorize(color);
+            yield return _colorizeDelay;
+        }
 
         _switcher.ChangeStringHolderColor(holder);
     }

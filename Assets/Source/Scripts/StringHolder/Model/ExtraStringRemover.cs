@@ -22,12 +22,12 @@ public class ExtraStringRemover : IUnsubscribable
 
     public void Unsubscribe()
     {
-        _picture.ColorFilled -= OnColorFilled;
+        _picture.Filled -= OnColorFilled;
     }
 
     private void Subscribe()
     {
-        _picture.ColorFilled += OnColorFilled;
+        _picture.Filled += OnColorFilled;
     }
 
     private void OnColorFilled(Color color)
