@@ -15,15 +15,7 @@ public class ColoredStringHolder : StringHolder
         ColorChanged?.Invoke();
     }
 
-    public IColorable[] GetAllStrings()
-    {
-        var colorStrings = new IColorable[StringCount];
-
-        for (int i = colorStrings.Length - 1; i >= 0; i--)
-            colorStrings[i] = GetString();
-
-        return colorStrings;
-    }
+    public IColorable GetLastString() => GetString();
 
     protected override void PrepareString(IColorSettable freeString, IColorable newString)
     {

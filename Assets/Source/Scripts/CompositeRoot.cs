@@ -13,7 +13,6 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private FigureFactory _figureFactory;
     [SerializeField] private FigureCompositionFactory _figureCompositionFactory;
     [SerializeField, Min(1)] private int _minFiguresCount;
-    [SerializeField, Range(1, 4)] private int _blocksPerHolder;
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
 
     private Picture _picture;
@@ -29,7 +28,7 @@ public class CompositeRoot : MonoBehaviour
         BindHolders();
         BindBolt();
 
-        _painter.Initialize(_picture, _switcher, _coloredStringHolderStash, _blocksPerHolder);
+        _painter.Initialize(_picture, _switcher, _coloredStringHolderStash);
     }
 
     private void BindFigures()

@@ -1,5 +1,7 @@
 using LitMotion;
 using LitMotion.Extensions;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ColorView))]
@@ -10,7 +12,8 @@ public class ColorStringView : MonoBehaviour, IColorSettable, IColorable
     [SerializeField] private float _appearDuration = 0.2f;
     [SerializeField] private float _disappearDuration = 1f;
 
-    private float _animationDelay;
+    private Queue<Action> _actions;
+    private bool _isAnimated;
     private ColorView _colorView;
     private TransformView _transformView;
     private ActiveStateSwitcher _stateSwitcher;
@@ -19,11 +22,11 @@ public class ColorStringView : MonoBehaviour, IColorSettable, IColorable
 
     public void Initialize()
     {
-        _animationDelay = _appearDuration + _disappearDuration;
         _stateSwitcher = GetComponent<ActiveStateSwitcher>();
         _transformView = GetComponent<TransformView>();
         _colorView = GetComponent<ColorView>();
 
+        _actions = new Queue<Action>();
         _transformView.Initialize();
         _colorView.Initialize();
         _stateSwitcher.Initialize();
@@ -37,12 +40,55 @@ public class ColorStringView : MonoBehaviour, IColorSettable, IColorable
 
     public void Appear()
     {
-        _stateSwitcher.SetActive(true);
-        LMotion.Create(_transformView.Transform.localScale, _transformView.StartScale, _appearDuration).BindToLocalScale(_transformView.Transform);
+        _actions.Enqueue(AppearAnimated);
+        ValidateAnimation();
     }
 
     public void Disappear()
     {
-        LMotion.Create(_transformView.Transform.localScale, Vector3.zero, _disappearDuration).WithDelay(_animationDelay).WithOnComplete(() => _stateSwitcher.SetActive(false)).BindToLocalScale(_transformView.Transform);
+        _actions.Enqueue(DisappearAnimated);
+        ValidateAnimation();
+    }
+
+    private void AppearAnimated()
+    {
+        _stateSwitcher.SetActive(true);
+
+        LMotion.Create(_transformView.Transform.localScale, _transformView.StartScale, _appearDuration)
+            .WithOnComplete(ProcessQueuedAnimations)
+            .BindToLocalScale(_transformView.Transform);
+    }
+
+    private void DisappearAnimated()
+    {
+        LMotion.Create(_transformView.Transform.localScale, Vector3.zero, _disappearDuration)
+            .WithOnComplete(FinalizeDisappearing)
+            .BindToLocalScale(_transformView.Transform);
+    }
+
+    private void ValidateAnimation()
+    {
+        if (_isAnimated == false)
+        {
+            _isAnimated = true;
+            ProcessQueuedAnimations();
+        }
+    }
+
+    private void FinalizeDisappearing()
+    {
+        _stateSwitcher.SetActive(false);
+        ProcessQueuedAnimations();
+    }
+
+    private void ProcessQueuedAnimations()
+    {
+        if (_actions.Count == 0)
+        {
+            _isAnimated = false;
+            return;
+        }
+
+        _actions.Dequeue()?.Invoke();
     }
 }

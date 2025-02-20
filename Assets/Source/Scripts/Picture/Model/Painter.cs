@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Painter : MonoBehaviour
 {
+    [SerializeField] private float _colorizeDelay;
+    [SerializeField, Min(1)] private int _blocksPerString;
+
     private Picture _picture;
     private ColoredStringHolderStash _holderStash;
     private ColoredStringHolderSwitcher _switcher;
-    private WaitForSeconds _colorizeDelay;
-    private int _blocksPerHolder;
+    private WaitForSeconds _delay;
 
-    public void Initialize(Picture picture, ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash, int blocksPerHolder)
+    public void Initialize(Picture picture, ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash)
     {
         if (picture == null)
             throw new NullReferenceException(nameof(_holderStash));
@@ -21,14 +23,10 @@ public class Painter : MonoBehaviour
         if (stash == null)
             throw new NullReferenceException(nameof(stash));
 
-        if (blocksPerHolder <= 0)
-            throw new ArgumentException(nameof(blocksPerHolder));
-
         _picture = picture;
         _holderStash = stash;
         _switcher = switcher;
-        _blocksPerHolder = blocksPerHolder;
-        _colorizeDelay = new WaitForSeconds(0.1f);
+        _delay = new WaitForSeconds(_colorizeDelay);
 
         foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
             holder.Filled += OnHolderFilled;
@@ -52,12 +50,15 @@ public class Painter : MonoBehaviour
     {
         Color color = holder.Color;
 
-        holder.GetAllStrings();
-
-        for (int j = 0; j < _blocksPerHolder; j++)
+        for (int i = 0; i < holder.MaxStringCount; i++)
         {
-            _picture.Colorize(color);
-            yield return _colorizeDelay;
+            holder.GetLastString();
+
+            for (int j = 0; j < _blocksPerString; j++)
+            {
+                _picture.Colorize(color);
+                yield return _delay;
+            }
         }
 
         _switcher.ChangeStringHolderColor(holder);

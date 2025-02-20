@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColoredStringHolderSwitcher : IUnsubscribable
+public class ColoredStringHolderSwitcher
 {
     private readonly Picture _picture;
     private readonly ColoredStringHolderStash _stash;
@@ -21,13 +21,6 @@ public class ColoredStringHolderSwitcher : IUnsubscribable
         _picture = picture;
         _usedColors = new List<Color>();
         _stash = stash;
-
-        Subscribe();
-    }
-
-    public void Unsubscribe()
-    {
-        _picture.Filled -= OnColorFilled;
     }
 
     public void ChangeStringHolderColor(ColoredStringHolder coloredHolder)
@@ -54,21 +47,5 @@ public class ColoredStringHolderSwitcher : IUnsubscribable
         _usedColors.Add(requiredColor);
         coloredHolder.SetColor(requiredColor);
         HolderSwitched?.Invoke(coloredHolder);
-    }
-
-    private void Subscribe()
-    {
-        _picture.Filled += OnColorFilled;
-    }
-
-    private void OnColorFilled(Color color)
-    {
-        foreach (ColoredStringHolder holder in _stash.ColoredStringHolders) //может возникнуть ошибка если в это время холдер отключится
-        {
-            if (holder.Color == color)
-            {
-                ChangeStringHolderColor(holder);
-            }
-        }
     }
 }

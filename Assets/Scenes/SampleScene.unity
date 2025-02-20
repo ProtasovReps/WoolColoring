@@ -990,7 +990,6 @@ MonoBehaviour:
   _figureFactory: {fileID: 446517873}
   _figureCompositionFactory: {fileID: 353881122}
   _minFiguresCount: 3
-  _blocksPerHolder: 4
   _startHoldersCount: 4
 --- !u!4 &398913775
 Transform:
@@ -5082,6 +5081,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566e2995e25209548939f149bfabca95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _colorizeDelay: 0.2
+  _blocksPerString: 1
 --- !u!1001 &1367284405
 PrefabInstance:
   m_ObjectHideFlags: 0
