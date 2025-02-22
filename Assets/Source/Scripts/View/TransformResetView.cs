@@ -7,6 +7,7 @@ public class TransformView : MonoBehaviour
     private Vector3 _startScale;
     private Transform _transform;
 
+    public Vector3 StartPosition => _startPosition;
     public Vector3 StartScale => _startScale;
     public Transform Transform => _transform;
 

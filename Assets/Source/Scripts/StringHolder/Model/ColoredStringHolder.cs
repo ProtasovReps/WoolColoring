@@ -5,7 +5,9 @@ public class ColoredStringHolder : StringHolder
 {
     public event Action ColorChanged;
 
-    public ColoredStringHolder(ColorString[] strings) : base(strings) { }
+    public ColoredStringHolder(ColorString[] strings) : base(strings) => SetEnabled(true);
+
+    public bool IsEnabled { get; private set; }
 
     public Color Color { get; private set; }
 
@@ -14,6 +16,8 @@ public class ColoredStringHolder : StringHolder
         Color = color;
         ColorChanged?.Invoke();
     }
+
+    public void SetEnabled(bool isEnabled) => IsEnabled = isEnabled;
 
     public IColorable GetLastString() => GetString();
 

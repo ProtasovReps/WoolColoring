@@ -50,6 +50,8 @@ public class Painter : MonoBehaviour
     {
         Color color = holder.Color;
 
+        holder.SetEnabled(false);
+
         for (int i = 0; i < holder.MaxStringCount; i++)
         {
             holder.GetLastString();
@@ -60,6 +62,8 @@ public class Painter : MonoBehaviour
                 yield return _delay;
             }
         }
+
+        holder.SetEnabled(true);
 
         _switcher.ChangeStringHolderColor(holder);
     }

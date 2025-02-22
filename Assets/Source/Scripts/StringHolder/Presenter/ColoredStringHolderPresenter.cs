@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class ColoredStringHolderPresenter : IDisposable
 {
@@ -19,7 +20,9 @@ public class ColoredStringHolderPresenter : IDisposable
         _model.ColorChanged += OnColorChanged;
     }
 
+    public Color GetColor() => _model.Color;
+
     public void Dispose() => _model.ColorChanged -= OnColorChanged;
 
-    private void OnColorChanged() => _view.SetColor(_model.Color);
+    private void OnColorChanged() => _view.Switch();
 }

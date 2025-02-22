@@ -15,7 +15,7 @@ public class StringHolderBinder
         var model = new ColoredStringHolder(strings);
         var presenter = new ColoredStringHolderPresenter(view, model);
 
-        view.Initialize();
+        view.Initialize(presenter);
         return model;
     }
 

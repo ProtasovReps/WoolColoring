@@ -54,7 +54,7 @@ public class ColorStringView : MonoBehaviour, IColorSettable, IColorable
     {
         _stateSwitcher.SetActive(true);
 
-        LMotion.Create(_transformView.Transform.localScale, _transformView.StartScale, _appearDuration)
+        LMotion.Create(Vector3.zero, _transformView.StartScale, _appearDuration)
             .WithOnComplete(ProcessQueuedAnimations)
             .BindToLocalScale(_transformView.Transform);
     }

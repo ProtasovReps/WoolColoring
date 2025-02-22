@@ -79,7 +79,12 @@ public class ColoredStringHolderStash
             stringHolder = _stringHolders[true][i];
 
             if (stringHolder.Color == requiredColor)
-                return stringHolder;
+            {
+                if (stringHolder.IsEnabled)
+                {
+                    return stringHolder;
+                }
+            }
         }
 
         return null;
