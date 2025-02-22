@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 public class ColorStringPresenter : IDisposable
 {
@@ -16,20 +17,15 @@ public class ColorStringPresenter : IDisposable
         _model = model;
         _view = view;
 
-        _model.ColorSetted += OnColorSetted;
         _model.EnableStateSwitched += OnStateSwitched;
     }
 
     public void Dispose()
     {
-        _model.ColorSetted -= OnColorSetted;
         _model.EnableStateSwitched -= OnStateSwitched;
     }
 
-    private void OnColorSetted()
-    {
-        _view.SetColor(_model.Color);
-    }
+    public Color GetColor() => _model.Color;
 
     private void OnStateSwitched()
     {

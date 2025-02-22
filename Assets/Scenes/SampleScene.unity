@@ -2255,8 +2255,12 @@ PrefabInstance:
       value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
+      propertyPath: _slideDelay
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
       propertyPath: _jumpDuration
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
       propertyPath: _jumpPivotCount
@@ -4660,8 +4664,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
+      propertyPath: _slideDelay
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
       propertyPath: _jumpDuration
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
       propertyPath: _jumpPivotCount
@@ -4975,8 +4983,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
+      propertyPath: _slideDelay
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
       propertyPath: _jumpDuration
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
       propertyPath: _jumpPivotCount
@@ -8080,8 +8092,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
+      propertyPath: _slideDelay
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
       propertyPath: _jumpDuration
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
       propertyPath: _jumpPivotCount
@@ -8381,6 +8397,10 @@ PrefabInstance:
     - target: {fileID: 7780738915130343252, guid: 0b1a92f9adfee2847820def331e97fa2, type: 3}
       propertyPath: m_ReceiveShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099604702643682136, guid: 0b1a92f9adfee2847820def331e97fa2, type: 3}
+      propertyPath: _appearDuration
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

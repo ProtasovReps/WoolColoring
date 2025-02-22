@@ -7,21 +7,24 @@ using UnityEngine;
 [RequireComponent(typeof(ColorView))]
 [RequireComponent(typeof(TransformView))]
 [RequireComponent(typeof(ActiveStateSwitcher))]
-public class ColorStringView : MonoBehaviour, IColorSettable, IColorable
+public class ColorStringView : MonoBehaviour
 {
     [SerializeField] private float _appearDuration = 0.2f;
     [SerializeField] private float _disappearDuration = 1f;
 
+    private ColorStringPresenter _presenter;
     private Queue<Action> _actions;
     private bool _isAnimated;
     private ColorView _colorView;
     private TransformView _transformView;
     private ActiveStateSwitcher _stateSwitcher;
 
-    public Color Color { get; private set; }
-
-    public void Initialize()
+    public void Initialize(ColorStringPresenter presenter)
     {
+        if (presenter == null)
+            throw new ArgumentNullException(nameof(presenter));
+
+        _presenter = presenter;
         _stateSwitcher = GetComponent<ActiveStateSwitcher>();
         _transformView = GetComponent<TransformView>();
         _colorView = GetComponent<ColorView>();
@@ -30,12 +33,6 @@ public class ColorStringView : MonoBehaviour, IColorSettable, IColorable
         _transformView.Initialize();
         _colorView.Initialize();
         _stateSwitcher.Initialize();
-    }
-
-    public void SetColor(Color color)
-    {
-        Color = color;
-        _colorView.SetColor(color);
     }
 
     public void Appear()
@@ -52,6 +49,9 @@ public class ColorStringView : MonoBehaviour, IColorSettable, IColorable
 
     private void AppearAnimated()
     {
+        Color newColor = _presenter.GetColor();
+
+        _colorView.SetColor(newColor);
         _stateSwitcher.SetActive(true);
 
         LMotion.Create(Vector3.zero, _transformView.StartScale, _appearDuration)

@@ -10,6 +10,7 @@ public class ColoredStringHolderView : StringHolderView
     [SerializeField] private Transform _targetSwitchPosition;
     [SerializeField] private float _jumpDuration;
     [SerializeField] private float _switchDuration;
+    [SerializeField] private float _slideDelay;
 
     private ColorView _colorView;
     private Color _lastColor;
@@ -31,7 +32,7 @@ public class ColoredStringHolderView : StringHolderView
 
     public void Switch()
     {
-        if (_presenter.GetColor() == _lastColor)
+        if (_lastColor == _presenter.GetColor())
             Jump();
         else
             Slide();
@@ -41,9 +42,12 @@ public class ColoredStringHolderView : StringHolderView
     {
         Vector3 position = _transformView.Transform.position;
         Vector3 scale = _transformView.Transform.localScale;
-        Vector3 targetScale = scale * 1.25f;
+        Vector3 targetScale = scale * 0.75f;
+        Vector3 rotation = _transformView.Transform.localRotation.eulerAngles;
+        Vector3 targetRotation = new(rotation.x, rotation.y, rotation.z - 360f);
         float targetUpPosition = position.y + (Vector3.up * 0.5f).y;
         float fallInterval = 0.2f;
+        float saltoDuration = _jumpDuration * 2f;
 
         LSequence.Create()
             .Append(LMotion.Create(position.y, targetUpPosition, _jumpDuration)
@@ -52,6 +56,9 @@ public class ColoredStringHolderView : StringHolderView
             .Join(LMotion.Create(scale, targetScale, _jumpDuration)
             .WithEase(Ease.InElastic)
             .BindToLocalScale(_transformView.Transform))
+            .Join(LMotion.Create(rotation, targetRotation, saltoDuration)
+            .WithEase(Ease.InOutExpo)
+            .BindToLocalEulerAngles(_transformView.Transform))
             .AppendInterval(fallInterval)
             .Append(LMotion.Create(targetScale, scale, _jumpDuration)
             .WithEase(Ease.InOutElastic)
@@ -65,6 +72,7 @@ public class ColoredStringHolderView : StringHolderView
     private void Slide()
     {
         LSequence.Create()
+            .AppendInterval(_slideDelay)
             .Append(LMotion.Create(_transformView.Transform.position.x, _targetSwitchPosition.position.x, _switchDuration)
             .WithEase(Ease.InQuint)
             .WithOnComplete(SetColor)

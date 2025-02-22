@@ -5,7 +5,7 @@ public class ColorStringFactory
         var model = new ColorString();
         var presenter = new ColorStringPresenter(model, view);
 
-        view.Initialize();
+        view.Initialize(presenter);
         return model;
     }
 }

@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(TransformView))]
 public class WhiteStringHolderView : StringHolderView
 {
+    [SerializeField] private float _appearDuration;
+
     private TransformView _transform;
 
     public void Initialize()
@@ -17,7 +19,7 @@ public class WhiteStringHolderView : StringHolderView
 
     private void Appear()
     {
-        LMotion.Create(Vector3.zero, _transform.StartScale, 1f)
+        LMotion.Create(Vector3.zero, _transform.StartScale, _appearDuration)
             .WithEase(Ease.InOutElastic)
             .BindToLocalScale(_transform.Transform);
     }

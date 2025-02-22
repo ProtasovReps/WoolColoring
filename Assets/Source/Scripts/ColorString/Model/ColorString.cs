@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class ColorString : IColorable, IColorSettable
 {
-    public event Action ColorSetted;
     public event Action EnableStateSwitched;
 
     public Color Color { get; private set; }
@@ -15,9 +14,5 @@ public class ColorString : IColorable, IColorSettable
         EnableStateSwitched?.Invoke();
     }
 
-    public void SetColor(Color color)
-    {
-        Color = color;
-        ColorSetted?.Invoke();
-    }
+    public void SetColor(Color color) => Color = color;
 }

@@ -8,7 +8,7 @@ using UnityEngine;
 [RequireComponent(typeof(HingeJoint))]
 public class BoltView : MonoBehaviour
 {
-    [SerializeField] private ColorStringView _colorString;
+    [SerializeField] private BoltColorString _colorString;
 
     private EffectsPlayer _effectPlayer;
     private HingeJoint _hingeJoint;
