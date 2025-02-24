@@ -9,9 +9,9 @@ public class BoltClickReader : MonoBehaviour
     [SerializeField] private float _maxRaycastDistance;
 
     private PlayerInput _playerInput;
-    private BoltPressPresenter _presenter;
+    private BoltPressHandler _presenter;
 
-    public void Initialize(BoltPressPresenter presenter)
+    public void Initialize(BoltPressHandler presenter)
     {
         if (presenter == null)
             throw new ArgumentNullException(nameof(presenter));

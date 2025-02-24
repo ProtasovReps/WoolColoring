@@ -7,6 +7,7 @@ public class FigureCompositionFactory : MonoBehaviour
 {
     [SerializeField] private FigureCompositionView[] _compositionViewsPrefabs;
     [SerializeField] private Color[] _figureColors;
+    [SerializeField] private Transform _figureContainer;
 
     private FigureFactory _figureFactory;
     private FigureCompositionBinder _binder;
@@ -48,7 +49,6 @@ public class FigureCompositionFactory : MonoBehaviour
 
         FigureCompositionView newView = Instantiate(compositionView);
         Figure[] figures = GetFigures(newView);
-
         return BindComposition(newView, figures);
     }
 
@@ -72,6 +72,7 @@ public class FigureCompositionFactory : MonoBehaviour
         var presenter = new FigureCompositionPresenter(model, view, _colorPallete);
 
         _binder.Bind(view, presenter);
+        view.Transform.SetParent(_figureContainer);
         return model;
     }
 }

@@ -6,8 +6,9 @@ public class StringDistributor : IDisposable
     private readonly ColoredStringHolderStash _coloredHolderStash;
     private readonly WhiteStringHolder _whiteHolder;
     private readonly ColoredStringHolderSwitcher _switcher;
+    private readonly BoltHolderConnector _boltConnector;
 
-    public StringDistributor(ColoredStringHolderStash stash, WhiteStringHolder whiteHolder, ColoredStringHolderSwitcher switcher)
+    public StringDistributor(ColoredStringHolderStash stash, WhiteStringHolder whiteHolder, ColoredStringHolderSwitcher switcher, BoltHolderConnector boltConnector)
     {
         if (stash == null)
             throw new ArgumentNullException(nameof(stash));
@@ -21,6 +22,7 @@ public class StringDistributor : IDisposable
         _coloredHolderStash = stash;
         _whiteHolder = whiteHolder;
         _switcher = switcher;
+        _boltConnector = boltConnector;
 
         _switcher.HolderSwitched += OnHolderSwitched;
     }
@@ -36,6 +38,8 @@ public class StringDistributor : IDisposable
             throw new ArgumentNullException(nameof(bolt));
 
         IColorable colorString = bolt.Colorable;
+
+        _boltConnector.SetRope(bolt);
 
         if (_coloredHolderStash.TryGetColoredStringHolder(colorString.Color, out ColoredStringHolder holder))
             holder.Add(colorString);

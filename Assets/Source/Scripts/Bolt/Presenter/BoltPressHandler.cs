@@ -1,20 +1,15 @@
 using System;
 using UnityEngine;
 
-public class BoltPressPresenter
+public class BoltPressHandler
 {
-    private readonly BoltClickReader _inputReader;
     private readonly StringDistributor _distributor;
 
-    public BoltPressPresenter(BoltClickReader inputReader, StringDistributor distributor)
+    public BoltPressHandler(StringDistributor distributor)
     {
-        if (inputReader == null)
-            throw new ArgumentNullException(nameof(inputReader));
-
         if (distributor == null)
             throw new ArgumentNullException(nameof(distributor));
 
-        _inputReader = inputReader;
         _distributor = distributor;
     }
 

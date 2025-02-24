@@ -2,14 +2,11 @@ using UnityEngine;
 
 public class ColorView : MonoBehaviour, IColorSettable
 {
-    [SerializeField] private MeshRenderer _renderer;
+    [SerializeField] private Renderer _renderer;
 
     private MaterialPropertyBlock _propertyBlock;
 
-    public void Initialize()
-    {
-        _propertyBlock = new MaterialPropertyBlock();
-    }
+    public void Initialize() => _propertyBlock = new MaterialPropertyBlock();
 
     public void SetColor(Color color)
     {

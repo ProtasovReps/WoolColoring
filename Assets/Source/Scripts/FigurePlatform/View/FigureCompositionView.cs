@@ -12,6 +12,8 @@ public class FigureCompositionView : MonoBehaviour
     private TransformMoveView _transformMoveView;
     private ActiveStateSwitcher _activeStateSwitcher;
 
+    public Transform Transform => _transformMoveView.Transform;
+
     public IEnumerable<FigureView> FigureViews => _figureViews;
 
     public void Initialize()

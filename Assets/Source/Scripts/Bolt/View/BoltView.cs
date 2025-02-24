@@ -1,8 +1,9 @@
 using LitMotion;
 using LitMotion.Extensions;
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(EffectsPlayer))]
+[RequireComponent(typeof(EffectPlayer))]
 [RequireComponent(typeof(TransformMoveView))]
 [RequireComponent(typeof(ActiveStateSwitcher))]
 [RequireComponent(typeof(HingeJoint))]
@@ -10,12 +11,14 @@ public class BoltView : MonoBehaviour
 {
     [SerializeField] private BoltColorString _colorString;
 
-    private EffectsPlayer _effectPlayer;
     private HingeJoint _hingeJoint;
     private Rigidbody _connectedBody;
     private ActiveStateSwitcher _activeStateSwitcher;
     private TransformMoveView _moveView;
 
+    public event Action<BoltView> Disabling;
+
+    public Transform Transform => _moveView.Transform;
     public IColorSettable ColorSettable => _colorString;
     public IColorable Colorable => _colorString;
 
@@ -23,7 +26,6 @@ public class BoltView : MonoBehaviour
     {
         _hingeJoint = GetComponent<HingeJoint>();
         _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
-        _effectPlayer = GetComponent<EffectsPlayer>();
         _moveView = GetComponent<TransformMoveView>();
         _connectedBody = _hingeJoint.connectedBody;
 
@@ -41,7 +43,7 @@ public class BoltView : MonoBehaviour
     public void Unscrew()
     {
         Vector3 rotation = _moveView.Transform.localRotation.eulerAngles;
-        float targetRotation = rotation.y + 360f;
+        float targetRotation = rotation.y - 360f;
         Vector3 targetPosition = new(_moveView.Transform.position.x, 4.3f, -6.5f);
         Vector3 targetScale = _moveView.Transform.localScale * 1.2f;
         float duration = 0.25f;
@@ -68,7 +70,7 @@ public class BoltView : MonoBehaviour
 
     private void Disable()
     {
-        _effectPlayer.Play();
+        Disabling?.Invoke(this);
 
         SetActive(false);
     }

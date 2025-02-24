@@ -3,9 +3,8 @@ using LitMotion.Extensions;
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(TransformView))]
 [RequireComponent(typeof(ColorView))]
-public class ColoredStringHolderView : StringHolderView
+public class ColoredStringHolderView : StringHolderView, IColorable
 {
     [SerializeField] private Transform _targetSwitchPosition;
     [SerializeField] private float _jumpDuration;
@@ -14,8 +13,9 @@ public class ColoredStringHolderView : StringHolderView
 
     private ColorView _colorView;
     private Color _lastColor;
-    private TransformView _transformView;
     private ColoredStringHolderPresenter _presenter;
+
+    public Color Color => _presenter.GetColor();
 
     public void Initialize(ColoredStringHolderPresenter presenter)
     {
@@ -23,11 +23,10 @@ public class ColoredStringHolderView : StringHolderView
             throw new ArgumentNullException(nameof(presenter));
 
         _colorView = GetComponent<ColorView>();
-        _transformView = GetComponent<TransformView>();
         _presenter = presenter;
 
-        _transformView.Initialize();
         _colorView.Initialize();
+        Initialize();
     }
 
     public void Switch()
@@ -40,10 +39,10 @@ public class ColoredStringHolderView : StringHolderView
 
     private void Jump()
     {
-        Vector3 position = _transformView.Transform.position;
-        Vector3 scale = _transformView.Transform.localScale;
+        Vector3 position = Transform.position;
+        Vector3 scale = Transform.localScale;
         Vector3 targetScale = scale * 0.75f;
-        Vector3 rotation = _transformView.Transform.localRotation.eulerAngles;
+        Vector3 rotation = Transform.localRotation.eulerAngles;
         Vector3 targetRotation = new(rotation.x, rotation.y, rotation.z - 360f);
         float targetUpPosition = position.y + (Vector3.up * 0.5f).y;
         float fallInterval = 0.2f;
@@ -52,20 +51,20 @@ public class ColoredStringHolderView : StringHolderView
         LSequence.Create()
             .Append(LMotion.Create(position.y, targetUpPosition, _jumpDuration)
             .WithEase(Ease.InQuint)
-            .BindToPositionY(_transformView.Transform))
+            .BindToPositionY(Transform))
             .Join(LMotion.Create(scale, targetScale, _jumpDuration)
             .WithEase(Ease.InElastic)
-            .BindToLocalScale(_transformView.Transform))
+            .BindToLocalScale(Transform))
             .Join(LMotion.Create(rotation, targetRotation, saltoDuration)
             .WithEase(Ease.InOutExpo)
-            .BindToLocalEulerAngles(_transformView.Transform))
+            .BindToLocalEulerAngles(Transform))
             .AppendInterval(fallInterval)
             .Append(LMotion.Create(targetScale, scale, _jumpDuration)
             .WithEase(Ease.InOutElastic)
-            .BindToLocalScale(_transformView.Transform))
+            .BindToLocalScale(Transform))
             .Join(LMotion.Create(targetUpPosition, position.y, _jumpDuration)
             .WithEase(Ease.OutQuint)
-            .BindToPositionY(_transformView.Transform))
+            .BindToPositionY(Transform))
             .Run();
     }
 
@@ -73,13 +72,13 @@ public class ColoredStringHolderView : StringHolderView
     {
         LSequence.Create()
             .AppendInterval(_slideDelay)
-            .Append(LMotion.Create(_transformView.Transform.position.x, _targetSwitchPosition.position.x, _switchDuration)
+            .Append(LMotion.Create(Transform.position.x, _targetSwitchPosition.position.x, _switchDuration)
             .WithEase(Ease.InQuint)
             .WithOnComplete(SetColor)
-            .BindToPositionX(_transformView.Transform))
-            .Append(LMotion.Create(_targetSwitchPosition.position.x, _transformView.StartPosition.x, _switchDuration)
+            .BindToPositionX(Transform))
+            .Append(LMotion.Create(_targetSwitchPosition.position.x, TransformView.StartPosition.x, _switchDuration)
             .WithEase(Ease.InOutQuint)
-            .BindToPositionX(_transformView.Transform))
+            .BindToPositionX(Transform))
             .Run();
     }
 

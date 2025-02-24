@@ -4,6 +4,7 @@ using UnityEngine;
 public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private PictureView _pictureView;
+    [SerializeField] private EffectPool _effectPool;
     [SerializeField] private Painter _painter;
     [SerializeField] private Malbert _malbert;
     [SerializeField] private BoltClickReader _clickView;
@@ -12,6 +13,7 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
     [SerializeField] private FigureFactory _figureFactory;
     [SerializeField] private FigureCompositionFactory _figureCompositionFactory;
+    [SerializeField] private BoltHolderConnector _boltConnector;
     [SerializeField, Min(1)] private int _minFiguresCount;
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
 
@@ -35,6 +37,7 @@ public class CompositeRoot : MonoBehaviour
     {
         _boltStash = new BoltStash();
 
+        _effectPool.Initialize(_boltStash);
         _figureFactory.Initialize(_boltStash);
         _figureCompositionFactory.Initialize(_figureFactory);
 
@@ -67,7 +70,7 @@ public class CompositeRoot : MonoBehaviour
 
         _coloredStringHolderStash = new ColoredStringHolderStash(holderModels, _startHoldersCount);
         _switcher = new ColoredStringHolderSwitcher(_picture, _coloredStringHolderStash);
-        _stringDistributor = new StringDistributor(_coloredStringHolderStash, whiteHolderModel, _switcher);
+        _stringDistributor = new StringDistributor(_coloredStringHolderStash, whiteHolderModel, _switcher, _boltConnector);
 
         foreach (var holder in _coloredStringHolderStash.ColoredStringHolders)
         {
@@ -77,7 +80,7 @@ public class CompositeRoot : MonoBehaviour
 
     private void BindBolt()
     {
-        var boltPressPresenter = new BoltPressPresenter(_clickView, _stringDistributor);
+        var boltPressPresenter = new BoltPressHandler(_stringDistributor);
         var boltColorPresenter = new BoltColorSetter(_boltStash, _picture);
 
         _clickView.Initialize(boltPressPresenter);

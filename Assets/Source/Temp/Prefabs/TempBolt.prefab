@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2654643969124095345}
   - component: {fileID: 8919426777247834273}
   - component: {fileID: 9073901973826193588}
-  - component: {fileID: 6183525299888295167}
   - component: {fileID: 3199053314271461721}
   - component: {fileID: 7447064894887285291}
+  - component: {fileID: 4385680764043719744}
   m_Layer: 6
   m_Name: TempBolt
   m_TagString: Untagged
@@ -141,19 +141,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.25, z: 0.35}
   m_Center: {x: 0, y: 0.12, z: 0}
---- !u!114 &6183525299888295167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1265851509890815825}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77b751dec06a0af44abd2a94a9cc5aa2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _effect: {fileID: 19877600, guid: 36bdc02b23d9ca94d93bd715c0cca5c0, type: 3}
 --- !u!114 &3199053314271461721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,6 +163,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e01390ebf388c2438a34f34af0fc4d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4385680764043719744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265851509890815825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa757422186491f428360f4fffd5b8f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3328237673842485676
