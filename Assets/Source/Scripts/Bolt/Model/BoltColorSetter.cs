@@ -29,7 +29,7 @@ public class BoltColorSetter : IDisposable
 
     private void SetColors()
     {
-        foreach (BoltView bolt in _boltStash.Bolts)
+        foreach (Bolt bolt in _boltStash.Bolts)
         {
             Color color = _picture.GetRandomColor();
 
@@ -39,7 +39,7 @@ public class BoltColorSetter : IDisposable
 
     private void OnColorFilled(Color color)
     {
-        foreach (BoltView bolt in _boltStash.Bolts)
+        foreach (Bolt bolt in _boltStash.Bolts)
         {
             if (bolt.Colorable.Color == color)
             {

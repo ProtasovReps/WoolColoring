@@ -116,10 +116,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1265851509890815825}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5616ed4e0faeb264a9a0289df9bcd40e, type: 3}
+  m_Script: {fileID: 11500000, guid: ee69dba89df21c64c9d6a7fdcaa0cd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _colorString: {fileID: 2153911797631544552}
+  _unscrewDuration: 0.2
+  _unscrewLoopCount: 3
 --- !u!65 &9073901973826193588
 BoxCollider:
   m_ObjectHideFlags: 0

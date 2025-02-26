@@ -84,13 +84,13 @@ LineRenderer:
   - {x: 0.09, y: 4, z: 0.97}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 1
+    widthMultiplier: 0.3
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.069611564
+        time: 0.020989357
+        value: 0.1512434
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -153,8 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae33ffadebe91c049b3c2eec993b8fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _segmentsCount: 6
-  _maxOffset: 0.2
+  _segmentsCount: 8
+  _segmentAppearDelay: 0.01
+  _segmentsDisappearDelay: 0.03
+  _maxOffset: 0.1
 --- !u!114 &7142097586135860364
 MonoBehaviour:
   m_ObjectHideFlags: 0

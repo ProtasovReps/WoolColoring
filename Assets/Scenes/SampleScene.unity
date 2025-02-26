@@ -992,6 +992,7 @@ MonoBehaviour:
   _figureFactory: {fileID: 446517873}
   _figureCompositionFactory: {fileID: 353881122}
   _boltConnector: {fileID: 1141542322}
+  _holdersRopeConnector: {fileID: 1141542324}
   _minFiguresCount: 3
   _startHoldersCount: 4
 --- !u!4 &398913775
@@ -1350,6 +1351,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 645133bf639ddb0449abcc4ae532e792, type: 3}
+--- !u!1 &541978933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 541978934}
+  m_Layer: 0
+  m_Name: ConnectingRope
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &541978934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 541978933}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.64694524, y: 4.232911, z: 3.7724693}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1141542323}
+  - {fileID: 1112000196}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &543440664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4233,12 +4267,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112000194}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.64694524, y: -4.232911, z: -3.7724693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1141542323}
+  m_Father: {fileID: 541978934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1118767233
 GameObject:
@@ -4321,8 +4355,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1141542323}
   - component: {fileID: 1141542322}
+  - component: {fileID: 1141542324}
   m_Layer: 0
-  m_Name: BoltHolderRopeConnector
+  m_Name: Connector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4355,14 +4390,33 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141542321}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.64694524, y: -4.232911, z: -3.7724693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1112000196}
-  m_Father: {fileID: 0}
+  m_Children: []
+  m_Father: {fileID: 541978934}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1141542324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141542321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffb9b66c32c7dd74f8136e174055df90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coloredHolders:
+  - {fileID: 543450652158031600}
+  - {fileID: 1646377972}
+  - {fileID: 2024720405}
+  - {fileID: 1633380287}
+  _perStringLifeTime: 0.2
+  _whiteHolder: {fileID: 8970590229707521081}
+  _ropePool: {fileID: 1112000195}
 --- !u!1 &1157861702
 GameObject:
   m_ObjectHideFlags: 0
@@ -4945,7 +4999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5727cd4a36066e468a22953c68b5f70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectPrefab: {fileID: 19877600, guid: 36bdc02b23d9ca94d93bd715c0cca5c0, type: 3}
+  _effectPrefab: {fileID: 6481122989082395443, guid: ce1f9741ed1a8af42998caf556e42e59, type: 3}
   _effectPlayer: {fileID: 1275331667}
 --- !u!4 &1275331669
 Transform:
@@ -7759,7 +7813,7 @@ GameObject:
   - component: {fileID: 1999060524}
   - component: {fileID: 1999060525}
   m_Layer: 0
-  m_Name: PlayerClickView
+  m_Name: BoltClickReader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8617,8 +8671,8 @@ SceneRoots:
   - {fileID: 1343193557}
   - {fileID: 680164764}
   - {fileID: 1980087964}
+  - {fileID: 1275331669}
+  - {fileID: 1210321429}
+  - {fileID: 541978934}
   - {fileID: 963194228}
   - {fileID: 705507995}
-  - {fileID: 1275331669}
-  - {fileID: 1141542323}
-  - {fileID: 1210321429}

@@ -15,7 +15,7 @@ public class BoltPressHandler
 
     public void ProcessClick(RaycastHit hit)
     {
-        if (hit.collider.TryGetComponent(out BoltView bolt) == false)
+        if (hit.collider.TryGetComponent(out Bolt bolt) == false)
             return;
 
         _distributor.Distribute(bolt);

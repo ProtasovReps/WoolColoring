@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 public class BoltStash
 {
-    private List<BoltView> _bolts;
+    private List<Bolt> _bolts;
 
-    public event Action<IEnumerable<BoltView>> BoltsAdded;
+    public event Action<IEnumerable<Bolt>> BoltsAdded;
 
-    public BoltStash() => _bolts = new List<BoltView>();
+    public BoltStash() => _bolts = new List<Bolt>();
 
-    public void Add(IEnumerable<BoltView> bolts)
+    public void Add(IEnumerable<Bolt> bolts)
     {
         _bolts.AddRange(bolts);
         BoltsAdded?.Invoke(bolts);
     }
 
-    public IEnumerable<BoltView> Bolts => _bolts;
+    public IEnumerable<Bolt> Bolts => _bolts;
 }

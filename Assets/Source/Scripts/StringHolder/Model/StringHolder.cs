@@ -17,7 +17,7 @@ public abstract class StringHolder : IFillable<StringHolder>
     }
 
     public int MaxStringCount => _strings.Length;
-    protected int StringCount => _stringCount;
+    public int StringCount => _stringCount;
     protected IEnumerable<ColorString> Strings => _strings;
 
     public void Add(IColorable newString)

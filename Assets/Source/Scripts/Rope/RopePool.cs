@@ -25,7 +25,6 @@ public class RopePool : MonoBehaviour
     public Rope Get()
     {
         Rope rope;
-        Debug.Log(_freeRopes.Count);
 
         if (_freeRopes.Count == 0)
         {

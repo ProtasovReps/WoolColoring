@@ -13,7 +13,8 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
     [SerializeField] private FigureFactory _figureFactory;
     [SerializeField] private FigureCompositionFactory _figureCompositionFactory;
-    [SerializeField] private BoltHolderConnector _boltConnector;
+    [SerializeField] private BoltHolderRopeConnector _boltConnector;
+    [SerializeField] private HoldersRopeConnector _holdersRopeConnector;
     [SerializeField, Min(1)] private int _minFiguresCount;
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
 
@@ -29,6 +30,7 @@ public class CompositeRoot : MonoBehaviour
         BindPicture();
         BindHolders();
         BindBolt();
+        BindRopeConnectors();
 
         _painter.Initialize(_picture, _switcher, _coloredStringHolderStash);
     }
@@ -70,7 +72,7 @@ public class CompositeRoot : MonoBehaviour
 
         _coloredStringHolderStash = new ColoredStringHolderStash(holderModels, _startHoldersCount);
         _switcher = new ColoredStringHolderSwitcher(_picture, _coloredStringHolderStash);
-        _stringDistributor = new StringDistributor(_coloredStringHolderStash, whiteHolderModel, _switcher, _boltConnector);
+        _stringDistributor = new StringDistributor(_coloredStringHolderStash, whiteHolderModel, _switcher);
 
         foreach (var holder in _coloredStringHolderStash.ColoredStringHolders)
         {
@@ -84,5 +86,11 @@ public class CompositeRoot : MonoBehaviour
         var boltColorPresenter = new BoltColorSetter(_boltStash, _picture);
 
         _clickView.Initialize(boltPressPresenter);
+    }
+
+    private void BindRopeConnectors()
+    {
+        _boltConnector.Initialize(_stringDistributor);
+        _holdersRopeConnector.Initialize(_stringDistributor);
     }
 }

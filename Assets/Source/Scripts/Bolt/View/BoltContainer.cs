@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BoltContainer : MonoBehaviour
 {
-    [SerializeField] private BoltView[] _bolts;
+    [SerializeField] private Bolt[] _bolts;
 
-    public IEnumerable<BoltView> Bolts => _bolts;
+    public IEnumerable<Bolt> Bolts => _bolts;
 }

@@ -10,7 +10,6 @@ public class BoltColorString : MonoBehaviour, IColorSettable, IColorable
     public void Initialize()
     {
         _colorView = GetComponent<ColorView>();
-
         _colorView.Initialize();
     }
 

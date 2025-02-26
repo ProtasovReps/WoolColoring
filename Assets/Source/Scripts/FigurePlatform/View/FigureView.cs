@@ -16,7 +16,7 @@ public class FigureView : MonoBehaviour, IFallable, IColorSettable
     private ActiveStateSwitcher _activeStateSwitcher;
 
     public Collider Collider => _collider;
-    public IEnumerable<BoltView> Bolts => _boltContainer.Bolts;
+    public IEnumerable<Bolt> Bolts => _boltContainer.Bolts;
 
     public void Initialize(FigurePresenter figurePresenter)
     {
@@ -40,7 +40,7 @@ public class FigureView : MonoBehaviour, IFallable, IColorSettable
     {
         _transformView.SetStartTransform();
 
-        foreach (BoltView bolt in _boltContainer.Bolts)
+        foreach (Bolt bolt in _boltContainer.Bolts)
             bolt.SetActive(true);
 
         _activeStateSwitcher.SetActive(true);

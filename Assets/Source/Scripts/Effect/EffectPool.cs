@@ -14,7 +14,7 @@ public class EffectPool : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (BoltView bolt in _boltStash.Bolts)
+        foreach (Bolt bolt in _boltStash.Bolts)
             bolt.Disabling -= OnBoltDisabling;
     }
 
@@ -32,13 +32,13 @@ public class EffectPool : MonoBehaviour
         _boltStash.BoltsAdded += SubscribeBolts;
     }
 
-    private void SubscribeBolts(IEnumerable<BoltView> bolts)
+    private void SubscribeBolts(IEnumerable<Bolt> bolts)
     {
-        foreach (BoltView bolt in bolts)
+        foreach (Bolt bolt in bolts)
             bolt.Disabling += OnBoltDisabling;
     }
 
-    private void OnBoltDisabling(BoltView boltView)
+    private void OnBoltDisabling(Bolt boltView)
     {
         ParticleSystem effect;
 
