@@ -113,8 +113,6 @@ public class Rope : MonoBehaviour, IColorSettable
 
             _lineRenderer.SetPosition(lastIndex, endPosition.position);
         }
-
-        Disconnect();
     }
 
     private IEnumerator DisappearAnimated()

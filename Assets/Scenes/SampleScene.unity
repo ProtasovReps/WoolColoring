@@ -4438,6 +4438,7 @@ MonoBehaviour:
   - {fileID: 2024720405}
   - {fileID: 1633380287}
   _ropePool: {fileID: 1112000195}
+  _ropeDisconnectDelay: 1
 --- !u!1 &1157861702
 GameObject:
   m_ObjectHideFlags: 0
