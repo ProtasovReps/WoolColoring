@@ -5,7 +5,7 @@ public class BoltColorString : MonoBehaviour, IColorSettable, IColorable
 {
     private ColorView _colorView;
 
-    public Color Color { get; private set; }
+    public Color Color => _colorView.Color;
 
     public void Initialize()
     {
@@ -15,7 +15,6 @@ public class BoltColorString : MonoBehaviour, IColorSettable, IColorable
 
     public void SetColor(Color color)
     {
-        Color = color;
         _colorView.SetColor(color);
     }
 }

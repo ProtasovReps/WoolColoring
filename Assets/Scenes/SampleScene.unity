@@ -993,6 +993,7 @@ MonoBehaviour:
   _figureCompositionFactory: {fileID: 353881122}
   _boltConnector: {fileID: 1141542322}
   _holdersRopeConnector: {fileID: 1141542324}
+  _blockHolderConnector: {fileID: 1141542325}
   _minFiguresCount: 3
   _startHoldersCount: 4
 --- !u!4 &398913775
@@ -4356,8 +4357,9 @@ GameObject:
   - component: {fileID: 1141542323}
   - component: {fileID: 1141542322}
   - component: {fileID: 1141542324}
+  - component: {fileID: 1141542325}
   m_Layer: 0
-  m_Name: Connector
+  m_Name: RopeConnector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4417,6 +4419,26 @@ MonoBehaviour:
   _perStringLifeTime: 0.2
   _whiteHolder: {fileID: 8970590229707521081}
   _ropePool: {fileID: 1112000195}
+--- !u!114 &1141542325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141542321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e56ba96033aa4347a242261f0e71734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stringHolderViews:
+  - {fileID: 543450652158031600}
+  - {fileID: 1646377972}
+  - {fileID: 2024720405}
+  - {fileID: 1633380287}
+  _colorBlockStash: {fileID: 932203173}
+  _ropePool: {fileID: 1112000195}
+  _disconnectDelay: 0
 --- !u!1 &1157861702
 GameObject:
   m_ObjectHideFlags: 0

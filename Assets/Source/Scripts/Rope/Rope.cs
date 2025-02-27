@@ -8,33 +8,49 @@ using Random = UnityEngine.Random;
 public class Rope : MonoBehaviour, IColorSettable
 {
     [SerializeField] private int _segmentsCount;
+    [SerializeField] private float _autodestroyTime;
     [SerializeField] private float _segmentAppearDelay;
     [SerializeField] private float _segmentsDisappearDelay;
     [SerializeField] private float _maxOffset;
 
     private WaitForSeconds _appearDelay;
     private WaitForSeconds _disappearDelay;
-    private ColorView _color;
+    private ColorView _colorView;
     private LineRenderer _lineRenderer;
     private Coroutine _coroutine;
+    private Transform _lastStartPoint;
 
     public event Action<Rope> Disconected;
+
+    public Color Color => _colorView.Color;
 
     private void Awake()
     {
         _lineRenderer = GetComponent<LineRenderer>();
-        _color = GetComponent<ColorView>();
+        _colorView = GetComponent<ColorView>();
         _appearDelay = new WaitForSeconds(_segmentAppearDelay);
         _disappearDelay = new WaitForSeconds(_segmentsDisappearDelay);
 
-        _color.Initialize();
+        _colorView.Initialize();
     }
 
-    public void SetColor(Color color) => _color.SetColor(color);
+    public void SetColor(Color color) => _colorView.SetColor(color);
 
     public void Connect(Transform startPosition, Transform endPosition)
     {
+        _lastStartPoint = startPosition;
         _coroutine = StartCoroutine(ConnectAnimated(startPosition, endPosition));
+    }
+
+    public void Reconnect(Transform endPosition)
+    {
+        if (_lastStartPoint == null)
+            throw new InvalidOperationException();
+
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
+
+        _coroutine = StartCoroutine(ReconnectAnimated(endPosition));
     }
 
     public void Disconect()
@@ -76,6 +92,31 @@ public class Rope : MonoBehaviour, IColorSettable
         }
     }
 
+    private IEnumerator ReconnectAnimated(Transform endPosition)
+    {
+        int firstIndex = 1;
+        int lastIndex = _segmentsCount - 1;
+        float elapsedTime = 0f;
+
+        _lineRenderer.positionCount = _segmentsCount;
+
+        while (elapsedTime < _autodestroyTime)
+        {
+            _lineRenderer.SetPosition(0, _lastStartPoint.position);
+
+            for (int i = firstIndex; i < lastIndex; i++)
+            {
+                SetPosition(_lastStartPoint.position, endPosition.position, i);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            _lineRenderer.SetPosition(lastIndex, endPosition.position);
+        }
+
+        Disconect();
+    }
+
     private IEnumerator DisappearAnimated()
     {
         for (int i = 0; i < _lineRenderer.positionCount; i++)
@@ -84,6 +125,7 @@ public class Rope : MonoBehaviour, IColorSettable
             yield return _disappearDelay;
         }
 
+        _coroutine = null;
         Disconected?.Invoke(this);
     }
 

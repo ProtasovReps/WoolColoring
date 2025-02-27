@@ -24,16 +24,16 @@ public class Malbert : MonoBehaviour
     private void OnEnable()
     {
         foreach (ColorBlockView colorBlockView in _blockStash.ColorBlockViews)
-            colorBlockView.Colloring += OnColloring;
+            colorBlockView.Coloring += OnColoring;
     }
 
     private void OnDisable()
     {
         foreach (ColorBlockView colorBlockView in _blockStash.ColorBlockViews)
-            colorBlockView.Colloring -= OnColloring;
+            colorBlockView.Coloring -= OnColoring;
     }
 
-    private void OnColloring(ColorBlockView colorBlockView)
+    private void OnColoring(ColorBlockView colorBlockView)
     {
         if (colorBlockView.Transform.position.y > _upperBoundPosition.y)
             _picturePresenter.Move(colorBlockView.Transform, _upperBoundPosition);

@@ -12,7 +12,7 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
     private Transform _transform;
     private Vector3 _startScale;
 
-    public event Action<ColorBlockView> Colloring;
+    public event Action<ColorBlockView> Coloring;
 
     public Color RequiredColor => _requiredColor;
     public Transform Transform => _transform;
@@ -29,7 +29,7 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
         if(color !=  _requiredColor)
             throw new InvalidOperationException(nameof(color));
 
-        Colloring?.Invoke(this);
+        Coloring?.Invoke(this);
         _colorView.SetColor(color);
 
         Decrease();

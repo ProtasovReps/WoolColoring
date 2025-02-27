@@ -15,6 +15,7 @@ public class CompositeRoot : MonoBehaviour
     [SerializeField] private FigureCompositionFactory _figureCompositionFactory;
     [SerializeField] private BoltHolderRopeConnector _boltConnector;
     [SerializeField] private HoldersRopeConnector _holdersRopeConnector;
+    [SerializeField] private BlockHolderConnector _blockHolderConnector;
     [SerializeField, Min(1)] private int _minFiguresCount;
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
 
@@ -92,5 +93,6 @@ public class CompositeRoot : MonoBehaviour
     {
         _boltConnector.Initialize(_stringDistributor);
         _holdersRopeConnector.Initialize(_stringDistributor);
+        _blockHolderConnector.Initialize();
     }
 }
