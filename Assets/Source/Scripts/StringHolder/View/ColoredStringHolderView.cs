@@ -16,6 +16,8 @@ public class ColoredStringHolderView : StringHolderView, IColorable
     private ColoredStringHolderPresenter _presenter;
     private ActionQueue _actionQueue;
 
+    public bool IsAnimating { get; private set; }
+    public float SwitchDuration => _switchDuration;
     public Color Color => _presenter.GetColor();
 
     public void Initialize(ColoredStringHolderPresenter presenter)
@@ -33,6 +35,8 @@ public class ColoredStringHolderView : StringHolderView, IColorable
 
     public void Switch()
     {
+        IsAnimating = true;
+
         if (_lastColor == _presenter.GetColor())
             _actionQueue.AddAction(Jump);
         else
@@ -68,7 +72,7 @@ public class ColoredStringHolderView : StringHolderView, IColorable
             .BindToLocalScale(Transform))
             .Join(LMotion.Create(targetUpPosition, position.y, _jumpDuration)
             .WithEase(Ease.OutQuint)
-            .WithOnComplete(FinalizeJump)
+            .WithOnComplete(FinalizeAnimation)
             .BindToPositionY(Transform))
             .Run();
     }
@@ -82,13 +86,14 @@ public class ColoredStringHolderView : StringHolderView, IColorable
             .BindToPositionX(Transform))
             .Append(LMotion.Create(_targetSwitchPosition.position.x, TransformView.StartPosition.x, _switchDuration)
             .WithEase(Ease.InOutQuint)
-            .WithOnComplete(_actionQueue.ProcessQueuedAction)
+            .WithOnComplete(FinalizeAnimation)
             .BindToPositionX(Transform))
             .Run();
     }
 
-    private void FinalizeJump()
+    private void FinalizeAnimation()
     {
+        IsAnimating = false;
         Transform.rotation = TransformView.StartRotation;
         _actionQueue.ProcessQueuedAction();
     }

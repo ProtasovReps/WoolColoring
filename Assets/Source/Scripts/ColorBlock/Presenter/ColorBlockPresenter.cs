@@ -27,9 +27,5 @@ public class ColorBlockPresenter : IDisposable
 
     public void Dispose() => _model.ColorSetted -= OnColorSetted;
 
-    private void OnColorSetted(Color color)
-    {
-        _connector.Connect(_view);
-        _view.SetColor(color);
-    }
+    private void OnColorSetted(Color color) => _connector.Setup(_view);
 }
