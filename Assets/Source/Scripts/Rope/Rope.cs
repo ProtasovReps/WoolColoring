@@ -12,7 +12,6 @@ public class Rope : MonoBehaviour, IColorSettable
     [SerializeField] private float _segmentsDisappearDelay;
     [SerializeField] private float _maxOffset;
 
-    private float _reconnectAutodestroyTime = 0.3f;
     private WaitForSeconds _appearDelay;
     private WaitForSeconds _disappearDelay;
     private ColorView _colorView;
@@ -61,10 +60,34 @@ public class Rope : MonoBehaviour, IColorSettable
 
     private IEnumerator ConnectAnimated(Transform startPosition, Transform endPosition)
     {
-        int firstIndex = 1;
+        yield return AppearAnimated(startPosition.position, endPosition.position);
+        yield return UpdatePositions(startPosition, endPosition);
+    }
+
+    private IEnumerator ReconnectAnimated(Transform endPosition)
+    {
+        _lineRenderer.positionCount = _segmentsCount;
+        yield return UpdatePositions(_lastStartPoint, endPosition);
+    }
+
+    private IEnumerator AppearAnimated(Vector3 startPosition, Vector3 endPosition)
+    {
         int lastIndex = _segmentsCount - 1;
 
-        yield return AppearAnimated(startPosition.position, endPosition.position, firstIndex, lastIndex);
+        _lineRenderer.positionCount = 0;
+
+        for (int i = 0; i < _segmentsCount; i++)
+        {
+            _lineRenderer.positionCount++;
+            SetPosition(startPosition, endPosition, i);
+            yield return _appearDelay;
+        }
+    }
+
+    private IEnumerator UpdatePositions(Transform startPosition, Transform endPosition)
+    {
+        int firstIndex = 1;
+        int lastIndex = _segmentsCount - 1;
 
         while (true)
         {
@@ -80,39 +103,14 @@ public class Rope : MonoBehaviour, IColorSettable
         }
     }
 
-    private IEnumerator AppearAnimated(Vector3 startPosition, Vector3 endPosition, int firstIndex, int lastIndex)
+    private void SetPosition(Vector3 startPosition, Vector3 endPosition, int segmentNumber)
     {
-        _lineRenderer.positionCount = 0;
+        var position = Vector3.Lerp(startPosition, endPosition, (segmentNumber + 1f) / _segmentsCount);
+        float randomizedPositionX = Random.Range(position.x - _maxOffset, position.x + _maxOffset);
 
-        for (int i = 0; i < _segmentsCount; i++)
-        {
-            _lineRenderer.positionCount++;
-            SetPosition(startPosition, endPosition, i);
-            yield return _appearDelay;
-        }
-    }
+        position = new Vector3(randomizedPositionX, position.y, position.z);
 
-    private IEnumerator ReconnectAnimated(Transform endPosition)
-    {
-        int firstIndex = 1;
-        int lastIndex = _segmentsCount - 1;
-        float elapsedTime = 0f;
-
-        _lineRenderer.positionCount = _segmentsCount;
-
-        while (elapsedTime < _reconnectAutodestroyTime)
-        {
-            _lineRenderer.SetPosition(0, _lastStartPoint.position);
-
-            for (int i = firstIndex; i < lastIndex; i++)
-            {
-                SetPosition(_lastStartPoint.position, endPosition.position, i);
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            _lineRenderer.SetPosition(lastIndex, endPosition.position);
-        }
+        _lineRenderer.SetPosition(segmentNumber, position);
     }
 
     private IEnumerator DisappearAnimated()
@@ -125,15 +123,5 @@ public class Rope : MonoBehaviour, IColorSettable
 
         _coroutine = null;
         Disconected?.Invoke(this);
-    }
-
-    private void SetPosition(Vector3 startPosition, Vector3 endPosition, int segmentNumber)
-    {
-        var position = Vector3.Lerp(startPosition, endPosition, (segmentNumber + 1f) / _segmentsCount);
-        float randomizedPositionX = Random.Range(position.x - _maxOffset, position.x + _maxOffset);
-
-        position = new Vector3(randomizedPositionX, position.y, position.z);
-
-        _lineRenderer.SetPosition(segmentNumber, position);
     }
 }
