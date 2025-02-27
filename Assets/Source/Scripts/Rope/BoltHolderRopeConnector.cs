@@ -8,7 +8,7 @@ public class BoltHolderRopeConnector : MonoBehaviour
     [SerializeField] private WhiteStringHolderView _whiteStringHolder;
     [SerializeField] private RopePool _ropePool;
 
-    private Dictionary<Bolt, Rope> _connectedPairs;
+    private Dictionary<Bolt, Rope> _connections;
     private StringDistributor _stringDistributor;
 
     private void OnDestroy()
@@ -22,7 +22,7 @@ public class BoltHolderRopeConnector : MonoBehaviour
             throw new ArgumentNullException(nameof(stringDistributor));
 
         _stringDistributor = stringDistributor;
-        _connectedPairs = new Dictionary<Bolt, Rope>();
+        _connections = new Dictionary<Bolt, Rope>();
         _stringDistributor.BoltDistributing += SetRope;
     }
 
@@ -34,7 +34,7 @@ public class BoltHolderRopeConnector : MonoBehaviour
 
         boltView.Disabling += DisconnectRope;
 
-        _connectedPairs.Add(boltView, rope);
+        _connections.Add(boltView, rope);
         rope.SetColor(requiredColor);
         rope.Connect(boltView.Transform, holderString);
     }
@@ -61,8 +61,7 @@ public class BoltHolderRopeConnector : MonoBehaviour
     private void DisconnectRope(Bolt boltView)
     {
         boltView.Disabling -= DisconnectRope;
-
-        _connectedPairs[boltView].Disconect();
-        _connectedPairs.Remove(boltView);
+        _connections[boltView].Disconnect();
+        _connections.Remove(boltView);
     }
 }

@@ -70,8 +70,9 @@ public class Bolt : MonoBehaviour
 
     private void Disable()
     {
-        Disabling?.Invoke(this);
+        _moveView.Transform.rotation = _moveView.StartRotation;
 
+        Disabling?.Invoke(this);
         SetActive(false);
     }
 }

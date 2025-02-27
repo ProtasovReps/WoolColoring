@@ -29,7 +29,7 @@ public class HoldersRopeConnector : MonoBehaviour
 
     private void ConnectHolders(Color color, int stringFillCount)
     {
-        Transform freePosition = GetFreeTransform(color);
+        Transform freePosition = GetHolderTransform(color);
 
         if (freePosition == null)
             return;
@@ -47,10 +47,10 @@ public class HoldersRopeConnector : MonoBehaviour
         for (int i = 0; i < stringFillCount; i++)
             yield return _delay;
 
-        rope.Disconect();
+        rope.Disconnect();
     }
 
-    private Transform GetFreeTransform(Color color)
+    private Transform GetHolderTransform(Color color)
     {
         Transform stringPosition = null;
 

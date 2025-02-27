@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _segmentsCount: 8
-  _autodestroyTime: 0.5
+  _autodestroyTime: 0.3
   _segmentAppearDelay: 0.01
   _segmentsDisappearDelay: 0.03
   _maxOffset: 0.1

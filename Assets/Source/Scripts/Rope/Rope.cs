@@ -8,11 +8,11 @@ using Random = UnityEngine.Random;
 public class Rope : MonoBehaviour, IColorSettable
 {
     [SerializeField] private int _segmentsCount;
-    [SerializeField] private float _autodestroyTime;
     [SerializeField] private float _segmentAppearDelay;
     [SerializeField] private float _segmentsDisappearDelay;
     [SerializeField] private float _maxOffset;
 
+    private float _reconnectAutodestroyTime = 0.3f;
     private WaitForSeconds _appearDelay;
     private WaitForSeconds _disappearDelay;
     private ColorView _colorView;
@@ -53,7 +53,7 @@ public class Rope : MonoBehaviour, IColorSettable
         _coroutine = StartCoroutine(ReconnectAnimated(endPosition));
     }
 
-    public void Disconect()
+    public void Disconnect()
     {
         StopCoroutine(_coroutine);
         StartCoroutine(DisappearAnimated());
@@ -100,7 +100,7 @@ public class Rope : MonoBehaviour, IColorSettable
 
         _lineRenderer.positionCount = _segmentsCount;
 
-        while (elapsedTime < _autodestroyTime)
+        while (elapsedTime < _reconnectAutodestroyTime)
         {
             _lineRenderer.SetPosition(0, _lastStartPoint.position);
 
@@ -114,7 +114,7 @@ public class Rope : MonoBehaviour, IColorSettable
             _lineRenderer.SetPosition(lastIndex, endPosition.position);
         }
 
-        Disconect();
+        Disconnect();
     }
 
     private IEnumerator DisappearAnimated()

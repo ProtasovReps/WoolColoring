@@ -1,7 +1,6 @@
 using LitMotion;
 using LitMotion.Extensions;
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ColorView))]
@@ -13,8 +12,7 @@ public class ColorStringView : MonoBehaviour
     [SerializeField] private float _disappearDuration = 1f;
 
     private ColorStringPresenter _presenter;
-    private Queue<Action> _actions;
-    private bool _isAnimated;
+    private ActionQueue _actionQueue;
     private ColorView _colorView;
     private TransformView _transformView;
     private ActiveStateSwitcher _stateSwitcher;
@@ -27,11 +25,11 @@ public class ColorStringView : MonoBehaviour
             throw new ArgumentNullException(nameof(presenter));
 
         _presenter = presenter;
+        _actionQueue = new ActionQueue();
         _stateSwitcher = GetComponent<ActiveStateSwitcher>();
         _transformView = GetComponent<TransformView>();
         _colorView = GetComponent<ColorView>();
 
-        _actions = new Queue<Action>();
         _transformView.Initialize();
         _colorView.Initialize();
         _stateSwitcher.Initialize();
@@ -39,14 +37,14 @@ public class ColorStringView : MonoBehaviour
 
     public void Appear()
     {
-        _actions.Enqueue(AppearAnimated);
-        ValidateAnimation();
+        _actionQueue.AddAction(AppearAnimated);
+        _actionQueue.ValidateAction();
     }
 
     public void Disappear()
     {
-        _actions.Enqueue(DisappearAnimated);
-        ValidateAnimation();
+        _actionQueue.AddAction(DisappearAnimated);
+        _actionQueue.ValidateAction();
     }
 
     private void AppearAnimated()
@@ -57,7 +55,7 @@ public class ColorStringView : MonoBehaviour
         _stateSwitcher.SetActive(true);
 
         LMotion.Create(Vector3.zero, _transformView.StartScale, _appearDuration)
-            .WithOnComplete(ProcessQueuedAnimations)
+            .WithOnComplete(_actionQueue.ProcessQueuedAction)
             .BindToLocalScale(_transformView.Transform);
     }
 
@@ -68,29 +66,9 @@ public class ColorStringView : MonoBehaviour
             .BindToLocalScale(_transformView.Transform);
     }
 
-    private void ValidateAnimation()
-    {
-        if (_isAnimated == false)
-        {
-            _isAnimated = true;
-            ProcessQueuedAnimations();
-        }
-    }
-
     private void FinalizeDisappearing()
     {
         _stateSwitcher.SetActive(false);
-        ProcessQueuedAnimations();
-    }
-
-    private void ProcessQueuedAnimations()
-    {
-        if (_actions.Count == 0)
-        {
-            _isAnimated = false;
-            return;
-        }
-
-        _actions.Dequeue()?.Invoke();
+        _actionQueue.ProcessQueuedAction();
     }
 }
