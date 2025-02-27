@@ -5,27 +5,16 @@ using UnityEngine;
 public class BlockHolderConnector : MonoBehaviour
 {
     [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
-    [SerializeField] private ColorBlockViewStash _colorBlockStash;
     [SerializeField] private RopePool _ropePool;
-    [SerializeField] private float _disconnectDelay;
 
     private Dictionary<Color, Rope> _connections;
 
-    private void OnDestroy()
-    {
-        foreach (ColorBlockView colorBlock in _colorBlockStash.ColorBlockViews)
-            colorBlock.Coloring -= OnColoring;
-    }
-
     public void Initialize()
     {
-        foreach (ColorBlockView colorBlock in _colorBlockStash.ColorBlockViews)
-            colorBlock.Coloring += OnColoring;
-
         _connections = new Dictionary<Color, Rope>();
     }
 
-    private void OnColoring(ColorBlockView blockView)
+    public void Connect(ColorBlockView blockView)
     {
         Color requiredColor = blockView.RequiredColor;
 

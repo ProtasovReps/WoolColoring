@@ -52,8 +52,10 @@ public class CompositeRoot : MonoBehaviour
     {
         var pictureBinder = new PictureBinder();
         var colorBlockBinder = new ColorBlockBinder();
-        List<ColorBlock> colorBlocks = colorBlockBinder.Bind(_pictureView.ColorBlocks);
 
+        _blockHolderConnector.Initialize();
+
+        List<ColorBlock> colorBlocks = colorBlockBinder.Bind(_pictureView.ColorBlocks, _blockHolderConnector);
         _picture = pictureBinder.Bind(_pictureView, colorBlocks, _malbert);
     }
 
@@ -93,6 +95,5 @@ public class CompositeRoot : MonoBehaviour
     {
         _boltConnector.Initialize(_stringDistributor);
         _holdersRopeConnector.Initialize(_stringDistributor);
-        _blockHolderConnector.Initialize();
     }
 }

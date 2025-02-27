@@ -4416,6 +4416,7 @@ MonoBehaviour:
   - {fileID: 1646377972}
   - {fileID: 2024720405}
   - {fileID: 1633380287}
+  _ropeConnectDelay: 0.7
   _perStringLifeTime: 0.2
   _whiteHolder: {fileID: 8970590229707521081}
   _ropePool: {fileID: 1112000195}
@@ -4436,9 +4437,7 @@ MonoBehaviour:
   - {fileID: 1646377972}
   - {fileID: 2024720405}
   - {fileID: 1633380287}
-  _colorBlockStash: {fileID: 932203173}
   _ropePool: {fileID: 1112000195}
-  _disconnectDelay: 0
 --- !u!1 &1157861702
 GameObject:
   m_ObjectHideFlags: 0

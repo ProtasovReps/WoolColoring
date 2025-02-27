@@ -5,12 +5,14 @@ using UnityEngine;
 public class HoldersRopeConnector : MonoBehaviour
 {
     [SerializeField] private ColoredStringHolderView[] _coloredHolders;
+    [SerializeField] private float _ropeConnectDelay;
     [SerializeField] private float _perStringLifeTime;
     [SerializeField] private WhiteStringHolderView _whiteHolder;
     [SerializeField] private RopePool _ropePool;
 
     private StringDistributor _stringDistributor;
     private WaitForSeconds _delay;
+    private WaitForSeconds _connectDelay;
 
     private void OnDestroy()
     {
@@ -22,6 +24,7 @@ public class HoldersRopeConnector : MonoBehaviour
         if (stringDistributor == null)
             throw new ArgumentNullException(nameof(stringDistributor));
 
+        _connectDelay = new WaitForSeconds(_ropeConnectDelay);
         _delay = new WaitForSeconds(_perStringLifeTime);
         _stringDistributor = stringDistributor;
         _stringDistributor.WhiteHolderDistributing += ConnectHolders;
@@ -34,16 +37,17 @@ public class HoldersRopeConnector : MonoBehaviour
         if (freePosition == null)
             return;
 
+        StartCoroutine(ConnectDelayed(color, freePosition, stringFillCount));
+    }
+
+    private IEnumerator ConnectDelayed(Color color, Transform freePosition, int stringFillCount)
+    {
+        yield return _connectDelay;
         Rope rope = _ropePool.Get();
 
         rope.SetColor(color);
         rope.Connect(_whiteHolder.Transform, freePosition);
 
-        StartCoroutine(DisconectDelayed(rope, stringFillCount));
-    }
-
-    private IEnumerator DisconectDelayed(Rope rope, int stringFillCount)
-    {
         for (int i = 0; i < stringFillCount; i++)
             yield return _delay;
 

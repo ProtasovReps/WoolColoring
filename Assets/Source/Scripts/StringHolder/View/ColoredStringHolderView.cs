@@ -14,6 +14,7 @@ public class ColoredStringHolderView : StringHolderView, IColorable
     private ColorView _colorView;
     private Color _lastColor;
     private ColoredStringHolderPresenter _presenter;
+    private ActionQueue _actionQueue;
 
     public Color Color => _presenter.GetColor();
 
@@ -22,8 +23,9 @@ public class ColoredStringHolderView : StringHolderView, IColorable
         if (presenter == null)
             throw new ArgumentNullException(nameof(presenter));
 
-        _colorView = GetComponent<ColorView>();
         _presenter = presenter;
+        _actionQueue = new ActionQueue();
+        _colorView = GetComponent<ColorView>();
 
         _colorView.Initialize();
         Initialize();
@@ -32,9 +34,11 @@ public class ColoredStringHolderView : StringHolderView, IColorable
     public void Switch()
     {
         if (_lastColor == _presenter.GetColor())
-            Jump();
+            _actionQueue.AddAction(Jump);
         else
-            Slide();
+            _actionQueue.AddAction(Slide);
+
+        _actionQueue.ValidateAction();
     }
 
     private void Jump()
@@ -64,6 +68,7 @@ public class ColoredStringHolderView : StringHolderView, IColorable
             .BindToLocalScale(Transform))
             .Join(LMotion.Create(targetUpPosition, position.y, _jumpDuration)
             .WithEase(Ease.OutQuint)
+            .WithOnComplete(FinalizeJump)
             .BindToPositionY(Transform))
             .Run();
     }
@@ -71,15 +76,21 @@ public class ColoredStringHolderView : StringHolderView, IColorable
     private void Slide()
     {
         LSequence.Create()
-            .AppendInterval(_slideDelay)
             .Append(LMotion.Create(Transform.position.x, _targetSwitchPosition.position.x, _switchDuration)
             .WithEase(Ease.InQuint)
             .WithOnComplete(SetColor)
             .BindToPositionX(Transform))
             .Append(LMotion.Create(_targetSwitchPosition.position.x, TransformView.StartPosition.x, _switchDuration)
             .WithEase(Ease.InOutQuint)
+            .WithOnComplete(_actionQueue.ProcessQueuedAction)
             .BindToPositionX(Transform))
             .Run();
+    }
+
+    private void FinalizeJump()
+    {
+        Transform.rotation = TransformView.StartRotation;
+        _actionQueue.ProcessQueuedAction();
     }
 
     private void SetColor()
