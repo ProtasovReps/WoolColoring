@@ -50,8 +50,6 @@ public class BlockHolderConnector : MonoBehaviour
             newRope.Connect(holder.Transform, block.Transform);
             _connections.Add(color, newRope);
         }
-
-        block.SetColor(color);
     }
 
     private ColoredStringHolderView GetColoredHolder(Color color)

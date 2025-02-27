@@ -15,7 +15,7 @@ public class ColorBlockPresenter : IDisposable
         if (model == null)
             throw new NullReferenceException(nameof(model));
 
-        if(connector == null)
+        if (connector == null)
             throw new NullReferenceException(nameof(connector));
 
         _view = view;
@@ -27,5 +27,9 @@ public class ColorBlockPresenter : IDisposable
 
     public void Dispose() => _model.ColorSetted -= OnColorSetted;
 
-    private void OnColorSetted(Color color) => _connector.Setup(_view);
+    private void OnColorSetted(Color color)
+    {
+        _view.SetColor(color);
+        _connector.Setup(_view);
+    }
 }
