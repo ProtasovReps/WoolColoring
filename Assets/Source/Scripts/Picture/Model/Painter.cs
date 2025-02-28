@@ -1,5 +1,5 @@
+using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class Painter : MonoBehaviour
@@ -10,7 +10,6 @@ public class Painter : MonoBehaviour
     private Picture _picture;
     private ColoredStringHolderStash _holderStash;
     private ColoredStringHolderSwitcher _switcher;
-    private WaitForSeconds _delay;
 
     public void Initialize(Picture picture, ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash)
     {
@@ -26,7 +25,6 @@ public class Painter : MonoBehaviour
         _picture = picture;
         _holderStash = stash;
         _switcher = switcher;
-        _delay = new WaitForSeconds(_colorizeDelay);
 
         foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
             holder.Filled += OnHolderFilled;
@@ -43,10 +41,10 @@ public class Painter : MonoBehaviour
         if (holder is ColoredStringHolder coloderHolder == false)
             throw new InvalidCastException();
 
-        StartCoroutine(FillImage(coloderHolder));
+        FillImage(coloderHolder);
     }
 
-    private IEnumerator FillImage(ColoredStringHolder holder)
+    private async UniTaskVoid FillImage(ColoredStringHolder holder)
     {
         Color color = holder.Color;
 
@@ -59,7 +57,7 @@ public class Painter : MonoBehaviour
             for (int j = 0; j < _blocksPerString; j++)
             {
                 _picture.Colorize(color);
-                yield return _delay;
+                await UniTask.WaitForSeconds(_colorizeDelay);
             }
         }
 

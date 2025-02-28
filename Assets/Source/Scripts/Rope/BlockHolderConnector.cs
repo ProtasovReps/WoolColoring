@@ -1,5 +1,5 @@
+using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,15 +9,15 @@ public class BlockHolderConnector : MonoBehaviour
     [SerializeField] private RopePool _ropePool;
     [SerializeField] private float _ropeDisconnectDelay;
 
-    private WaitForSeconds _connectDelay;
-    private WaitForSeconds _disconnectDelay;
+    private float _connectDelay;
+    private float _disconnectDelay;
     private Dictionary<Color, Rope> _connections;
 
     public void Initialize()
     {
         _connections = new Dictionary<Color, Rope>();
-        _connectDelay = new WaitForSeconds(_stringHolderViews[0].SwitchDuration);
-        _disconnectDelay = new WaitForSeconds(_ropeDisconnectDelay);
+        _connectDelay = _stringHolderViews[0].SwitchDuration;
+        _disconnectDelay = _ropeDisconnectDelay;
     }
 
     public void Setup(ColorBlockView block)
@@ -29,7 +29,7 @@ public class BlockHolderConnector : MonoBehaviour
         {
             if (_connections.ContainsKey(requiredColor) == false)
             {
-                StartCoroutine(ConnectDelayed(block, holder, requiredColor));
+                ConnectDelayed(block, holder, requiredColor);
             }
         }
         else
@@ -52,7 +52,7 @@ public class BlockHolderConnector : MonoBehaviour
             newRope.Connect(holder.Transform, block.Transform);
             _connections.Add(color, newRope);
 
-            StartCoroutine(DisconnectDelayed(newRope));
+            DisconnectDelayed(newRope);
         }
     }
 
@@ -67,15 +67,15 @@ public class BlockHolderConnector : MonoBehaviour
         throw new InvalidOperationException();
     }
 
-    private IEnumerator ConnectDelayed(ColorBlockView block, ColoredStringHolderView holder, Color color)
+    private async UniTaskVoid ConnectDelayed(ColorBlockView block, ColoredStringHolderView holder, Color color)
     {
-        yield return _connectDelay;
+        await UniTask.WaitForSeconds(_connectDelay);
         SetupRope(block, holder, color);
     }
 
-    private IEnumerator DisconnectDelayed(Rope rope)
+    private async UniTaskVoid DisconnectDelayed(Rope rope)
     {
-        yield return _disconnectDelay;
+        await UniTask.WaitForSeconds(_disconnectDelay);
         rope.Disconnect();
         _connections.Remove(rope.Color);
     }

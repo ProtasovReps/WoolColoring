@@ -1,5 +1,6 @@
+using Cysharp.Threading.Tasks;
 using System;
-using System.Collections;
+using System.Threading;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,11 +13,10 @@ public class Rope : MonoBehaviour, IColorSettable
     [SerializeField] private float _segmentsDisappearDelay;
     [SerializeField] private float _maxOffset;
 
-    private WaitForSeconds _appearDelay;
-    private WaitForSeconds _disappearDelay;
     private ColorView _colorView;
     private LineRenderer _lineRenderer;
-    private Coroutine _coroutine;
+    private UniTask _task;
+    private CancellationTokenSource _cancellationTokenSource;
     private Transform _lastStartPoint;
 
     public event Action<Rope> Disconected;
@@ -27,8 +27,6 @@ public class Rope : MonoBehaviour, IColorSettable
     {
         _lineRenderer = GetComponent<LineRenderer>();
         _colorView = GetComponent<ColorView>();
-        _appearDelay = new WaitForSeconds(_segmentAppearDelay);
-        _disappearDelay = new WaitForSeconds(_segmentsDisappearDelay);
 
         _colorView.Initialize();
     }
@@ -38,39 +36,37 @@ public class Rope : MonoBehaviour, IColorSettable
     public void Connect(Transform startPosition, Transform endPosition)
     {
         _lastStartPoint = startPosition;
-        _coroutine = StartCoroutine(ConnectAnimated(startPosition, endPosition));
+        _task = ConnectAnimated(startPosition, endPosition);
     }
 
-    public void Reconnect(Transform endPosition)
+    public async UniTaskVoid Reconnect(Transform endPosition)
     {
         if (_lastStartPoint == null)
             throw new InvalidOperationException();
 
-        if (_coroutine != null)
-            StopCoroutine(_coroutine);
-
-        _coroutine = StartCoroutine(ReconnectAnimated(endPosition));
+        await ValidateTask();
+        _task = ReconnectAnimated(endPosition);
     }
 
-    public void Disconnect()
+    public async UniTaskVoid Disconnect()
     {
-        StopCoroutine(_coroutine);
-        StartCoroutine(DisappearAnimated());
+        await ValidateTask();
+        DisappearAnimated();
     }
 
-    private IEnumerator ConnectAnimated(Transform startPosition, Transform endPosition)
+    private async UniTask ConnectAnimated(Transform startPosition, Transform endPosition)
     {
-        yield return AppearAnimated(startPosition.position, endPosition.position);
-        yield return UpdatePositions(startPosition, endPosition);
+        await AppearAnimated(startPosition.position, endPosition.position);
+        await UpdatePositions(startPosition, endPosition);
     }
 
-    private IEnumerator ReconnectAnimated(Transform endPosition)
+    private async UniTask ReconnectAnimated(Transform endPosition)
     {
         _lineRenderer.positionCount = _segmentsCount;
-        yield return UpdatePositions(_lastStartPoint, endPosition);
+        await UpdatePositions(_lastStartPoint, endPosition);
     }
 
-    private IEnumerator AppearAnimated(Vector3 startPosition, Vector3 endPosition)
+    private async UniTask AppearAnimated(Vector3 startPosition, Vector3 endPosition)
     {
         int lastIndex = _segmentsCount - 1;
 
@@ -80,23 +76,24 @@ public class Rope : MonoBehaviour, IColorSettable
         {
             _lineRenderer.positionCount++;
             SetPosition(startPosition, endPosition, i);
-            yield return _appearDelay;
+            await UniTask.WaitForSeconds(_segmentAppearDelay);
         }
     }
 
-    private IEnumerator UpdatePositions(Transform startPosition, Transform endPosition)
+    private async UniTask UpdatePositions(Transform startPosition, Transform endPosition)
     {
         int firstIndex = 1;
         int lastIndex = _segmentsCount - 1;
+        _cancellationTokenSource = new CancellationTokenSource();
 
-        while (true)
+        while (_cancellationTokenSource.IsCancellationRequested == false)
         {
             _lineRenderer.SetPosition(0, startPosition.position);
 
             for (int i = firstIndex; i < lastIndex; i++)
             {
                 SetPosition(startPosition.position, endPosition.position, i);
-                yield return null;
+                await UniTask.Yield();
             }
 
             _lineRenderer.SetPosition(lastIndex, endPosition.position);
@@ -113,15 +110,25 @@ public class Rope : MonoBehaviour, IColorSettable
         _lineRenderer.SetPosition(segmentNumber, position);
     }
 
-    private IEnumerator DisappearAnimated()
+    private async UniTaskVoid DisappearAnimated()
     {
         for (int i = 0; i < _lineRenderer.positionCount; i++)
         {
             _lineRenderer.positionCount--;
-            yield return _disappearDelay;
+            await UniTask.WaitForSeconds(_segmentsDisappearDelay);
         }
 
-        _coroutine = null;
         Disconected?.Invoke(this);
+    }
+
+    private async UniTask ValidateTask()
+    {
+        if (_task.Status.IsCompleted() || _task.Status.IsCanceled())
+            return;
+
+        _cancellationTokenSource.Cancel();
+        await _task;
+
+        _cancellationTokenSource.Dispose();
     }
 }

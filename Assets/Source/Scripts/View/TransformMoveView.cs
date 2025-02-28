@@ -1,59 +1,60 @@
-using System.Collections;
+using Cysharp.Threading.Tasks;
+using System.Threading;
 using UnityEngine;
 
 public class TransformMoveView : TransformView
 {
-    private Coroutine _coroutine;
+    private UniTask _task;
+    private CancellationTokenSource _cancellationTokenSource;
     private float _minDistance = 0.01f;
 
-    public void ChangePosition(Vector3 targetPosition, Collider[] colliders, float moveSpeed)
+    public async UniTaskVoid ChangePosition(Vector3 targetPosition, Collider[] colliders, float moveSpeed)
     {
-        ValidateCoroutine();
+        ValidateTask();
 
-        _coroutine = StartCoroutine(MoveSmoothly(targetPosition, colliders, moveSpeed));
+        _cancellationTokenSource = new CancellationTokenSource();
+        _task = MoveSmoothly(targetPosition, colliders, moveSpeed);
     }
 
-    public void ChangePosition(Transform comparer, Vector3 targetPosition, float moveSpeed)
+    public async UniTaskVoid ChangePosition(Transform comparer, Vector3 targetPosition, float moveSpeed)
     {
-        ValidateCoroutine();
+        ValidateTask();
 
-        _coroutine = StartCoroutine(MoveSmoothly(comparer, targetPosition, moveSpeed));
+        _cancellationTokenSource = new CancellationTokenSource();
+        _task = MoveSmoothly(comparer, targetPosition, moveSpeed);
     }
 
-    private IEnumerator MoveSmoothly(Vector3 position, Collider[] colliders, float moveSpeed)
+    private async UniTask MoveSmoothly(Vector3 position, Collider[] colliders, float moveSpeed)
     {
         SetColliderEnableState(false, colliders);
 
-        while (GetSquareMagnitude(position, Transform.position) > _minDistance)
+        while (GetSquareMagnitude(position, Transform.position) > _minDistance && _cancellationTokenSource.IsCancellationRequested == false)
         {
             Transform.position = Vector3.Lerp(Transform.position, position, moveSpeed * Time.deltaTime);
-            yield return null;
+            await UniTask.Yield();
         }
 
         SetColliderEnableState(true, colliders);
-
-        _coroutine = null;
     }
 
-    private IEnumerator MoveSmoothly(Transform comparer, Vector3 targetPosition, float moveSpeed)
+    private async UniTask MoveSmoothly(Transform comparer, Vector3 targetPosition, float moveSpeed)
     {
-        while (GetSquareMagnitude(targetPosition, comparer.position, out Vector3 offset) > _minDistance)
+        while (GetSquareMagnitude(targetPosition, comparer.position, out Vector3 offset) > _minDistance && _cancellationTokenSource.IsCancellationRequested == false)
         {
             Vector3 finalPosition = Transform.position + new Vector3(0f, offset.y, 0f);
 
             Transform.position = Vector3.Lerp(Transform.position, finalPosition, moveSpeed * Time.deltaTime);
-            yield return null;
+            await UniTask.Yield();
         }
-
-        _coroutine = null;
     }
 
-    private void ValidateCoroutine()
+    private void ValidateTask()
     {
-        if (_coroutine == null)
+        if (_task.Status.IsCompleted() || _task.Status.IsCanceled() || _cancellationTokenSource == null)
             return;
 
-        StopCoroutine(_coroutine);
+        _cancellationTokenSource.Cancel();
+        _cancellationTokenSource.Dispose();
     }
 
     private void SetColliderEnableState(bool isActive, Collider[] colliders)

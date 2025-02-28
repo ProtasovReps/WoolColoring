@@ -1,20 +1,17 @@
-using System.Collections;
 using UnityEngine;
 using System;
+using Cysharp.Threading.Tasks;
 
 public class EffectPlayer : MonoBehaviour
 {
     public event Action<ParticleSystem> EffectCompleted;
 
-    public void Play(ParticleSystem effect, WaitForSeconds effectDuration)
-        => StartCoroutine(PlayEffect(effect, effectDuration));
-
-    private IEnumerator PlayEffect(ParticleSystem effect, WaitForSeconds effectDuration)
+    public async UniTaskVoid Play(ParticleSystem effect)
     {
         effect.gameObject.SetActive(true);
         effect.Play();
 
-        yield return effectDuration;
+        await UniTask.WaitForSeconds(effect.main.duration);
         EffectCompleted?.Invoke(effect);
         effect.gameObject.SetActive(false);
     }

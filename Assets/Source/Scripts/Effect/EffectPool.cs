@@ -10,7 +10,6 @@ public class EffectPool : MonoBehaviour
     private Transform _transform;
     private BoltStash _boltStash;
     private Queue<ParticleSystem> _freeEffects;
-    private WaitForSeconds _effectDelay;
 
     private void OnDisable()
     {
@@ -26,7 +25,6 @@ public class EffectPool : MonoBehaviour
         _transform = transform;
         _boltStash = boltStash;
         _freeEffects = new Queue<ParticleSystem>();
-        _effectDelay = new WaitForSeconds(_effectPrefab.main.duration);
 
         _effectPlayer.EffectCompleted += OnEffectCompleted;
         _boltStash.BoltsAdded += SubscribeBolts;
@@ -53,7 +51,7 @@ public class EffectPool : MonoBehaviour
         }
 
         effect.transform.position = boltView.Transform.position;
-        _effectPlayer.Play(effect, _effectDelay);
+        _effectPlayer.Play(effect);
     }
 
     private void OnEffectCompleted(ParticleSystem effect)
