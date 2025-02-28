@@ -51,7 +51,7 @@ public class EffectPool : MonoBehaviour
         }
 
         effect.transform.position = boltView.Transform.position;
-        _effectPlayer.Play(effect);
+        _effectPlayer.Play(effect).Forget();
     }
 
     private void OnEffectCompleted(ParticleSystem effect)

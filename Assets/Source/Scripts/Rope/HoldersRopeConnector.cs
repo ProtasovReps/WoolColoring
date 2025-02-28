@@ -33,7 +33,7 @@ public class HoldersRopeConnector : MonoBehaviour
         if (freePosition == null)
             return;
 
-        ConnectDelayed(color, freePosition, stringFillCount);
+        ConnectDelayed(color, freePosition, stringFillCount).Forget();
     }
 
     private async UniTaskVoid ConnectDelayed(Color color, Transform freePosition, int stringFillCount)
@@ -47,7 +47,7 @@ public class HoldersRopeConnector : MonoBehaviour
         for (int i = 0; i < stringFillCount; i++)
             await UniTask.WaitForSeconds(_perStringLifeTime);
 
-        rope.Disconnect();
+        rope.Disconnect().Forget();
     }
 
     private Transform GetHolderTransform(Color color)

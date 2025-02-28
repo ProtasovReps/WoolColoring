@@ -29,7 +29,7 @@ public class BlockHolderConnector : MonoBehaviour
         {
             if (_connections.ContainsKey(requiredColor) == false)
             {
-                ConnectDelayed(block, holder, requiredColor);
+                ConnectDelayed(block, holder, requiredColor).Forget();
             }
         }
         else
@@ -42,7 +42,7 @@ public class BlockHolderConnector : MonoBehaviour
     {
         if (_connections.ContainsKey(color))
         {
-            _connections[color].Reconnect(block.Transform);
+            _connections[color].Reconnect(block.Transform).Forget();
         }
         else
         {
@@ -52,7 +52,7 @@ public class BlockHolderConnector : MonoBehaviour
             newRope.Connect(holder.Transform, block.Transform);
             _connections.Add(color, newRope);
 
-            DisconnectDelayed(newRope);
+            DisconnectDelayed(newRope).Forget();
         }
     }
 
@@ -76,7 +76,7 @@ public class BlockHolderConnector : MonoBehaviour
     private async UniTaskVoid DisconnectDelayed(Rope rope)
     {
         await UniTask.WaitForSeconds(_disconnectDelay);
-        rope.Disconnect();
+        rope.Disconnect().Forget();
         _connections.Remove(rope.Color);
     }
 }

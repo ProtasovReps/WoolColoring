@@ -8,7 +8,7 @@ public class TransformMoveView : TransformView
     private CancellationTokenSource _cancellationTokenSource;
     private float _minDistance = 0.01f;
 
-    public async UniTaskVoid ChangePosition(Vector3 targetPosition, Collider[] colliders, float moveSpeed)
+    public void ChangePosition(Vector3 targetPosition, Collider[] colliders, float moveSpeed)
     {
         ValidateTask();
 
@@ -16,7 +16,7 @@ public class TransformMoveView : TransformView
         _task = MoveSmoothly(targetPosition, colliders, moveSpeed);
     }
 
-    public async UniTaskVoid ChangePosition(Transform comparer, Vector3 targetPosition, float moveSpeed)
+    public void ChangePosition(Transform comparer, Vector3 targetPosition, float moveSpeed)
     {
         ValidateTask();
 

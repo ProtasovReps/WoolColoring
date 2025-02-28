@@ -61,7 +61,7 @@ public class BoltHolderRopeConnector : MonoBehaviour
     private void DisconnectRope(Bolt boltView)
     {
         boltView.Disabling -= DisconnectRope;
-        _connections[boltView].Disconnect();
+        _connections[boltView].Disconnect().Forget();
         _connections.Remove(boltView);
     }
 }

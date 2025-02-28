@@ -41,7 +41,7 @@ public class Painter : MonoBehaviour
         if (holder is ColoredStringHolder coloderHolder == false)
             throw new InvalidCastException();
 
-        FillImage(coloderHolder);
+        FillImage(coloderHolder).Forget();
     }
 
     private async UniTaskVoid FillImage(ColoredStringHolder holder)

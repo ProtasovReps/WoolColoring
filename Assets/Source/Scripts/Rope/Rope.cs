@@ -51,7 +51,7 @@ public class Rope : MonoBehaviour, IColorSettable
     public async UniTaskVoid Disconnect()
     {
         await ValidateTask();
-        DisappearAnimated();
+        DisappearAnimated().Forget();
     }
 
     private async UniTask ConnectAnimated(Transform startPosition, Transform endPosition)
