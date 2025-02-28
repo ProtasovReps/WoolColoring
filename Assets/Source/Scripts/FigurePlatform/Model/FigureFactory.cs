@@ -1,20 +1,9 @@
 using UnityEngine;
-using System;
+using Reflex.Attributes;
 
 public class FigureFactory : MonoBehaviour
 {
-    private BoltStash _stash;
-    private FigureBinder _figureBinder;
-
-    public void Initialize(BoltStash boltStash)
-    {
-        if (boltStash == null)
-            throw new ArgumentNullException(nameof(boltStash));
-
-        _stash = boltStash;
-
-        _figureBinder = new FigureBinder();
-    }
+    [Inject] private readonly BoltStash _stash;
 
     public Figure Produce(FigureView view)
     {
@@ -26,7 +15,8 @@ public class FigureFactory : MonoBehaviour
     {
         var model = new Figure();
         var presenter = new FigurePresenter(model, view);
+        view.Initialize(presenter);
 
-        return _figureBinder.Bind(model, view, presenter);
+        return model;
     }
 }

@@ -1,14 +1,15 @@
 using Cysharp.Threading.Tasks;
+using Reflex.Attributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BlockHolderConnector : MonoBehaviour
 {
-    [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
-    [SerializeField] private RopePool _ropePool;
     [SerializeField] private float _ropeDisconnectDelay;
 
+    [Inject] private ColoredStringHolderView[] _stringHolderViews;
+    [Inject] private readonly RopePool _ropePool;
     private float _connectDelay;
     private float _disconnectDelay;
     private Dictionary<Color, Rope> _connections;

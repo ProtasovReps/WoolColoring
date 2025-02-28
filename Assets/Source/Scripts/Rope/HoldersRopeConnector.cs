@@ -1,15 +1,16 @@
 using Cysharp.Threading.Tasks;
+using Reflex.Attributes;
 using System;
 using UnityEngine;
 
 public class HoldersRopeConnector : MonoBehaviour
 {
-    [SerializeField] private ColoredStringHolderView[] _coloredHolders;
-    [SerializeField] private WhiteStringHolderView _whiteHolder;
-    [SerializeField] private RopePool _ropePool;
     [SerializeField] private float _ropeConnectDelay;
     [SerializeField] private float _perStringLifeTime;
 
+    [Inject] private readonly WhiteStringHolderView _whiteHolder;
+    [Inject] private readonly ColoredStringHolderView[] _coloredHolders;
+    [Inject] private readonly RopePool _ropePool;
     private StringDistributor _stringDistributor;
 
     private void OnDestroy()

@@ -1,31 +1,24 @@
 using UnityEngine;
-using System.Collections.Generic;
 using System;
 
 public class Conveyer : IDisposable
 {
-    private readonly PositionDatabase _positionDatabase;
     private readonly FigureCompositionPool _figurePool;
-    private readonly int _minFiguresCount;
+    private readonly PositionDatabase _positionDatabase;
+    private readonly int _minFiguresCount = 3;
 
-    public Conveyer(FigureCompositionFactory factory, IReadOnlyCollection<ConveyerPosition> positions, int minFiguresCount)
+    public Conveyer(FigureCompositionPool pool, PositionDatabase positionDatabase)
     {
-        if (positions.Count == 0)
-            throw new EmptyCollectionException();
-
-        if (factory == null)
-            throw new ArgumentNullException(nameof(factory));
-
-        if (minFiguresCount <= 0 || minFiguresCount >= positions.Count)
-            throw new ArgumentException(nameof(minFiguresCount));
-
-        _positionDatabase = new PositionDatabase(positions);
-        _figurePool = new FigureCompositionPool(factory);
-        _minFiguresCount = minFiguresCount;
+        _figurePool = pool;
+        _positionDatabase = positionDatabase;
 
         _positionDatabase.PositionChanged += OnPositionChanged;
+    }
 
-        FillAllFigures();
+    public void FillAllFigures()
+    {
+        while (_positionDatabase.PositionsCount > _positionDatabase.TransformablesCount)
+            AddFigure();
     }
 
     public void Dispose()
@@ -50,12 +43,6 @@ public class Conveyer : IDisposable
 
         if (_positionDatabase.TransformablesCount <= _minFiguresCount)
             FillAllFigures();
-    }
-
-    private void FillAllFigures()
-    {
-        while (_positionDatabase.PositionsCount > _positionDatabase.TransformablesCount)
-            AddFigure();
     }
 
     private void OnPositionChanged(ITransformable transformable, Vector3 position)

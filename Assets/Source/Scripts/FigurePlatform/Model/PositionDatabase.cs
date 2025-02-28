@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
-using System.Linq;
 
 public class PositionDatabase
 {
@@ -12,21 +11,21 @@ public class PositionDatabase
 
     public int TransformablesCount { get; private set; }
 
-    public PositionDatabase(IReadOnlyCollection<ConveyerPosition> positions)
+    public PositionDatabase(ConveyerPosition[] positions)
     {
         if (positions == null)
             throw new ArgumentNullException();
 
-        if (positions.Count == 0)
+        if (positions.Length == 0)
             throw new EmptyCollectionException();
 
-        _transformables = new FigureComposition[positions.Count];
-        var tempPositions = new List<ConveyerPosition>(positions.Count);
+        _transformables = new FigureComposition[positions.Length];
+        var tempPositions = new List<ConveyerPosition>(positions.Length);
 
         foreach (var position in positions)
             tempPositions.Add(position);
 
-        _positions = tempPositions.OrderByDescending(position => position.Position.y).ToArray();
+        _positions = tempPositions.ToArray();
     }
 
     public int PositionsCount => _positions.Length;

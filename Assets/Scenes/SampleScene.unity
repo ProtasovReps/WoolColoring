@@ -952,6 +952,11 @@ GameObject:
   m_Component:
   - component: {fileID: 398913775}
   - component: {fileID: 398913774}
+  - component: {fileID: 398913777}
+  - component: {fileID: 398913776}
+  - component: {fileID: 398913779}
+  - component: {fileID: 398913778}
+  - component: {fileID: 398913780}
   m_Layer: 0
   m_Name: CompositeRoot
   m_TagString: Untagged
@@ -972,29 +977,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pictureView: {fileID: 2079901634}
-  _effectPool: {fileID: 1275331668}
   _painter: {fileID: 1343193559}
   _malbert: {fileID: 1343193558}
   _clickView: {fileID: 1999060525}
   _whiteStringHolderView: {fileID: 8970590229707521081}
-  _conveyerPositions:
-  - {fileID: 1269362996}
-  - {fileID: 1030937969}
-  - {fileID: 1772938206}
-  - {fileID: 276987096}
-  - {fileID: 297588648}
-  - {fileID: 1322514152}
   _stringHolderViews:
   - {fileID: 543450652158031600}
   - {fileID: 1646377972}
   - {fileID: 2024720405}
   - {fileID: 1633380287}
-  _figureFactory: {fileID: 446517873}
   _figureCompositionFactory: {fileID: 353881122}
   _boltConnector: {fileID: 1141542322}
   _holdersRopeConnector: {fileID: 1141542324}
   _blockHolderConnector: {fileID: 1141542325}
-  _minFiguresCount: 3
   _startHoldersCount: 4
 --- !u!4 &398913775
 Transform:
@@ -1011,6 +1006,82 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &398913776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398913773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c4c30febb0f44045b7d4fba91b4de70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ropePool: {fileID: 1112000195}
+--- !u!114 &398913777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398913773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd1482e4a9dee141aecc5bcd0a4f0f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &398913778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398913773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67409c41ded56214fb7312932f07219e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coloredViews:
+  - {fileID: 543450652158031600}
+  - {fileID: 1646377972}
+  - {fileID: 2024720405}
+  - {fileID: 1633380287}
+  _whiteStringHolderView: {fileID: 8970590229707521081}
+--- !u!114 &398913779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398913773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e082fcf3ed9ef4eb70567dfe1b157e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _conveyerPositions:
+  - {fileID: 1322514152}
+  - {fileID: 297588648}
+  - {fileID: 276987096}
+  - {fileID: 1269362996}
+  - {fileID: 1030937969}
+  - {fileID: 1772938206}
+  _figureFactory: {fileID: 446517873}
+  _figureCompositionFactory: {fileID: 353881122}
+--- !u!114 &398913780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398913773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49bb6702593d094ea12a6457f23ad36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &406235319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2510611199525465431, guid: 645133bf639ddb0449abcc4ae532e792, type: 3}
@@ -2727,7 +2798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6820451539759009975, guid: 2db8d5c0d4b27d4419ea14c72729774f, type: 3}
       propertyPath: m_Name
-      value: ConveyerPosition (4)
+      value: ConveyerPosition (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3187,7 +3258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6820451539759009975, guid: 2db8d5c0d4b27d4419ea14c72729774f, type: 3}
       propertyPath: m_Name
-      value: ConveyerPosition (5)
+      value: ConveyerPosition
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4123,9 +4194,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1269362997}
-  - {fileID: 1030937968}
   - {fileID: 1772938205}
+  - {fileID: 1030937968}
+  - {fileID: 1269362997}
   - {fileID: 276987097}
   - {fileID: 297588649}
   - {fileID: 1322514153}
@@ -4377,13 +4448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b928c030ec95e04292657c9b86dfabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stringHolderViews:
-  - {fileID: 543450652158031600}
-  - {fileID: 1646377972}
-  - {fileID: 2024720405}
-  - {fileID: 1633380287}
-  _whiteStringHolder: {fileID: 8970590229707521081}
-  _ropePool: {fileID: 1112000195}
 --- !u!4 &1141542323
 Transform:
   m_ObjectHideFlags: 0
@@ -4411,15 +4475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffb9b66c32c7dd74f8136e174055df90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coloredHolders:
-  - {fileID: 543450652158031600}
-  - {fileID: 1646377972}
-  - {fileID: 2024720405}
-  - {fileID: 1633380287}
   _ropeConnectDelay: 0.7
   _perStringLifeTime: 0.2
-  _whiteHolder: {fileID: 8970590229707521081}
-  _ropePool: {fileID: 1112000195}
 --- !u!114 &1141542325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4432,12 +4489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e56ba96033aa4347a242261f0e71734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stringHolderViews:
-  - {fileID: 543450652158031600}
-  - {fileID: 1646377972}
-  - {fileID: 2024720405}
-  - {fileID: 1633380287}
-  _ropePool: {fileID: 1112000195}
   _ropeDisconnectDelay: 1
 --- !u!1 &1157861702
 GameObject:
@@ -5194,7 +5245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6820451539759009975, guid: 2db8d5c0d4b27d4419ea14c72729774f, type: 3}
       propertyPath: m_Name
-      value: ConveyerPosition (3)
+      value: ConveyerPosition (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6489,7 +6540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6820451539759009975, guid: 2db8d5c0d4b27d4419ea14c72729774f, type: 3}
       propertyPath: m_Name
-      value: ConveyerPosition (2)
+      value: ConveyerPosition (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7482,7 +7533,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6820451539759009975, guid: 2db8d5c0d4b27d4419ea14c72729774f, type: 3}
       propertyPath: m_Name
-      value: ConveyerPosition (1)
+      value: ConveyerPosition (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8537,7 +8588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6820451539759009975, guid: 2db8d5c0d4b27d4419ea14c72729774f, type: 3}
       propertyPath: m_Name
-      value: ConveyerPosition
+      value: ConveyerPosition (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

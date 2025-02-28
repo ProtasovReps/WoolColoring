@@ -1,33 +1,29 @@
+using Reflex.Attributes;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CompositeRoot : MonoBehaviour
 {
     [SerializeField] private PictureView _pictureView;
-    [SerializeField] private EffectPool _effectPool;
     [SerializeField] private Painter _painter;
     [SerializeField] private Malbert _malbert;
     [SerializeField] private BoltClickReader _clickView;
     [SerializeField] private WhiteStringHolderView _whiteStringHolderView;
-    [SerializeField] private ConveyerPosition[] _conveyerPositions;
     [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
-    [SerializeField] private FigureFactory _figureFactory;
-    [SerializeField] private FigureCompositionFactory _figureCompositionFactory;
     [SerializeField] private BoltHolderRopeConnector _boltConnector;
     [SerializeField] private HoldersRopeConnector _holdersRopeConnector;
     [SerializeField] private BlockHolderConnector _blockHolderConnector;
-    [SerializeField, Min(1)] private int _minFiguresCount;
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
 
     private Picture _picture;
     private ColoredStringHolderStash _coloredStringHolderStash;
     private ColoredStringHolderSwitcher _switcher;
     private StringDistributor _stringDistributor;
-    private BoltStash _boltStash;
+    [Inject] private readonly Conveyer _conveyer;
 
     private void Start()
     {
-        BindFigures();
+        SetupFigures();
         BindPicture();
         BindHolders();
         BindBolt();
@@ -36,16 +32,9 @@ public class CompositeRoot : MonoBehaviour
         _painter.Initialize(_picture, _switcher, _coloredStringHolderStash);
     }
 
-    private void BindFigures()
+    private void SetupFigures()
     {
-        _boltStash = new BoltStash();
-
-        _effectPool.Initialize(_boltStash);
-        _figureFactory.Initialize(_boltStash);
-        _figureCompositionFactory.Initialize(_figureFactory);
-
-        int minFiguresCount = Mathf.Clamp(_minFiguresCount, 0, _conveyerPositions.Length - 1);
-        var conveyer = new Conveyer(_figureCompositionFactory, _conveyerPositions, minFiguresCount);
+        _conveyer.FillAllFigures();
     }
 
     private void BindPicture()
@@ -86,7 +75,7 @@ public class CompositeRoot : MonoBehaviour
     private void BindBolt()
     {
         var boltPressPresenter = new BoltPressHandler(_stringDistributor);
-        var boltColorPresenter = new BoltColorSetter(_boltStash, _picture);
+        //var boltColorPresenter = new BoltColorSetter(_picture);
 
         _clickView.Initialize(boltPressPresenter);
     }

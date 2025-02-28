@@ -6,17 +6,15 @@ public class BoltColorSetter : IDisposable
     private readonly BoltStash _boltStash;
     private readonly Picture _picture;
 
-    public BoltColorSetter(BoltStash boltStash, Picture picture)
+    public BoltColorSetter(BoltStash stash, Picture picture)
     {
-        if(boltStash == null)
-            throw new NullReferenceException(nameof(boltStash));
+        if (stash == null)
+            throw new ArgumentNullException(nameof(stash));
 
-        if(picture == null)
+        if (picture == null)
             throw new ArgumentNullException(nameof(picture));
 
-        _boltStash = boltStash;
         _picture = picture;
-
         _picture.Filled += OnColorFilled;
 
         SetColors();

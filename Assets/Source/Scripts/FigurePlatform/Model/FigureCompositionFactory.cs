@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Reflex.Attributes;
 
 public class FigureCompositionFactory : MonoBehaviour
 {
@@ -9,25 +9,15 @@ public class FigureCompositionFactory : MonoBehaviour
     [SerializeField] private Color[] _figureColors;
     [SerializeField] private Transform _figureContainer;
 
-    private FigureFactory _figureFactory;
-    private FigureCompositionBinder _binder;
+    [Inject] private readonly FigureFactory _figureFactory;
     private ColorPallete _colorPallete;
     private Queue<FigureCompositionView> _newFigures;
     private List<FigureCompositionView> _producedCompositions;
 
-    public void Initialize(FigureFactory figureFactory)
+    [Inject]
+    public void Initialize()
     {
-        if (figureFactory == null)
-            throw new ArgumentNullException(nameof(figureFactory));
-
-        var tempArray = new Color[_figureColors.Length];
-
-        for (int i = 0; i < _figureColors.Length; i++)
-            tempArray[i] = _figureColors[i];
-
-        _figureFactory = figureFactory;
-        _binder = new FigureCompositionBinder();
-        _colorPallete = new ColorPallete(tempArray);
+        _colorPallete = new ColorPallete(_figureColors);
         _newFigures = new Queue<FigureCompositionView>(_compositionViewsPrefabs);
         _producedCompositions = new List<FigureCompositionView>(_compositionViewsPrefabs.Length);
     }
@@ -71,7 +61,7 @@ public class FigureCompositionFactory : MonoBehaviour
         var model = new FigureComposition(figures);
         var presenter = new FigureCompositionPresenter(model, view, _colorPallete);
 
-        _binder.Bind(view, presenter);
+        view.Initialize();
         view.Transform.SetParent(_figureContainer);
         return model;
     }

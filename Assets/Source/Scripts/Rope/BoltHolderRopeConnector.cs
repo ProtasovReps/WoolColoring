@@ -1,13 +1,13 @@
+using Reflex.Attributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BoltHolderRopeConnector : MonoBehaviour
 {
-    [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
-    [SerializeField] private WhiteStringHolderView _whiteStringHolder;
-    [SerializeField] private RopePool _ropePool;
-
+    [Inject] private ColoredStringHolderView[] _stringHolderViews;
+    [Inject] private readonly WhiteStringHolderView _whiteStringHolder;
+    [Inject] private readonly RopePool _ropePool;
     private Dictionary<Bolt, Rope> _connections;
     private StringDistributor _stringDistributor;
 
