@@ -1,9 +1,15 @@
-using UnityEngine;
 using Reflex.Attributes;
+using UnityEngine;
 
 public class FigureFactory : MonoBehaviour
 {
-    [Inject] private readonly BoltStash _stash;
+    private BoltStash _stash;
+
+    [Inject]
+    private void Inject(BoltStash stash)
+    {
+        _stash = stash;
+    }
 
     public Figure Produce(FigureView view)
     {

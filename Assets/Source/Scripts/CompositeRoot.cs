@@ -19,7 +19,13 @@ public class CompositeRoot : MonoBehaviour
     private ColoredStringHolderStash _coloredStringHolderStash;
     private ColoredStringHolderSwitcher _switcher;
     private StringDistributor _stringDistributor;
-    [Inject] private readonly Conveyer _conveyer;
+    private Conveyer _conveyer;
+
+    [Inject]
+    private void Inject(Conveyer conveyer)
+    {
+        _conveyer = conveyer;
+    }
 
     private void Start()
     {

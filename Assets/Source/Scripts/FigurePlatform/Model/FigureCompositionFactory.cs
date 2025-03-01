@@ -1,21 +1,21 @@
+using Reflex.Attributes;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using Reflex.Attributes;
 
 public class FigureCompositionFactory : MonoBehaviour
 {
     [SerializeField] private FigureCompositionView[] _compositionViewsPrefabs;
     [SerializeField] private Color[] _figureColors;
     [SerializeField] private Transform _figureContainer;
+    [SerializeField] private FigureFactory _figureFactory;
 
-    [Inject] private readonly FigureFactory _figureFactory;
     private ColorPallete _colorPallete;
     private Queue<FigureCompositionView> _newFigures;
     private List<FigureCompositionView> _producedCompositions;
 
     [Inject]
-    public void Initialize()
+    private void Inject()
     {
         _colorPallete = new ColorPallete(_figureColors);
         _newFigures = new Queue<FigureCompositionView>(_compositionViewsPrefabs);
