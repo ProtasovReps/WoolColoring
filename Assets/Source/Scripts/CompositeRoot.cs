@@ -1,12 +1,9 @@
 using Reflex.Attributes;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CompositeRoot : MonoBehaviour
 {
-    [SerializeField] private PictureView _pictureView;
     [SerializeField] private Painter _painter;
-    [SerializeField] private Malbert _malbert;
     [SerializeField] private BoltClickReader _clickView;
     [SerializeField] private WhiteStringHolderView _whiteStringHolderView;
     [SerializeField] private ColoredStringHolderView[] _stringHolderViews;
@@ -22,15 +19,15 @@ public class CompositeRoot : MonoBehaviour
     private Conveyer _conveyer;
 
     [Inject]
-    private void Inject(Conveyer conveyer)
+    private void Inject(Conveyer conveyer, Picture picture)
     {
         _conveyer = conveyer;
+        _picture = picture;
     }
 
     private void Start()
     {
         SetupFigures();
-        BindPicture();
         BindHolders();
         BindBolt();
         BindRopeConnectors();
@@ -41,17 +38,6 @@ public class CompositeRoot : MonoBehaviour
     private void SetupFigures()
     {
         _conveyer.FillAllFigures();
-    }
-
-    private void BindPicture()
-    {
-        var pictureBinder = new PictureBinder();
-        var colorBlockBinder = new ColorBlockBinder();
-
-        _blockHolderConnector.Initialize();
-
-        List<ColorBlock> colorBlocks = colorBlockBinder.Bind(_pictureView.ColorBlocks, _blockHolderConnector);
-        _picture = pictureBinder.Bind(_pictureView, colorBlocks, _malbert);
     }
 
     private void BindHolders()

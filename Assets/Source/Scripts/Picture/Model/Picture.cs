@@ -6,17 +6,17 @@ using Random = UnityEngine.Random;
 
 public class Picture : IFillable<Color>
 {
-    private IEnumerable<ColorBlock> _colorBlocks;
+    private readonly ColorBlock[] _colorBlocks;
     private Dictionary<Color, Queue<ColorBlock>> _requiredColors;
 
     public event Action<Color> Filled;
 
-    public Picture(IReadOnlyCollection<ColorBlock> colorBlocks)
+    public Picture(ColorBlock[] colorBlocks)
     {
         if (colorBlocks == null)
             throw new NullReferenceException();
 
-        if (colorBlocks.Count == 0)
+        if (colorBlocks.Length == 0)
             throw new EmptyCollectionException();
 
         _colorBlocks = colorBlocks;

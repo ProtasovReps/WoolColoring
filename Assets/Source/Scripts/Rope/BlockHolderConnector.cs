@@ -8,14 +8,17 @@ public class BlockHolderConnector : MonoBehaviour
 {
     [SerializeField] private float _ropeDisconnectDelay;
 
-    [Inject] private ColoredStringHolderView[] _stringHolderViews;
-    [Inject] private readonly RopePool _ropePool;
+    private ColoredStringHolderView[] _stringHolderViews;
+    private RopePool _ropePool;
     private float _connectDelay;
     private float _disconnectDelay;
     private Dictionary<Color, Rope> _connections;
 
-    public void Initialize()
+    [Inject]
+    public void Inject(ColoredStringHolderView[] stringHolderViews, RopePool ropePool)
     {
+        _stringHolderViews = stringHolderViews;
+        _ropePool = ropePool;
         _connections = new Dictionary<Color, Rope>();
         _connectDelay = _stringHolderViews[0].SwitchDuration;
         _disconnectDelay = _ropeDisconnectDelay;

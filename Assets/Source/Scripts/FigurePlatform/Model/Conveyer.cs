@@ -11,7 +11,6 @@ public class Conveyer : IDisposable
     {
         _figurePool = pool;
         _positionDatabase = positionDatabase;
-
         _positionDatabase.PositionChanged += OnPositionChanged;
     }
 

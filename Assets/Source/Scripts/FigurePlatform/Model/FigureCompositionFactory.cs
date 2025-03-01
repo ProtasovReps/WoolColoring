@@ -14,8 +14,7 @@ public class FigureCompositionFactory : MonoBehaviour
     private Queue<FigureCompositionView> _newFigures;
     private List<FigureCompositionView> _producedCompositions;
 
-    [Inject]
-    private void Inject()
+    private void Awake()
     {
         _colorPallete = new ColorPallete(_figureColors);
         _newFigures = new Queue<FigureCompositionView>(_compositionViewsPrefabs);
