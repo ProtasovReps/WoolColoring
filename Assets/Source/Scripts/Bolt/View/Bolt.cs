@@ -3,8 +3,7 @@ using LitMotion.Extensions;
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(EffectPlayer))]
-[RequireComponent(typeof(TransformMoveView))]
+[RequireComponent(typeof(TransformView))]
 [RequireComponent(typeof(ActiveStateSwitcher))]
 [RequireComponent(typeof(HingeJoint))]
 public class Bolt : MonoBehaviour
@@ -16,11 +15,11 @@ public class Bolt : MonoBehaviour
     private HingeJoint _hingeJoint;
     private Rigidbody _connectedBody;
     private ActiveStateSwitcher _activeStateSwitcher;
-    private TransformMoveView _moveView;
+    private TransformView _transformView;
 
     public event Action<Bolt> Disabling;
 
-    public Transform Transform => _moveView.Transform;
+    public Transform Transform => _transformView.Transform;
     public IColorSettable ColorSettable => _colorString;
     public IColorable Colorable => _colorString;
 
@@ -28,26 +27,26 @@ public class Bolt : MonoBehaviour
     {
         _hingeJoint = GetComponent<HingeJoint>();
         _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
-        _moveView = GetComponent<TransformMoveView>();
+        _transformView = GetComponent<TransformView>();
         _connectedBody = _hingeJoint.connectedBody;
 
         _activeStateSwitcher.Initialize();
-        _moveView.Initialize();
+        _transformView.Initialize();
         _colorString.Initialize();
     }
 
     private void OnEnable()
     {
-        _moveView.SetStartTransform();
+        _transformView.SetStartTransform();
         _hingeJoint.connectedBody = _connectedBody;
     }
 
     public void Unscrew()
     {
-        Vector3 rotation = _moveView.Transform.localRotation.eulerAngles;
+        Vector3 rotation = _transformView.Transform.localRotation.eulerAngles;
         float targetRotation = rotation.y - 360f;
-        Vector3 targetPosition = new(_moveView.Transform.position.x, 4.3f, -6.5f);
-        Vector3 targetScale = _moveView.Transform.localScale * 1.2f;
+        Vector3 targetPosition = new(_transformView.Transform.position.x, 4.3f, -6.5f);
+        Vector3 targetScale = _transformView.Transform.localScale * 1.2f;
 
         _hingeJoint.connectedBody = null;
         _connectedBody.AddRelativeTorque(Vector3.one);
@@ -56,13 +55,13 @@ public class Bolt : MonoBehaviour
             .Join(LMotion.Create(rotation, new Vector3(rotation.x, targetRotation, rotation.z), _unscrewDuration)
                 .WithLoops(_unscrewLoopCount, LoopType.Incremental)
                 .WithOnComplete(Disable)
-                .BindToLocalEulerAngles(_moveView.Transform))
-            .Join(LMotion.Create(_moveView.Transform.position, targetPosition, _unscrewDuration)
+                .BindToLocalEulerAngles(_transformView.Transform))
+            .Join(LMotion.Create(_transformView.Transform.position, targetPosition, _unscrewDuration)
                 .WithEase(Ease.InOutQuint)
-                .BindToPosition(_moveView.Transform))
-            .Join(LMotion.Create(_moveView.Transform.localScale, targetScale, _unscrewDuration)
+                .BindToPosition(_transformView.Transform))
+            .Join(LMotion.Create(_transformView.Transform.localScale, targetScale, _unscrewDuration)
                 .WithLoops(_unscrewLoopCount, LoopType.Yoyo)
-                .BindToLocalScale(_moveView.Transform))
+                .BindToLocalScale(_transformView.Transform))
             .Run();
     }
 
@@ -70,7 +69,7 @@ public class Bolt : MonoBehaviour
 
     private void Disable()
     {
-        _moveView.Transform.rotation = _moveView.StartRotation;
+        _transformView.Transform.rotation = _transformView.StartRotation;
 
         Disabling?.Invoke(this);
         SetActive(false);

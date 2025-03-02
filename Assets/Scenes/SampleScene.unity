@@ -4915,6 +4915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1275331669}
   - component: {fileID: 1275331668}
+  - component: {fileID: 1275331670}
   - component: {fileID: 1275331667}
   m_Layer: 0
   m_Name: EffectPool
@@ -4964,6 +4965,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1275331670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275331666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be0cffb86948764458ba5ddd39caed63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _effectPool: {fileID: 1275331668}
+  _effectPlayer: {fileID: 1275331667}
 --- !u!1001 &1276156090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8013,7 +8028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2079901633}
   - component: {fileID: 2079901634}
-  - component: {fileID: 2079901636}
+  - component: {fileID: 2079901635}
   m_Layer: 0
   m_Name: Picture
   m_TagString: Untagged
@@ -8030,7 +8045,7 @@ Transform:
   m_GameObject: {fileID: 2079901631}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.25, y: -6.64, z: -11.007}
+  m_LocalPosition: {x: 2.25, y: -6.64, z: -11.007002}
   m_LocalScale: {x: 1.0507, y: 1.0507, z: 1.0507}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -8049,9 +8064,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26dfe5d70f8784847b4ed9ec88a8ad19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transformView: {fileID: 2079901636}
+  _transformView: {fileID: 2079901635}
   _moveSpeed: 10
---- !u!114 &2079901636
+--- !u!114 &2079901635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8060,7 +8075,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2079901631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a47860fbc574248b7553d6c6467472, type: 3}
+  m_Script: {fileID: 11500000, guid: e440e32623ea65149a34e74c181cdafa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &2087055780 stripped

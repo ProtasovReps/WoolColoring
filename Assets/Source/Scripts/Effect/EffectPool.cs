@@ -7,33 +7,19 @@ public class EffectPool : MonoBehaviour
     [SerializeField] private ParticleSystem _effectPrefab;
     [SerializeField] private EffectPlayer _effectPlayer;
 
-    private BoltStash _boltStash;
     private Transform _transform;
     private Queue<ParticleSystem> _freeEffects;
 
-    private void OnDisable()
-    {
-        foreach (Bolt bolt in _boltStash.Bolts)
-            bolt.Disabling -= OnBoltDisabling;
-    }
-
     [Inject]
-    private void Inject(BoltStash boltStash)
+    private void Inject()
     {
         _freeEffects = new Queue<ParticleSystem>();
         _transform = transform;
-        _boltStash = boltStash;
         _effectPlayer.EffectCompleted += OnEffectCompleted;
-        _boltStash.BoltsAdded += SubscribeBolts;
+
     }
 
-    private void SubscribeBolts(IEnumerable<Bolt> bolts)
-    {
-        foreach (Bolt bolt in bolts)
-            bolt.Disabling += OnBoltDisabling;
-    }
-
-    private void OnBoltDisabling(Bolt boltView)
+    public ParticleSystem Get()
     {
         ParticleSystem effect;
 
@@ -47,8 +33,7 @@ public class EffectPool : MonoBehaviour
             effect = _freeEffects.Dequeue();
         }
 
-        effect.transform.position = boltView.Transform.position;
-        _effectPlayer.Play(effect).Forget();
+        return effect;
     }
 
     private void OnEffectCompleted(ParticleSystem effect)

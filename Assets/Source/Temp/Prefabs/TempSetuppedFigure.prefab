@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7451931044670459459}
   - component: {fileID: 3910922051751471196}
   - component: {fileID: 7834432475860468458}
-  - component: {fileID: 5973947050279154856}
+  - component: {fileID: 5208132492971137692}
   m_Layer: 7
   m_Name: TempSetuppedFigure
   m_TagString: Untagged
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e01390ebf388c2438a34f34af0fc4d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5973947050279154856
+--- !u!114 &5208132492971137692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 9065605902938599410}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a47860fbc574248b7553d6c6467472, type: 3}
+  m_Script: {fileID: 11500000, guid: fa13855896ad7b8469a76ff9ea265b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &796373168294722954
@@ -238,7 +238,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5616ed4e0faeb264a9a0289df9bcd40e, type: 3}
+  m_Script: {fileID: 11500000, guid: ee69dba89df21c64c9d6a7fdcaa0cd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &8432168951857430789 stripped
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5616ed4e0faeb264a9a0289df9bcd40e, type: 3}
+  m_Script: {fileID: 11500000, guid: ee69dba89df21c64c9d6a7fdcaa0cd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &7354222892834919640 stripped
@@ -525,6 +525,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5616ed4e0faeb264a9a0289df9bcd40e, type: 3}
+  m_Script: {fileID: 11500000, guid: ee69dba89df21c64c9d6a7fdcaa0cd42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

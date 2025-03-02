@@ -1,8 +1,7 @@
-using Cysharp.Threading.Tasks;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(TransformMoveView))]
+[RequireComponent(typeof(FigureTransformView))]
 [RequireComponent(typeof(ActiveStateSwitcher))]
 public class FigureCompositionView : MonoBehaviour
 {
@@ -10,7 +9,7 @@ public class FigureCompositionView : MonoBehaviour
     [SerializeField] private float _moveSpeed;
 
     private Collider[] _colliders;
-    private TransformMoveView _transformMoveView;
+    private FigureTransformView _transformMoveView;
     private ActiveStateSwitcher _activeStateSwitcher;
 
     public Transform Transform => _transformMoveView.Transform;
@@ -22,7 +21,7 @@ public class FigureCompositionView : MonoBehaviour
         if (_figureViews.Length == 0)
             throw new EmptyCollectionException();
 
-        _transformMoveView = GetComponent<TransformMoveView>();
+        _transformMoveView = GetComponent<FigureTransformView>();
         _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
 
         _transformMoveView.Initialize();

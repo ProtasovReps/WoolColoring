@@ -42,8 +42,6 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     private void InstallFigureComposition(ContainerBuilder containerBuilder)
     {
-        _figureCompositionFactory.Initailize();
-
         var positionDatabase = new PositionDatabase(_conveyerPositions);
         var compositionPool = new FigureCompositionPool(_figureCompositionFactory);
         _conveyer = new Conveyer(compositionPool, positionDatabase);

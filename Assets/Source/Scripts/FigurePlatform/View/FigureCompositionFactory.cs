@@ -1,3 +1,4 @@
+using Reflex.Attributes;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -13,7 +14,8 @@ public class FigureCompositionFactory : MonoBehaviour
     private Queue<FigureCompositionView> _newFigures;
     private List<FigureCompositionView> _producedCompositions;
 
-    public void Initailize()
+    [Inject]
+    private void Initailize()
     {
         _colorPallete = new ColorPallete(_figureColors);
         _newFigures = new Queue<FigureCompositionView>(_compositionViewsPrefabs);
