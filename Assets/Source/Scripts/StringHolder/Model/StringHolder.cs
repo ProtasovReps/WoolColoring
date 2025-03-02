@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-public abstract class StringHolder : IFillable<StringHolder>
+public abstract class StringHolder
 {
     private ColorString[] _strings;
     private int _stringCount;
-
-    public event Action<StringHolder> Filled;
 
     public StringHolder(ColorString[] strings)
     {
@@ -30,7 +28,7 @@ public abstract class StringHolder : IFillable<StringHolder>
         _stringCount++;
 
         if (_stringCount == MaxStringCount)
-            Filled?.Invoke(this);
+            OnFilled();
     }
 
     protected IColorable GetString()
@@ -46,6 +44,8 @@ public abstract class StringHolder : IFillable<StringHolder>
     protected abstract void PrepareString(IColorSettable freeString, IColorable newString);
 
     protected abstract bool IsValidString(IColorable colorString);
+
+    protected abstract void OnFilled();
 
     protected bool IsActiveString(ColorString colorString, bool isActive)
        => colorString.IsEnabled == isActive;

@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
-using System;
 using UnityEngine;
 
 public class Painter : MonoBehaviour
@@ -19,22 +18,19 @@ public class Painter : MonoBehaviour
         _holderStash = stash;
         _switcher = switcher;
 
-        foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
+        foreach (IFillable<ColoredStringHolder> holder in _holderStash.ColoredStringHolders)
             holder.Filled += OnHolderFilled;
     }
 
     private void OnDestroy()
     {
-        foreach (IFillable<StringHolder> holder in _holderStash.ColoredStringHolders)
+        foreach (IFillable<ColoredStringHolder> holder in _holderStash.ColoredStringHolders)
             holder.Filled -= OnHolderFilled;
     }
 
-    private void OnHolderFilled(StringHolder holder)
+    private void OnHolderFilled(ColoredStringHolder holder)
     {
-        if (holder is ColoredStringHolder coloderHolder == false)
-            throw new InvalidCastException();
-
-        FillImage(coloderHolder).Forget();
+        FillImage(holder).Forget();
     }
 
     private async UniTaskVoid FillImage(ColoredStringHolder holder)

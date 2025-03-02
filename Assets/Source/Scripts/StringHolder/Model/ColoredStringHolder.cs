@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
-public class ColoredStringHolder : StringHolder
+public class ColoredStringHolder : StringHolder, IFillable<ColoredStringHolder>
 {
     public event Action ColorChanged;
+    public event Action<ColoredStringHolder> Filled;
 
     public ColoredStringHolder(ColorString[] strings) : base(strings) => SetEnabled(true);
 
@@ -32,4 +33,6 @@ public class ColoredStringHolder : StringHolder
     }
 
     protected override bool IsValidString(IColorable colorString) => true;
+
+    protected override void OnFilled() => Filled?.Invoke(this);
 }

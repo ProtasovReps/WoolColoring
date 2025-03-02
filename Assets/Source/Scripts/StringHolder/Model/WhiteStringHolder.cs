@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
-public class WhiteStringHolder : StringHolder
+public class WhiteStringHolder : StringHolder, IFillable<WhiteStringHolder>
 {
     private Color _requiredColor;
+
+    public event Action<WhiteStringHolder> Filled;
 
     public WhiteStringHolder(ColorString[] strings) : base(strings) { }
 
@@ -35,4 +38,6 @@ public class WhiteStringHolder : StringHolder
 
     protected override bool IsValidString(IColorable colorString)
         => colorString.Color == _requiredColor;
+
+    protected override void OnFilled() => Filled?.Invoke(this);
 }

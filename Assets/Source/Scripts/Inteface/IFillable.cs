@@ -1,6 +1,6 @@
 using System;
 
-public interface IFillable<T>
+public interface IFillable<out T>
 {
      event Action<T> Filled;
 }

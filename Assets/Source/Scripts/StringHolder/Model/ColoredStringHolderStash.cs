@@ -24,7 +24,7 @@ public class ColoredStringHolderStash
 
     public int ActiveCount => _stringHolders[true].Count;
 
-    public IEnumerable<IFillable<StringHolder>> ColoredStringHolders => _stringHolders[true];
+    public IEnumerable<IFillable<ColoredStringHolder>> ColoredStringHolders => _stringHolders[true];
 
     public void DeactivateHolder(ColoredStringHolder stringHolder)
     {
