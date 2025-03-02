@@ -44,8 +44,8 @@ public class StringDistributor : IDisposable
 
         if (_coloredHolderStash.TryGetColoredStringHolder(colorString.Color, out ColoredStringHolder holder))
             holder.Add(colorString);
-        //else
-        //    _whiteHolder.Add(colorString);
+        else
+            _whiteHolder.Add(colorString);
     }
 
     private void OnHolderSwitched(ColoredStringHolder holder)

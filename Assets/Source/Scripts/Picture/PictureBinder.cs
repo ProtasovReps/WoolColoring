@@ -1,22 +1,23 @@
-using System;
-
 public class PictureBinder
 {
-    public Picture Bind(PictureView pictureView, ColorBlock[] blockModels, Malbert malbert)
+    private readonly PictureView _pictureView;
+    private readonly Malbert _malbert;
+    private readonly ColorBlockBinder _colorBlockBinder;
+
+    public PictureBinder(PictureView pictureView, ColorBlockBinder colorBlockBinder, Malbert malbert)
     {
-        if (pictureView == null)
-            throw new ArgumentNullException(nameof(pictureView));
+        _pictureView = pictureView;
+        _colorBlockBinder = colorBlockBinder;
+        _malbert = malbert;
+    }
 
-        if (blockModels.Length == 0)
-            throw new EmptyCollectionException();
+    public Picture Bind()
+    {
+        ColorBlock[] colorBlocks = _colorBlockBinder.Bind();
+        Picture pictureModel = new (colorBlocks);
+        PicturePresenter picturePresenter = new(pictureModel, _pictureView);
 
-        if (malbert == null)
-            throw new ArgumentNullException(nameof(malbert));
-
-        var pictureModel = new Picture(blockModels);
-        var picturePresenter = new PicturePresenter(pictureModel, pictureView);
-
-        malbert.Initilize(picturePresenter);
+        _malbert.Initilize(picturePresenter);
         return pictureModel;
     }
 }

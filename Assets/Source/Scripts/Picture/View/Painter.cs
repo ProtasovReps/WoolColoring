@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using Reflex.Attributes;
 using System;
 using UnityEngine;
 
@@ -11,17 +12,9 @@ public class Painter : MonoBehaviour
     private ColoredStringHolderStash _holderStash;
     private ColoredStringHolderSwitcher _switcher;
 
-    public void Initialize(Picture picture, ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash)
+    [Inject]
+    private void Inject(Picture picture, ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash)
     {
-        if (picture == null)
-            throw new NullReferenceException(nameof(_holderStash));
-
-        if (switcher == null)
-            throw new NullReferenceException(nameof(switcher));
-
-        if (stash == null)
-            throw new NullReferenceException(nameof(stash));
-
         _picture = picture;
         _holderStash = stash;
         _switcher = switcher;

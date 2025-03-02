@@ -5,12 +5,6 @@ public class FigureFactory : MonoBehaviour
 {
     private BoltStash _stash;
 
-    [Inject]
-    private void Inject(BoltStash stash)
-    {
-        _stash = stash;
-    }
-
     public Figure Produce(FigureView view)
     {
         _stash.Add(view.Bolts);
@@ -25,4 +19,7 @@ public class FigureFactory : MonoBehaviour
 
         return model;
     }
+
+    [Inject]
+    private void Inject(BoltStash stash) => _stash = stash;
 }

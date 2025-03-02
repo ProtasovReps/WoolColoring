@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class BoltHolderRopeConnector : MonoBehaviour
 {
-    [Inject] private ColoredStringHolderView[] _stringHolderViews;
-    [Inject] private readonly WhiteStringHolderView _whiteStringHolder;
-    [Inject] private readonly RopePool _ropePool;
+    private ColoredStringHolderView[] _stringHolderViews;
+    private WhiteStringHolderView _whiteStringHolder;
+    private RopePool _ropePool;
     private Dictionary<Bolt, Rope> _connections;
     private StringDistributor _stringDistributor;
 
@@ -16,12 +16,16 @@ public class BoltHolderRopeConnector : MonoBehaviour
         _stringDistributor.BoltDistributing -= SetRope;
     }
 
-    public void Initialize(StringDistributor stringDistributor)
+    [Inject]
+    private void Inject(StringDistributor stringDistributor, ColoredStringHolderView[] coloredViews, WhiteStringHolderView whiteView, RopePool ropePool)
     {
         if (stringDistributor == null)
             throw new ArgumentNullException(nameof(stringDistributor));
 
         _stringDistributor = stringDistributor;
+        _stringHolderViews = coloredViews;
+        _whiteStringHolder = whiteView;
+        _ropePool = ropePool;
         _connections = new Dictionary<Bolt, Rope>();
         _stringDistributor.BoltDistributing += SetRope;
     }

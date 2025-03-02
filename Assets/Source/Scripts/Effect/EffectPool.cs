@@ -1,5 +1,4 @@
 using Reflex.Attributes;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +7,7 @@ public class EffectPool : MonoBehaviour
     [SerializeField] private ParticleSystem _effectPrefab;
     [SerializeField] private EffectPlayer _effectPlayer;
 
-    [Inject] private readonly BoltStash _boltStash;
+    private BoltStash _boltStash;
     private Transform _transform;
     private Queue<ParticleSystem> _freeEffects;
 
@@ -19,11 +18,11 @@ public class EffectPool : MonoBehaviour
     }
 
     [Inject]
-    public void Initialize()
+    private void Inject(BoltStash boltStash)
     {
-        _transform = transform;
         _freeEffects = new Queue<ParticleSystem>();
-
+        _transform = transform;
+        _boltStash = boltStash;
         _effectPlayer.EffectCompleted += OnEffectCompleted;
         _boltStash.BoltsAdded += SubscribeBolts;
     }

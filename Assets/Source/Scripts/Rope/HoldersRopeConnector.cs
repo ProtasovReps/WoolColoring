@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
-using System;
 using UnityEngine;
 
 public class HoldersRopeConnector : MonoBehaviour
@@ -8,9 +7,9 @@ public class HoldersRopeConnector : MonoBehaviour
     [SerializeField] private float _ropeConnectDelay;
     [SerializeField] private float _perStringLifeTime;
 
-    [Inject] private readonly WhiteStringHolderView _whiteHolder;
-    [Inject] private readonly ColoredStringHolderView[] _coloredHolders;
-    [Inject] private readonly RopePool _ropePool;
+    private ColoredStringHolderView[] _coloredHolders;
+    private WhiteStringHolderView _whiteHolder;
+    private RopePool _ropePool;
     private StringDistributor _stringDistributor;
 
     private void OnDestroy()
@@ -18,12 +17,13 @@ public class HoldersRopeConnector : MonoBehaviour
         _stringDistributor.WhiteHolderDistributing -= ConnectHolders;
     }
 
-    public void Initialize(StringDistributor stringDistributor)
+    [Inject]
+    private void Inject(StringDistributor stringDistributor, ColoredStringHolderView[] coloredViews, WhiteStringHolderView whiteView, RopePool ropePool)
     {
-        if (stringDistributor == null)
-            throw new ArgumentNullException(nameof(stringDistributor));
-
         _stringDistributor = stringDistributor;
+        _coloredHolders = coloredViews;
+        _whiteHolder = whiteView;
+        _ropePool = ropePool;
         _stringDistributor.WhiteHolderDistributing += ConnectHolders;
     }
 

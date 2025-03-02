@@ -14,10 +14,9 @@ public class BoltColorSetter : IDisposable
         if (picture == null)
             throw new ArgumentNullException(nameof(picture));
 
+        _boltStash = stash;
         _picture = picture;
         _picture.Filled += OnColorFilled;
-
-        SetColors();
     }
 
     public void Dispose()
@@ -25,7 +24,7 @@ public class BoltColorSetter : IDisposable
         _picture.Filled -= OnColorFilled;
     }
 
-    private void SetColors()
+    public void SetColors()
     {
         foreach (Bolt bolt in _boltStash.Bolts)
         {

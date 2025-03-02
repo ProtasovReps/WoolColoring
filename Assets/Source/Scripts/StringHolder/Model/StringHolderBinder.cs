@@ -2,31 +2,46 @@ using System.Collections.Generic;
 
 public class StringHolderBinder
 {
-    private ColorStringFactory _colorStringFactory;
+    private readonly ColorStringFactory _colorStringFactory;
+    private readonly ColoredStringHolderView[] _coloredViews;
+    private readonly WhiteStringHolderView _whiteView;
 
-    public StringHolderBinder()
+    public StringHolderBinder(ColorStringFactory colorStringFactory, ColoredStringHolderView[] coloredViews, WhiteStringHolderView whiteView)
     {
-        _colorStringFactory = new ColorStringFactory();
+        _colorStringFactory = colorStringFactory;
+        _coloredViews = coloredViews;
+        _whiteView = whiteView;
     }
 
-    public ColoredStringHolder Bind(ColoredStringHolderView view)
+    public ColoredStringHolder[] BindColoredHolders()
     {
-        var strings = GetColorStrings(view);
-        var model = new ColoredStringHolder(strings);
-        var presenter = new ColoredStringHolderPresenter(view, model);
+        var holderModels = new ColoredStringHolder[_coloredViews.Length];
+        ColorString[] strings;
+        ColoredStringHolder model;
+        ColoredStringHolderPresenter presenter;
+        ColoredStringHolderView view;
 
-        view.Initialize(presenter);
-        return model;
+        for (int i = 0; i < _coloredViews.Length; i++)
+        {
+            view = _coloredViews[i];
+            strings = GetColorStrings(view);
+            model = new ColoredStringHolder(strings);
+            presenter = new ColoredStringHolderPresenter(view, model);
+            view.Initialize(presenter);
+
+            holderModels[i] = model;
+        }
+
+        return holderModels;
     }
 
-    public WhiteStringHolder Bind(WhiteStringHolderView view, Picture picture)
+    public WhiteStringHolder BindWhiteHolder()
     {
-        var strings = GetColorStrings(view);
-        var model = new WhiteStringHolder(strings);
-        var stringRemover = new ExtraStringRemover(picture, model);
-        var presenter = new WhiteStringHolderPresenter(view, model);
+        ColorString[] strings = GetColorStrings(_whiteView);
+        WhiteStringHolder model = new(strings);
+        WhiteStringHolderPresenter presenter = new(_whiteView, model);
 
-        view.Initialize();
+        _whiteView.Initialize();
         return model;
     }
 
