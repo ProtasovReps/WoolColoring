@@ -1,3 +1,5 @@
+using LitMotion;
+using LitMotion.Extensions;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -5,6 +7,7 @@ using UnityEngine;
 public class StringHolderView : MonoBehaviour
 {
     [SerializeField] private ColorStringView[] _strings;
+    [SerializeField] private float _shakeDuration;
 
     private TransformView _transformView;
 
@@ -16,6 +19,16 @@ public class StringHolderView : MonoBehaviour
     {
         _transformView = GetComponent<TransformView>();
         _transformView.Initialize();
+    }
+
+    public void Shake()
+    {
+        Vector3 targetScale = Transform.localScale * 0.95f;
+
+        LSequence.Create()
+            .Append(LMotion.Create(Transform.localScale, targetScale, _shakeDuration).WithEase(Ease.InElastic).BindToLocalScale(Transform))
+            .Append(LMotion.Create(targetScale, TransformView.StartScale, _shakeDuration).WithEase(Ease.OutElastic).BindToLocalScale(Transform))
+            .Run();
     }
 
     public bool TryGetFreeStringTransform(out Transform transform)

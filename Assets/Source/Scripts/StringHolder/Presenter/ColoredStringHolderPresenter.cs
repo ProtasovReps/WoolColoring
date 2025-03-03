@@ -17,12 +17,19 @@ public class ColoredStringHolderPresenter : IDisposable
         _view = view;
         _model = model;
 
+        _model.StringAdded += OnStringAdded;
         _model.ColorChanged += OnColorChanged;
     }
 
     public Color GetColor() => _model.Color;
 
-    public void Dispose() => _model.ColorChanged -= OnColorChanged;
+    public void Dispose()
+    {
+        _model.StringAdded -= OnStringAdded;
+        _model.ColorChanged -= OnColorChanged;
+    }
 
     private void OnColorChanged() => _view.Switch();
+
+    private void OnStringAdded() => _view.Shake();
 }
