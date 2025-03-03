@@ -39,7 +39,7 @@ public class StringHolderBinder
     {
         ColorString[] strings = GetColorStrings(_whiteView);
         WhiteStringHolder model = new(strings);
-        WhiteStringHolderPresenter presenter = new();
+        WhiteStringHolderPresenter presenter = new(model, _whiteView);
 
         _whiteView.Initialize();
         return model;

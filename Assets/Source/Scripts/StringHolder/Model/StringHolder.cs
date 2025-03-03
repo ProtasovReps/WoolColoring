@@ -6,6 +6,8 @@ public abstract class StringHolder
     private ColorString[] _strings;
     private int _stringCount;
 
+    public event Action StringAdded;
+
     public StringHolder(ColorString[] strings)
     {
         if (strings == null)
@@ -26,6 +28,7 @@ public abstract class StringHolder
 
         colorString.SetEnable(true);
         _stringCount++;
+        StringAdded?.Invoke();
 
         if (_stringCount == MaxStringCount)
             OnFilled();
