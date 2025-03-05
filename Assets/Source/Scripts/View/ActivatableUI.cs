@@ -2,7 +2,7 @@ using LitMotion;
 using LitMotion.Extensions;
 using UnityEngine;
 
-public class PausePanel : Activatable
+public class ActivatableUI : Activatable
 {
     [SerializeField] private TransformView _transformView;
     [SerializeField] private float _appearDuration;

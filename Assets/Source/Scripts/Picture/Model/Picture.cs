@@ -10,6 +10,7 @@ public class Picture : IFillable<Color>
     private Dictionary<Color, Queue<ColorBlock>> _requiredColors;
 
     public event Action<Color> Filled;
+    public event Action BlockCountChanged;
 
     public Picture(ColorBlock[] colorBlocks)
     {
@@ -20,10 +21,12 @@ public class Picture : IFillable<Color>
             throw new EmptyCollectionException();
 
         _colorBlocks = colorBlocks;
+        UncoloredBlocksCount = _colorBlocks.Length;
 
         FillDictionary();
     }
 
+    public int UncoloredBlocksCount { get; private set; }
     public int RequiredColorsCount => _requiredColors.Keys.Count;
 
     public Color GetRandomColor()
@@ -43,6 +46,9 @@ public class Picture : IFillable<Color>
         ColorBlock colorBlock = _requiredColors[color].Dequeue();
 
         colorBlock.SetColor(color);
+
+        UncoloredBlocksCount--;
+        BlockCountChanged?.Invoke();
 
         if (_requiredColors[color].Count == 0)
         {
