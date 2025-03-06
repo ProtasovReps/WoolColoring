@@ -7,10 +7,10 @@ using UnityEngine;
 public class BlockHolderConnector : MonoBehaviour
 {
     [SerializeField] private float _ropeDisconnectDelay;
+    [SerializeField] private float _connectDelay = 0.5f;
 
     private ColoredStringHolderView[] _stringHolderViews;
     private RopePool _ropePool;
-    private float _connectDelay;
     private float _disconnectDelay;
     private Dictionary<Color, Rope> _connections;
 
@@ -38,7 +38,6 @@ public class BlockHolderConnector : MonoBehaviour
         _stringHolderViews = stringHolderViews;
         _ropePool = ropePool;
         _connections = new Dictionary<Color, Rope>();
-        _connectDelay = _stringHolderViews[0].SwitchDuration;
         _disconnectDelay = _ropeDisconnectDelay;
     }
 

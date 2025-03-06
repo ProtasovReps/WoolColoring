@@ -1,5 +1,3 @@
-using LitMotion;
-using LitMotion.Extensions;
 using UnityEngine;
 
 public class WhiteStringHolderView : StringHolderView
@@ -14,8 +12,6 @@ public class WhiteStringHolderView : StringHolderView
 
     private void Appear()
     {
-        LMotion.Create(Vector3.zero, TransformView.StartScale, _appearDuration)
-            .WithEase(Ease.InOutElastic)
-            .BindToLocalScale(Transform);
+        Animations.Appear(Transform);
     }
 }

@@ -1,5 +1,3 @@
-using LitMotion;
-using LitMotion.Extensions;
 using System;
 using UnityEngine;
 
@@ -7,9 +5,6 @@ using UnityEngine;
 public class ColoredStringHolderView : StringHolderView, IColorable
 {
     [SerializeField] private Transform _targetSwitchPosition;
-    [SerializeField] private float _jumpDuration;
-    [SerializeField] private float _switchDuration;
-    [SerializeField] private float _slideDelay;
 
     private ColorView _colorView;
     private Color _lastColor;
@@ -17,7 +12,6 @@ public class ColoredStringHolderView : StringHolderView, IColorable
     private ActionQueue _actionQueue;
 
     public bool IsAnimating { get; private set; }
-    public float SwitchDuration => _switchDuration;
     public Color Color => _presenter.GetColor();
 
     public void Initialize(ColoredStringHolderPresenter presenter)
@@ -47,48 +41,12 @@ public class ColoredStringHolderView : StringHolderView, IColorable
 
     private void Jump()
     {
-        Vector3 position = Transform.position;
-        Vector3 scale = Transform.localScale;
-        Vector3 targetScale = scale * 0.75f;
-        Vector3 rotation = Transform.localRotation.eulerAngles;
-        Vector3 targetRotation = new(rotation.x, rotation.y, rotation.z - 360f);
-        float targetUpPosition = position.y + (Vector3.up * 0.5f).y;
-        float fallInterval = 0.2f;
-        float saltoDuration = _jumpDuration * 2f;
-
-        LSequence.Create()
-            .Append(LMotion.Create(position.y, targetUpPosition, _jumpDuration)
-            .WithEase(Ease.InQuint)
-            .BindToPositionY(Transform))
-            .Join(LMotion.Create(scale, targetScale, _jumpDuration)
-            .WithEase(Ease.InElastic)
-            .BindToLocalScale(Transform))
-            .Join(LMotion.Create(rotation, targetRotation, saltoDuration)
-            .WithEase(Ease.InOutExpo)
-            .BindToLocalEulerAngles(Transform))
-            .AppendInterval(fallInterval)
-            .Append(LMotion.Create(targetScale, scale, _jumpDuration)
-            .WithEase(Ease.InOutElastic)
-            .BindToLocalScale(Transform))
-            .Join(LMotion.Create(targetUpPosition, position.y, _jumpDuration)
-            .WithEase(Ease.OutQuint)
-            .WithOnComplete(FinalizeAnimation)
-            .BindToPositionY(Transform))
-            .Run();
+        Animations.Jump(Transform, FinalizeAnimation);
     }
 
     private void Slide()
     {
-        LSequence.Create()
-            .Append(LMotion.Create(Transform.position.x, _targetSwitchPosition.position.x, _switchDuration)
-            .WithEase(Ease.InQuint)
-            .WithOnComplete(SetColor)
-            .BindToPositionX(Transform))
-            .Append(LMotion.Create(_targetSwitchPosition.position.x, TransformView.StartPosition.x, _switchDuration)
-            .WithEase(Ease.InOutQuint)
-            .WithOnComplete(FinalizeAnimation)
-            .BindToPositionX(Transform))
-            .Run();
+        Animations.Slide(Transform, _targetSwitchPosition, SetColor, FinalizeAnimation);
     }
 
     private void FinalizeAnimation()
