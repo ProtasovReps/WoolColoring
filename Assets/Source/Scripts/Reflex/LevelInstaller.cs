@@ -15,6 +15,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private int _startHoldersCount;
     [Header("Picture")]
     [SerializeField] private ColorBlockViewStash _colorBlockViewStash;
+    [SerializeField] private ColorBlockAnimations _colorBlockAnimations;
     [SerializeField] private PictureView _pictureView;
     [SerializeField] private Malbert _malbert;
     [Header("Bolt")]
@@ -56,6 +57,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         PictureBinder pictureBinder = new(_pictureView, colorBlockBinder, _malbert);
         Picture picture = pictureBinder.Bind();
 
+        containerBuilder.AddSingleton(_colorBlockAnimations);
         containerBuilder.AddSingleton(picture);
         return picture;
     }

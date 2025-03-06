@@ -1,5 +1,4 @@
-using LitMotion;
-using LitMotion.Extensions;
+using Reflex.Attributes;
 using System;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
     [SerializeField] private ColorView _colorView;
 
     private Transform _transform;
-    private Vector3 _startScale;
+    private ColorBlockAnimations _animations;
 
     public event Action<ColorBlockView> Coloring;
 
@@ -21,7 +20,6 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
     {
         _colorView.Initialize();
         _transform = transform;
-        _startScale = _transform.localScale;
     }
 
     public void SetColor(Color color)
@@ -32,17 +30,13 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
         Coloring?.Invoke(this);
         _colorView.SetColor(color);
 
-        Decrease();
+        _animations.Decrease(_transform);
     }
 
-    private void Decrease()
+    [Inject]
+    private void Inject(ColorBlockAnimations animations)
     {
-        LMotion.Create(_transform.localScale, _transform.localScale * 0.7f, 0.2f).WithEase(Ease.InQuart).WithOnComplete(Increase).BindToLocalScale(_transform);
-    }
-
-    private void Increase()
-    {
-        LMotion.Create(_transform.localScale, _startScale, 0.2f).WithEase(Ease.InQuart).WithDelay(0.2f).BindToLocalScale(_transform);
+        _animations = animations;
     }
 
     private void OnDrawGizmos()
