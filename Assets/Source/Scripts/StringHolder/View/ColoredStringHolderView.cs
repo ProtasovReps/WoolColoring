@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(HolderSoundPlayer))]
 [RequireComponent(typeof(ColorView))]
 public class ColoredStringHolderView : StringHolderView, IColorable
 {
     [SerializeField] private Transform _targetSwitchPosition;
 
+    private HolderSoundPlayer _soundPlayer;
     private ColorView _colorView;
     private Color _lastColor;
     private ColoredStringHolderPresenter _presenter;
@@ -22,10 +24,13 @@ public class ColoredStringHolderView : StringHolderView, IColorable
         _presenter = presenter;
         _actionQueue = new ActionQueue();
         _colorView = GetComponent<ColorView>();
+        _soundPlayer = GetComponent<HolderSoundPlayer>();
 
         _colorView.Initialize();
         Initialize();
     }
+
+    public void PlayFilledSound() => _soundPlayer.Fill();
 
     public void Switch()
     {
@@ -41,11 +46,13 @@ public class ColoredStringHolderView : StringHolderView, IColorable
 
     private void Jump()
     {
+        _soundPlayer.Switch();
         Animations.Jump(Transform, FinalizeAnimation);
     }
 
     private void Slide()
     {
+        _soundPlayer.Switch();
         Animations.Slide(Transform, _targetSwitchPosition, SetColor, FinalizeAnimation);
     }
 

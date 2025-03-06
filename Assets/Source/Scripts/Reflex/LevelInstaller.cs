@@ -1,5 +1,6 @@
 using UnityEngine;
 using Reflex.Core;
+using Ami.BroAudio;
 
 public class LevelInstaller : MonoBehaviour, IInstaller
 {
@@ -16,16 +17,20 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [Header("Picture")]
     [SerializeField] private ColorBlockViewStash _colorBlockViewStash;
     [SerializeField] private ColorBlockAnimations _colorBlockAnimations;
+    [SerializeField] private BlockSoundPlayer _blockSoundPlayer;
     [SerializeField] private PictureView _pictureView;
     [SerializeField] private Malbert _malbert;
     [Header("Bolt")]
     [SerializeField] private BoltClickReader _boltClickReader;
+    [Header("Level Music")]
+    [SerializeField] private MusicPlayer _musicPlayer;
 
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
 
     private void Start()
     {
+        _musicPlayer.Play();
         _conveyer.FillAllFigures();
         _boltColorSetter.SetColors();
     }
@@ -57,6 +62,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         PictureBinder pictureBinder = new(_pictureView, colorBlockBinder, _malbert);
         Picture picture = pictureBinder.Bind();
 
+        containerBuilder.AddSingleton(_blockSoundPlayer);
         containerBuilder.AddSingleton(_colorBlockAnimations);
         containerBuilder.AddSingleton(picture);
         return picture;

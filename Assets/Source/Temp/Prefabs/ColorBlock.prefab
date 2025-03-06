@@ -99,6 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _requiredColor: {r: 0, g: 0, b: 0, a: 1}
   _colorView: {fileID: 3992685726215948365}
+  _coloringSound:
+    ID: 1073741825
+    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    <DebugObject>k__BackingField: {fileID: 5571130219659770114}
 --- !u!114 &3992685726215948365
 MonoBehaviour:
   m_ObjectHideFlags: 0

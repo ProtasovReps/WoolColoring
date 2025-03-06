@@ -19,6 +19,7 @@ public class ColoredStringHolderPresenter : IDisposable
 
         _model.StringAdded += OnStringAdded;
         _model.ColorChanged += OnColorChanged;
+        _model.Filled += holder => OnFilled();
     }
 
     public Color GetColor() => _model.Color;
@@ -27,9 +28,12 @@ public class ColoredStringHolderPresenter : IDisposable
     {
         _model.StringAdded -= OnStringAdded;
         _model.ColorChanged -= OnColorChanged;
+        _model.Filled -= holder => OnFilled();
     }
 
     private void OnColorChanged() => _view.Switch();
 
     private void OnStringAdded() => _view.Shake();
+
+    private void OnFilled() => _view.PlayFilledSound();
 }

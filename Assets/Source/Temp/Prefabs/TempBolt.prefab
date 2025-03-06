@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7447064894887285291}
   - component: {fileID: 4385680764043719744}
   - component: {fileID: 8699636878658613648}
+  - component: {fileID: 6057734436118481074}
   m_Layer: 6
   m_Name: TempBolt
   m_TagString: Untagged
@@ -120,8 +121,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _colorString: {fileID: 2153911797631544552}
-  _unscrewDuration: 0.2
-  _unscrewLoopCount: 3
+  _unscrewSound:
+    ID: 1073741824
+    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    <DebugObject>k__BackingField: {fileID: 1265851509890815825}
 --- !u!65 &9073901973826193588
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -179,6 +182,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa13855896ad7b8469a76ff9ea265b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6057734436118481074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265851509890815825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 859edabad8bb00146b0f2ff6b46bb2b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unscrewDuration: 0.2
+  _unscrewLoopCount: 3
 --- !u!1 &3328237673842485676
 GameObject:
   m_ObjectHideFlags: 0

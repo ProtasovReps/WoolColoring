@@ -1,3 +1,4 @@
+using Ami.BroAudio;
 using System;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ using UnityEngine;
 public class Bolt : MonoBehaviour
 {
     [SerializeField] private BoltColorString _colorString;
+    [SerializeField] private SoundID _unscrewSound;
 
     private HingeJoint _hingeJoint;
     private Rigidbody _connectedBody;
@@ -46,6 +48,7 @@ public class Bolt : MonoBehaviour
 
         _connectedBody.AddRelativeTorque(Vector3.one);
         _animations.Unscrew(_transformView.Transform, Disable);
+        BroAudio.Play(_unscrewSound);
     }
 
     public void SetActive(bool isActive) => _activeStateSwitcher.SetActive(isActive);

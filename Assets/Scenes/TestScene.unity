@@ -1486,6 +1486,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2510611199525465431, guid: 645133bf639ddb0449abcc4ae532e792, type: 3}
   m_PrefabInstance: {fileID: 710999468}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &341580535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4662065341727230343, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
+  m_PrefabInstance: {fileID: 157849430406901127}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &344091135
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1645,6 +1650,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e4f56d01348b754dab920f7521ecb58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &377777987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4662065341727230343, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
+  m_PrefabInstance: {fileID: 1235035519}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &398913773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,6 +1666,7 @@ GameObject:
   - component: {fileID: 398913775}
   - component: {fileID: 398913781}
   - component: {fileID: 398913777}
+  - component: {fileID: 398913782}
   m_Layer: 0
   m_Name: LevelInstaller
   m_TagString: Untagged
@@ -1721,9 +1732,27 @@ MonoBehaviour:
   _startHoldersCount: 4
   _colorBlockViewStash: {fileID: 932203173}
   _colorBlockAnimations: {fileID: 109754984}
+  _blockSoundPlayer: {fileID: 624143439}
   _pictureView: {fileID: 2079901634}
   _malbert: {fileID: 1343193558}
   _boltClickReader: {fileID: 1999060525}
+  _musicPlayer: {fileID: 398913782}
+--- !u!114 &398913782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398913773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d87741c1e6cb9174287a58e77f5a36f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundID:
+    ID: 268435456
+    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    <DebugObject>k__BackingField: {fileID: 398913773}
 --- !u!4 &406235319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2510611199525465431, guid: 645133bf639ddb0449abcc4ae532e792, type: 3}
@@ -1950,7 +1979,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cb37917483ee24fea8fab306393441e5, type: 3}
     - target: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       propertyPath: m_Name
-      value: Button_Color_Yellow (2)
+      value: BackButton
       objectReference: {fileID: 0}
     - target: {fileID: 93786937543574183, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       propertyPath: m_Pivot.x
@@ -2094,6 +2123,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 844430718}
+    - targetCorrespondingSourceObject: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 844430720}
   m_SourcePrefab: {fileID: 100100000, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
 --- !u!1001 &493952872
 PrefabInstance:
@@ -2747,6 +2779,54 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 645133bf639ddb0449abcc4ae532e792, type: 3}
+--- !u!1 &624143437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 624143438}
+  - component: {fileID: 624143439}
+  m_Layer: 0
+  m_Name: ColorBlockSoundPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &624143438
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624143437}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2079901633}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &624143439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624143437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17842ef4c676814595393c1a377abf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _coloringSound:
+    ID: 1073741825
+    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    <DebugObject>k__BackingField: {fileID: 624143437}
 --- !u!4 &626241646 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2510611199525465431, guid: 645133bf639ddb0449abcc4ae532e792, type: 3}
@@ -3510,6 +3590,10 @@ PrefabInstance:
       propertyPath: _targetSwitchPosition
       value: 
       objectReference: {fileID: 1618845257}
+    - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
+      propertyPath: _filledSound.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 1159665177}
     - target: {fileID: 2785121077586558312, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
       propertyPath: _appearDuration
       value: 0.1
@@ -4217,6 +4301,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 844430715}
   _activatable: {fileID: 297678311}
+--- !u!114 &844430720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 844430713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ee3d30293922d4680e7ccd1801516c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 844430715}
+  _sound:
+    ID: 536870913
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
+    <DebugObject>k__BackingField: {fileID: 844430713}
 --- !u!4 &852506073 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2510611199525465431, guid: 645133bf639ddb0449abcc4ae532e792, type: 3}
@@ -4987,7 +5088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2825437334747665424, guid: 6076f0e94e7b7419691468e57ddd7d34, type: 3}
       propertyPath: m_Name
-      value: Slider
+      value: VolumeSlider
       objectReference: {fileID: 0}
     - target: {fileID: 2825437334747665431, guid: 6076f0e94e7b7419691468e57ddd7d34, type: 3}
       propertyPath: m_Pivot.x
@@ -5101,6 +5202,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -5182,6 +5284,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385ffc06106304cc3824d5bcf25a7037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _onlyPlayOnce: 0
+  _playOnEnable: 0
+  _stopOnDisable: 0
+  _overrideFadeOut: -1
+  _sound:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 963194225}
+  _overrideGroup: {fileID: 0}
+  _positionMode: 0
 --- !u!1001 &963658555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5290,7 +5414,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cb37917483ee24fea8fab306393441e5, type: 3}
     - target: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       propertyPath: m_Name
-      value: Button_Color_Yellow
+      value: ContinueButton
       objectReference: {fileID: 0}
     - target: {fileID: 93786937543574183, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       propertyPath: m_Pivot.x
@@ -5409,6 +5533,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1372143135}
+    - targetCorrespondingSourceObject: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1372143137}
   m_SourcePrefab: {fileID: 100100000, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
 --- !u!224 &977415480 stripped
 RectTransform:
@@ -6273,6 +6400,7 @@ GameObject:
   - component: {fileID: 1116131859}
   - component: {fileID: 1116131861}
   - component: {fileID: 1116131860}
+  - component: {fileID: 1116131862}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -6407,6 +6535,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 1116131859}
   _activatable: {fileID: 900128369}
+--- !u!114 &1116131862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1116131855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ee3d30293922d4680e7ccd1801516c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1116131859}
+  _sound:
+    ID: 536870912
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
+    <DebugObject>k__BackingField: {fileID: 1116131855}
 --- !u!1 &1118767233
 GameObject:
   m_ObjectHideFlags: 0
@@ -6566,7 +6711,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 681db73f19fb24efe843aad713eccb43, type: 3}
     - target: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       propertyPath: m_Name
-      value: Button_Color_Yellow (2)
+      value: ExitButton
       objectReference: {fileID: 0}
     - target: {fileID: 93786937543574183, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       propertyPath: m_Pivot.x
@@ -6707,6 +6852,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1154072602}
+    - targetCorrespondingSourceObject: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1154072604}
   m_SourcePrefab: {fileID: 100100000, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
 --- !u!224 &1145705743 stripped
 RectTransform:
@@ -6773,6 +6921,23 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1154072604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154072598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ee3d30293922d4680e7ccd1801516c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1154072602}
+  _sound:
+    ID: 536870914
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
+    <DebugObject>k__BackingField: {fileID: 1154072598}
 --- !u!1 &1157861702
 GameObject:
   m_ObjectHideFlags: 0
@@ -6856,6 +7021,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1157861702}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1159665177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4662065341727230343, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
+  m_PrefabInstance: {fileID: 723908579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1168328853 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2510611199525465431, guid: 645133bf639ddb0449abcc4ae532e792, type: 3}
@@ -7320,6 +7490,10 @@ PrefabInstance:
       propertyPath: _targetSwitchPosition
       value: 
       objectReference: {fileID: 1199659343}
+    - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
+      propertyPath: _filledSound.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 377777987}
     - target: {fileID: 2785121077586558312, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
       propertyPath: _appearDuration
       value: 0.1
@@ -8078,6 +8252,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 1372143131}
   _activatable: {fileID: 1116131860}
+--- !u!114 &1372143137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372143127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ee3d30293922d4680e7ccd1801516c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1372143131}
+  _sound:
+    ID: 536870913
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
+    <DebugObject>k__BackingField: {fileID: 1372143127}
 --- !u!1 &1377708116
 GameObject:
   m_ObjectHideFlags: 0
@@ -8613,7 +8804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       propertyPath: m_Name
-      value: Button_Color_Yellow (3)
+      value: MuteVolumeButton
       objectReference: {fileID: 0}
     - target: {fileID: 93786937543574183, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       propertyPath: m_Pivot.x
@@ -9281,7 +9472,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
   m_PrefabInstance: {fileID: 1235035519}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 377777987}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e855aa151d9cd0a42b77d1cc420f0240, type: 3}
@@ -9292,7 +9483,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
   m_PrefabInstance: {fileID: 723908579}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1159665177}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e855aa151d9cd0a42b77d1cc420f0240, type: 3}
@@ -9505,7 +9696,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 23d2f9d15f15a43c5bf2c57de1a27879, type: 3}
     - target: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       propertyPath: m_Name
-      value: Button_Color_Yellow (1)
+      value: SettingsButton
       objectReference: {fileID: 0}
     - target: {fileID: 93786937543574183, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       propertyPath: m_Pivot.x
@@ -9621,6 +9812,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1712937403}
+    - targetCorrespondingSourceObject: {fileID: 93786937543574182, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1712937405}
   m_SourcePrefab: {fileID: 100100000, guid: 2993ad96a4fd942e29595bd9a0442fe8, type: 3}
 --- !u!224 &1712937397 stripped
 RectTransform:
@@ -9696,6 +9890,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 1712937401}
   _activatable: {fileID: 297678311}
+--- !u!114 &1712937405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462182344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ee3d30293922d4680e7ccd1801516c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1712937401}
+  _sound:
+    ID: 536870912
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
+    <DebugObject>k__BackingField: {fileID: 462182344}
 --- !u!1001 &1736227437
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10552,7 +10763,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 447279336752791036, guid: 8140575651e0c47789992b38086312c7, type: 3}
       propertyPath: m_Name
-      value: Button_ETC_Language
+      value: LanguageButton
       objectReference: {fileID: 0}
     - target: {fileID: 447279336752791039, guid: 8140575651e0c47789992b38086312c7, type: 3}
       propertyPath: m_Pivot.x
@@ -11539,6 +11750,7 @@ Transform:
   m_Children:
   - {fileID: 932203172}
   - {fileID: 109754983}
+  - {fileID: 624143438}
   m_Father: {fileID: 1343193557}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2079901634
@@ -11888,6 +12100,10 @@ PrefabInstance:
       propertyPath: _targetSwitchPosition
       value: 
       objectReference: {fileID: 1618845257}
+    - target: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
+      propertyPath: _filledSound.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 341580535}
     - target: {fileID: 2785121077586558312, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
       propertyPath: _appearDuration
       value: 0.1
@@ -11980,7 +12196,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1397916301311602972, guid: 20aa3f4ba96bc034db998b6ab2439191, type: 3}
   m_PrefabInstance: {fileID: 157849430406901127}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 341580535}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e855aa151d9cd0a42b77d1cc420f0240, type: 3}

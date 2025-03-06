@@ -1,3 +1,4 @@
+using Ami.BroAudio;
 using Reflex.Attributes;
 using System;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
 
     private Transform _transform;
     private ColorBlockAnimations _animations;
+    private BlockSoundPlayer _soundPlayer;
 
     public event Action<ColorBlockView> Coloring;
 
@@ -31,12 +33,14 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
         _colorView.SetColor(color);
 
         _animations.Decrease(_transform);
+        _soundPlayer.Play();
     }
 
     [Inject]
-    private void Inject(ColorBlockAnimations animations)
+    private void Inject(ColorBlockAnimations animations, BlockSoundPlayer soundPlayer)
     {
         _animations = animations;
+        _soundPlayer = soundPlayer;
     }
 
     private void OnDrawGizmos()
