@@ -1,21 +1,19 @@
-using LitMotion;
-using LitMotion.Extensions;
 using System;
 using UnityEngine;
 
+[RequireComponent(typeof(BoltAnimations))]
 [RequireComponent(typeof(TransformView))]
 [RequireComponent(typeof(ActiveStateSwitcher))]
 [RequireComponent(typeof(HingeJoint))]
 public class Bolt : MonoBehaviour
 {
     [SerializeField] private BoltColorString _colorString;
-    [SerializeField] private float _unscrewDuration = 0.25f;
-    [SerializeField] private int _unscrewLoopCount = 4;
 
     private HingeJoint _hingeJoint;
     private Rigidbody _connectedBody;
     private ActiveStateSwitcher _activeStateSwitcher;
     private TransformView _transformView;
+    private BoltAnimations _animations;
 
     public event Action<Bolt> Disabling;
 
@@ -28,6 +26,7 @@ public class Bolt : MonoBehaviour
         _hingeJoint = GetComponent<HingeJoint>();
         _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
         _transformView = GetComponent<TransformView>();
+        _animations = GetComponent<BoltAnimations>();
         _connectedBody = _hingeJoint.connectedBody;
 
         _activeStateSwitcher.Initialize();
@@ -43,26 +42,10 @@ public class Bolt : MonoBehaviour
 
     public void Unscrew()
     {
-        Vector3 rotation = _transformView.Transform.localRotation.eulerAngles;
-        float targetRotation = rotation.y - 360f;
-        Vector3 targetPosition = new(_transformView.Transform.position.x, 4.3f, -6.5f);
-        Vector3 targetScale = _transformView.Transform.localScale * 1.2f;
-
         _hingeJoint.connectedBody = null;
-        _connectedBody.AddRelativeTorque(Vector3.one);
 
-        LSequence.Create()
-            .Join(LMotion.Create(rotation, new Vector3(rotation.x, targetRotation, rotation.z), _unscrewDuration)
-                .WithLoops(_unscrewLoopCount, LoopType.Incremental)
-                .WithOnComplete(Disable)
-                .BindToLocalEulerAngles(_transformView.Transform))
-            .Join(LMotion.Create(_transformView.Transform.position, targetPosition, _unscrewDuration)
-                .WithEase(Ease.InOutQuint)
-                .BindToPosition(_transformView.Transform))
-            .Join(LMotion.Create(_transformView.Transform.localScale, targetScale, _unscrewDuration)
-                .WithLoops(_unscrewLoopCount, LoopType.Yoyo)
-                .BindToLocalScale(_transformView.Transform))
-            .Run();
+        _connectedBody.AddRelativeTorque(Vector3.one);
+        _animations.Unscrew(_transformView.Transform, Disable);
     }
 
     public void SetActive(bool isActive) => _activeStateSwitcher.SetActive(isActive);

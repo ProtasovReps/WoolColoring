@@ -9,14 +9,14 @@ public class BoltClickReader : MonoBehaviour
     [SerializeField] private float _maxRaycastDistance;
 
     private PlayerInput _playerInput;
-    private BoltPressHandler _presenter;
+    private BoltPressHandler _pressHandler;
 
     public void Initialize(BoltPressHandler presenter)
     {
         if (presenter == null)
             throw new ArgumentNullException(nameof(presenter));
 
-        _presenter = presenter;
+        _pressHandler = presenter;
     }
 
     private void Awake()
@@ -43,6 +43,6 @@ public class BoltClickReader : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, _maxRaycastDistance, _layer) == false)
             return;
 
-        _presenter.ProcessClick(hit);
+        _pressHandler.ProcessClick(hit);
     }
 }
