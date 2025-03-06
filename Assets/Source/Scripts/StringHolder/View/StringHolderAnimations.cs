@@ -19,10 +19,9 @@ public class StringHolderAnimations : MonoBehaviour
             .BindToLocalScale(transform);
     }
 
-    public void Shake(Transform transform)
+    public void Shake(Transform transform, Vector3 startScale)
     {
         Vector3 targetScale = transform.localScale * 0.95f;
-        Vector3 startScale = transform.localScale;
 
         LSequence.Create()
             .Append(LMotion.Create(transform.localScale, targetScale, _shakeDuration)
@@ -47,22 +46,22 @@ public class StringHolderAnimations : MonoBehaviour
 
         LSequence.Create()
             .Append(LMotion.Create(position.y, targetUpPosition, _jumpDuration)
-            .WithEase(Ease.InQuint)
-            .BindToPositionY(transform))
+                .WithEase(Ease.InQuint)
+                .BindToPositionY(transform))
             .Join(LMotion.Create(scale, targetScale, _jumpDuration)
-            .WithEase(Ease.InElastic)
-            .BindToLocalScale(transform))
+                .WithEase(Ease.InElastic)
+                .BindToLocalScale(transform))
             .Join(LMotion.Create(rotation, targetRotation, saltoDuration)
-            .WithEase(Ease.InOutExpo)
-            .BindToLocalEulerAngles(transform))
+                .WithEase(Ease.InOutExpo)
+                .BindToLocalEulerAngles(transform))
             .AppendInterval(fallInterval)
             .Append(LMotion.Create(targetScale, scale, _jumpDuration)
-            .WithEase(Ease.InOutElastic)
-            .BindToLocalScale(transform))
+                .WithEase(Ease.InOutElastic)
+                .BindToLocalScale(transform))
             .Join(LMotion.Create(targetUpPosition, position.y, _jumpDuration)
-            .WithEase(Ease.OutQuint)
-            .WithOnComplete(callback)
-            .BindToPositionY(transform))
+                .WithEase(Ease.OutQuint)
+                .WithOnComplete(callback)
+                .BindToPositionY(transform))
             .Run();
     }
 

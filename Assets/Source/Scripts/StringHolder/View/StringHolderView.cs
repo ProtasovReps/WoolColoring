@@ -24,7 +24,7 @@ public class StringHolderView : MonoBehaviour
 
     public void Shake()
     {
-        _stringHolderAnimations.Shake(_transformView.Transform);
+        _stringHolderAnimations.Shake(_transformView.Transform, _transformView.StartScale);
     }
 
     public bool TryGetFreeStringTransform(out Transform transform)
