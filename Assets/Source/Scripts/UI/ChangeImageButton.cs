@@ -3,8 +3,8 @@ using UnityEngine.UI;
 
 public class ChangeImageButton : ButtonView
 {
-    [SerializeField] private RawImage _activeImage;
-    [SerializeField] private RawImage _inactiveImage;
+    [SerializeField] private Image _activeImage;
+    [SerializeField] private Image _inactiveImage;
 
     private bool _isActive = true;
 
