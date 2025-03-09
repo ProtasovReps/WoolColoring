@@ -39,7 +39,7 @@ public class StringHolderAnimations : MonoBehaviour
         Vector3 scale = transform.localScale;
         Vector3 targetScale = scale * 0.75f;
         Vector3 rotation = transform.localRotation.eulerAngles;
-        Vector3 targetRotation = new(rotation.x, rotation.y, rotation.z - 360f);
+        Vector3 targetRotation = new(rotation.x - 360f, rotation.y, rotation.z);
         float targetUpPosition = position.y + (Vector3.up * 0.5f).y;
         float fallInterval = 0.2f;
         float saltoDuration = _jumpDuration * 2f;

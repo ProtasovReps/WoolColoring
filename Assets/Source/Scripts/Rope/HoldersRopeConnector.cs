@@ -6,9 +6,9 @@ public class HoldersRopeConnector : MonoBehaviour
 {
     [SerializeField] private float _ropeConnectDelay;
     [SerializeField] private float _perStringLifeTime;
+    [SerializeField] private Transform _whiteHolderPosition;
 
     private ColoredStringHolderView[] _coloredHolders;
-    private WhiteStringHolderView _whiteHolder;
     private RopePool _ropePool;
     private StringDistributor _stringDistributor;
 
@@ -18,11 +18,10 @@ public class HoldersRopeConnector : MonoBehaviour
     }
 
     [Inject]
-    private void Inject(StringDistributor stringDistributor, ColoredStringHolderView[] coloredViews, WhiteStringHolderView whiteView, RopePool ropePool)
+    private void Inject(StringDistributor stringDistributor, ColoredStringHolderView[] coloredViews, RopePool ropePool)
     {
         _stringDistributor = stringDistributor;
         _coloredHolders = coloredViews;
-        _whiteHolder = whiteView;
         _ropePool = ropePool;
         _stringDistributor.WhiteHolderDistributing += ConnectHolders;
     }
@@ -43,7 +42,7 @@ public class HoldersRopeConnector : MonoBehaviour
         Rope rope = _ropePool.Get();
 
         rope.SetColor(color);
-        rope.Connect(_whiteHolder.Transform, freePosition);
+        rope.Connect(_whiteHolderPosition, freePosition);
 
         for (int i = 0; i < stringFillCount; i++)
             await UniTask.WaitForSeconds(_perStringLifeTime);
