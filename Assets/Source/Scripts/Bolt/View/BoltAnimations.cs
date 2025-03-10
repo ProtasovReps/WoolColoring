@@ -11,7 +11,7 @@ public class BoltAnimations : MonoBehaviour
     public void Unscrew(Transform transform, Action callback)
     {
         Vector3 rotation = transform.localRotation.eulerAngles;
-        float targetRotation = rotation.y - 360f;
+        float targetRotation = rotation.y + 360f;
         Vector3 targetPosition = new(transform.position.x, 4.3f, -6.5f);
         Vector3 targetScale = transform.localScale * 1.2f;
 
