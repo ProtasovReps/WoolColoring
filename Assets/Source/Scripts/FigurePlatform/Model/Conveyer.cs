@@ -5,7 +5,7 @@ public class Conveyer : IDisposable
 {
     private readonly FigureCompositionPool _figurePool;
     private readonly PositionDatabase _positionDatabase;
-    private readonly int _minFiguresCount = 3;
+    private readonly int _minFiguresCount = 6;
 
     public Conveyer(FigureCompositionPool pool, PositionDatabase positionDatabase)
     {

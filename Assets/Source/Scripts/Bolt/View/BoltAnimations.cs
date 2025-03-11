@@ -11,9 +11,9 @@ public class BoltAnimations : MonoBehaviour
     public void Unscrew(Transform transform, Action callback)
     {
         Vector3 rotation = transform.localRotation.eulerAngles;
-        float targetRotation = rotation.y + 360f;
-        Vector3 targetPosition = new(transform.position.x, 4.3f, -6.5f);
-        Vector3 targetScale = transform.localScale * 1.2f;
+        float targetRotation = rotation.y - 360f;
+        Vector3 targetPosition = transform.position + transform.up * 0.5f;
+        Vector3 targetScale = transform.localScale * 0.5f;
 
         LSequence.Create()
             .Join(LMotion.Create(rotation, new Vector3(rotation.x, targetRotation, rotation.z), _unscrewDuration)

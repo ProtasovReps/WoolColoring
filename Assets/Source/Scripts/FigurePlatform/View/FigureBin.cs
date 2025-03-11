@@ -13,6 +13,8 @@ public class FigureBin : MonoBehaviour
         if (other.TryGetComponent(out FigureView fallable) == false)
             return;
 
+        Debug.Log("’¿’¿");
+
         fallable.Fall();
     }
 }

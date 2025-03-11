@@ -1,6 +1,5 @@
 using UnityEngine;
 using Reflex.Core;
-using Ami.BroAudio;
 
 public class LevelInstaller : MonoBehaviour, IInstaller
 {
@@ -13,7 +12,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [Header("HolderView")]
     [SerializeField] private ColoredStringHolderView[] _coloredViews;
     [SerializeField] private WhiteStringHolderView _whiteStringHolderView;
-    [SerializeField] private int _startHoldersCount;
+    [SerializeField, Range(1, 4)] private int _startHoldersCount;
     [Header("Picture")]
     [SerializeField] private ColorBlockViewStash _colorBlockViewStash;
     [SerializeField] private ColorBlockAnimations _colorBlockAnimations;
