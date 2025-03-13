@@ -19,6 +19,7 @@ public class Bolt : MonoBehaviour
 
     public event Action<Bolt> Disabling;
 
+    public bool IsAnimating { get; private set; }
     public Transform Transform => _transformView.Transform;
     public IColorSettable ColorSettable => _colorString;
     public IColorable Colorable => _colorString;
@@ -44,6 +45,7 @@ public class Bolt : MonoBehaviour
 
     public void Unscrew()
     {
+        IsAnimating = true;
         _hingeJoint.connectedBody = null;
 
         _connectedBody.AddRelativeTorque(Vector3.one);
@@ -59,5 +61,7 @@ public class Bolt : MonoBehaviour
 
         Disabling?.Invoke(this);
         SetActive(false);
+
+        IsAnimating = false;
     }
 }

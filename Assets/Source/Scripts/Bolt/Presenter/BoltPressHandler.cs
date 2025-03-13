@@ -18,6 +18,9 @@ public class BoltPressHandler
         if (hit.collider.TryGetComponent(out Bolt bolt) == false)
             return;
 
+        if (bolt.IsAnimating)
+            return;
+
         _distributor.Distribute(bolt);
         bolt.Unscrew();
     }
