@@ -10,6 +10,7 @@ public class BoltClickReader : MonoBehaviour
 
     private PlayerInput _playerInput;
     private BoltPressHandler _pressHandler;
+    private bool _isPaused;
 
     public void Initialize(BoltPressHandler presenter)
     {
@@ -36,8 +37,16 @@ public class BoltClickReader : MonoBehaviour
         _playerInput.PlayerClick.Click.performed -= OnClickPerformed;
     }
 
+    public void SetPause(bool isPaused)
+    {
+        _isPaused = isPaused;
+    }
+
     private void OnClickPerformed(InputAction.CallbackContext context)
     {
+        if (_isPaused)
+            return;
+
         Ray ray = _mainCamera.ScreenPointToRay(_playerInput.PlayerClick.ScreenPosition.ReadValue<Vector2>());
 
         if (Physics.Raycast(ray, out RaycastHit hit, _maxRaycastDistance, _layer) == false)

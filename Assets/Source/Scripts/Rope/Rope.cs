@@ -128,7 +128,5 @@ public class Rope : MonoBehaviour, IColorSettable
 
         _cancellationTokenSource.Cancel();
         await _task;
-
-        _cancellationTokenSource.Dispose();
     }
 }
