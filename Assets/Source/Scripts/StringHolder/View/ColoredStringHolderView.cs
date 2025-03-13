@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.iOS;
 
 [RequireComponent(typeof(HolderSoundPlayer))]
 [RequireComponent(typeof(ColorView))]
 public class ColoredStringHolderView : StringHolderView, IColorable
 {
     [SerializeField] private Transform _targetSwitchPosition;
+    [SerializeField] private SpriteRenderer _padlockSprite;
 
     private HolderSoundPlayer _soundPlayer;
     private ColorView _colorView;
@@ -67,6 +69,7 @@ public class ColoredStringHolderView : StringHolderView, IColorable
     {
         Color color = _presenter.GetColor();
 
+        _padlockSprite.enabled = color == Color.gray;
         _lastColor = color;
 
         _colorView.SetColor(color);
