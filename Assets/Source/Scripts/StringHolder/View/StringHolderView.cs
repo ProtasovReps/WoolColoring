@@ -31,6 +31,11 @@ public class StringHolderView : MonoBehaviour
     {
         for (int i = 0; i < _strings.Length; i++)
         {
+            if (_strings[i].IsAnimating)
+            {
+                break;
+            }
+
             if (_strings[i].gameObject.activeSelf == false)
             {
                 transform = _strings[i].Transform;

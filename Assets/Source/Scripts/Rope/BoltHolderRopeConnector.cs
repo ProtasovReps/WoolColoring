@@ -17,7 +17,9 @@ public class BoltHolderRopeConnector : MonoBehaviour
     }
 
     [Inject]
-    private void Inject(StringDistributor stringDistributor, ColoredStringHolderView[] coloredViews, WhiteStringHolderView whiteView, RopePool ropePool)
+    private void Inject(StringDistributor stringDistributor,
+    ColoredStringHolderView[] coloredViews, WhiteStringHolderView whiteView,
+    RopePool ropePool)
     {
         if (stringDistributor == null)
             throw new ArgumentNullException(nameof(stringDistributor));

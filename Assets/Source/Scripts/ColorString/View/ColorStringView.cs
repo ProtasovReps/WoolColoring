@@ -17,6 +17,7 @@ public class ColorStringView : MonoBehaviour
     private TransformView _transformView;
     private ActiveStateSwitcher _stateSwitcher;
 
+    public bool IsAnimating => _actionQueue.IsAnimating;
     public Transform Transform => _transformView.Transform;
 
     public void Initialize(ColorStringPresenter presenter)

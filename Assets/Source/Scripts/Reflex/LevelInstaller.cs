@@ -23,15 +23,18 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private BoltClickReader _boltClickReader;
     [Header("Level Music")]
     [SerializeField] private MusicPlayer _musicPlayer;
+    [Header("UI")]
+    [SerializeField] private ActivatableUIInitializator _activatableInitializator;
 
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
 
     private void Start()
     {
-        _musicPlayer.Play();
         _conveyer.FillAllFigures();
         _boltColorSetter.SetColors();
+        _activatableInitializator.Initialize();
+        _musicPlayer.Play();
     }
 
     public void InstallBindings(ContainerBuilder containerBuilder)

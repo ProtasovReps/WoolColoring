@@ -9,18 +9,15 @@ public class ActivatableUI : Activatable
 
     private Transform _transform;
 
-    private void Awake()
+    public void Initialize()
     {
         _transformToAnimate.Initialize();
         _transform = transform;
-        _transform.gameObject.SetActive(false);
     }
 
     public override void Activate()
     {
         _transform.gameObject.SetActive(true);
-
-        Time.timeScale = 0.5f;
 
         LMotion.Create(Vector3.zero, _transformToAnimate.Transform.localScale, _appearDuration)
             .WithEase(Ease.OutElastic)
@@ -39,7 +36,6 @@ public class ActivatableUI : Activatable
 
     private void FinalizeDeactivation()
     {
-        Time.timeScale = 1f;
         _transform.gameObject.SetActive(false);
         _transformToAnimate.SetStartTransform();
     }

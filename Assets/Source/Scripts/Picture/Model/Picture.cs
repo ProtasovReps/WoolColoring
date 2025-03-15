@@ -11,6 +11,7 @@ public class Picture : IFillable<Color>
 
     public event Action<Color> Filled;
     public event Action BlockCountChanged;
+    public event Action Colorized;
 
     public Picture(ColorBlock[] colorBlocks)
     {
@@ -29,19 +30,27 @@ public class Picture : IFillable<Color>
     public int UncoloredBlocksCount { get; private set; }
     public int RequiredColorsCount => _requiredColors.Keys.Count;
 
-    public Color GetRandomColor()
+    public bool GetRandomColor(out Color color)
     {
         if (_requiredColors.Keys.Count == 0)
-            throw new InvalidOperationException();
+        {
+            Colorized?.Invoke();
+            color = default;
+            return false;
+        }
 
         int randomIndex = Random.Range(0, _requiredColors.Count);
-        return _requiredColors.Keys.ToArray()[randomIndex];
+
+        color = _requiredColors.Keys.ToArray()[randomIndex];
+        return true;
     }
 
     public void Colorize(Color color)
     {
         if (_requiredColors.ContainsKey(color) == false)
+        {
             return;
+        }
 
         ColorBlock colorBlock = _requiredColors[color].Dequeue();
 

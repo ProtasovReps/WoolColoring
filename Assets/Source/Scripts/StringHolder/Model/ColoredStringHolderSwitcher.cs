@@ -40,7 +40,12 @@ public class ColoredStringHolderSwitcher
 
         do
         {
-            requiredColor = _picture.GetRandomColor();
+            if (_picture.GetRandomColor(out Color color) == false)
+            {
+                return;
+            }
+
+            requiredColor = color;
         }
         while (_usedColors.Contains(requiredColor));
 

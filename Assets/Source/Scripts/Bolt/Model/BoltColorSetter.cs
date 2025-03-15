@@ -28,7 +28,10 @@ public class BoltColorSetter : IDisposable
     {
         foreach (Bolt bolt in _boltStash.Bolts)
         {
-            Color color = _picture.GetRandomColor();
+            if (_picture.GetRandomColor(out Color color) == false)
+            {
+                return;
+            }
 
             bolt.ColorSettable.SetColor(color);
         }
@@ -40,7 +43,10 @@ public class BoltColorSetter : IDisposable
         {
             if (bolt.Colorable.Color == color)
             {
-                Color newColor = _picture.GetRandomColor();
+                if (_picture.GetRandomColor(out Color newColor) == false)
+                {
+                    return;
+                }
 
                 bolt.ColorSettable.SetColor(newColor);
             }

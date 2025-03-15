@@ -5,7 +5,7 @@ public class ActionQueue
 {
     private Queue<Action> _actions;
 
-    public bool IsAnimated { get; private set; }
+    public bool IsAnimating { get; private set; }
 
     public ActionQueue()
     {
@@ -17,9 +17,9 @@ public class ActionQueue
 
     public void ValidateAction()
     {
-        if (IsAnimated == false)
+        if (IsAnimating == false)
         {
-            IsAnimated = true;
+            IsAnimating = true;
             ProcessQueuedAction();
         }
     }
@@ -28,7 +28,7 @@ public class ActionQueue
     {
         if (_actions.Count == 0)
         {
-            IsAnimated = false;
+            IsAnimating = false;
             return;
         }
 

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.iOS;
 
 [RequireComponent(typeof(HolderSoundPlayer))]
 [RequireComponent(typeof(ColorView))]
@@ -15,7 +14,7 @@ public class ColoredStringHolderView : StringHolderView, IColorable
     private ColoredStringHolderPresenter _presenter;
     private ActionQueue _actionQueue;
 
-    public bool IsAnimating { get; private set; }
+    public bool IsAnimating => _actionQueue.IsAnimating;
     public Color Color => _presenter.GetColor();
 
     public void Initialize(ColoredStringHolderPresenter presenter)
@@ -36,8 +35,6 @@ public class ColoredStringHolderView : StringHolderView, IColorable
 
     public void Switch()
     {
-        IsAnimating = true;
-
         if (_lastColor == _presenter.GetColor())
             _actionQueue.AddAction(Jump);
         else
@@ -60,7 +57,6 @@ public class ColoredStringHolderView : StringHolderView, IColorable
 
     private void FinalizeAnimation()
     {
-        IsAnimating = false;
         Transform.rotation = TransformView.StartRotation;
         _actionQueue.ProcessQueuedAction();
     }
