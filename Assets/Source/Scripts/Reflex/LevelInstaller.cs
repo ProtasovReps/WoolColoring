@@ -1,5 +1,6 @@
 using UnityEngine;
 using Reflex.Core;
+using Ami.BroAudio;
 
 public class LevelInstaller : MonoBehaviour, IInstaller
 {
@@ -22,7 +23,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [Header("Bolt")]
     [SerializeField] private BoltClickReader _boltClickReader;
     [Header("Level Music")]
-    [SerializeField] private MusicPlayer _musicPlayer;
+    [SerializeField] private SoundID _soundID;
     [Header("UI")]
     [SerializeField] private ActivatableUIInitializator _activatableInitializator;
 
@@ -34,21 +35,22 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         _conveyer.FillAllFigures();
         _boltColorSetter.SetColors();
         _activatableInitializator.Initialize();
-        _musicPlayer.Play();
+        BroAudio.Play(_soundID);
     }
 
     public void InstallBindings(ContainerBuilder containerBuilder)
     {
-        InstallFigureComposition(containerBuilder);
+        InstallFigureComposition();
 
         Picture picture = InstallPicture(containerBuilder);
         StringDistributor stringDistributor = InstallHolders(containerBuilder, picture);
 
         InstallBolt(containerBuilder, stringDistributor, picture);
+        InstallWallet(containerBuilder, picture);
         InstallRopeConnector(containerBuilder);
     }
 
-    private void InstallFigureComposition(ContainerBuilder containerBuilder)
+    private void InstallFigureComposition()
     {
         var positionDatabase = new PositionDatabase(_conveyerPositions);
         var compositionPool = new FigureCompositionPool(_figureCompositionFactory);
@@ -106,5 +108,13 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     private void InstallRopeConnector(ContainerBuilder containerBuilder)
     {
         containerBuilder.AddSingleton(_ropePool);
+    }
+
+    private void InstallWallet(ContainerBuilder containerBuilder, Picture picture)
+    {
+        var wallet = new Wallet();
+        var moneyRewards = new MoneyRewards(picture, wallet, _figureCompositionFactory);
+
+        containerBuilder.AddSingleton(wallet, typeof(ICountChangeable));
     }
 }

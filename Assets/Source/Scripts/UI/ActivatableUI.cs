@@ -21,7 +21,6 @@ public class ActivatableUI : Activatable
 
         LMotion.Create(Vector3.zero, _transformToAnimate.Transform.localScale, _appearDuration)
             .WithEase(Ease.OutElastic)
-            .WithScheduler(MotionScheduler.UpdateIgnoreTimeScale)
             .BindToLocalScale(_transformToAnimate.Transform);
     }
 
@@ -29,7 +28,6 @@ public class ActivatableUI : Activatable
     {
         LMotion.Create(_transformToAnimate.Transform.localScale, Vector3.zero, _appearDuration)
             .WithEase(Ease.InElastic)
-            .WithScheduler(MotionScheduler.UpdateIgnoreTimeScale)
             .WithOnComplete(FinalizeDeactivation)
             .BindToLocalScale(_transformToAnimate.Transform);
     }

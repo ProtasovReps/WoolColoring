@@ -21,7 +21,6 @@ public class PausePanel : MonoBehaviour
         _boltClickReader.SetPause(true);
 
         LMotion.Create(0f, _finalAlpha, _appearDuration)
-            .WithScheduler(MotionScheduler.UpdateIgnoreTimeScale)
             .BindToColorA(_image);
     }
 
