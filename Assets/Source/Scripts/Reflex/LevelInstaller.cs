@@ -13,6 +13,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [Header("HolderView")]
     [SerializeField] private ColoredStringHolderView[] _coloredViews;
     [SerializeField] private WhiteStringHolderView _whiteStringHolderView;
+    [SerializeField] private StringHolderAnimations _holderAnimations;
+    [SerializeField] private HolderSoundPlayer _holderSoundPlayer;
     [SerializeField, Range(1, 4)] private int _startHoldersCount;
     [Header("Picture")]
     [SerializeField] private ColorBlockViewStash _colorBlockViewStash;
@@ -86,8 +88,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     {
         ColorStringFactory colorStringFactory = new();
         StringHolderBinder stringHolderBinder = new(colorStringFactory, _coloredViews, _whiteStringHolderView);
-        ColoredStringHolder[] coloredHolderModels = stringHolderBinder.BindColoredHolders();
-        WhiteStringHolder whiteHolderModel = stringHolderBinder.BindWhiteHolder();
+        ColoredStringHolder[] coloredHolderModels = stringHolderBinder.BindColoredHolders(_holderAnimations, _holderSoundPlayer);
+        WhiteStringHolder whiteHolderModel = stringHolderBinder.BindWhiteHolder(_holderAnimations);
         ColoredStringHolderStash coloredStringHolderStash = new(coloredHolderModels, _startHoldersCount);
         ColoredStringHolderSwitcher switcher = new(picture, coloredStringHolderStash);
         StringDistributor stringDistributor = new(coloredStringHolderStash, whiteHolderModel, switcher);

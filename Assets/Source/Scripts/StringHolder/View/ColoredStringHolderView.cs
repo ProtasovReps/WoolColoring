@@ -1,23 +1,22 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(HolderSoundPlayer))]
 [RequireComponent(typeof(ColorView))]
 public class ColoredStringHolderView : StringHolderView, IColorable
 {
     [SerializeField] private Transform _targetSwitchPosition;
     [SerializeField] private SpriteRenderer _padlockSprite;
 
-    private HolderSoundPlayer _soundPlayer;
     private ColorView _colorView;
     private Color _lastColor;
     private ColoredStringHolderPresenter _presenter;
     private ActionQueue _actionQueue;
+    private HolderSoundPlayer _soundPlayer;
 
     public bool IsAnimating => _actionQueue.IsAnimating;
     public Color Color => _presenter.GetColor();
 
-    public void Initialize(ColoredStringHolderPresenter presenter)
+    public void Initialize(ColoredStringHolderPresenter presenter, StringHolderAnimations animations, HolderSoundPlayer holderSoundPlayer)
     {
         if (presenter == null)
             throw new ArgumentNullException(nameof(presenter));
@@ -25,10 +24,10 @@ public class ColoredStringHolderView : StringHolderView, IColorable
         _presenter = presenter;
         _actionQueue = new ActionQueue();
         _colorView = GetComponent<ColorView>();
-        _soundPlayer = GetComponent<HolderSoundPlayer>();
+        _soundPlayer = holderSoundPlayer;
 
         _colorView.Initialize();
-        Initialize();
+        base.Initialize(animations);
     }
 
     public void PlayFilledSound() => _soundPlayer.Fill();

@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(StringHolderAnimations))]
 [RequireComponent(typeof(TransformView))]
 public class StringHolderView : MonoBehaviour
 {
@@ -15,10 +14,10 @@ public class StringHolderView : MonoBehaviour
     protected StringHolderAnimations Animations => _stringHolderAnimations;
     protected TransformView TransformView => _transformView;
 
-    public virtual void Initialize()
+    public virtual void Initialize(StringHolderAnimations holderAnimations)
     {
+        _stringHolderAnimations = holderAnimations;
         _transformView = GetComponent<TransformView>();
-        _stringHolderAnimations = GetComponent<StringHolderAnimations>();
         _transformView.Initialize();
     }
 

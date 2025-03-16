@@ -4,14 +4,7 @@ public class WhiteStringHolderView : StringHolderView
 {
     [SerializeField] private float _appearDuration;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        Appear();
-    }
+    private void Awake() => Appear();
 
-    private void Appear()
-    {
-        Animations.Appear(Transform);
-    }
+    private void Appear() => Animations.Appear(Transform);
 }

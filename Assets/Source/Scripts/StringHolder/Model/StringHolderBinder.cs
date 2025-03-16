@@ -13,7 +13,7 @@ public class StringHolderBinder
         _whiteView = whiteView;
     }
 
-    public ColoredStringHolder[] BindColoredHolders()
+    public ColoredStringHolder[] BindColoredHolders(StringHolderAnimations animations, HolderSoundPlayer soundPlayer)
     {
         var holderModels = new ColoredStringHolder[_coloredViews.Length];
         ColorString[] strings;
@@ -27,7 +27,7 @@ public class StringHolderBinder
             strings = GetColorStrings(view);
             model = new ColoredStringHolder(strings);
             presenter = new ColoredStringHolderPresenter(view, model);
-            view.Initialize(presenter);
+            view.Initialize(presenter, animations, soundPlayer);
 
             holderModels[i] = model;
         }
@@ -35,13 +35,13 @@ public class StringHolderBinder
         return holderModels;
     }
 
-    public WhiteStringHolder BindWhiteHolder()
+    public WhiteStringHolder BindWhiteHolder(StringHolderAnimations animations)
     {
         ColorString[] strings = GetColorStrings(_whiteView);
         WhiteStringHolder model = new(strings);
         WhiteStringHolderPresenter presenter = new(model, _whiteView);
 
-        _whiteView.Initialize();
+        _whiteView.Initialize(animations);
         return model;
     }
 
