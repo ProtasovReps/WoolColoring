@@ -163,7 +163,7 @@ MonoBehaviour:
       Delay: 0
       StartPosition: 5.01
       EndPosition: 1.565
-      FadeIn: 1.566
+      FadeIn: 2.191
       FadeOut: 4.383
       Weight: 0
     <MasterVolume>k__BackingField: 1

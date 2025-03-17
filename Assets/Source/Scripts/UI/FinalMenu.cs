@@ -1,4 +1,5 @@
 using Ami.BroAudio;
+using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ using UnityEngine;
 public class FinalMenu : MonoBehaviour
 {
     [SerializeField] private SoundID _soundID;
+    [SerializeField] private float _activateDelay;
 
     private ActivatableUI _activatable;
     private Picture _picture;
@@ -15,15 +17,16 @@ public class FinalMenu : MonoBehaviour
     {
         _picture = picture;
         _activatable = GetComponent<ActivatableUI>();
-        _picture.Colorized += Activate;
+        _picture.Colorized += () => Activate().Forget();
     }
 
     private void OnDestroy() => Unsubscribe();
 
-    private void Activate()
+    private async UniTaskVoid Activate()
     {
         Unsubscribe();
 
+        await UniTask.WaitForSeconds(_activateDelay);
         BroAudio.Stop(BroAudioType.Music);
         BroAudio.Play(_soundID);
 
@@ -32,6 +35,6 @@ public class FinalMenu : MonoBehaviour
 
     private void Unsubscribe()
     {
-        _picture.Colorized -= Activate;
+        _picture.Colorized -= () => Activate().Forget();
     }
 }

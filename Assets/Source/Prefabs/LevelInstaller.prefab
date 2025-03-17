@@ -1,0 +1,130 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5564509760098111384
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2069168569926670505}
+  - component: {fileID: 8339587222200434884}
+  - component: {fileID: 7347834897356322926}
+  - component: {fileID: 1106072022432992619}
+  - component: {fileID: 5350750388361906446}
+  m_Layer: 0
+  m_Name: LevelInstaller
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2069168569926670505
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564509760098111384}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8339587222200434884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564509760098111384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bd260167e2bbe94681a924f7239a1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _conveyerPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _figureCompositionFactory: {fileID: 0}
+  _ropePool: {fileID: 0}
+  _blockHolderConnector: {fileID: 0}
+  _coloredViews:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _whiteStringHolderView: {fileID: 0}
+  _holderAnimations: {fileID: 0}
+  _holderSoundPlayer: {fileID: 0}
+  _startHoldersCount: 2
+  _colorBlockViewStash: {fileID: 0}
+  _colorBlockAnimations: {fileID: 0}
+  _blockSoundPlayer: {fileID: 0}
+  _pictureView: {fileID: 0}
+  _malbert: {fileID: 0}
+  _boltClickReader: {fileID: 0}
+  _soundID:
+    ID: 268435456
+    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    <DebugObject>k__BackingField: {fileID: 5564509760098111384}
+  _activatableInitializator: {fileID: 1106072022432992619}
+--- !u!114 &7347834897356322926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564509760098111384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fd1482e4a9dee141aecc5bcd0a4f0f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1106072022432992619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564509760098111384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb001f85ac4d6b6429431772d18ff1ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activatables:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &5350750388361906446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564509760098111384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d70540fba2898ab458b9d5df97f0ce5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _applyOnEnable: 1
+  _onlyApplyOnce: 1
+  _resetOnDisable: 0
+  _fadeTime: 0
+  _sliderType: 2
+  _allowBoost: 0
+  _settings:
+  - _audioType: 11
+    _volume: 0.06
+    _slider: {fileID: 0}
