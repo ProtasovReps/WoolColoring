@@ -759,9 +759,9 @@ MonoBehaviour:
   - {fileID: 4891016107466012227, guid: 4a064f2a6521d044cba7d1307c7f5ae5, type: 3}
   - {fileID: 1325287834415370339, guid: cf84d76b9f8586a4c87716357e0e9bf4, type: 3}
   _figureColors:
-  - {r: 0.6837516, g: 0.4292453, b: 1, a: 1}
-  - {r: 0.4481132, g: 0.6696188, b: 1, a: 1}
-  - {r: 1, g: 0.4292453, b: 0.6205777, a: 1}
+  - {r: 0.49019608, g: 0.47843137, b: 0.7372549, a: 1}
+  - {r: 0.9372549, g: 0.4627451, b: 0.47843137, a: 1}
+  - {r: 0.06666667, g: 0.5411765, b: 0.69803923, a: 1}
   _figureFactory: {fileID: 353881123}
 --- !u!114 &353881123
 MonoBehaviour:
@@ -15022,7 +15022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3962154030300799126, guid: 425e1cd989a28b74f984b10974292912, type: 3}
       propertyPath: _colorizeDelay
-      value: 0.2
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6470308294827189495, guid: 425e1cd989a28b74f984b10974292912, type: 3}
       propertyPath: _blockStash

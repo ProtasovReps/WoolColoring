@@ -39,25 +39,25 @@ public class Rope : MonoBehaviour, IColorSettable
         _task = ConnectAnimated(startPosition, endPosition);
     }
 
-    public async UniTaskVoid Reconnect(Transform endPosition)
+    public void Reconnect(Transform endPosition)
     {
         if (_lastStartPoint == null)
             throw new InvalidOperationException();
 
-        await ValidateTask();
+        ValidateTask();
         _task = ReconnectAnimated(endPosition);
     }
 
     public async UniTaskVoid Disconnect()
     {
-        await ValidateTask();
-        DisappearAnimated().Forget();
+        ValidateTask();
+        await DisappearAnimated();
     }
 
     private async UniTask ConnectAnimated(Transform startPosition, Transform endPosition)
     {
         await AppearAnimated(startPosition.position, endPosition.position);
-        await UpdatePositions(startPosition, endPosition);
+        _task = UpdatePositions(startPosition, endPosition);
     }
 
     private async UniTask ReconnectAnimated(Transform endPosition)
@@ -84,6 +84,7 @@ public class Rope : MonoBehaviour, IColorSettable
     {
         int firstIndex = 1;
         int lastIndex = _segmentsCount - 1;
+
         _cancellationTokenSource = new CancellationTokenSource();
 
         while (_cancellationTokenSource.IsCancellationRequested == false)
@@ -93,7 +94,7 @@ public class Rope : MonoBehaviour, IColorSettable
             for (int i = firstIndex; i < lastIndex; i++)
             {
                 SetPosition(startPosition.position, endPosition.position, i);
-                await UniTask.Yield();
+                await UniTask.Yield(cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
             }
 
             _lineRenderer.SetPosition(lastIndex, endPosition.position);
@@ -110,7 +111,7 @@ public class Rope : MonoBehaviour, IColorSettable
         _lineRenderer.SetPosition(segmentNumber, position);
     }
 
-    private async UniTaskVoid DisappearAnimated()
+    private async UniTask DisappearAnimated()
     {
         for (int i = 0; i < _lineRenderer.positionCount; i++)
         {
@@ -121,12 +122,12 @@ public class Rope : MonoBehaviour, IColorSettable
         Disconected?.Invoke(this);
     }
 
-    private async UniTask ValidateTask()
+    private void ValidateTask()
     {
         if (_task.Status.IsCompleted() || _task.Status.IsCanceled())
             return;
 
         _cancellationTokenSource?.Cancel();
-        await _task;
+        _task.Forget();
     }
 }

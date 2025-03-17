@@ -45,7 +45,7 @@ public class BlockHolderConnector : MonoBehaviour
     {
         if (_connections.ContainsKey(color))
         {
-            _connections[color].Reconnect(block.Transform).Forget();
+            _connections[color].Reconnect(block.Transform);
         }
         else
         {
