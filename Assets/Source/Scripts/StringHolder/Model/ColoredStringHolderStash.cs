@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class ColoredStringHolderStash
 {
@@ -25,6 +26,17 @@ public class ColoredStringHolderStash
     public int ActiveCount => _stringHolders[true].Count;
 
     public IEnumerable<IFillable<ColoredStringHolder>> ColoredStringHolders => _stringHolders[true];
+
+    public ColoredStringHolder UnlockHolder()
+    {
+        if (_stringHolders[false].Count == 0)
+            throw new InvalidOperationException(nameof(_stringHolders));
+
+        ColoredStringHolder unlockedHolder = _stringHolders[false][0];
+
+        _stringHolders[false].RemoveAt(0);
+        return unlockedHolder;
+    }
 
     public void DeactivateHolder(ColoredStringHolder stringHolder)
     {

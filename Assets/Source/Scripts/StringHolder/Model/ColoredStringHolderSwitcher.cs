@@ -23,7 +23,7 @@ public class ColoredStringHolderSwitcher
         _stash = stash;
     }
 
-    public void ChangeStringHolderColor(ColoredStringHolder coloredHolder)
+    public void Switch(ColoredStringHolder coloredHolder)
     {
         if (_usedColors.Contains(coloredHolder.Color))
         {

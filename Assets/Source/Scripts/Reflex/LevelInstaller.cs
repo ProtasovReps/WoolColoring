@@ -102,7 +102,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         containerBuilder.AddSingleton(_whiteStringHolderView);
 
         foreach (var holder in coloredStringHolderStash.ColoredStringHolders)
-            switcher.ChangeStringHolderColor(holder as ColoredStringHolder);
+            switcher.Switch(holder as ColoredStringHolder);
 
         return stringDistributor;
     }

@@ -51,6 +51,6 @@ public class Painter : MonoBehaviour
         }
 
         holder.SetEnabled(true);
-        _switcher.ChangeStringHolderColor(holder);
+        _switcher.Switch(holder);
     }
 }

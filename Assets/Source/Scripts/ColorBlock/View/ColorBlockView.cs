@@ -1,13 +1,12 @@
-using Ami.BroAudio;
 using Reflex.Attributes;
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(MeshRenderer))]
 public class ColorBlockView : MonoBehaviour, IColorSettable
 {
     [SerializeField] private Color _requiredColor;
     [SerializeField] private ColorView _colorView;
+    [SerializeField] private float _gizmosSize;
 
     private Transform _transform;
     private ColorBlockAnimations _animations;
@@ -46,6 +45,6 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
     private void OnDrawGizmos()
     {
         Gizmos.color = _requiredColor;
-        Gizmos.DrawCube(transform.position, transform.localScale / 1.5f);
+        Gizmos.DrawCube(transform.position, transform.localScale * _gizmosSize);
     }
 }
