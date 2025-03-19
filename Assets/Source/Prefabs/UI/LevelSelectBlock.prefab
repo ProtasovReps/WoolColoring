@@ -303,7 +303,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 172037717167351827}
   m_HandleRect: {fileID: 5982187879964392320}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1092,6 +1092,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 1907530938385954143}
+  _clickSound:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 0}
   _activatable: {fileID: 1825754429812606400}
 --- !u!224 &8665719566325321326 stripped
 RectTransform:

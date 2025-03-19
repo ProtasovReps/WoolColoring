@@ -22,5 +22,7 @@ public class ChangeImageButton : ButtonView
             _inactiveImage.enabled = true;
             _activeImage.enabled = false;
         }
+
+        base.OnButtonClick();
     }
 }

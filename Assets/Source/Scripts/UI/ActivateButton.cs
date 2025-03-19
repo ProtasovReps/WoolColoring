@@ -6,6 +6,7 @@ public class ActivateButton : ButtonView
 
     protected override void OnButtonClick()
     {
+        base.OnButtonClick();
         _activatable.Activate();
     }
 }

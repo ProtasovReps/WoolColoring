@@ -1,4 +1,4 @@
-public interface IBuffStrategy
+public interface IBuff
 {
     int Price { get; }
 

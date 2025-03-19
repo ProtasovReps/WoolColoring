@@ -1,12 +1,12 @@
 using System;
 
-public class HammerStrategy : IBuffStrategy
+public class UnlockHolderStrategy : IBuff
 {
     private readonly ColoredStringHolderStash _coloredStash;
     private readonly ColoredStringHolderSwitcher _coloredStringHolderSwitcher;
     private readonly Picture _picture;
 
-    public HammerStrategy(ColoredStringHolderStash stash, ColoredStringHolderSwitcher switcher, Picture picture, int price)
+    public UnlockHolderStrategy(ColoredStringHolderStash stash, ColoredStringHolderSwitcher switcher, Picture picture, int price)
     {
         if (stash == null)
             throw new ArgumentNullException(nameof(stash));
