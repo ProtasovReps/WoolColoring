@@ -3,26 +3,23 @@ using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
 using UnityEngine;
 
-[RequireComponent (typeof(ActivatableUI))]
-public class FinalMenu : MonoBehaviour
+public class FinalMenu : ActivatableUI
 {
     [SerializeField] private SoundID _soundID;
     [SerializeField] private float _activateDelay;
 
-    private ActivatableUI _activatable;
     private Picture _picture;
 
     [Inject]
     private void Inject(Picture picture)
     {
         _picture = picture;
-        _activatable = GetComponent<ActivatableUI>();
-        _picture.Colorized += () => Activate().Forget();
+        _picture.Colorized += () => ActivateFinalMenu().Forget();
     }
 
     private void OnDestroy() => Unsubscribe();
 
-    private async UniTaskVoid Activate()
+    private async UniTaskVoid ActivateFinalMenu()
     {
         Unsubscribe();
 
@@ -30,11 +27,11 @@ public class FinalMenu : MonoBehaviour
         BroAudio.Stop(BroAudioType.Music);
         BroAudio.Play(_soundID);
 
-        _activatable.Activate();
+        Activate();
     }
 
     private void Unsubscribe()
     {
-        _picture.Colorized -= () => Activate().Forget();
+        _picture.Colorized -= () => ActivateFinalMenu().Forget();
     }
 }
