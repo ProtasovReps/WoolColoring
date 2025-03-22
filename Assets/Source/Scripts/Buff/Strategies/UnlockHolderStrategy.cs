@@ -21,7 +21,7 @@ public class UnlockHolderStrategy : IBuff
 
     public int Price { get; }
 
-    public bool Validate() => _picture.RequiredColorsCount != _coloredStash.ActiveCount;
+    public bool Validate() => _picture.RequiredColorsCount > _coloredStash.ActiveCount;
 
     public void Execute()
     {

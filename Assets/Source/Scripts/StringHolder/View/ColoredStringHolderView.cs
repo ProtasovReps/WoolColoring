@@ -64,7 +64,7 @@ public class ColoredStringHolderView : StringHolderView, IColorable
     {
         Color color = _presenter.GetColor();
 
-        _padlockSprite.enabled = color == Color.gray;
+        _padlockSprite.enabled = color == ColorStates.InactiveColor;
         _lastColor = color;
 
         _colorView.SetColor(color);
