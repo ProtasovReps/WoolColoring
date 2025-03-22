@@ -19,13 +19,16 @@ public class PausePanel : MonoBehaviour
     private void OnEnable()
     {
         _boltClickReader.SetPause(true);
+        Time.timeScale = 0f;
 
         LMotion.Create(0f, _finalAlpha, _appearDuration)
+            .WithScheduler(MotionScheduler.UpdateIgnoreTimeScale)
             .BindToColorA(_image);
     }
 
     private void OnDisable()
     {
         _boltClickReader.SetPause(false);
+        Time.timeScale = 1f;
     }
 }

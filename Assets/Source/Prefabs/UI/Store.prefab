@@ -1090,7 +1090,7 @@ GameObject:
   - component: {fileID: 8504839620603513121}
   - component: {fileID: 3451605748440958453}
   - component: {fileID: 7132804760961632905}
-  - component: {fileID: 7064535225481658}
+  - component: {fileID: 33613608392859536}
   m_Layer: 5
   m_Name: Store
   m_TagString: Untagged
@@ -1172,7 +1172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa13855896ad7b8469a76ff9ea265b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7064535225481658
+--- !u!114 &33613608392859536
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1181,11 +1181,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4847733738391265654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c90d3b111c10ac44b3bb76bd4d7da08, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e511d85f2744fb44b1893f2241d9870, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _transformToAnimate: {fileID: 7132804760961632905}
-  _appearDuration: 0.5
+  _appearDuration: 1
+  _storeMusic:
+    ID: 268435458
+    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    <DebugObject>k__BackingField: {fileID: 4847733738391265654}
+  _mainMusic:
+    ID: 268435456
+    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    <DebugObject>k__BackingField: {fileID: 4847733738391265654}
 --- !u!1 &5072149425039364636
 GameObject:
   m_ObjectHideFlags: 0
@@ -4674,7 +4682,7 @@ MonoBehaviour:
     ID: 536870913
     _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 8178053238814678567}
-  _activatable: {fileID: 7064535225481658}
+  _activatable: {fileID: 33613608392859536}
 --- !u!1001 &8982179653611048606
 PrefabInstance:
   m_ObjectHideFlags: 0
