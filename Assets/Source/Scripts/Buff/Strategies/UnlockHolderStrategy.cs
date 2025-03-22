@@ -6,7 +6,7 @@ public class UnlockHolderStrategy : IBuff
     private readonly ColoredStringHolderSwitcher _coloredStringHolderSwitcher;
     private readonly Picture _picture;
 
-    public UnlockHolderStrategy(ColoredStringHolderStash stash, ColoredStringHolderSwitcher switcher, Picture picture, int price)
+    public UnlockHolderStrategy(ColoredStringHolderStash stash, ColoredStringHolderSwitcher switcher, Picture picture)
     {
         if (stash == null)
             throw new ArgumentNullException(nameof(stash));
@@ -14,12 +14,15 @@ public class UnlockHolderStrategy : IBuff
         if (switcher == null)
             throw new ArgumentNullException(nameof(switcher));
 
+        if (picture == null)
+            throw new ArgumentNullException(nameof(picture));
+
         _coloredStringHolderSwitcher = switcher;
         _coloredStash = stash;
-        Price = price;
+        _picture = picture;
     }
 
-    public int Price { get; }
+    public int Price => BuffPrices.UnlockHolderPrice;
 
     public bool Validate() => _picture.RequiredColorsCount > _coloredStash.ActiveCount;
 

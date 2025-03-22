@@ -1,38 +1,46 @@
 using UnityEngine;
 using System;
+using Reflex.Attributes;
 
 public class BuffButton : ButtonView
 {
     [SerializeField] private ActivatableUI _buyBuffMenu;
+    [SerializeField] private BuffCountCounter _counter;
 
     private BuffBag _bag;
-    private IBuff _strategy;
+    private IBuff _buff;
 
-    public void Initialize(IBuff buff, BuffBag buffBag)
+    public void Initialize(IBuff buff)
     {
         if (buff == null)
             throw new ArgumentNullException(nameof(buff));
 
-        if (buffBag == null)
-            throw new ArgumentNullException(nameof(buffBag));
-
-        _strategy = buff;
-        _bag = buffBag;
+        _buff = buff;
     }
 
     protected override void OnButtonClick()
     {
         base.OnButtonClick();
 
-        if (_strategy.Validate() == false)
+        if (_buff.Validate() == false)
+        {
+            Debug.Log("едрена вош");
             return; // показывать текст "баф невозвожно использовать сейчас"
+        }
 
-        if (_bag.TryGetBuff(_strategy) == false)
+        if (_bag.TryGetBuff(_buff) == false)
         {
             _buyBuffMenu.Activate();
             return;
         }
 
-        _strategy.Execute();
+        _buff.Execute();
+    }
+
+    [Inject]
+    private void Inject(BuffBag buffBag)
+    {
+        _bag = buffBag;
+        _counter.Initialize(_buff);
     }
 }

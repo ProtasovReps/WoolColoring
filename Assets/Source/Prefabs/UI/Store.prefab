@@ -4266,6 +4266,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Unlocker
       objectReference: {fileID: 0}
+    - target: {fileID: 8223584920219299470, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
+      propertyPath: m_text
+      value: Cleaner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8474875132401374711, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
+      propertyPath: m_text
+      value: Breaker
+      objectReference: {fileID: 0}
     - target: {fileID: 8743910262916365505, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 125

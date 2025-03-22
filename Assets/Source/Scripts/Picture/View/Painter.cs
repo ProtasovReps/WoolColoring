@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Painter : MonoBehaviour
@@ -18,14 +19,14 @@ public class Painter : MonoBehaviour
         _holderStash = stash;
         _switcher = switcher;
 
-        foreach (IFillable<ColoredStringHolder> holder in _holderStash.ColoredStringHolders)
-            holder.Filled += OnHolderFilled;
+        Subscribe(_holderStash.ActiveHolders);
+        Subscribe(_holderStash.InactiveHolders);
     }
 
     private void OnDestroy()
     {
-        foreach (IFillable<ColoredStringHolder> holder in _holderStash.ColoredStringHolders)
-            holder.Filled -= OnHolderFilled;
+        Unsubscribe(_holderStash.ActiveHolders);
+        Unsubscribe(_holderStash.InactiveHolders);
     }
 
     private void OnHolderFilled(ColoredStringHolder holder)
@@ -52,5 +53,17 @@ public class Painter : MonoBehaviour
 
         holder.SetEnabled(true);
         _switcher.Switch(holder);
+    }
+
+    private void Subscribe(IEnumerable<IFillable<ColoredStringHolder>> holders)
+    {
+        foreach (IFillable<ColoredStringHolder> holder in holders)
+            holder.Filled += OnHolderFilled;
+    }
+
+    private void Unsubscribe(IEnumerable<IFillable<ColoredStringHolder>> holders)
+    {
+        foreach (IFillable<ColoredStringHolder> holder in holders)
+            holder.Filled -= OnHolderFilled;
     }
 }

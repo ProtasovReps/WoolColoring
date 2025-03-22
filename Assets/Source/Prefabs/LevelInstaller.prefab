@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8339587222200434884}
   - component: {fileID: 7347834897356322926}
   - component: {fileID: 1106072022432992619}
+  - component: {fileID: 1521679592951051183}
   - component: {fileID: 5350750388361906446}
   m_Layer: 0
   m_Name: LevelInstaller
@@ -77,6 +78,7 @@ MonoBehaviour:
     _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
     <DebugObject>k__BackingField: {fileID: 5564509760098111384}
   _activatableInitializator: {fileID: 1106072022432992619}
+  _buffInitializer: {fileID: 1521679592951051183}
 --- !u!114 &7347834897356322926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -106,6 +108,22 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &1521679592951051183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564509760098111384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e9a9b0c3f5cc284b9addf4e78ac76b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unlocker: {fileID: 0}
+  _filler: {fileID: 0}
+  _breaker: {fileID: 0}
+  _cleaner: {fileID: 0}
 --- !u!114 &5350750388361906446
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Reflex.Core;
 using Ami.BroAudio;
+using System.Collections.Generic;
 
 public class LevelInstaller : MonoBehaviour, IInstaller
 {
@@ -28,9 +29,11 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private SoundID _soundID;
     [Header("UI")]
     [SerializeField] private ActivatableUIInitializator _activatableInitializator;
+    [SerializeField] private BuffInitializer _buffInitializer;
 
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
+    private UnlockHolderStrategy _unlockHolderStrategy;
 
     private void Start()
     {
@@ -49,6 +52,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
         InstallBolt(containerBuilder, stringDistributor, picture);
         InstallWallet(containerBuilder, picture);
+        InstallBuffs(containerBuilder);
         InstallRopeConnector(containerBuilder);
     }
 
@@ -95,13 +99,15 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         StringDistributor stringDistributor = new(coloredStringHolderStash, whiteHolderModel, switcher);
         ExtraStringRemover stringRemover = new(picture, whiteHolderModel);
 
+        _unlockHolderStrategy = new(coloredStringHolderStash, switcher, picture);
+
         containerBuilder.AddSingleton(coloredStringHolderStash);
         containerBuilder.AddSingleton(switcher);
         containerBuilder.AddSingleton(stringDistributor);
         containerBuilder.AddSingleton(_coloredViews);
         containerBuilder.AddSingleton(_whiteStringHolderView);
 
-        foreach (var holder in coloredStringHolderStash.ColoredStringHolders)
+        foreach (var holder in coloredStringHolderStash.ActiveHolders)
             switcher.Switch(holder as ColoredStringHolder);
 
         return stringDistributor;
@@ -118,5 +124,18 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         var moneyRewards = new MoneyRewards(picture, wallet, _figureCompositionFactory);
 
         containerBuilder.AddSingleton(wallet, typeof(ICountChangeable));
+    }
+
+    private void InstallBuffs(ContainerBuilder containerBuilder)
+    {
+        Dictionary<IBuff, int> buffs = new()
+        {
+            { _unlockHolderStrategy, 5 }, // брать кол-во из плеер префс
+        };
+
+        BuffBag buffBag = new(buffs);
+
+        containerBuilder.AddSingleton(buffBag);
+        _buffInitializer.Initialize(_unlockHolderStrategy);
     }
 }
