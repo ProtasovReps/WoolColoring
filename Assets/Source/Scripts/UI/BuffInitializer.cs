@@ -7,8 +7,9 @@ public class BuffInitializer : MonoBehaviour
     [SerializeField] private BuffButton _breaker;
     [SerializeField] private BuffButton _cleaner;
 
-    public void Initialize(UnlockHolderStrategy unlockStrategy) //проинициализироватиь и оставшиеся баффы
+    public void Initialize(UnlockHolderStrategy unlockStrategy, FillHolderStrategy fillStrategy) //проинициализироватиь и оставшиеся баффы
     {
         _unlocker.Initialize(unlockStrategy);
+        _filler.Initialize(fillStrategy);
     }
 }

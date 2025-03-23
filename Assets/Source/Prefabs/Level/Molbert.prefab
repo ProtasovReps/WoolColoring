@@ -599,7 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 566e2995e25209548939f149bfabca95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _colorizeDelay: 0.15
+  _colorizeDelay: 0.1
   _blocksPerString: 4
 --- !u!4 &3319072742838018621 stripped
 Transform:

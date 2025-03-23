@@ -34,6 +34,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
     private UnlockHolderStrategy _unlockHolderStrategy;
+    private FillHolderStrategy _fillHolderStrategy;
 
     private void Start()
     {
@@ -100,6 +101,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         ExtraStringRemover stringRemover = new(picture, whiteHolderModel);
 
         _unlockHolderStrategy = new(coloredStringHolderStash, switcher, picture);
+        _fillHolderStrategy = new(coloredHolderModels);
 
         containerBuilder.AddSingleton(coloredStringHolderStash);
         containerBuilder.AddSingleton(switcher);
@@ -130,12 +132,13 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     {
         Dictionary<IBuff, int> buffs = new()
         {
-            { _unlockHolderStrategy, 5 }, // брать кол-во из плеер префс
+            { _unlockHolderStrategy, 5 },
+            { _fillHolderStrategy, 5 },
         };
 
         BuffBag buffBag = new(buffs);
 
         containerBuilder.AddSingleton(buffBag);
-        _buffInitializer.Initialize(_unlockHolderStrategy);
+        _buffInitializer.Initialize(_unlockHolderStrategy, _fillHolderStrategy);
     }
 }

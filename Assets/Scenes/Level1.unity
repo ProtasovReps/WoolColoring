@@ -139,6 +139,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 670710917461409455, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
   m_PrefabInstance: {fileID: 5071909237855496787}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &55901782 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4677927968228986392, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+  m_PrefabInstance: {fileID: 5071909237855496787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55901779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9832f1df6308747a5075235407b9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &109754984 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6374892777415867737, guid: 425e1cd989a28b74f984b10974292912, type: 3}
@@ -796,15 +807,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _figureColors.Array.data[0].b
-      value: 0.4392157
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _figureColors.Array.data[0].g
-      value: 0.5967871
+      value: 0.46739134
       objectReference: {fileID: 0}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _figureColors.Array.data[0].r
-      value: 0.98039216
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _figureColors.Array.data[2].b
@@ -895,6 +906,10 @@ PrefabInstance:
       propertyPath: _activatables.Array.data[4]
       value: 
       objectReference: {fileID: 137815198}
+    - target: {fileID: 1521679592951051183, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
+      propertyPath: _filler
+      value: 
+      objectReference: {fileID: 55901782}
     - target: {fileID: 1521679592951051183, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
       propertyPath: _unlocker
       value: 
@@ -1291,10 +1306,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 3962154030300799126, guid: 425e1cd989a28b74f984b10974292912, type: 3}
-      propertyPath: _colorizeDelay
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 6470308294827189495, guid: 425e1cd989a28b74f984b10974292912, type: 3}
       propertyPath: _blockStash
       value: 
@@ -1328,6 +1339,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 267914803731424717, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_Name
+      value: Unlocker
+      objectReference: {fileID: 0}
+    - target: {fileID: 670710917461409455, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_Name
+      value: Filler
+      objectReference: {fileID: 0}
     - target: {fileID: 2145238111517929451, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: m_Pivot.x
       value: 0

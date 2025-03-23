@@ -1,11 +1,13 @@
 using UnityEngine;
 using System;
 using Reflex.Attributes;
+using Cysharp.Threading.Tasks;
 
 public class BuffButton : ButtonView
 {
     [SerializeField] private ActivatableUI _buyBuffMenu;
     [SerializeField] private BuffCountCounter _counter;
+    [SerializeField] private float _coolDownTime;
 
     private BuffBag _bag;
     private IBuff _buff;
@@ -34,6 +36,7 @@ public class BuffButton : ButtonView
             return;
         }
 
+        WaitCoolDown().Forget();
         _buff.Execute();
     }
 
@@ -42,5 +45,12 @@ public class BuffButton : ButtonView
     {
         _bag = buffBag;
         _counter.Initialize(_buff);
+    }
+
+    private async UniTaskVoid WaitCoolDown()
+    {
+        Deactivate();
+        await UniTask.WaitForSeconds(_coolDownTime);
+        Activate();
     }
 }
