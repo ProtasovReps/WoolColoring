@@ -498,7 +498,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8ac66c789fc9f4f948481681c22aab69, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 180dd459b1f2e41e7b1c59cbb67e45bb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -677,7 +677,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -58.1, y: -58.6}
-  m_SizeDelta: {x: 80, y: 80}
+  m_SizeDelta: {x: 101.28, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7146831171604836142
 CanvasRenderer:
@@ -752,7 +752,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 56.1, y: 56.9}
-  m_SizeDelta: {x: 70, y: 70}
+  m_SizeDelta: {x: 80, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5681764331407157171
 CanvasRenderer:
@@ -4226,6 +4226,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.42811087
       objectReference: {fileID: 0}
+    - target: {fileID: 1610375702552812795, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 111.2
+      objectReference: {fileID: 0}
     - target: {fileID: 2881988808989403190, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_Name
       value: BuffImage
@@ -4242,6 +4246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuffImage
       objectReference: {fileID: 0}
+    - target: {fileID: 4314954655064477286, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 180dd459b1f2e41e7b1c59cbb67e45bb, type: 3}
     - target: {fileID: 5311321811475706892, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_Name
       value: SuperPack
@@ -4272,7 +4280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8474875132401374711, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: Breaker
+      value: screwer
       objectReference: {fileID: 0}
     - target: {fileID: 8743910262916365505, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_AnchoredPosition.x
