@@ -36,6 +36,6 @@ public class BuffCountCounter : MonoBehaviour
     {
         int count = _bag.GetCount(_buff);
 
-        _text.text = $"x{count}";
+        _text.text = count.ToString();
     }
 }

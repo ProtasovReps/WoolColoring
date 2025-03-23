@@ -227,6 +227,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d2f59fcb9cec94da83df3b05223a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &489604138 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7620019039308426024, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+  m_PrefabInstance: {fileID: 5071909237855496787}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a9832f1df6308747a5075235407b9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &589734247 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 267914803731424717, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
@@ -911,6 +922,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 55901782}
     - target: {fileID: 1521679592951051183, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
+      propertyPath: _cleaner
+      value: 
+      objectReference: {fileID: 489604138}
+    - target: {fileID: 1521679592951051183, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
       propertyPath: _unlocker
       value: 
       objectReference: {fileID: 589734253}
@@ -1427,6 +1442,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3344104431396846933, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: _coolDownTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677927968228986392, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: _coolDownTime
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5098575037021461172, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: _sound.<DebugObject>k__BackingField
       value: 
@@ -1477,6 +1500,8 @@ PrefabInstance:
     - {fileID: 6440765621259199983, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
     - {fileID: 5036474827195274838, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
     - {fileID: 3117166977356613085, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+    - {fileID: 5435556486805293520, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+    - {fileID: 3220108813811147773, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
     m_RemovedGameObjects:
     - {fileID: 3244930236367908196, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
     - {fileID: 9220329630877273682, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}

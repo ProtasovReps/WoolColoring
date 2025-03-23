@@ -35,6 +35,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     private Conveyer _conveyer;
     private UnlockHolderStrategy _unlockHolderStrategy;
     private FillHolderStrategy _fillHolderStrategy;
+    private ClearWhiteHolderStrategy _clearStrategy;
 
     private void Start()
     {
@@ -102,6 +103,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
         _unlockHolderStrategy = new(coloredStringHolderStash, switcher, picture);
         _fillHolderStrategy = new(coloredHolderModels);
+        _clearStrategy = new(whiteHolderModel);
 
         containerBuilder.AddSingleton(coloredStringHolderStash);
         containerBuilder.AddSingleton(switcher);
@@ -134,11 +136,12 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         {
             { _unlockHolderStrategy, 5 },
             { _fillHolderStrategy, 5 },
+            { _clearStrategy, 5 },
         };
 
         BuffBag buffBag = new(buffs);
 
         containerBuilder.AddSingleton(buffBag);
-        _buffInitializer.Initialize(_unlockHolderStrategy, _fillHolderStrategy);
+        _buffInitializer.Initialize(_unlockHolderStrategy, _fillHolderStrategy, _clearStrategy);
     }
 }

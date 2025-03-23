@@ -33,6 +33,15 @@ public class WhiteStringHolder : StringHolder, IFillable<WhiteStringHolder>
         return requiredColorsCount;
     }
 
+    public void RemoveAllStrings()
+    {
+        foreach (ColorString colorString in Strings)
+        {
+            _requiredColor = colorString.Color;
+            GetString();
+        }
+    }
+
     protected override void PrepareString(IColorSettable freeString, IColorable newString)
         => freeString.SetColor(newString.Color);
 
