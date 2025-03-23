@@ -1273,6 +1273,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1261854972547896089, guid: 425e1cd989a28b74f984b10974292912, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2498882
+      objectReference: {fileID: 0}
+    - target: {fileID: 1261854972547896089, guid: 425e1cd989a28b74f984b10974292912, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.072876
+      objectReference: {fileID: 0}
     - target: {fileID: 2424491785648528807, guid: 425e1cd989a28b74f984b10974292912, type: 3}
       propertyPath: _requiredColor.r
       value: 0
@@ -1332,6 +1340,10 @@ PrefabInstance:
     - target: {fileID: 7161287859159824478, guid: 425e1cd989a28b74f984b10974292912, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.039839
+      objectReference: {fileID: 0}
+    - target: {fileID: 7834716698396556210, guid: 425e1cd989a28b74f984b10974292912, type: 3}
+      propertyPath: m_Name
+      value: MolbertBack
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

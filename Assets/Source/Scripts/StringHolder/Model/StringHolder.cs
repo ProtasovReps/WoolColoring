@@ -50,14 +50,14 @@ public abstract class StringHolder
 
     protected abstract void OnFilled();
 
-    protected bool IsActiveString(ColorString colorString, bool isActive)
-       => colorString.IsEnabled == isActive;
+    protected bool IsEnabledString(ColorString colorString, bool isEnabled)
+       => colorString.IsEnabled == isEnabled;
 
     private ColorString GetLastString()
     {
         for (int i = _strings.Length - 1; i >= 0; i--)
         {
-            if (IsActiveString(_strings[i], true) && IsValidString(_strings[i]))
+            if (IsEnabledString(_strings[i], true) && IsValidString(_strings[i]))
             {
                 return _strings[i];
             }
@@ -70,7 +70,7 @@ public abstract class StringHolder
     {
         for (int i = 0; i < _strings.Length; i++)
         {
-            if (IsActiveString(_strings[i], false))
+            if (IsEnabledString(_strings[i], false))
             {
                 return _strings[i];
             }

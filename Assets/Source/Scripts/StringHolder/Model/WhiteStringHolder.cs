@@ -21,7 +21,7 @@ public class WhiteStringHolder : StringHolder, IFillable<WhiteStringHolder>
 
         foreach (ColorString colorString in Strings)
         {
-            if (IsActiveString(colorString, false))
+            if (IsEnabledString(colorString, false))
                 continue;
 
             if (colorString.Color != color)
@@ -37,6 +37,7 @@ public class WhiteStringHolder : StringHolder, IFillable<WhiteStringHolder>
     {
         foreach (ColorString colorString in Strings)
         {
+            Debug.Log(colorString.IsEnabled);
             _requiredColor = colorString.Color;
             GetString();
         }
