@@ -2,6 +2,7 @@ using UnityEngine;
 using System;
 using Reflex.Attributes;
 using Cysharp.Threading.Tasks;
+using UnityEngine.UI;
 
 public class BuffButton : ButtonView
 {
@@ -9,6 +10,7 @@ public class BuffButton : ButtonView
     [SerializeField] private ActivatableTextField _ruleText;
     [SerializeField] private BuffCountCounter _counter;
     [SerializeField] private float _coolDownTime;
+    [SerializeField] private Image _cooldownImage;
 
     private BuffBag _bag;
     private IBuff _buff;
@@ -52,7 +54,18 @@ public class BuffButton : ButtonView
     private async UniTaskVoid WaitCoolDown()
     {
         Deactivate();
-        await UniTask.WaitForSeconds(_coolDownTime);
+
+        float elapsedTime = 0f;
+
+        while (elapsedTime < _coolDownTime)
+        {
+            _cooldownImage.fillAmount = 1 - (elapsedTime / _coolDownTime);
+
+            elapsedTime += Time.deltaTime;
+            await UniTask.Yield();
+        }
+
+        _cooldownImage.fillAmount = 0f;
         Activate();
     }
 }
