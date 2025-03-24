@@ -59,7 +59,7 @@ public class BoltHolderRopeConnector : MonoBehaviour
         }
 
         if (_whiteStringHolder.TryGetFreeStringTransform(out Transform whiteTransform) == false)
-            throw new InvalidOperationException(nameof(whiteTransform));
+            return _whiteStringHolder.Transform;
 
         return whiteTransform;
     }

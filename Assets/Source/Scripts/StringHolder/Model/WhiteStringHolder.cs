@@ -37,9 +37,16 @@ public class WhiteStringHolder : StringHolder, IFillable<WhiteStringHolder>
     {
         foreach (ColorString colorString in Strings)
         {
-            Debug.Log(colorString.IsEnabled);
             _requiredColor = colorString.Color;
-            GetString();
+
+            try
+            {
+                GetString();
+            }
+            catch (InvalidOperationException)
+            {
+                break;
+            }
         }
     }
 
