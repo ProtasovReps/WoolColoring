@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 public class FillHolderStrategy : IBuff
 {
-    private const int _minActiveCount = 2;
+    private const int MinActiveCount = 2;
     private readonly ColoredStringHolder[] _coloredStringHolders;
     private readonly ColorString _colorString;
 
@@ -51,7 +51,7 @@ public class FillHolderStrategy : IBuff
                 activeCount++;
         }
 
-        return activeCount >= _minActiveCount;
+        return activeCount >= MinActiveCount;
     }
 
     private bool IsValidHolder(ColoredStringHolder holder)

@@ -2,6 +2,8 @@ using System;
 
 public class UnlockHolderStrategy : IBuff
 {
+    private const int MaxStringHolderCount = 4;
+
     private readonly ColoredStringHolderStash _coloredStash;
     private readonly ColoredStringHolderSwitcher _coloredStringHolderSwitcher;
     private readonly Picture _picture;
@@ -24,7 +26,8 @@ public class UnlockHolderStrategy : IBuff
 
     public int Price => BuffPrices.UnlockHolderPrice;
 
-    public bool Validate() => _picture.RequiredColorsCount > _coloredStash.ActiveCount;
+    public bool Validate()
+        => _picture.RequiredColorsCount > _coloredStash.ActiveCount && _coloredStash.ActiveCount < MaxStringHolderCount;
 
     public void Execute()
     {

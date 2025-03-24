@@ -6,6 +6,7 @@ using Cysharp.Threading.Tasks;
 public class BuffButton : ButtonView
 {
     [SerializeField] private ActivatableUI _buyBuffMenu;
+    [SerializeField] private ActivatableTextField _ruleText;
     [SerializeField] private BuffCountCounter _counter;
     [SerializeField] private float _coolDownTime;
 
@@ -17,6 +18,7 @@ public class BuffButton : ButtonView
         if (buff == null)
             throw new ArgumentNullException(nameof(buff));
 
+        _ruleText.Initialize();
         _buff = buff;
     }
 
@@ -26,8 +28,8 @@ public class BuffButton : ButtonView
 
         if (_buff.Validate() == false)
         {
-            Debug.Log("едрена вош");
-            return; // показывать текст "баф невозвожно использовать сейчас"
+            _ruleText.Activate();
+            return;
         }
 
         if (_bag.TryGetBuff(_buff) == false)
