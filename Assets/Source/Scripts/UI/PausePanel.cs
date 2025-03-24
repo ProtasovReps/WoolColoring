@@ -1,15 +1,16 @@
 using LitMotion;
 using LitMotion.Extensions;
+using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PausePanel : MonoBehaviour
 {
     [SerializeField] private Image _image;
-    [SerializeField] private BoltClickReader _boltClickReader;
-    [SerializeField] private FigureClickReader _figureClickReader;
     [SerializeField] private float _appearDuration;
 
+    private BoltClickReader _boltClickReader;
+    private FigureClickReader _figureClickReader;
     private float _finalAlpha;
     private bool _lastFigureClickReaderState;
 
@@ -35,5 +36,12 @@ public class PausePanel : MonoBehaviour
     {
         _figureClickReader.SetPause(_lastFigureClickReaderState);
         Time.timeScale = 1f;
+    }
+
+    [Inject]
+    private void Inject(BoltClickReader boltReader, FigureClickReader figureClickReader)
+    {
+        _boltClickReader = boltReader;
+        _figureClickReader = figureClickReader;
     }
 }

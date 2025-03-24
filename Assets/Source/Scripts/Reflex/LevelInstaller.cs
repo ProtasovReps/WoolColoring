@@ -23,6 +23,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private BlockSoundPlayer _blockSoundPlayer;
     [SerializeField] private PictureView _pictureView;
     [SerializeField] private Malbert _malbert;
+    [SerializeField] private Painter _painter;
     [Header("ClickReaders")]
     [SerializeField] private BoltClickReader _boltClickReader;
     [SerializeField] private FigureClickReader _figureClickReader;
@@ -60,6 +61,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         InstallWallet(containerBuilder, picture);
         InstallBuffs(containerBuilder);
         InstallRopeConnector(containerBuilder);
+        InstallClickReaders(containerBuilder);
     }
 
     private void InstallFigureComposition()
@@ -110,8 +112,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         _fillHolderStrategy = new(coloredHolderModels);
         _clearStrategy = new(whiteHolderModel);
 
-        containerBuilder.AddSingleton(coloredStringHolderStash);
-        containerBuilder.AddSingleton(switcher);
+        _painter.Initialize(coloredStringHolderStash, switcher);
         containerBuilder.AddSingleton(stringDistributor);
         containerBuilder.AddSingleton(_coloredViews);
         containerBuilder.AddSingleton(_whiteStringHolderView);
@@ -150,7 +151,14 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         BuffBag buffBag = new(buffs);
 
         containerBuilder.AddSingleton(buffBag);
-        _figureClickReader.SetPause(true);
         _buffInitializer.Initialize(_unlockHolderStrategy, _fillHolderStrategy, explodeStrategy, _clearStrategy);
+    }
+
+    private void InstallClickReaders(ContainerBuilder containerBuilder)
+    {
+        containerBuilder.AddSingleton(_boltClickReader);
+        containerBuilder.AddSingleton(_figureClickReader);
+
+        _figureClickReader.SetPause(true);
     }
 }

@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,21 +13,31 @@ public class Painter : MonoBehaviour
     private ColoredStringHolderStash _holderStash;
     private ColoredStringHolderSwitcher _switcher;
 
-    [Inject]
-    private void Inject(Picture picture, ColoredStringHolderSwitcher switcher, ColoredStringHolderStash stash)
-    {
-        _picture = picture;
-        _holderStash = stash;
-        _switcher = switcher;
-
-        Subscribe(_holderStash.ActiveHolders);
-        Subscribe(_holderStash.InactiveHolders);
-    }
-
     private void OnDestroy()
     {
         Unsubscribe(_holderStash.ActiveHolders);
         Unsubscribe(_holderStash.InactiveHolders);
+    }
+
+    public void Initialize(ColoredStringHolderStash holderStash, ColoredStringHolderSwitcher switcher)
+    {
+        if (holderStash == null)
+            throw new ArgumentNullException(nameof(holderStash));
+
+        if(switcher == null)
+            throw new ArgumentNullException(nameof(switcher));
+
+        _holderStash = holderStash;
+        _switcher = switcher;
+    }
+
+    [Inject]
+    private void Inject(Picture picture)
+    {
+        _picture = picture;
+
+        Subscribe(_holderStash.ActiveHolders);
+        Subscribe(_holderStash.InactiveHolders);
     }
 
     private void OnHolderFilled(ColoredStringHolder holder)
