@@ -946,7 +946,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Screwer
+  m_text: Breaker
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1bdbbd43a253d47f99f853e49dce8edc, type: 2}
   m_sharedMaterial: {fileID: -6360588970910393389, guid: 1bdbbd43a253d47f99f853e49dce8edc, type: 2}
@@ -1695,12 +1695,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 3212808716657651040}
   _clickSound:
-    ID: 536870913
-    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
+    ID: 1073741830
+    _sourceAsset: {fileID: 11400000, guid: 3e0bdde35e139fb4dbaec309f3259d09, type: 2}
     <DebugObject>k__BackingField: {fileID: 267914803731424717}
   _buyBuffMenu: {fileID: 0}
   _counter: {fileID: 6806492976082827977}
-  _coolDownTime: 0
+  _coolDownTime: 1
 --- !u!114 &6806492976082827977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1960,7 +1960,7 @@ MonoBehaviour:
     <DebugObject>k__BackingField: {fileID: 267914803731424717}
   _buyBuffMenu: {fileID: 0}
   _counter: {fileID: 3623135679357697587}
-  _coolDownTime: 0
+  _coolDownTime: 10
 --- !u!114 &3623135679357697587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2005,7 +2005,7 @@ PrefabInstance:
     - target: {fileID: 618656352861201508, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 180dd459b1f2e41e7b1c59cbb67e45bb, type: 3}
+      objectReference: {fileID: 21300000, guid: 79b47bb526f2f407ea5a899bf93524fc, type: 3}
     - target: {fileID: 618656352861201508, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
       propertyPath: m_Maskable
       value: 1
@@ -2209,10 +2209,10 @@ MonoBehaviour:
   _clickSound:
     ID: 536870913
     _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
-    <DebugObject>k__BackingField: {fileID: 267914803731424717}
+    <DebugObject>k__BackingField: {fileID: 1570011449787108630}
   _buyBuffMenu: {fileID: 0}
-  _counter: {fileID: 0}
-  _coolDownTime: 0
+  _counter: {fileID: 3220108813811147773}
+  _coolDownTime: 10
 --- !u!114 &3220108813811147773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2225,7 +2225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fa4c1c1eb96a624d8cdd81a0fc91a43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 0}
+  _text: {fileID: 1442333508462620071}
 --- !u!114 &4244693781322515899 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3429956913336637336, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
@@ -2657,9 +2657,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 6075196963363051056}
   _clickSound:
-    ID: 536870913
-    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
-    <DebugObject>k__BackingField: {fileID: 267914803731424717}
+    ID: 1073741826
+    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    <DebugObject>k__BackingField: {fileID: 8894201251023806109}
   _buyBuffMenu: {fileID: 0}
   _counter: {fileID: 8695671758413439898}
   _coolDownTime: 5

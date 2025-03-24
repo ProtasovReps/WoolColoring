@@ -23,9 +23,10 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private BlockSoundPlayer _blockSoundPlayer;
     [SerializeField] private PictureView _pictureView;
     [SerializeField] private Malbert _malbert;
-    [Header("Bolt")]
+    [Header("ClickReaders")]
     [SerializeField] private BoltClickReader _boltClickReader;
-    [Header("Level Music")]
+    [SerializeField] private FigureClickReader _figureClickReader;
+    [Header("LevelMusic")]
     [SerializeField] private SoundID _soundID;
     [Header("UI")]
     [SerializeField] private ActivatableUIInitializator _activatableInitializator;
@@ -36,6 +37,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     private UnlockHolderStrategy _unlockHolderStrategy;
     private FillHolderStrategy _fillHolderStrategy;
     private ClearWhiteHolderStrategy _clearStrategy;
+    private PlayerInput _playerInput;
 
     private void Start()
     {
@@ -47,6 +49,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     public void InstallBindings(ContainerBuilder containerBuilder)
     {
+        _playerInput = new PlayerInput();
+
         InstallFigureComposition();
 
         Picture picture = InstallPicture(containerBuilder);
@@ -63,6 +67,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         var positionDatabase = new PositionDatabase(_conveyerPositions);
         var compositionPool = new FigureCompositionPool(_figureCompositionFactory);
         _conveyer = new Conveyer(compositionPool, positionDatabase);
+
+        _figureClickReader.Initialize(_playerInput);
     }
 
     private Picture InstallPicture(ContainerBuilder containerBuilder)
@@ -83,10 +89,9 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     private void InstallBolt(ContainerBuilder containerBuilder, StringDistributor stringDistributor, Picture picture)
     {
         var boltStash = new BoltStash();
-        var boltPressHandler = new BoltPressHandler(stringDistributor);
         _boltColorSetter = new BoltColorSetter(boltStash, picture);
 
-        _boltClickReader.Initialize(boltPressHandler);
+        _boltClickReader.Initialize(stringDistributor, _playerInput);
         containerBuilder.AddSingleton(boltStash);
     }
 
@@ -132,16 +137,20 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     private void InstallBuffs(ContainerBuilder containerBuilder)
     {
+        var explodeStrategy = new ExplodeFigureStrategy(_figureClickReader);
+
         Dictionary<IBuff, int> buffs = new()
         {
             { _unlockHolderStrategy, 5 },
             { _fillHolderStrategy, 5 },
             { _clearStrategy, 5 },
+            { explodeStrategy, 5 },
         };
 
         BuffBag buffBag = new(buffs);
 
         containerBuilder.AddSingleton(buffBag);
-        _buffInitializer.Initialize(_unlockHolderStrategy, _fillHolderStrategy, _clearStrategy);
+        _figureClickReader.SetPause(true);
+        _buffInitializer.Initialize(_unlockHolderStrategy, _fillHolderStrategy, explodeStrategy, _clearStrategy);
     }
 }

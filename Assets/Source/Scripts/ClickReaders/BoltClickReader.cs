@@ -1,19 +1,23 @@
 using System;
 using UnityEngine;
 
-public class BoltPressHandler
+public class BoltClickReader : ClickReader
 {
-    private readonly StringDistributor _distributor;
+    private StringDistributor _distributor;
 
-    public BoltPressHandler(StringDistributor distributor)
+    public void Initialize(StringDistributor distributor, PlayerInput playerInput)
     {
         if (distributor == null)
             throw new ArgumentNullException(nameof(distributor));
 
+        if(playerInput == null)
+            throw new ArgumentNullException(nameof(playerInput));
+
         _distributor = distributor;
+        Initialize(playerInput);
     }
 
-    public void ProcessClick(RaycastHit hit)
+    protected override void ValidateHit(RaycastHit hit)
     {
         if (hit.collider.TryGetComponent(out Bolt bolt) == false)
             return;

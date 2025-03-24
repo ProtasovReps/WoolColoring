@@ -2,28 +2,15 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class BoltClickReader : MonoBehaviour
+public abstract class ClickReader : MonoBehaviour
 {
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private LayerMask _layer;
     [SerializeField] private float _maxRaycastDistance;
 
     private PlayerInput _playerInput;
-    private BoltPressHandler _pressHandler;
-    private bool _isPaused;
 
-    public void Initialize(BoltPressHandler presenter)
-    {
-        if (presenter == null)
-            throw new ArgumentNullException(nameof(presenter));
-
-        _pressHandler = presenter;
-    }
-
-    private void Awake()
-    {
-        _playerInput = new PlayerInput();
-    }
+    public bool IsPaused { get; private set; }
 
     private void OnEnable()
     {
@@ -37,14 +24,21 @@ public class BoltClickReader : MonoBehaviour
         _playerInput.PlayerClick.Click.performed -= OnClickPerformed;
     }
 
-    public void SetPause(bool isPaused)
+    public void Initialize(PlayerInput playerInput)
     {
-        _isPaused = isPaused;
+        if (playerInput == null)
+            throw new ArgumentNullException(nameof(playerInput));
+
+        _playerInput = playerInput;
     }
+
+    public virtual void SetPause(bool isPaused) => IsPaused = isPaused;
+
+    protected abstract void ValidateHit(RaycastHit hit);
 
     private void OnClickPerformed(InputAction.CallbackContext context)
     {
-        if (_isPaused)
+        if (IsPaused)
             return;
 
         Ray ray = _mainCamera.ScreenPointToRay(_playerInput.PlayerClick.ScreenPosition.ReadValue<Vector2>());
@@ -52,6 +46,6 @@ public class BoltClickReader : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, _maxRaycastDistance, _layer) == false)
             return;
 
-        _pressHandler.ProcessClick(hit);
+        ValidateHit(hit);
     }
 }

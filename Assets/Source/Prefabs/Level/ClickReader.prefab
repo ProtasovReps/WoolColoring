@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5209952877120744207}
   - component: {fileID: 8288279590318834601}
+  - component: {fileID: 1777267588250684176}
   m_Layer: 0
-  m_Name: BoltClickReader
+  m_Name: ClickReader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,5 +48,24 @@ MonoBehaviour:
   _mainCamera: {fileID: 0}
   _layer:
     serializedVersion: 2
-    m_Bits: 224
+    m_Bits: 193
   _maxRaycastDistance: 10
+--- !u!114 &1777267588250684176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8645118085266654928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1baaf57277a43d1459d81c81e27608d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 0}
+  _layer:
+    serializedVersion: 2
+    m_Bits: 129
+  _maxRaycastDistance: 10
+  _particleSystem: {fileID: 0}
+  _boltClickReader: {fileID: 8288279590318834601}

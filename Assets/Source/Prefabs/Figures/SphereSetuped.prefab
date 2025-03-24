@@ -173,6 +173,7 @@ GameObject:
   - component: {fileID: 1212851336529442668}
   - component: {fileID: 3879024852634947514}
   - component: {fileID: 511812081528889208}
+  - component: {fileID: 8351451866898317751}
   m_Layer: 7
   m_Name: Sphere
   m_TagString: Untagged
@@ -267,6 +268,23 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8908299743826163017, guid: b2f533336f888b941a2d9e1a54005162, type: 3}
+--- !u!114 &8351451866898317751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6745164842540340757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 399afdaf979320e4cabc7f5a67667240, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _figureView: {fileID: 5007030108602375604}
+  _explosionSound:
+    ID: 1073741829
+    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    <DebugObject>k__BackingField: {fileID: 6745164842540340757}
 --- !u!1001 &3150049268184884191
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,9 +7,11 @@ public class PausePanel : MonoBehaviour
 {
     [SerializeField] private Image _image;
     [SerializeField] private BoltClickReader _boltClickReader;
+    [SerializeField] private FigureClickReader _figureClickReader;
     [SerializeField] private float _appearDuration;
 
     private float _finalAlpha;
+    private bool _lastFigureClickReaderState;
 
     private void Awake()
     {
@@ -18,8 +20,11 @@ public class PausePanel : MonoBehaviour
 
     private void OnEnable()
     {
-        _boltClickReader.SetPause(true);
+        _lastFigureClickReaderState = _figureClickReader.IsPaused;
         Time.timeScale = 0f;
+
+        _figureClickReader.SetPause(true);
+        _boltClickReader.SetPause(true);
 
         LMotion.Create(0f, _finalAlpha, _appearDuration)
             .WithScheduler(MotionScheduler.UpdateIgnoreTimeScale)
@@ -28,7 +33,7 @@ public class PausePanel : MonoBehaviour
 
     private void OnDisable()
     {
-        _boltClickReader.SetPause(false);
+        _figureClickReader.SetPause(_lastFigureClickReaderState);
         Time.timeScale = 1f;
     }
 }
