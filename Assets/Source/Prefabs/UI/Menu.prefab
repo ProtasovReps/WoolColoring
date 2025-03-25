@@ -203,7 +203,7 @@ MonoBehaviour:
   m_Color: {r: 0.627451, g: 0.83137256, b: 1, a: 0.5529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -247,6 +247,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d8dfea1100ec541b684f3101cad0d335, type: 3}
+    - target: {fileID: 3825362554328762390, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5594487663632952489, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -357,6 +361,10 @@ PrefabInstance:
     - target: {fileID: 1048025334520872746, guid: b8ea82f268074db49971f26f408a5683, type: 3}
       propertyPath: m_Name
       value: FinalBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048025334520872746, guid: b8ea82f268074db49971f26f408a5683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8564215483907460660, guid: b8ea82f268074db49971f26f408a5683, type: 3}
       propertyPath: m_Pivot.x
@@ -624,6 +632,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4663137963668036435}
     m_Modifications:
+    - target: {fileID: 225801932298307871, guid: 1fa984573a039cd4aa6aa96afa3c505f, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225801932298307871, guid: 1fa984573a039cd4aa6aa96afa3c505f, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2116796172281245655, guid: 1fa984573a039cd4aa6aa96afa3c505f, type: 3}
       propertyPath: m_Name
       value: GoldImage
@@ -774,6 +790,10 @@ PrefabInstance:
       propertyPath: _clickSound.<DebugObject>k__BackingField
       value: 
       objectReference: {fileID: 2710254133484650501}
+    - target: {fileID: 6081677415396255736, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6639705961830396605, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_Name
       value: PauseBlock

@@ -56,7 +56,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_AdditionalShaderChannelsFlag: 1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: -5
@@ -143,9 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_enableKerning: 1
   m_enableExtraPadding: 0
   checkPaddingRequired: 0
-  m_isRichText: 1
+  m_isRichText: 0
   m_parseCtrlCharacters: 1
   m_isOrthographic: 1
   m_isCullingEnabled: 0
@@ -278,6 +278,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6cc7c4110305e45418586f0466ddd2b2, type: 3}
+    - target: {fileID: 3686725390405995943, guid: cd4150fe7f7624ea3aa3c5d4fa3b2cc1, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686725390405995943, guid: cd4150fe7f7624ea3aa3c5d4fa3b2cc1, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3686725391575266706, guid: cd4150fe7f7624ea3aa3c5d4fa3b2cc1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -376,7 +384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3686725391575266708, guid: cd4150fe7f7624ea3aa3c5d4fa3b2cc1, type: 3}
       propertyPath: m_Maskable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3686725391575266708, guid: cd4150fe7f7624ea3aa3c5d4fa3b2cc1, type: 3}
       propertyPath: m_FillCenter
