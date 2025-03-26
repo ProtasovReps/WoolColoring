@@ -8,15 +8,17 @@ public class Store : ActivatableUI
 
     public override void Activate()
     {
-        BroAudio.Pause(_mainMusic);
-        BroAudio.Play(_storeMusic);
+        //BroAudio.Pause(_mainMusic, 0.1f);
+        //BroAudio.Play(_storeMusic);
+
         base.Activate();
     }
-
+    // почему-то не работает
     public override void Deactivate()
     {
-        BroAudio.Stop(_storeMusic);
-        BroAudio.UnPause(_mainMusic);
+        //BroAudio.Stop(_storeMusic);
+        //BroAudio.UnPause(_mainMusic, 0.1f);
+
         base.Deactivate();
     }
 }

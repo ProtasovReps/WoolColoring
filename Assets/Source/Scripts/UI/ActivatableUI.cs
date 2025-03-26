@@ -1,16 +1,15 @@
-using LitMotion;
-using LitMotion.Extensions;
+using Reflex.Attributes;
 using UnityEngine;
 
 public class ActivatableUI : Activatable
 {
     [SerializeField] private TransformView _transformToAnimate;
-    [SerializeField] private float _appearDuration;
+    [SerializeField] private float _animationDuration;
 
     private Transform _transform;
+    private UIAnimator _animator;
 
-    protected Transform Transform => _transform;
-    protected float AppearDuration => _appearDuration;
+    protected UIAnimator Animator => _animator;
 
     public void Initialize()
     {
@@ -23,20 +22,11 @@ public class ActivatableUI : Activatable
         _transform.gameObject.SetActive(true);
         _transformToAnimate.gameObject.SetActive(true);
 
-        LMotion.Create(Vector3.zero, _transformToAnimate.Transform.localScale, _appearDuration)
-            .WithEase(Ease.OutElastic)
-            .WithScheduler(MotionScheduler.UpdateIgnoreTimeScale)
-            .BindToLocalScale(_transformToAnimate.Transform);
+        _animator.PopUp(_transformToAnimate.Transform, _animationDuration);
     }
 
     public override void Deactivate()
-    {
-        LMotion.Create(_transformToAnimate.Transform.localScale, Vector3.zero, _appearDuration)
-            .WithEase(Ease.InElastic)
-            .WithScheduler(MotionScheduler.UpdateIgnoreTimeScale)
-            .WithOnComplete(FinalizeDeactivation)
-            .BindToLocalScale(_transformToAnimate.Transform);
-    }
+        => _animator.PopOut(_transformToAnimate.Transform, _animationDuration, FinalizeDeactivation);
 
     private void FinalizeDeactivation()
     {
@@ -44,4 +34,7 @@ public class ActivatableUI : Activatable
         _transformToAnimate.gameObject.SetActive(false);
         _transformToAnimate.Transform.localScale = _transformToAnimate.StartScale;
     }
+
+    [Inject]
+    private void Inject(UIAnimator animator) => _animator = animator;
 }

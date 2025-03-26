@@ -1185,14 +1185,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transformToAnimate: {fileID: 7132804760961632905}
-  _appearDuration: 1
+  _animationDuration: 0.5
   _storeMusic:
     ID: 268435458
-    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    _sourceAsset: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
     <DebugObject>k__BackingField: {fileID: 4847733738391265654}
   _mainMusic:
     ID: 268435456
-    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    _sourceAsset: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
     <DebugObject>k__BackingField: {fileID: 4847733738391265654}
 --- !u!1 &5072149425039364636
 GameObject:

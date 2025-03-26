@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transformToAnimate: {fileID: 8344585698105231212}
-  _appearDuration: 0.5
+  _animationDuration: 0.5
 --- !u!114 &4695853005969924808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,10 +131,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transformToAnimate: {fileID: 3859649289693016401}
-  _appearDuration: 0.5
+  _animationDuration: 0.5
   _soundID:
     ID: 268435457
-    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    _sourceAsset: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
     <DebugObject>k__BackingField: {fileID: 424496569858980218}
   _activateDelay: 1
 --- !u!1 &4052269288447254559
@@ -475,6 +475,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4663137963668036435}
     m_Modifications:
+    - target: {fileID: 33613608392859536, guid: 8398d0567bec1d84baa42ef2e304b5ad, type: 3}
+      propertyPath: _animationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 33613608392859536, guid: 8398d0567bec1d84baa42ef2e304b5ad, type: 3}
+      propertyPath: _mainMusic._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
+    - target: {fileID: 33613608392859536, guid: 8398d0567bec1d84baa42ef2e304b5ad, type: 3}
+      propertyPath: _storeMusic._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
     - target: {fileID: 897845073370306688, guid: 8398d0567bec1d84baa42ef2e304b5ad, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -778,6 +790,10 @@ PrefabInstance:
       propertyPath: _clickSound.ID
       value: 536870913
       objectReference: {fileID: 0}
+    - target: {fileID: 3282845658394566578, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
+      propertyPath: _animationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4371875526591668448, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: _clickSound.ID
       value: 536870913
@@ -886,6 +902,10 @@ PrefabInstance:
       propertyPath: _activatable
       value: 
       objectReference: {fileID: 4516774723560463566}
+    - target: {fileID: 8566079895448544355, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
+      propertyPath: _animationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

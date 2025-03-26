@@ -1,5 +1,3 @@
-using LitMotion;
-using LitMotion.Extensions;
 using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +7,7 @@ public class PausePanel : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private float _appearDuration;
 
+    private UIAnimator _animator;
     private BoltClickReader _boltClickReader;
     private FigureClickReader _figureClickReader;
     private float _finalAlpha;
@@ -27,9 +26,7 @@ public class PausePanel : MonoBehaviour
         _figureClickReader.SetPause(true);
         _boltClickReader.SetPause(true);
 
-        LMotion.Create(0f, _finalAlpha, _appearDuration)
-            .WithScheduler(MotionScheduler.UpdateIgnoreTimeScale)
-            .BindToColorA(_image);
+        _animator.FadeAlpha(_image, _finalAlpha, _appearDuration);
     }
 
     private void OnDisable()
@@ -39,9 +36,10 @@ public class PausePanel : MonoBehaviour
     }
 
     [Inject]
-    private void Inject(BoltClickReader boltReader, FigureClickReader figureClickReader)
+    private void Inject(BoltClickReader boltReader, FigureClickReader figureClickReader, UIAnimator animator)
     {
         _boltClickReader = boltReader;
         _figureClickReader = figureClickReader;
+        _animator = animator;
     }
 }

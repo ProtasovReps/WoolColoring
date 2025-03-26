@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ColorView : MonoBehaviour, IColorSettable
 {
+    private const string ColorMaterialProperty = "_Color";
+
     [SerializeField] private Renderer _renderer;
 
     private MaterialPropertyBlock _propertyBlock;
@@ -14,7 +16,7 @@ public class ColorView : MonoBehaviour, IColorSettable
     {
         Color = color;
 
-        _propertyBlock.SetColor(MaterialPropertyBlockParameters.Color, color);
+        _propertyBlock.SetColor(ColorMaterialProperty, color);
         _renderer.SetPropertyBlock(_propertyBlock);
     }
 }

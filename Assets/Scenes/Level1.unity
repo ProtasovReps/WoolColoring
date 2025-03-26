@@ -1040,6 +1040,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 109754984}
     - target: {fileID: 8339587222200434884, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
+      propertyPath: _soundID._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
+    - target: {fileID: 8339587222200434884, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
       propertyPath: _whiteStringHolderView
       value: 
       objectReference: {fileID: 1011650698}
@@ -1812,7 +1816,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1739451996188948525, guid: f3852fcfc7edb51469ef0e4db11676e7, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
-      value: 1
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 3246375924258014279, guid: f3852fcfc7edb51469ef0e4db11676e7, type: 3}
       propertyPath: m_Pivot.x
@@ -2027,6 +2031,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 849036939909449988, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _clickSound.ID
+      value: 536870912
+      objectReference: {fileID: 0}
+    - target: {fileID: 849036939909449988, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _clickSound._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     - target: {fileID: 2457899060095823676, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_Size
       value: 0.7119124
@@ -2103,6 +2115,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _storeMusic.ID
+      value: 268435458
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _mainMusic._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _storeMusic._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
+    - target: {fileID: 4695853005969924808, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _soundID._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
     - target: {fileID: 5051749460546197317, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1

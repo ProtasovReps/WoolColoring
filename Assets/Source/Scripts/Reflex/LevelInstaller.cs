@@ -32,6 +32,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [Header("UI")]
     [SerializeField] private ActivatableUIInitializator _activatableInitializator;
     [SerializeField] private BuffInitializer _buffInitializer;
+    [SerializeField] private UIAnimator _uIAnimator;
 
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
@@ -62,6 +63,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         InstallBuffs(containerBuilder);
         InstallRopeConnector(containerBuilder);
         InstallClickReaders(containerBuilder);
+
+        containerBuilder.AddSingleton(_uIAnimator);
     }
 
     private void InstallFigureComposition()

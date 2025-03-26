@@ -558,6 +558,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RightBuffPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8609871286960588260, guid: bfde94360b9ffbc4983d2f02e227a78a, type: 3}
+      propertyPath: _animationDuration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609871286960588260, guid: bfde94360b9ffbc4983d2f02e227a78a, type: 3}
+      propertyPath: _animationDurtation
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 9021753489499264659, guid: bfde94360b9ffbc4983d2f02e227a78a, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -683,6 +691,14 @@ PrefabInstance:
     - target: {fileID: 3716262650197792074, guid: bfde94360b9ffbc4983d2f02e227a78a, type: 3}
       propertyPath: m_Name
       value: LeftBuffPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609871286960588260, guid: bfde94360b9ffbc4983d2f02e227a78a, type: 3}
+      propertyPath: _animationDuration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8609871286960588260, guid: bfde94360b9ffbc4983d2f02e227a78a, type: 3}
+      propertyPath: _animationDurtation
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9021753489499264659, guid: bfde94360b9ffbc4983d2f02e227a78a, type: 3}
       propertyPath: m_Pivot.x
