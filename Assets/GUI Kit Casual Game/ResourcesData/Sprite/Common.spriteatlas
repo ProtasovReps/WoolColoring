@@ -63,7 +63,6 @@ SpriteAtlas:
     - 9f6ca5b28b1e34e2d8d7e51015e1a6f9: 21300000
     - 362cdbc283a1c43a7abec33080b04398: 21300000
     - 52066fc285ffc4bb0b9fc98f1d840149: 21300000
-    - 391584432233c4e0a864435a50a098c5: 21300000
     - 03a52e934f88f4a699b498a51573c186: 21300000
     - 51bc7f9398cc24aff81f13855411d2d4: 21300000
     - 86ad28a37b0134b33b88df67b42b7fe0: 21300000
@@ -137,7 +136,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9f6ca5b28b1e34e2d8d7e51015e1a6f9, type: 3}
   - {fileID: 21300000, guid: 362cdbc283a1c43a7abec33080b04398, type: 3}
   - {fileID: 21300000, guid: 52066fc285ffc4bb0b9fc98f1d840149, type: 3}
-  - {fileID: 21300000, guid: 391584432233c4e0a864435a50a098c5, type: 3}
   - {fileID: 21300000, guid: 03a52e934f88f4a699b498a51573c186, type: 3}
   - {fileID: 21300000, guid: 51bc7f9398cc24aff81f13855411d2d4, type: 3}
   - {fileID: 21300000, guid: 86ad28a37b0134b33b88df67b42b7fe0, type: 3}
@@ -210,7 +208,6 @@ SpriteAtlas:
   - common_tab_focus
   - button_sky
   - btn_icon_gold
-  - btn_icon_ad
   - ribbon_bg_yellow
   - text_deco_line_right
   - button_purple

@@ -36,7 +36,7 @@ SpriteAtlas:
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
-      padding: 4
+      padding: 2
       blockOffset: 1
       allowAlphaSplitting: 0
       enableRotation: 0
@@ -78,6 +78,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 8222ee04859dd4fe5b07c16b5439f249, type: 3}
     - {fileID: 2800000, guid: 8707475047dfe4c8ebafa3eced6bcfa2, type: 3}
     - {fileID: 2800000, guid: 9e8e2254e0d704081931984187b98db6, type: 3}
+    - {fileID: 2800000, guid: 391584432233c4e0a864435a50a098c5, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -87,6 +88,7 @@ SpriteAtlas:
     - 6cc7c4110305e45418586f0466ddd2b2: 21300000
     - d8dfea1100ec541b684f3101cad0d335: 21300000
     - 58dd4e92dd1e2427bb5d418a3e58d159: 21300000
+    - 391584432233c4e0a864435a50a098c5: 21300000
     - b56ce7c396ca04c14a596c4553a5f161: 21300000
     - f6291ac32d4e54875a041965865c030b: 21300000
     - 8fd521d3fc1eb46fd92b0f29508e5f76: 21300000
@@ -122,6 +124,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 6cc7c4110305e45418586f0466ddd2b2, type: 3}
   - {fileID: 21300000, guid: d8dfea1100ec541b684f3101cad0d335, type: 3}
   - {fileID: 21300000, guid: 58dd4e92dd1e2427bb5d418a3e58d159, type: 3}
+  - {fileID: 21300000, guid: 391584432233c4e0a864435a50a098c5, type: 3}
   - {fileID: 21300000, guid: b56ce7c396ca04c14a596c4553a5f161, type: 3}
   - {fileID: 21300000, guid: f6291ac32d4e54875a041965865c030b, type: 3}
   - {fileID: 21300000, guid: 8fd521d3fc1eb46fd92b0f29508e5f76, type: 3}
@@ -156,6 +159,7 @@ SpriteAtlas:
   - offline_prg_bar
   - top_status_btn_get_yellow
   - lobby_menu_shop
+  - btn_icon_ad
   - play_character_hp_bar_front
   - slider_frame 1
   - play_btn_icon_auto
