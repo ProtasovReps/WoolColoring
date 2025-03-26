@@ -1593,6 +1593,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3344104431396846933, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: _buyBuffMenu
+      value: 
+      objectReference: {fileID: 6071602620943415359}
+    - target: {fileID: 3952387333173765271, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: _buyBuffMenu
+      value: 
+      objectReference: {fileID: 6071602620943415359}
     - target: {fileID: 4677927968228986392, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: _clickSound.<DebugObject>k__BackingField
       value: 
@@ -1617,6 +1625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelButtons
       objectReference: {fileID: 0}
+    - target: {fileID: 6387692009830664511, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: _buyBuffMenu
+      value: 
+      objectReference: {fileID: 6071602620943415359}
     - target: {fileID: 6505119694126491917, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: _sound.<DebugObject>k__BackingField
       value: 
@@ -1645,6 +1657,10 @@ PrefabInstance:
       propertyPath: _clickSound.<DebugObject>k__BackingField
       value: 
       objectReference: {fileID: 1820764689}
+    - target: {fileID: 8403025850377513722, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: _buyBuffMenu
+      value: 
+      objectReference: {fileID: 6071602620943415359}
     - target: {fileID: 8546180050002467684, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: m_SortingOrder
       value: -5
@@ -2067,7 +2083,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 424496569858980218, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 849036939909449988, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: _clickSound.ID
@@ -2079,7 +2095,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     - target: {fileID: 2091107217890200789, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2457899060095823676, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_Size

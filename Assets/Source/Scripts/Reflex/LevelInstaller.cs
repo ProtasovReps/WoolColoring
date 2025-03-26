@@ -145,7 +145,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
         Dictionary<IBuff, int> buffs = new()
         {
-            { _unlockHolderStrategy, 5 },
+            { _unlockHolderStrategy, 1 },
             { _fillHolderStrategy, 5 },
             { _clearStrategy, 5 },
             { explodeStrategy, 5 },

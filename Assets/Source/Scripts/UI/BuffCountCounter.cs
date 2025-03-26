@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class BuffCountCounter : MonoBehaviour
 {
+    private const string ZeroBuffsSign = "+";
+
     [SerializeField] private TMP_Text _text;
 
     private BuffBag _bag;
@@ -36,6 +38,9 @@ public class BuffCountCounter : MonoBehaviour
     {
         int count = _bag.GetCount(_buff);
 
-        _text.text = count.ToString();
+        if (count == 0)
+            _text.text = ZeroBuffsSign;
+        else
+            _text.text = count.ToString();
     }
 }
