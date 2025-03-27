@@ -569,8 +569,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _transformToAnimate: {fileID: 664905171896691684}
-  _appearDuration: 1
-  _disappearTime: 3
+  _animationDuration: 0.5
+  _disappearDelay: 3
 --- !u!114 &664905171896691684
 MonoBehaviour:
   m_ObjectHideFlags: 0

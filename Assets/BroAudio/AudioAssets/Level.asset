@@ -125,7 +125,7 @@ MonoBehaviour:
       BPM: 0
       Beats: 0
     SnapToFullVolume: 0
-  - <Name>k__BackingField: CoinsAdded
+  - <Name>k__BackingField: Coins
     <ID>k__BackingField: 1073741828
     MulticlipsPlayMode: 0
     _group: {fileID: 0}

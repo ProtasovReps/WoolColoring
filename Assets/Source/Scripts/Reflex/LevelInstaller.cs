@@ -136,7 +136,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         var wallet = new Wallet();
         var moneyRewards = new MoneyRewards(picture, wallet, _figureCompositionFactory);
 
-        containerBuilder.AddSingleton(wallet, typeof(ICountChangeable));
+        containerBuilder.AddSingleton(wallet, typeof(ICountChangeable), typeof(Wallet));
     }
 
     private void InstallBuffs(ContainerBuilder containerBuilder)

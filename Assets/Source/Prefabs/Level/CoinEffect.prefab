@@ -4864,7 +4864,6 @@ GameObject:
   - component: {fileID: 9152411025406281532}
   - component: {fileID: 8931677204821027057}
   - component: {fileID: 7027520645934314464}
-  - component: {fileID: 3332224595293556107}
   m_Layer: 0
   m_Name: CoinEffect
   m_TagString: Untagged
@@ -9575,23 +9574,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &3332224595293556107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711213181678446663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b0faaa3dd5f65442bfe562ed4baf642, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _effect: {fileID: 8931677204821027057}
-  _effectSound:
-    ID: 1073741828
-    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
-    <DebugObject>k__BackingField: {fileID: 711213181678446663}
 --- !u!1 &3094440118970392328
 GameObject:
   m_ObjectHideFlags: 0

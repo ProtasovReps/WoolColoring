@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class BuffButton : ButtonView
 {
     [SerializeField] private BuffDealMenu _buyBuffMenu;
-    [SerializeField] private ActivatableTextField _ruleText;
+    [SerializeField] private TemporaryActivatableUI _ruleText;
     [SerializeField] private BuffCountCounter _counter;
     [SerializeField] private float _coolDownTime;
     [SerializeField] private Image _cooldownImage;

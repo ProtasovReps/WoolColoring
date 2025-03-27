@@ -2,9 +2,9 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
 
-public class ActivatableTextField : ActivatableUI
+public class TemporaryActivatableUI : ActivatableUI
 {
-    [SerializeField] private float _disappearTime;
+    [SerializeField] private float _disappearDelay;
 
     private CancellationTokenSource _tokenSource;
 
@@ -18,7 +18,7 @@ public class ActivatableTextField : ActivatableUI
     private async UniTaskVoid DeactivateDelayed()
     {
         _tokenSource = new CancellationTokenSource();
-        await UniTask.WaitForSeconds(_disappearTime, cancellationToken: _tokenSource.Token, cancelImmediately: true);
+        await UniTask.WaitForSeconds(_disappearDelay, true, cancellationToken: _tokenSource.Token, cancelImmediately: true);
         Deactivate();
     }
 

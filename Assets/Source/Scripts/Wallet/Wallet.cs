@@ -4,6 +4,11 @@ public class Wallet : ICountChangeable
 {
     public event Action CountChanged;
 
+    public Wallet()
+    {
+        Count = 500;
+    }
+
     public int Count {  get; private set; }
 
     public void Add(int count)
@@ -21,6 +26,7 @@ public class Wallet : ICountChangeable
             return false;
 
         Count -= count;
+        CountChanged?.Invoke();
         return true;
     }
 }

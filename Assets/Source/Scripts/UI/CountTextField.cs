@@ -1,5 +1,4 @@
 using Reflex.Attributes;
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -13,6 +12,7 @@ public class CountTextField : MonoBehaviour
     private void Inject(ICountChangeable countChangeable)
     {
         _countChangeable = countChangeable;
+        OnCountChanged();
         _countChangeable.CountChanged += OnCountChanged;
     }
 
