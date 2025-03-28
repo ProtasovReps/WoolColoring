@@ -46,7 +46,6 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 535d5068f6e6f4174a907fe1688dc8c1, type: 3}
-    - {fileID: 2800000, guid: 07e6f13050ca3524abfe49c34404d461, type: 3}
     - {fileID: 2800000, guid: 484d0bbd5ebb77a4592ea5a6c6f29eb5, type: 3}
     - {fileID: 2800000, guid: 49f8508f3726d4d2f927f0b6f5cef714, type: 3}
     - {fileID: 2800000, guid: 161b62044f01d41468f01c5510c23aff, type: 3}
@@ -82,12 +81,13 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 387dc9cb29c56b146a2fadccaf58cef4, type: 3}
     - {fileID: 2800000, guid: 06c619fa15d6cb34cba253e671968049, type: 3}
     - {fileID: 2800000, guid: 4b00db671a20143a8be8c3b5301d6a23, type: 3}
+    - {fileID: 2800000, guid: 31804c908e1120f4f8d729d1058898fe, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
     packedSpriteRenderDataKeys:
-    - 07e6f13050ca3524abfe49c34404d461: 21300000
     - 8707475047dfe4c8ebafa3eced6bcfa2: 21300000
+    - 31804c908e1120f4f8d729d1058898fe: 21300000
     - 6cc7c4110305e45418586f0466ddd2b2: 21300000
     - d8dfea1100ec541b684f3101cad0d335: 21300000
     - 58dd4e92dd1e2427bb5d418a3e58d159: 21300000
@@ -125,8 +125,8 @@ SpriteAtlas:
     - 49f8508f3726d4d2f927f0b6f5cef714: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 07e6f13050ca3524abfe49c34404d461, type: 3}
   - {fileID: 21300000, guid: 8707475047dfe4c8ebafa3eced6bcfa2, type: 3}
+  - {fileID: 21300000, guid: 31804c908e1120f4f8d729d1058898fe, type: 3}
   - {fileID: 21300000, guid: 6cc7c4110305e45418586f0466ddd2b2, type: 3}
   - {fileID: 21300000, guid: d8dfea1100ec541b684f3101cad0d335, type: 3}
   - {fileID: 21300000, guid: 58dd4e92dd1e2427bb5d418a3e58d159, type: 3}
@@ -163,8 +163,8 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b169656fffe4b4eb48f4b32a9f08ad2d, type: 3}
   - {fileID: 21300000, guid: 49f8508f3726d4d2f927f0b6f5cef714, type: 3}
   m_PackedSpriteNamesToIndex:
-  - Broom
   - reward_month_icon_gold
+  - Scissors
   - offline_prg_bar
   - top_status_btn_get_yellow
   - lobby_menu_shop
