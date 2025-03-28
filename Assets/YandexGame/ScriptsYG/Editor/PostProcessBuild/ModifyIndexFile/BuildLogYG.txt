@@ -1,0 +1,2 @@
+Build path: C:/Users/kosty/OneDrive/Рабочий стол/Builds
+Build number: 1

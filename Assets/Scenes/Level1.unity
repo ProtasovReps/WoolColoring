@@ -1030,6 +1030,10 @@ PrefabInstance:
       propertyPath: _activatables.Array.data[8]
       value: 
       objectReference: {fileID: 508862296}
+    - target: {fileID: 1106072022432992619, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
+      propertyPath: _activatables.Array.data[9]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1521679592951051183, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
       propertyPath: _filler
       value: 
@@ -1609,6 +1613,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Filler
       objectReference: {fileID: 0}
+    - target: {fileID: 1146650314131484157, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399312496235250567, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -142.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1587904044755625261, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_fontSize
+      value: 49.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1587904044755625261, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 49.27
+      objectReference: {fileID: 0}
     - target: {fileID: 1725531150285827783, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: m_Color.b
       value: 0.051886797
@@ -1784,6 +1804,14 @@ PrefabInstance:
     - target: {fileID: 8546180050002467684, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832498260288513130, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832498260288513130, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 65
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -2259,7 +2287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3651412825466379230, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.37538493
+      value: 0.37532657
       objectReference: {fileID: 0}
     - target: {fileID: 3737732634647968813, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2373,6 +2401,10 @@ PrefabInstance:
       propertyPath: _figureClickReader
       value: 
       objectReference: {fileID: 1999060527}
+    - target: {fileID: 7394663019052892643, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _effect
+      value: 
+      objectReference: {fileID: 685542201}
     - target: {fileID: 7498054084944505322, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
