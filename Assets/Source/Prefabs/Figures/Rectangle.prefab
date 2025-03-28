@@ -194,6 +194,18 @@ PrefabInstance:
       value: Bolt (2)
       objectReference: {fileID: 0}
     - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.539
       objectReference: {fileID: 0}
@@ -233,6 +245,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691769830267402494, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: _unscrewSound.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 951570527399100928}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -283,6 +299,18 @@ PrefabInstance:
       value: Bolt (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.558
       objectReference: {fileID: 0}
@@ -322,6 +350,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691769830267402494, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: _unscrewSound.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 951570527399100928}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -372,6 +404,18 @@ PrefabInstance:
       value: Bolt (6)
       objectReference: {fileID: 0}
     - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.529
       objectReference: {fileID: 0}
@@ -411,6 +455,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691769830267402494, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: _unscrewSound.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 951570527399100928}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -461,6 +509,18 @@ PrefabInstance:
       value: Bolt
       objectReference: {fileID: 0}
     - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.009
       objectReference: {fileID: 0}
@@ -500,6 +560,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691769830267402494, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: _unscrewSound.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 951570527399100928}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -695,6 +759,18 @@ PrefabInstance:
       value: Bolt (5)
       objectReference: {fileID: 0}
     - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.557
       objectReference: {fileID: 0}
@@ -744,12 +820,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
   m_PrefabInstance: {fileID: 7853903487209678185}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &951570527399100928 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7046448718044686185, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+  m_PrefabInstance: {fileID: 7853903487209678185}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1468724334080957847 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8691769830267402494, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
   m_PrefabInstance: {fileID: 7853903487209678185}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 951570527399100928}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ee69dba89df21c64c9d6a7fdcaa0cd42, type: 3}
@@ -782,6 +863,18 @@ PrefabInstance:
     - target: {fileID: 7046448718044686185, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
       propertyPath: m_Name
       value: Bolt (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 52.999996
       objectReference: {fileID: 0}
     - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
       propertyPath: m_LocalPosition.x
@@ -823,6 +916,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691769830267402494, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: _unscrewSound.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 951570527399100928}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -873,6 +970,18 @@ PrefabInstance:
       value: Bolt (4)
       objectReference: {fileID: 0}
     - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 52.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 7674647696090545619, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.008
       objectReference: {fileID: 0}
@@ -912,6 +1021,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8691769830267402494, guid: 34f59394e1974164d91d2f7a451b9318, type: 3}
+      propertyPath: _unscrewSound.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 951570527399100928}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
