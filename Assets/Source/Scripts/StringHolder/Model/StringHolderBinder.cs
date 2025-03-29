@@ -5,12 +5,15 @@ public class StringHolderBinder
     private readonly ColorStringFactory _colorStringFactory;
     private readonly ColoredStringHolderView[] _coloredViews;
     private readonly WhiteStringHolderView _whiteView;
+    private readonly ObjectDisposer _disposer;
 
-    public StringHolderBinder(ColorStringFactory colorStringFactory, ColoredStringHolderView[] coloredViews, WhiteStringHolderView whiteView)
+    public StringHolderBinder(ColorStringFactory colorStringFactory, ColoredStringHolderView[] coloredViews,
+        WhiteStringHolderView whiteView, ObjectDisposer disposer)
     {
         _colorStringFactory = colorStringFactory;
         _coloredViews = coloredViews;
         _whiteView = whiteView;
+        _disposer = disposer;
     }
 
     public ColoredStringHolder[] BindColoredHolders(StringHolderAnimations animations, HolderSoundPlayer soundPlayer)
@@ -29,6 +32,8 @@ public class StringHolderBinder
             presenter = new ColoredStringHolderPresenter(view, model);
             view.Initialize(presenter, animations, soundPlayer);
 
+            _disposer.Add(presenter);
+
             holderModels[i] = model;
         }
 
@@ -41,6 +46,7 @@ public class StringHolderBinder
         WhiteStringHolder model = new(strings);
         WhiteStringHolderPresenter presenter = new(model, _whiteView);
 
+        _disposer.Add(presenter);
         _whiteView.Initialize(animations);
         return model;
     }
@@ -52,7 +58,7 @@ public class StringHolderBinder
 
         foreach (ColorStringView colorString in view.Strings)
         {
-            newColorString = _colorStringFactory.Produce(colorString);
+            newColorString = _colorStringFactory.Produce(colorString, _disposer);
             tempList.Add(newColorString);
         }
 

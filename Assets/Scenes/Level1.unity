@@ -627,6 +627,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e56ba96033aa4347a242261f0e71734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1230730468 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9041677123686443195, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
+  m_PrefabInstance: {fileID: 1589960263934217896}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f9f1eb04f3b5144965965f3a82ce87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1269362996 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8486223251986940336, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
@@ -1199,6 +1210,10 @@ PrefabInstance:
       propertyPath: _painter
       value: 
       objectReference: {fileID: 1071964236}
+    - target: {fileID: 8339587222200434884, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
+      propertyPath: _disposer
+      value: 
+      objectReference: {fileID: 1230730468}
     - target: {fileID: 8339587222200434884, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
       propertyPath: _ropePool
       value: 

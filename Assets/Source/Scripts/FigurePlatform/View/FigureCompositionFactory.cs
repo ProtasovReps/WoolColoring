@@ -13,8 +13,15 @@ public class FigureCompositionFactory : MonoBehaviour
     private ColorPallete _colorPallete;
     private Queue<FigureCompositionView> _newFigures;
     private List<FigureCompositionView> _producedCompositions;
+    private ObjectDisposer _disposer;
 
     public event Action<FigureComposition> Produced;
+
+    public void Initialize(ObjectDisposer objectDisposer)
+    {
+        _disposer = objectDisposer;
+        _figureFactory.Initialize(_disposer);
+    }
 
     public FigureComposition Produce()
     {
@@ -63,8 +70,12 @@ public class FigureCompositionFactory : MonoBehaviour
         var model = new FigureComposition(figures);
         var presenter = new FigureCompositionPresenter(model, view, _colorPallete);
 
+        _disposer.Add(model);
+        _disposer.Add(presenter);
+
         view.Initialize();
         view.Transform.SetParent(transform);
+
         Produced?.Invoke(model);
         return model;
     }

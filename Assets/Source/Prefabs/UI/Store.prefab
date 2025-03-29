@@ -6371,7 +6371,7 @@ MonoBehaviour:
     <DebugObject>k__BackingField: {fileID: 5510835476923812215}
   _counterText: {fileID: 4529065927504074904}
   _activeButtonText: {fileID: 555369334594920067}
-  _reloadTime: 60
+  _reloadTime: 180
 --- !u!114 &7159465782919332314 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6019203927924910097, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
@@ -7598,11 +7598,11 @@ MonoBehaviour:
   _clickSound:
     ID: 536870913
     _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
-    <DebugObject>k__BackingField: {fileID: 2162941686268234927}
+    <DebugObject>k__BackingField: {fileID: 6952288447230170919}
   _notEnoughMoneySound:
     ID: 536870914
     _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
-    <DebugObject>k__BackingField: {fileID: 2162941686268234927}
+    <DebugObject>k__BackingField: {fileID: 6952288447230170919}
   _priceText: {fileID: 7993608549518415985}
   _notEnoughMoneyText: {fileID: 563896913836620928}
   _buffAddCount: 1

@@ -33,6 +33,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private ActivatableUIInitializator _activatableInitializator;
     [SerializeField] private BuffInitializer _buffInitializer;
     [SerializeField] private UIAnimator _uIAnimator;
+    [Header("Disposer")]
+    [SerializeField] private ObjectDisposer _disposer;
 
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
@@ -52,6 +54,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     public void InstallBindings(ContainerBuilder containerBuilder)
     {
         _playerInput = new PlayerInput();
+        _disposer.Add(_playerInput);
 
         InstallFigureComposition();
 
@@ -71,8 +74,11 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     {
         var positionDatabase = new PositionDatabase(_conveyerPositions);
         var compositionPool = new FigureCompositionPool(_figureCompositionFactory);
+
         _conveyer = new Conveyer(compositionPool, positionDatabase);
 
+        _figureCompositionFactory.Initialize(_disposer);
+        _disposer.Add(_conveyer);
         _figureClickReader.Initialize(_playerInput);
     }
 
@@ -81,7 +87,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         _colorBlockViewStash.Initialize();
 
         ColorBlockView[] blockViews = _colorBlockViewStash.GetBlockViews();
-        ColorBlockBinder colorBlockBinder = new(blockViews, _blockHolderConnector);
+        ColorBlockBinder colorBlockBinder = new(blockViews, _blockHolderConnector, _disposer);
         PictureBinder pictureBinder = new(_pictureView, colorBlockBinder, _malbert);
         Picture picture = pictureBinder.Bind();
 
@@ -96,6 +102,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         var boltStash = new BoltStash();
         _boltColorSetter = new BoltColorSetter(boltStash, picture);
 
+        _disposer.Add(_boltColorSetter);
         _boltClickReader.Initialize(stringDistributor, _playerInput);
         containerBuilder.AddSingleton(boltStash);
     }
@@ -103,7 +110,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     private StringDistributor InstallHolders(ContainerBuilder containerBuilder, Picture picture)
     {
         ColorStringFactory colorStringFactory = new();
-        StringHolderBinder stringHolderBinder = new(colorStringFactory, _coloredViews, _whiteStringHolderView);
+        StringHolderBinder stringHolderBinder = new(colorStringFactory, _coloredViews, _whiteStringHolderView, _disposer);
         ColoredStringHolder[] coloredHolderModels = stringHolderBinder.BindColoredHolders(_holderAnimations, _holderSoundPlayer);
         WhiteStringHolder whiteHolderModel = stringHolderBinder.BindWhiteHolder(_holderAnimations);
         ColoredStringHolderStash coloredStringHolderStash = new(coloredHolderModels, _startHoldersCount);
@@ -115,6 +122,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         _fillHolderStrategy = new(coloredHolderModels);
         _clearStrategy = new(whiteHolderModel);
 
+        _disposer.Add(stringRemover);
         _painter.Initialize(coloredStringHolderStash, switcher);
         containerBuilder.AddSingleton(stringDistributor);
         containerBuilder.AddSingleton(_coloredViews);
@@ -136,6 +144,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         var wallet = new Wallet();
         var moneyRewards = new MoneyRewards(picture, wallet, _figureCompositionFactory);
 
+        _disposer.Add(moneyRewards);
         containerBuilder.AddSingleton(wallet, typeof(ICountChangeable), typeof(Wallet));
     }
 

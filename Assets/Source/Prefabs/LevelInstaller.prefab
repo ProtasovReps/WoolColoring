@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1521679592951051183}
   - component: {fileID: 5350750388361906446}
   - component: {fileID: 9074468529178919698}
+  - component: {fileID: 9041677123686443195}
   m_Layer: 0
   m_Name: LevelInstaller
   m_TagString: Untagged
@@ -128,6 +129,10 @@ MonoBehaviour:
   _filler: {fileID: 0}
   _exploder: {fileID: 0}
   _cleaner: {fileID: 0}
+  _unlockerBuyButton: {fileID: 0}
+  _fillerBuyButton: {fileID: 0}
+  _exploderBuyButton: {fileID: 0}
+  _cleanerBuyButton: {fileID: 0}
 --- !u!114 &5350750388361906446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,5 +165,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 74ffeda385efb0745bb2161b20c258db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9041677123686443195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564509760098111384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f9f1eb04f3b5144965965f3a82ce87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

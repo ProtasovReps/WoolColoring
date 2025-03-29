@@ -4,6 +4,10 @@ using UnityEngine;
 public class FigureFactory : MonoBehaviour
 {
     private BoltStash _stash;
+    private ObjectDisposer _disposer;
+
+    public void Initialize(ObjectDisposer disposer)
+       => _disposer = disposer;
 
     public Figure Produce(FigureView view)
     {
@@ -15,6 +19,8 @@ public class FigureFactory : MonoBehaviour
     {
         var model = new Figure();
         var presenter = new FigurePresenter(model, view);
+
+        _disposer.Add(presenter);
         view.Initialize(presenter);
 
         return model;
