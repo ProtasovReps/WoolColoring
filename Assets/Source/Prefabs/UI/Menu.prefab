@@ -869,11 +869,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 297723932961092334, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2001646339465513988, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_text
-      value: "\u041F\u0430\u0443\u0437\u0430"
+      value: Pause
       objectReference: {fileID: 0}
     - target: {fileID: 2199012206090005914, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -885,39 +885,39 @@ PrefabInstance:
       objectReference: {fileID: 7180760207779593784}
     - target: {fileID: 3197360373154376028, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_text
-      value: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
+      value: Ayarlar
       objectReference: {fileID: 0}
     - target: {fileID: 3227088311075690552, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.7095119
       objectReference: {fileID: 0}
     - target: {fileID: 3227088311075690552, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3227088312103537880, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 0.7095119
       objectReference: {fileID: 0}
     - target: {fileID: 3227088312103537880, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3227088312103537880, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 0.7095119
       objectReference: {fileID: 0}
     - target: {fileID: 3672013892225178486, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 7af9652001132497ba7088f0b27ebe03, type: 3}
+      objectReference: {fileID: 21300000, guid: f96ed64c1140a44688663b65a678910a, type: 3}
     - target: {fileID: 6639705961830396605, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_Name
       value: PauseBlock
       objectReference: {fileID: 0}
     - target: {fileID: 6639705961830396605, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6827504400140757282, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: _clickSound.ID
@@ -1009,7 +1009,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7342375540082127249, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_text
-      value: "\u042F\u0437\u044B\u043A"
+      value: Dil
       objectReference: {fileID: 0}
     - target: {fileID: 8411347733096584528, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: _activatable
@@ -1046,7 +1046,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   translationName: LanguageSprites
-  FallbackSprite: {fileID: 21300000, guid: 09a17b3899e8141edb6e0745ab518a12, type: 3}
+  FallbackSprite: {fileID: 21300000, guid: 7af9652001132497ba7088f0b27ebe03, type: 3}
 --- !u!114 &8344585698105231212 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 918332798641675064, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
