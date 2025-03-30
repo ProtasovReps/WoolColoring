@@ -27,11 +27,12 @@ public class CountChangeableEffect : TemporaryActivatableUI
     {
         int addedAmount = _countChangeable.Count - _lastCount;
 
+        _lastCount = _countChangeable.Count;
+
         if (addedAmount < 0)
             return;
 
         _text.text = $"{FirstSymbol}{addedAmount}";
-        _lastCount = _countChangeable.Count;
 
         Activate();
         _effect.Play();

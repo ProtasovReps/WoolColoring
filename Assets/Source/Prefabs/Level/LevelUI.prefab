@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Duraklamak
+  m_text: Pause
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -576,7 +576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: "K\u0131rmak"
+      value: Break
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_characterSpacing
@@ -753,7 +753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: "Kilidini a\xE7mak"
+      value: Unlock
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_fontSizeBase
@@ -854,12 +854,34 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4697134935835450354, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6992588702837105815}
+    - targetCorrespondingSourceObject: {fileID: 9145491948347279790, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5437147747392220745}
   m_SourcePrefab: {fileID: 100100000, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
 --- !u!1 &267914803731424717 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
   m_PrefabInstance: {fileID: 3822637419463377571}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5469599765955365645 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9145491948347279790, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+  m_PrefabInstance: {fileID: 3822637419463377571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5437147747392220745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5469599765955365645}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: UnlockerRuleText
+  FallbackText: 
 --- !u!224 &5668918954960000593 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8908322080196760818, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
@@ -959,7 +981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: Dikmek
+      value: Sew
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_fontStyle
@@ -1064,6 +1086,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4697134935835450354, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1657332986104401073}
+    - targetCorrespondingSourceObject: {fileID: 9145491948347279790, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5654784105674280850}
   m_SourcePrefab: {fileID: 100100000, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
 --- !u!1 &211157246226115899 stripped
 GameObject:
@@ -1089,6 +1114,25 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8908322080196760818, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
   m_PrefabInstance: {fileID: 4882391502040479433}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4407596092266217319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9145491948347279790, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+  m_PrefabInstance: {fileID: 4882391502040479433}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5654784105674280850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4407596092266217319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: FillerRuleText
+  FallbackText: 
 --- !u!1 &8465309695396270503 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
@@ -1307,7 +1351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: "Kald\u0131rmak"
+      value: Remove
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_fontStyle
@@ -1416,7 +1460,29 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4697134935835450354, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3372582307457639740}
+    - targetCorrespondingSourceObject: {fileID: 9145491948347279790, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4408440654807432282}
   m_SourcePrefab: {fileID: 100100000, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+--- !u!1 &1230259212761603234 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9145491948347279790, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+  m_PrefabInstance: {fileID: 8068641030366418188}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4408440654807432282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1230259212761603234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: RemoverRuleText
+  FallbackText: 
 --- !u!224 &1466244932137402878 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8908322080196760818, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
