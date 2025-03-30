@@ -426,6 +426,7 @@ GameObject:
   - component: {fileID: 4046401859683535252}
   - component: {fileID: 1006066211244967964}
   - component: {fileID: 57924970566976912}
+  - component: {fileID: 6217605995014808397}
   m_Layer: 5
   m_Name: LevelSelectText
   m_TagString: Untagged
@@ -549,6 +550,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &6217605995014808397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4542262880818754466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: LevelSelectBlock
+  FallbackText: "\u0412\u044B\u0431\u043E\u0440 \u0443\u0440\u043E\u0432\u043D\u044F"
 --- !u!1 &4813773482915085464
 GameObject:
   m_ObjectHideFlags: 0

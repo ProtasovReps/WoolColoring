@@ -92,7 +92,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Steps: 3.5
-    - _StpSmooth: 0.1
+    - _StpSmooth: 0.213
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
