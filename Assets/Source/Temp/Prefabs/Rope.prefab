@@ -82,6 +82,11 @@ LineRenderer:
   - {x: -0.15, y: 2, z: -0.25}
   - {x: 0.07, y: 3, z: 0.88}
   - {x: 0.09, y: 4, z: 0.97}
+  - {x: 0.09, y: 4, z: 0.97}
+  - {x: 0.09, y: 4, z: 0.97}
+  - {x: 0.09, y: 4, z: 0.97}
+  - {x: 0.09, y: 4, z: 0.97}
+  - {x: 0.09, y: 4, z: 0.97}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.3
@@ -154,10 +159,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _segmentsCount: 8
-  _autodestroyTime: 0.3
   _segmentAppearDelay: 0.01
   _segmentsDisappearDelay: 0.03
-  _maxOffset: 0.1
+  _maxOffset: 0.15
+  _waveSpeed: 25
 --- !u!114 &7142097586135860364
 MonoBehaviour:
   m_ObjectHideFlags: 0

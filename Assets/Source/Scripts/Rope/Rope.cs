@@ -12,6 +12,7 @@ public class Rope : MonoBehaviour, IColorSettable
     [SerializeField] private float _segmentAppearDelay;
     [SerializeField] private float _segmentsDisappearDelay;
     [SerializeField] private float _maxOffset;
+    [SerializeField] private float _waveSpeed;
 
     private ColorView _colorView;
     private LineRenderer _lineRenderer;
@@ -103,10 +104,11 @@ public class Rope : MonoBehaviour, IColorSettable
 
     private void SetPosition(Vector3 startPosition, Vector3 endPosition, int segmentNumber)
     {
-        var position = Vector3.Lerp(startPosition, endPosition, (segmentNumber + 1f) / _segmentsCount);
-        float randomizedPositionX = Random.Range(position.x - _maxOffset, position.x + _maxOffset);
+        float segmentRealNumber = segmentNumber + 1f;
+        var position = Vector3.Lerp(startPosition, endPosition, segmentRealNumber / _segmentsCount);
+        float wavedPosition = Mathf.Sin(Time.time * _waveSpeed + segmentRealNumber) * _maxOffset;
 
-        position = new Vector3(randomizedPositionX, position.y, position.z);
+        position = new Vector3(position.x + wavedPosition, position.y, position.z);
 
         _lineRenderer.SetPosition(segmentNumber, position);
     }
