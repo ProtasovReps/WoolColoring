@@ -732,7 +732,7 @@ PlayerSettings:
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
   scriptingDefineSymbols:
-    WebGL: YG_PLUGIN_YANDEX_GAME;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;RU_YG2
+    WebGL: YG_PLUGIN_YANDEX_GAME;YandexGamesPlatform_yg;PLUGIN_YG_2;TMP_YG2;RU_YG2;InterstitialAdv_yg
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
@@ -838,7 +838,7 @@ PlayerSettings:
   hmiLogStartupTiming: 0
   hmiCpuConfiguration: 
   apiCompatibilityLevel: 6
-  activeInputHandler: 1
+  activeInputHandler: 2
   windowsGamepadBackendHint: 0
   cloudProjectId: fedf2c48-ed7b-4564-80b9-03867bb52b11
   framebufferDepthMemorylessMode: 0

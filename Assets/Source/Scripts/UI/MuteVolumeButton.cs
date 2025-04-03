@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class MuteVolumeButton : ButtonView
 {
-    [SerializeField] private AudioListener _audioListener;
-
-    private bool _isMuted = true;
+    private bool _isMuted;
 
     protected override void OnButtonClick()
     {
         _isMuted = !_isMuted;
-        _audioListener.enabled = _isMuted;
+        AudioListener.pause = _isMuted;
     }
 }

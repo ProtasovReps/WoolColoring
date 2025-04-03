@@ -110,6 +110,61 @@ MonoBehaviour:
   - Language: Turkish
     Text: "Sat\u0131n almak"
     Object: {fileID: 0}
+--- !u!1 &568304301654010996
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6026274941565682884}
+  - component: {fileID: 7317930871163705811}
+  m_Layer: 0
+  m_Name: InterstitialTimer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6026274941565682884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568304301654010996}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7714013662089392286}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7317930871163705811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568304301654010996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0420\u0435\u043A\u043B\u0430\u043C\u0430 \u0447\u0435\u0440\u0435\u0437:"
+    Object: {fileID: 0}
+  - Language: English
+    Text: 'Advertising through:'
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Reklam ba\u015Flayacak:"
+    Object: {fileID: 0}
 --- !u!1 &612437164124353281
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +440,62 @@ MonoBehaviour:
     Object: {fileID: 0}
   - Language: Turkish
     Text: "\xDCcretsiz"
+    Object: {fileID: 0}
+--- !u!1 &2357040819675954286
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5640188789951466724}
+  - component: {fileID: 4911717856171391930}
+  m_Layer: 0
+  m_Name: BuyAdBlockText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5640188789951466724
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2357040819675954286}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7714013662089392286}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4911717856171391930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2357040819675954286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "*\u0440\u0435\u043A\u043B\u0430\u043C\u0443 \u043C\u043E\u0436\u043D\u043E
+      \u043E\u0442\u043A\u043B\u044E\u0447\u0438\u0442\u044C \u0432 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0435"
+    Object: {fileID: 0}
+  - Language: English
+    Text: '*Advertising can be disabled in the store'
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "*Ma\u011Fazada reklam devre d\u0131\u015F\u0131 b\u0131rak\u0131labilir"
     Object: {fileID: 0}
 --- !u!1 &3065822649978179342
 GameObject:
@@ -823,6 +934,8 @@ Transform:
   - {fileID: 1738697280130224703}
   - {fileID: 4431948387347570045}
   - {fileID: 6073975808616426001}
+  - {fileID: 5640188789951466724}
+  - {fileID: 6026274941565682884}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &911711723973677604
