@@ -5,6 +5,13 @@ public class Store : ActivatableUI
 {
     [SerializeField] private SoundID _storeMusic;
     [SerializeField] private SoundID _mainMusic;
+    [SerializeField] private CounterButton _counterButton;
+
+    public override void Initialize()
+    {
+        _counterButton.SetReload();
+        base.Initialize();
+    }
 
     public override void Activate()
     {

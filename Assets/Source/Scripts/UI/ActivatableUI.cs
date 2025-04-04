@@ -11,7 +11,7 @@ public class ActivatableUI : Activatable
 
     protected UIAnimator Animator => _animator;
 
-    public void Initialize()
+    public virtual void Initialize()
     {
         _transformToAnimate.Initialize();
         _transform = transform;

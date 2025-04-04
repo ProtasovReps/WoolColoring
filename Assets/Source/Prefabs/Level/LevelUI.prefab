@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pause
+  m_text: "\u041F\u0430\u0443\u0437\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -529,6 +529,10 @@ PrefabInstance:
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+      propertyPath: _rewardId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _coolDownTime
       value: 10
       objectReference: {fileID: 0}
@@ -543,7 +547,7 @@ PrefabInstance:
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _clickSound.<DebugObject>k__BackingField
       value: 
-      objectReference: {fileID: 6431981559189877346}
+      objectReference: {fileID: 1947460551862811663}
     - target: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_Name
       value: Breaker
@@ -576,7 +580,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: Break
+      value: "\u0420\u0430\u0437\u0431\u0438\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_characterSpacing
@@ -674,6 +678,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6716493851398694273}
   m_SourcePrefab: {fileID: 100100000, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+--- !u!1 &1947460551862811663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+  m_PrefabInstance: {fileID: 3295977896587271009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6205148661974437779 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8908322080196760818, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
@@ -723,9 +732,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+      propertyPath: _rewardId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _clickSound.<DebugObject>k__BackingField
       value: 
-      objectReference: {fileID: 6431981559189877346}
+      objectReference: {fileID: 267914803731424717}
     - target: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_Name
       value: Unlocker
@@ -753,7 +766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: Unlock
+      value: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_fontSizeBase
@@ -858,6 +871,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 5437147747392220745}
   m_SourcePrefab: {fileID: 100100000, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+--- !u!1 &267914803731424717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+  m_PrefabInstance: {fileID: 3822637419463377571}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5469599765955365645 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9145491948347279790, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
@@ -926,6 +944,10 @@ PrefabInstance:
       value: -0.9
       objectReference: {fileID: 0}
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+      propertyPath: _rewardId
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _coolDownTime
       value: 10
       objectReference: {fileID: 0}
@@ -940,7 +962,7 @@ PrefabInstance:
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _clickSound.<DebugObject>k__BackingField
       value: 
-      objectReference: {fileID: 6431981559189877346}
+      objectReference: {fileID: 8465309695396270503}
     - target: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_Name
       value: Filler
@@ -976,7 +998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: Sew
+      value: "\u0421\u0448\u0438\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_fontStyle
@@ -1128,6 +1150,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   translationName: FillerRuleText
   FallbackText: 
+--- !u!1 &8465309695396270503 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+  m_PrefabInstance: {fileID: 4882391502040479433}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6247102750904306697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1291,6 +1318,10 @@ PrefabInstance:
       value: -7.6799927
       objectReference: {fileID: 0}
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+      propertyPath: _rewardId
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _coolDownTime
       value: 5
       objectReference: {fileID: 0}
@@ -1308,7 +1339,7 @@ PrefabInstance:
       objectReference: {fileID: 6431981559189877346}
     - target: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_Name
-      value: Cleaner
+      value: Remover
       objectReference: {fileID: 0}
     - target: {fileID: 4047355532862450813, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1341,7 +1372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: Remove
+      value: "\u0423\u0431\u0440\u0430\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_fontStyle

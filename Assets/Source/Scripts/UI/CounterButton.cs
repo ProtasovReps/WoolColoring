@@ -5,22 +5,22 @@ using UnityEngine;
 public class CounterButton : ButtonView
 {
     [SerializeField] private TMP_Text _counterText;
-    [SerializeField] private TMP_Text _activeButtonText;
+    [SerializeField] private MonoBehaviour _activeButtonObject;
     [SerializeField] private float _reloadTime;
 
-    private void Awake() => OnButtonClick();
+    public void SetReload() => OnButtonClick();
 
     public override void Activate()
     {
-        _counterText.enabled = false;
-        _activeButtonText.enabled = true;
+        _counterText.gameObject.SetActive(false);
+        _activeButtonObject.gameObject.SetActive(true);
         base.Activate();
     }
 
     public override void Deactivate()
     {
-        _counterText.enabled = true;
-        _activeButtonText.enabled = false;
+        _counterText.gameObject.SetActive(true);
+        _activeButtonObject.gameObject.SetActive(false);
         base.Deactivate();
     }
 
@@ -36,7 +36,7 @@ public class CounterButton : ButtonView
 
         Deactivate();
 
-        while(elapsedTime < _reloadTime)
+        while (elapsedTime < _reloadTime)
         {
             int remainingTime = (int)(_reloadTime - elapsedTime);
             int remainingMinutes = remainingTime / 60;

@@ -6,11 +6,12 @@ using UnityEngine.UI;
 
 public class BuffButton : ButtonView
 {
-    [SerializeField] private BuffDealMenu _buyBuffMenu;
+    [SerializeField] private BuffDealMenu _buffDealMenu;
     [SerializeField] private TemporaryActivatableUI _ruleText;
     [SerializeField] private BuffCountCounter _counter;
     [SerializeField] private float _coolDownTime;
     [SerializeField] private Image _cooldownImage;
+    [SerializeField] private RewardIds _rewardId;
 
     private BuffBag _bag;
     private IBuff _buff;
@@ -36,7 +37,8 @@ public class BuffButton : ButtonView
 
         if (_bag.TryGetBuff(_buff) == false)
         {
-            _buyBuffMenu.Activate();
+            _buffDealMenu.Activate();
+            _buffDealMenu.SetTargetReward(_rewardId.ToString(), _buff);
             return;
         }
 
