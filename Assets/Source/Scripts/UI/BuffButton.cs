@@ -11,7 +11,6 @@ public class BuffButton : ButtonView
     [SerializeField] private BuffCountCounter _counter;
     [SerializeField] private float _coolDownTime;
     [SerializeField] private Image _cooldownImage;
-    [SerializeField] private RewardIds _rewardId;
 
     private BuffBag _bag;
     private IBuff _buff;
@@ -38,7 +37,7 @@ public class BuffButton : ButtonView
         if (_bag.TryGetBuff(_buff) == false)
         {
             _buffDealMenu.Activate();
-            _buffDealMenu.SetTargetReward(_rewardId.ToString(), _buff);
+            _buffDealMenu.SetTargetReward(_buff);
             return;
         }
 

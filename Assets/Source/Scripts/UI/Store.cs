@@ -1,11 +1,17 @@
 using Ami.BroAudio;
+using Reflex.Attributes;
 using UnityEngine;
 
 public class Store : ActivatableUI
 {
     [SerializeField] private SoundID _storeMusic;
     [SerializeField] private SoundID _mainMusic;
+    [SerializeField] private SoundID _notEnoughMoneySound;
     [SerializeField] private CounterButton _counterButton;
+    [SerializeField] private TemporaryActivatableUI _notEnoughMoneyText;
+
+    private Wallet _wallet;
+    private BuffBag _bag;
 
     public override void Initialize()
     {
@@ -13,19 +19,22 @@ public class Store : ActivatableUI
         base.Initialize();
     }
 
-    public override void Activate()
+    public void Purchase(IBuff buff, int count)
     {
-        //BroAudio.Pause(_mainMusic, 0.1f);
-        //BroAudio.Play(_storeMusic);
+        if (_wallet.TrySpend(buff.Price) == false)
+        {
+            BroAudio.Play(_notEnoughMoneySound);
+            _notEnoughMoneyText.Activate();
+            return;
+        }
 
-        base.Activate();
+        _bag.AddBuff(buff, count);
     }
-    // почему-то не работает
-    public override void Deactivate()
-    {
-        //BroAudio.Stop(_storeMusic);
-        //BroAudio.UnPause(_mainMusic, 0.1f);
 
-        base.Deactivate();
+    [Inject]
+    private void Inject(Wallet wallet, BuffBag buffBag)
+    {
+        _wallet = wallet;
+        _bag = buffBag;
     }
 }

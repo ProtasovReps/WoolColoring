@@ -1,46 +1,46 @@
 using Reflex.Attributes;
 using System;
+using UnityEngine;
 using YG;
 
 public class BuffDealMenu : ActivatableUI
 {
     private const int AddAmount = 1;
 
-    private (string, IBuff) _targetReward;
-    private BuffBag _bag;
+    [SerializeField] private Store _store;
+
+    private Wallet _wallet;
+    private IBuff _targetReward;
     private bool _isTargetRewardSetted;
 
-    public void SetTargetReward(string rewardId, IBuff buff)
+    public void SetTargetReward(IBuff buff)
     {
-        if (string.IsNullOrEmpty(rewardId))
-            throw new ArgumentNullException(nameof(rewardId));
-
         if (buff == null)
             throw new ArgumentNullException(nameof(buff));
 
-        _targetReward.Item1 = rewardId;
-        _targetReward.Item2 = buff;
+        _targetReward = buff;
         _isTargetRewardSetted = true;
     }
 
     public void ShowAd()
     {
-        YG2.RewardedAdvShow(_targetReward.Item1, GetBuff);
+        YG2.RewardedAdvShow(_targetReward.Id, AddBuff);
     }
 
-    private void GetBuff()
+    [Inject]
+    private void Inject(Wallet wallet)
+    {
+        _wallet = wallet;
+    }
+
+    private void AddBuff()
     {
         if (_isTargetRewardSetted == false)
             throw new InvalidOperationException(nameof(_isTargetRewardSetted));
 
-        _bag.AddBuff(_targetReward.Item2, AddAmount);
+        _wallet.Add(_targetReward.Price);
+        _store.Purchase(_targetReward, AddAmount);
 
         _isTargetRewardSetted = false;
-    }
-
-    [Inject]
-    private void Inject(BuffBag buffBag)
-    {
-        _bag = buffBag;
     }
 }

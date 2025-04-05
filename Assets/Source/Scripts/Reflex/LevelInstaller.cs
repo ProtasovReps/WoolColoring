@@ -1,6 +1,7 @@
 using UnityEngine;
 using Reflex.Core;
 using Ami.BroAudio;
+using YG;
 using System.Collections.Generic;
 
 public class LevelInstaller : MonoBehaviour, IInstaller
@@ -38,9 +39,9 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
-    private UnlockHolderStrategy _unlockHolderStrategy;
-    private FillHolderStrategy _fillHolderStrategy;
-    private ClearWhiteHolderStrategy _clearStrategy;
+    private Unlocker _unlockHolderStrategy;
+    private Filler _fillHolderStrategy;
+    private Remover _removeStrategy;
     private PlayerInput _playerInput;
 
     private void Start()
@@ -50,6 +51,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         _activatableInitializator.Initialize();
         BroAudio.Play(_soundID);
     }
+
+    private void OnDestroy() => YG2.SaveProgress();
 
     public void InstallBindings(ContainerBuilder containerBuilder)
     {
@@ -120,7 +123,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
         _unlockHolderStrategy = new(coloredStringHolderStash, switcher, picture);
         _fillHolderStrategy = new(coloredHolderModels);
-        _clearStrategy = new(whiteHolderModel);
+        _removeStrategy = new(whiteHolderModel);
 
         _disposer.Add(stringRemover);
         _painter.Initialize(coloredStringHolderStash, switcher);
@@ -141,7 +144,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     private void InstallWallet(ContainerBuilder containerBuilder, Picture picture)
     {
-        var wallet = new Wallet();
+        var wallet = new Wallet(YG2.saves.Coins);
         var moneyRewards = new MoneyRewards(picture, wallet, _figureCompositionFactory);
 
         _disposer.Add(moneyRewards);
@@ -150,20 +153,28 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     private void InstallBuffs(ContainerBuilder containerBuilder)
     {
-        var explodeStrategy = new ExplodeFigureStrategy(_figureClickReader);
-
-        Dictionary<IBuff, int> buffs = new()
+        var breakStrategy = new Breaker(_figureClickReader);
+        var buffs = new Dictionary<IBuff, int>()
         {
-            { _unlockHolderStrategy, 1 },
-            { _fillHolderStrategy, 1 },
-            { _clearStrategy, 1 },
-            { explodeStrategy, 1 },
+                { _unlockHolderStrategy, YG2.saves.Unlockers },
+                { _fillHolderStrategy, YG2.saves.Fillers },
+                { _removeStrategy, YG2.saves.Removers },
+                { breakStrategy, YG2.saves.Breakers }
         };
 
         BuffBag buffBag = new(buffs);
+        UnlockerSaver unlockerSaver = new(buffBag);
+        FillerSaver fillerSaver = new(buffBag);
+        RemoverSaver removerSaver = new(buffBag);
+        BreakerSaver breakerSaver = new(buffBag);
+
+        _disposer.Add(unlockerSaver);
+        _disposer.Add(fillerSaver);
+        _disposer.Add(removerSaver);
+        _disposer.Add(breakerSaver);
 
         containerBuilder.AddSingleton(buffBag);
-        _buffInitializer.Initialize(_unlockHolderStrategy, _fillHolderStrategy, explodeStrategy, _clearStrategy);
+        _buffInitializer.Initialize(_unlockHolderStrategy, _fillHolderStrategy, breakStrategy, _removeStrategy);
     }
 
     private void InstallClickReaders(ContainerBuilder containerBuilder)

@@ -7,7 +7,7 @@ public class CoinRewardButton : RewardedAdButton
 
     private Wallet _wallet;
 
-    private void Awake() => Initialize(RewardIds.coin.ToString());
+    private void Awake() => Initialize(RewardIds.Coin);
 
     protected override void ReceiveReward()
        => _wallet.Add(_rewardAmount);

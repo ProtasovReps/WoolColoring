@@ -1,8 +1,8 @@
-public enum RewardIds
+public static class RewardIds
 {
-    coin,
-    unlocker,
-    filler,
-    remover,
-    breaker
+    public static readonly string Coin = "coin";
+    public static readonly string Unlocker = "unlocker";
+    public static readonly string Filler = "filler";
+    public static readonly string Remover = "remover";
+    public static readonly string Breaker = "breaker";
 }

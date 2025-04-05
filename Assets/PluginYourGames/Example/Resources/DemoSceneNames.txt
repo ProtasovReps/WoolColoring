@@ -1,2 +1,7 @@
 ExampleYG2
+Authorization
 InterstitialAdv
+Payments
+PlayerStats
+RewardedAdv
+Storage

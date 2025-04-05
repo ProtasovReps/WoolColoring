@@ -1,15 +1,19 @@
 using System;
+using YG;
 
 public class Wallet : ICountChangeable
 {
     public event Action CountChanged;
 
-    public Wallet()
+    public Wallet(int startCount)
     {
-        Count = 500;
+        if (startCount < 0)
+            throw new ArgumentOutOfRangeException(nameof(startCount));
+
+        Count = startCount;
     }
 
-    public int Count {  get; private set; }
+    public int Count { get; private set; }
 
     public void Add(int count)
     {
@@ -17,6 +21,8 @@ public class Wallet : ICountChangeable
             throw new ArgumentException(nameof(count));
 
         Count += count;
+        SaveCoins();
+
         CountChanged?.Invoke();
     }
 
@@ -26,7 +32,15 @@ public class Wallet : ICountChangeable
             return false;
 
         Count -= count;
+        SaveCoins();
+
         CountChanged?.Invoke();
         return true;
+    }
+
+    private void SaveCoins()
+    {
+        YG2.saves.Coins = Count;
+        YG2.SaveProgress();
     }
 }
