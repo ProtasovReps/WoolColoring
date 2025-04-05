@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BuffRewardButton : ButtonView
+public class BuffRewardButton : RechargeableButton
 {
     [SerializeField] private BuffDealMenu _dealMenu;
 

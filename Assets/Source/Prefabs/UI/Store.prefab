@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0423\u0431\u0440\u0430\u0442\u044C \u0432\u0441\u044E \u0440\u0435\u043A\u043B\u0430\u043C\u0443"
+  m_text: "T\xFCm reklamlar\u0131 kald\u0131r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -1023,7 +1023,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0423\u0431\u0440\u0430\u0442\u044C \u0432\u0441\u044E \u0440\u0435\u043A\u043B\u0430\u043C\u0443"
+  m_text: "T\xFCm reklamlar\u0131 kald\u0131r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
+  m_text: "Ma\u011Faza"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -2882,7 +2882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_AnchoredPosition: {x: 0, y: 703.38916}
   m_SizeDelta: {x: 0, y: 1874.0704}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &6209046952102104103
@@ -2994,7 +2994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -56.8, y: -59.9}
+  m_AnchoredPosition: {x: -43, y: -32.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4495609873095807222
@@ -3406,6 +3406,7 @@ GameObject:
   - component: {fileID: 7219121059593670787}
   - component: {fileID: 4274864800183142631}
   - component: {fileID: 6503524297853184187}
+  - component: {fileID: 9056211373686748393}
   m_Layer: 5
   m_Name: NotEnoughMoneyText
   m_TagString: Untagged
@@ -3460,10 +3461,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'There is not enough gold
-
-    Go through the levels to earn or get by
-    scrolling through the store below!'
+  m_text: "\u041D\u0435 \u0445\u0432\u0430\u0442\u0430\u0435\u0442 \u0437\u043E\u043B\u043E\u0442\u0430.
+    \u041F\u0440\u043E\u0445\u043E\u0434\u0438\u0442\u0435 \u0443\u0440\u043E\u0432\u043D\u0438,
+    \u0447\u0442\u043E\u0431\u044B \u0437\u0430\u0440\u0430\u0431\u043E\u0442\u0430\u0442\u044C
+    \u0438\u043B\u0438 \u043F\u0440\u0438\u043E\u0431\u0440\u0435\u0441\u0442\u0438
+    \u0435\u0433\u043E, \u043F\u0440\u043E\u0441\u043C\u0430\u0442\u0440\u0438\u0432\u0430\u044F
+    \u043C\u0430\u0433\u0430\u0437\u0438\u043D \u043D\u0438\u0436\u0435!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -3526,7 +3529,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -13.178528, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3544,6 +3547,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa13855896ad7b8469a76ff9ea265b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9056211373686748393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7543264392035771207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: NotEnoughGold
+  FallbackText: 'There is not enough gold
+
+    Go through the levels to earn or get
+    by scrolling through the store below!'
 --- !u!1 &7739866648816947152
 GameObject:
   m_ObjectHideFlags: 0
@@ -3664,8 +3684,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4429431263104825619}
   m_HandleRect: {fileID: 897845073370306688}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.6246735
+  m_Value: -0.0000012148229
+  m_Size: 0.6241444
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6542,7 +6562,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5510835476923812215}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bfea396672128343ac763981b0c3b7a, type: 3}
+  m_Script: {fileID: 11500000, guid: 67477edc8d4c5b24b8af4a5d3cf673c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _button: {fileID: 7159465782919332314}
@@ -7283,7 +7303,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7672157697731647140, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
+      value: "Kilidini a\xE7mak"
       objectReference: {fileID: 0}
     - target: {fileID: 7672157697731647140, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize
@@ -7343,7 +7363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8223584920219299470, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: "\u0423\u0431\u0440\u0430\u0442\u044C"
+      value: "Kald\u0131rmak"
       objectReference: {fileID: 0}
     - target: {fileID: 8223584920219299470, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize
@@ -7383,7 +7403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8474875132401374711, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: "\u0420\u0430\u0437\u0431\u0438\u0442\u044C"
+      value: "K\u0131rmak"
       objectReference: {fileID: 0}
     - target: {fileID: 8474875132401374711, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize
@@ -7431,7 +7451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8833549926335003480, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: "\u0421\u0443\u043F\u0435\u0440 \u0432\u044B\u0433\u043E\u0434\u0430!"
+      value: "S\xFCper fayda!"
       objectReference: {fileID: 0}
     - target: {fileID: 8833549926335003480, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize
@@ -7471,7 +7491,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cdec219ba90ca4cd7b967e2a3385b9e6, type: 3}
     - target: {fileID: 9008914426442312654, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: "\u0421\u0448\u0438\u0442\u044C"
+      value: Dikmek
       objectReference: {fileID: 0}
     - target: {fileID: 9008914426442312654, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize
@@ -8443,7 +8463,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8833549926335003480, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: "\u0421\u0442\u0430\u0440\u0442\u043E\u0432\u044B\u0439 \u043D\u0430\u0431\u043E\u0440!"
+      value: "Ba\u015Flang\u0131\xE7 seti!"
       objectReference: {fileID: 0}
     - target: {fileID: 8833549926335003480, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize

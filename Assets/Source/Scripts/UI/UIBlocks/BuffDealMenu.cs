@@ -11,7 +11,6 @@ public class BuffDealMenu : ActivatableUI
 
     private Wallet _wallet;
     private IBuff _targetReward;
-    private bool _isTargetRewardSetted;
 
     public void SetTargetReward(IBuff buff)
     {
@@ -19,7 +18,6 @@ public class BuffDealMenu : ActivatableUI
             throw new ArgumentNullException(nameof(buff));
 
         _targetReward = buff;
-        _isTargetRewardSetted = true;
     }
 
     public void ShowAd()
@@ -35,12 +33,12 @@ public class BuffDealMenu : ActivatableUI
 
     private void AddBuff()
     {
-        if (_isTargetRewardSetted == false)
-            throw new InvalidOperationException(nameof(_isTargetRewardSetted));
+        if (_targetReward == null)
+            throw new ArgumentNullException(nameof(_targetReward));
 
         _wallet.Add(_targetReward.Price);
         _store.Purchase(_targetReward, AddAmount);
 
-        _isTargetRewardSetted = false;
+        _targetReward = null;
     }
 }

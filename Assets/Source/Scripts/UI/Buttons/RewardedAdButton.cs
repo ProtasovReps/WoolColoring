@@ -1,7 +1,6 @@
-using UnityEngine;
 using YG;
 
-public abstract class RewardedAdButton : CounterButton
+public abstract class RewardedAdButton : RechargeableButton
 {
     private string _rewardId;
 

@@ -1,17 +1,21 @@
 using Cysharp.Threading.Tasks;
+using System;
 using TMPro;
 using UnityEngine;
 
-public class CounterButton : ButtonView
+public class RechargeableButton : ButtonView
 {
     [SerializeField] private TMP_Text _counterText;
     [SerializeField] private MonoBehaviour _activeButtonObject;
     [SerializeField] private float _reloadTime;
 
+    public event Action Recharged;
+
     public void SetReload() => OnButtonClick();
 
     public override void Activate()
     {
+        Recharged?.Invoke();
         _counterText.gameObject.SetActive(false);
         _activeButtonObject.gameObject.SetActive(true);
         base.Activate();
