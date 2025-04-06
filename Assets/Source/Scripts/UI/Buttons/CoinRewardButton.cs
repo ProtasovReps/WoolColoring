@@ -1,17 +1,13 @@
 using Reflex.Attributes;
-using UnityEngine;
 
-public class CoinRewardButton : RewardedAdButton
+public class CoinRewardButton : RewardButton
 {
-    [SerializeField] private int _rewardAmount;
-
     private Wallet _wallet;
 
-    private void Awake() => Initialize(RewardIds.Coin);
-
-    protected override void ReceiveReward()
-       => _wallet.Add(_rewardAmount);
+    protected override void ProcessReward()
+        => _wallet.Add(RewardAmount);
 
     [Inject]
-    private void Inject(Wallet wallet) => _wallet = wallet;
+    private void Inject(Wallet wallet)
+        => _wallet = wallet;
 }

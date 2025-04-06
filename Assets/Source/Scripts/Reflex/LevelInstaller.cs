@@ -127,6 +127,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
         _disposer.Add(stringRemover);
         _painter.Initialize(coloredStringHolderStash, switcher);
+        containerBuilder.AddSingleton(whiteHolderModel);
         containerBuilder.AddSingleton(stringDistributor);
         containerBuilder.AddSingleton(_coloredViews);
         containerBuilder.AddSingleton(_whiteStringHolderView);

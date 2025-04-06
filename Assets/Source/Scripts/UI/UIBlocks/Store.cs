@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Store : ActivatableUI
 {
-    [SerializeField] private SoundID _storeMusic;
-    [SerializeField] private SoundID _mainMusic;
     [SerializeField] private SoundID _notEnoughMoneySound;
     [SerializeField] private RechargeableButton _counterButton;
     [SerializeField] private TemporaryActivatableUI _notEnoughMoneyText;

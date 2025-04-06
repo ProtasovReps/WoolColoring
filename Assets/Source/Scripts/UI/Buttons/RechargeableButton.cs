@@ -11,7 +11,7 @@ public class RechargeableButton : ButtonView
 
     public event Action Recharged;
 
-    public void SetReload() => OnButtonClick();
+    public void SetReload() => Reload().Forget();
 
     public override void Activate()
     {
