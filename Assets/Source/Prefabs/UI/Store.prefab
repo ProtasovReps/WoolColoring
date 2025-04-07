@@ -2374,6 +2374,14 @@ MonoBehaviour:
     ID: 536870914
     _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 4847733738391265654}
+  _mainMusic:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 4847733738391265654}
+  _storeMusic:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 4847733738391265654}
   _counterButton: {fileID: 794625746259754340}
   _notEnoughMoneyText: {fileID: 563896913836620928}
 --- !u!1 &5052404695260953126
@@ -5320,8 +5328,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 423745519437650395}
   _clickSound:
-    ID: 1073741828
-    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    ID: 536870915
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 3080622499150172534}
   _priceText: {fileID: 6785452978373919660}
   _store: {fileID: 33613608392859536}
@@ -5866,8 +5874,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 3541434154429547522}
   _clickSound:
-    ID: 1073741828
-    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    ID: 536870915
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 2162941686268234927}
   _priceText: {fileID: 2067853641632305846}
   _store: {fileID: 33613608392859536}
@@ -6559,8 +6567,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 7159465782919332314}
   _clickSound:
-    ID: 1073741828
-    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    ID: 536870915
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 5510835476923812215}
   _counterText: {fileID: 4529065927504074904}
   _activeButtonObject: {fileID: 555369334594920067}
@@ -7924,8 +7932,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 5718056517125955466}
   _clickSound:
-    ID: 1073741828
-    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    ID: 536870915
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 6952288447230170919}
   _priceText: {fileID: 7993608549518415985}
   _store: {fileID: 33613608392859536}
@@ -8176,8 +8184,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 4849610634343342998}
   _clickSound:
-    ID: 1073741828
-    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    ID: 536870915
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 7812800547306564411}
   _priceText: {fileID: 3792849593408939833}
   _store: {fileID: 33613608392859536}
@@ -9055,8 +9063,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _button: {fileID: 3400110906999563919}
   _clickSound:
-    ID: 1073741828
-    _sourceAsset: {fileID: 11400000, guid: d53e61ce83ad8c04c9a66afd13d4a2a1, type: 2}
+    ID: 536870915
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 4078379165904418}
   _counterText: {fileID: 7073272240592685473}
   _activeButtonObject: {fileID: 16538871078814747}

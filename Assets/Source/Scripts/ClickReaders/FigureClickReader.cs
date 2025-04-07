@@ -8,19 +8,18 @@ public class FigureClickReader : ClickReader
     public override void SetPause(bool isPaused)
     {
         _boltClickReader.SetPause(!isPaused);
-
         base.SetPause(isPaused);
     }
 
     protected override void ValidateHit(RaycastHit hit)
     {
-        if (hit.collider.TryGetComponent(out ExplodableFigure fallable) == false)
+        if (hit.collider.TryGetComponent(out ExplodableFigure explodable) == false)
             return;
 
         _particleSystem.transform.position = hit.point;
 
         _particleSystem.Play();
-        fallable.Explode();
+        explodable.Explode();
         SetPause(true);
     }
 }

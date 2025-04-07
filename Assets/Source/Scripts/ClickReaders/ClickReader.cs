@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ public abstract class ClickReader : MonoBehaviour
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private LayerMask _layer;
     [SerializeField] private float _maxRaycastDistance;
+    [SerializeField] private TMP_Text _debug;
 
     private PlayerInput _playerInput;
 
@@ -32,7 +34,11 @@ public abstract class ClickReader : MonoBehaviour
         _playerInput = playerInput;
     }
 
-    public virtual void SetPause(bool isPaused) => IsPaused = isPaused;
+    public virtual void SetPause(bool isPaused)
+    {
+        IsPaused = isPaused;
+        _debug.text = (!IsPaused).ToString();
+    }
 
     protected abstract void ValidateHit(RaycastHit hit);
 

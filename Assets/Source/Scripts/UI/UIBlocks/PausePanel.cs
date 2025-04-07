@@ -8,36 +8,15 @@ public class PausePanel : MonoBehaviour
     [SerializeField] private float _appearDuration;
 
     private UIAnimator _animator;
-    private BoltClickReader _boltClickReader;
-    private FigureClickReader _figureClickReader;
     private float _finalAlpha;
-    private bool _lastFigureClickReaderState;
 
     private void Awake()
-    {
-        _finalAlpha = _image.color.a;
-    }
+        => _finalAlpha = _image.color.a;
 
     private void OnEnable()
-    {
-        _lastFigureClickReaderState = _figureClickReader.IsPaused;
-
-        _figureClickReader.SetPause(true);
-        _boltClickReader.SetPause(true);
-
-        _animator.FadeAlpha(_image, _finalAlpha, _appearDuration);
-    }
-
-    private void OnDisable()
-    {
-        _figureClickReader.SetPause(_lastFigureClickReaderState);
-    }
+       => _animator.FadeAlpha(_image, _finalAlpha, _appearDuration);
 
     [Inject]
-    private void Inject(BoltClickReader boltReader, FigureClickReader figureClickReader, UIAnimator animator)
-    {
-        _boltClickReader = boltReader;
-        _figureClickReader = figureClickReader;
-        _animator = animator;
-    }
+    private void Inject(UIAnimator animator)
+        => _animator = animator;
 }
