@@ -21,7 +21,6 @@ public class PausePanel : MonoBehaviour
     private void OnEnable()
     {
         _lastFigureClickReaderState = _figureClickReader.IsPaused;
-        Time.timeScale = 0f;
 
         _figureClickReader.SetPause(true);
         _boltClickReader.SetPause(true);
@@ -32,7 +31,6 @@ public class PausePanel : MonoBehaviour
     private void OnDisable()
     {
         _figureClickReader.SetPause(_lastFigureClickReaderState);
-        Time.timeScale = 1f;
     }
 
     [Inject]

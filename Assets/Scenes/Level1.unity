@@ -150,7 +150,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
   m_PrefabInstance: {fileID: 8956856226364224744}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1140340530}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e511d85f2744fb44b1893f2241d9870, type: 3}
@@ -606,6 +606,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97039a129a8f51a49a4e80b458b5db44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1140340530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9052017473118020136, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+  m_PrefabInstance: {fileID: 8956856226364224744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1141542325 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4708402135879320240, guid: 004fd052f9f8cd848bcb771164d9ae6e, type: 3}
@@ -2777,6 +2782,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 1453104196979268270, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1780934637909721355, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 30.099998
@@ -2801,6 +2810,42 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _main.ID
+      value: 268435456
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _mainMusic.ID
+      value: 268435456
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _storeMusic.ID
+      value: 268435458
+      objectReference: {fileID: 0}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _main._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _mainMusic._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _storeMusic._sourceAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _main.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 1140340530}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _mainMusic.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 1140340530}
+    - target: {fileID: 4516774723560463566, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: _storeMusic.<DebugObject>k__BackingField
+      value: 
+      objectReference: {fileID: 1140340530}
     - target: {fileID: 6155479527688861535, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: _activatable
       value: 
@@ -2820,6 +2865,10 @@ PrefabInstance:
     - target: {fileID: 8623524024568448118, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_SizeDelta.x
       value: 690
+      objectReference: {fileID: 0}
+    - target: {fileID: 9052017473118020136, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

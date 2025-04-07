@@ -5,6 +5,8 @@ using UnityEngine;
 public class Store : ActivatableUI
 {
     [SerializeField] private SoundID _notEnoughMoneySound;
+    [SerializeField] private SoundID _mainMusic;
+    [SerializeField] private SoundID _storeMusic;
     [SerializeField] private RechargeableButton _counterButton;
     [SerializeField] private TemporaryActivatableUI _notEnoughMoneyText;
 
@@ -15,6 +17,20 @@ public class Store : ActivatableUI
     {
         _counterButton.SetReload();
         base.Initialize();
+    }
+
+    public override void Activate()
+    {
+        BroAudio.Pause(_mainMusic);
+        BroAudio.Play(_storeMusic);
+        base.Activate();
+    }
+
+    public override void Deactivate()
+    {
+        BroAudio.Pause(_storeMusic);
+        BroAudio.Play(_mainMusic);
+        base.Deactivate();
     }
 
     public void Purchase(IBuff buff, int count)

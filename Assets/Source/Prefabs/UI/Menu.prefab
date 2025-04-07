@@ -135,8 +135,8 @@ MonoBehaviour:
   _transformToAnimate: {fileID: 3859649289693016401}
   _animationDuration: 0.5
   _soundID:
-    ID: 0
-    _sourceAsset: {fileID: 0}
+    ID: 268435457
+    _sourceAsset: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
     <DebugObject>k__BackingField: {fileID: 424496569858980218}
   _activateDelay: 1
 --- !u!114 &1917597501583389206
