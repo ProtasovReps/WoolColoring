@@ -22,8 +22,8 @@ MonoBehaviour:
     payingStatus: 0
   InterstitialAdv:
     showFirstAdv: 1
-    interAdvInterval: 140
-    postponeCallByFail: 1
+    interAdvInterval: 120
+    postponeCallByFail: 0
     postponeCallTimer: 10
     labelAdvSimLabel: 0
   Payments:
