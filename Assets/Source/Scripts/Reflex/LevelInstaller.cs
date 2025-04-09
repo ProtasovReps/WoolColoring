@@ -34,6 +34,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private ActivatableUIInitializator _activatableInitializator;
     [SerializeField] private BuffInitializer _buffInitializer;
     [SerializeField] private UIAnimator _uIAnimator;
+    [SerializeField] private LevelTransitionAnimation _levelTransitionAnimation;
     [Header("Disposer")]
     [SerializeField] private ObjectDisposer _disposer;
 
@@ -47,6 +48,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     private void Start()
     {
+        _levelTransitionAnimation.FadeIn();
         _conveyer.FillAllFigures();
         _boltColorSetter.SetColors();
         _activatableInitializator.Initialize();
@@ -74,6 +76,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
         _stopwatch = new Stopwatch();
 
+        containerBuilder.AddSingleton(_levelTransitionAnimation);
         containerBuilder.AddSingleton(_uIAnimator);
         containerBuilder.AddSingleton(_stopwatch);
     }
