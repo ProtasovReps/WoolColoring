@@ -37,7 +37,6 @@ public abstract class ClickReader : MonoBehaviour
     public virtual void SetPause(bool isPaused)
     {
         IsPaused = isPaused;
-        _debug.text = (!IsPaused).ToString();
     }
 
     protected abstract void ValidateHit(RaycastHit hit);

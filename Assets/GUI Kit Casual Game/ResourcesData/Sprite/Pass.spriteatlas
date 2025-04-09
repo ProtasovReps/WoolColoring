@@ -74,7 +74,6 @@ SpriteAtlas:
     - eaf704ba147b44aa5ad17cf5e2d703ad: 21300000
     - 7e09983b655f24cf390307d4b52ceb6b: 21300000
     - 7898208bc763a45b7a72df205c9f0755: 21300000
-    - fbcf87eb3b7cb4dacbe30fb3e397f4be: 21300000
     - 4bb49bfb268004408a0a5b4c2e39ba29: 21300000
     - 8f9c5aecfebbd41eea10f82fb2fbb11d: 21300000
     - d1210dfc6e6ef43e2a5b96c900c6bf26: 21300000
@@ -108,7 +107,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: eaf704ba147b44aa5ad17cf5e2d703ad, type: 3}
   - {fileID: 21300000, guid: 7e09983b655f24cf390307d4b52ceb6b, type: 3}
   - {fileID: 21300000, guid: 7898208bc763a45b7a72df205c9f0755, type: 3}
-  - {fileID: 21300000, guid: fbcf87eb3b7cb4dacbe30fb3e397f4be, type: 3}
   - {fileID: 21300000, guid: 4bb49bfb268004408a0a5b4c2e39ba29, type: 3}
   - {fileID: 21300000, guid: 8f9c5aecfebbd41eea10f82fb2fbb11d, type: 3}
   - {fileID: 21300000, guid: d1210dfc6e6ef43e2a5b96c900c6bf26, type: 3}
@@ -141,7 +139,6 @@ SpriteAtlas:
   - pass_left_divide_line
   - pass_gold_bg
   - icon_golden_pass
-  - pass_icon_time
   - pass_prg_line
   - pass_reward_icon_gem
   - pass_gradient_bottom

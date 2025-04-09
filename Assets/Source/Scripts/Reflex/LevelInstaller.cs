@@ -43,6 +43,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     private Filler _fillHolderStrategy;
     private Remover _removeStrategy;
     private PlayerInput _playerInput;
+    private Stopwatch _stopwatch;
 
     private void Start()
     {
@@ -50,6 +51,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         _boltColorSetter.SetColors();
         _activatableInitializator.Initialize();
         BroAudio.Play(_soundID);
+        _stopwatch.StartCount().Forget();
     }
 
     private void OnDestroy() => YG2.SaveProgress();
@@ -70,7 +72,10 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         InstallRopeConnector(containerBuilder);
         InstallClickReaders(containerBuilder);
 
+        _stopwatch = new Stopwatch();
+
         containerBuilder.AddSingleton(_uIAnimator);
+        containerBuilder.AddSingleton(_stopwatch);
     }
 
     private void InstallFigureComposition()

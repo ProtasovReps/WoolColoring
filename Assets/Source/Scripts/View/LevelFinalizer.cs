@@ -20,19 +20,23 @@ public class LevelFinalizer : MonoBehaviour
     private Picture _picture;
     private BoltClickReader _boltReader;
     private FigureClickReader _figureReader;
+    private Stopwatch _stopwatch;
 
     [Inject]
-    private void Inject(Picture picture, BoltClickReader boltClickReader, FigureClickReader figureClickReader)
+    private void Inject(Picture picture, BoltClickReader boltClickReader, FigureClickReader figureClickReader, Stopwatch stopwatch)
     {
         _picture = picture;
         _boltReader = boltClickReader;
         _figureReader = figureClickReader;
+        _stopwatch = stopwatch;
         _picture.Colorized += () => Finalize().Forget();
     }
 
     [ContextMenu("Test")]
     private async UniTaskVoid Finalize()
     {
+        _stopwatch.Stop();
+
         Unsubscribe();
         DisableUI();
         DisableClickReaders();
