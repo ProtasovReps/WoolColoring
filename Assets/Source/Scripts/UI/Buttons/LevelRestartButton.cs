@@ -1,3 +1,4 @@
+using Ami.BroAudio;
 using Reflex.Attributes;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +14,7 @@ public class LevelRestartButton : ButtonView
 
     protected override void OnButtonClick()
     {
+        BroAudio.Stop(BroAudioType.Music);
         _transitionAnimation.FadeOut(RestartScene);
         base.OnButtonClick();
     }

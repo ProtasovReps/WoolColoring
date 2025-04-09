@@ -1599,6 +1599,7 @@ GameObject:
   - component: {fileID: 3139549509049831660}
   - component: {fileID: 8100172715428585353}
   - component: {fileID: 4284084630307655488}
+  - component: {fileID: 1414845141641819722}
   m_Layer: 5
   m_Name: FreeCoinsReminder
   m_TagString: Untagged
@@ -1754,6 +1755,21 @@ MonoBehaviour:
   _rechargeableButton:
   - {fileID: 0}
   - {fileID: 0}
+--- !u!114 &1414845141641819722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8188747218068421174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: FreeCoinReminder
+  FallbackText: "\u0417\u0430\u0431\u0435\u0440\u0438 \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u044B\u0435
+    \u043C\u043E\u043D\u0435\u0442\u043A\u0438 \u0432 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0435!"
 --- !u!1 &8496669260527358087
 GameObject:
   m_ObjectHideFlags: 0
