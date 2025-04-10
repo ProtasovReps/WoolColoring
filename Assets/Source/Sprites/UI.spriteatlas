@@ -86,6 +86,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 7f3c7afe76822dd4eaf67be7f3239e86, type: 3}
     - {fileID: 2800000, guid: 09eb61b7009896c4a87b8b5e2839d8c5, type: 3}
     - {fileID: 2800000, guid: ae032443c5c224a3599fb8927bccb7ab, type: 3}
+    - {fileID: 2800000, guid: 658a4fdc592974780b58272c015e36e5, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -126,6 +127,7 @@ SpriteAtlas:
     - cdec219ba90ca4cd7b967e2a3385b9e6: 21300000
     - 387dc9cb29c56b146a2fadccaf58cef4: 21300000
     - f96ed64c1140a44688663b65a678910a: 21300000
+    - 658a4fdc592974780b58272c015e36e5: 21300000
     - 901d64fc6ad9d44799c2ad0fd4f182d2: 21300000
     - 484d0bbd5ebb77a4592ea5a6c6f29eb5: 21300000
     - 7f3c7afe76822dd4eaf67be7f3239e86: 21300000
@@ -169,6 +171,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: cdec219ba90ca4cd7b967e2a3385b9e6, type: 3}
   - {fileID: 21300000, guid: 387dc9cb29c56b146a2fadccaf58cef4, type: 3}
   - {fileID: 21300000, guid: f96ed64c1140a44688663b65a678910a, type: 3}
+  - {fileID: 21300000, guid: 658a4fdc592974780b58272c015e36e5, type: 3}
   - {fileID: 21300000, guid: 901d64fc6ad9d44799c2ad0fd4f182d2, type: 3}
   - {fileID: 21300000, guid: 484d0bbd5ebb77a4592ea5a6c6f29eb5, type: 3}
   - {fileID: 21300000, guid: 7f3c7afe76822dd4eaf67be7f3239e86, type: 3}
@@ -211,6 +214,7 @@ SpriteAtlas:
   - pass_reward_frame_purple
   - blush
   - language_flag_tur
+  - mission_icon_crown
   - setting_icon_sound_on
   - Whool
   - Holder

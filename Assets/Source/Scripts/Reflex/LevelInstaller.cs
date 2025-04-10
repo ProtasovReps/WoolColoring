@@ -101,7 +101,9 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         ColorBlockBinder colorBlockBinder = new(blockViews, _blockHolderConnector, _disposer);
         PictureBinder pictureBinder = new(_pictureView, colorBlockBinder, _malbert);
         Picture picture = pictureBinder.Bind();
+        BlocksColoredLeaderboard leaderboard = new(picture);
 
+        _disposer.Add(leaderboard);
         containerBuilder.AddSingleton(_blockSoundPlayer);
         containerBuilder.AddSingleton(_colorBlockAnimations);
         containerBuilder.AddSingleton(picture);

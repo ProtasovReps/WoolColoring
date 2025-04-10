@@ -67,7 +67,6 @@ SpriteAtlas:
     - 0194274b6383e402a8facb4fa8c8425a: 21300000
     - c249affb68c10448491cf5f21db84c12: 21300000
     - a3b5933c788cc48a4ad1eccad6499632: 21300000
-    - 658a4fdc592974780b58272c015e36e5: 21300000
     - ccb9cb3d26ff0491da27678834d72789: 21300000
     - 048d137da78a041979d9dc4c6af017a2: 21300000
     - 061e147d676e74bac9cce5b73d150a15: 21300000
@@ -95,7 +94,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0194274b6383e402a8facb4fa8c8425a, type: 3}
   - {fileID: 21300000, guid: c249affb68c10448491cf5f21db84c12, type: 3}
   - {fileID: 21300000, guid: a3b5933c788cc48a4ad1eccad6499632, type: 3}
-  - {fileID: 21300000, guid: 658a4fdc592974780b58272c015e36e5, type: 3}
   - {fileID: 21300000, guid: ccb9cb3d26ff0491da27678834d72789, type: 3}
   - {fileID: 21300000, guid: 048d137da78a041979d9dc4c6af017a2, type: 3}
   - {fileID: 21300000, guid: 061e147d676e74bac9cce5b73d150a15, type: 3}
@@ -122,7 +120,6 @@ SpriteAtlas:
   - mission_list_reward_gem
   - mission_icon_pouch
   - mission_list_reward_rune
-  - mission_icon_crown
   - mission_list_bg_complete
   - mission_icon_book
   - mission_reward_bg_purple

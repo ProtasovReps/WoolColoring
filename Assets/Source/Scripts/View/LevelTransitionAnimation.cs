@@ -11,6 +11,7 @@ public class LevelTransitionAnimation : MonoBehaviour
     [SerializeField] private float _endScale = 0f;
     [SerializeField] private float _transitionSpeed;
     [SerializeField] private Color[] _colors;
+    [SerializeField] private TemporaryActivatableUI _levelNumber;
 
     private Transform _transform;
     private SpriteRenderer _spriteRenderer;
@@ -26,6 +27,7 @@ public class LevelTransitionAnimation : MonoBehaviour
     {
         LMotion.Create(Vector3.one * _startScale, Vector3.one * _endScale, _transitionSpeed)
             .WithEase(Ease.InOutCirc)
+            .WithOnComplete(() => _levelNumber.Activate())
             .BindToLocalScale(_transform);
     }
 

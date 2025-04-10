@@ -7,5 +7,6 @@ namespace YG
         public int Fillers;
         public int Removers;
         public int Breakers;
+        public int BlocksColorized;
     }
 }

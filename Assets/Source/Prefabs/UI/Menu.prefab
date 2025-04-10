@@ -727,6 +727,10 @@ PrefabInstance:
       propertyPath: _store
       value: 
       objectReference: {fileID: 455561569128268574}
+    - target: {fileID: 9002603751292182383, guid: 8398d0567bec1d84baa42ef2e304b5ad, type: 3}
+      propertyPath: _animationDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 33613608392859536, guid: 8398d0567bec1d84baa42ef2e304b5ad, type: 3}
     m_RemovedGameObjects: []
