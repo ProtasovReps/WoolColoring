@@ -64,7 +64,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 6124341aca5a24f1c8ffa878bf205e93, type: 3}
     - {fileID: 2800000, guid: 901d64fc6ad9d44799c2ad0fd4f182d2, type: 3}
     - {fileID: 2800000, guid: 78757b0623f3b4309b7cc69c4769ae37, type: 3}
-    - {fileID: 2800000, guid: 482701d7fe23a4094b9fa72ba3be7ccd, type: 3}
     - {fileID: 2800000, guid: 8fd521d3fc1eb46fd92b0f29508e5f76, type: 3}
     - {fileID: 2800000, guid: 58dd4e92dd1e2427bb5d418a3e58d159, type: 3}
     - {fileID: 2800000, guid: d04b5fd68437e4faba7a160858d7b6a6, type: 3}
@@ -120,7 +119,6 @@ SpriteAtlas:
     - 4b00db671a20143a8be8c3b5301d6a23: 21300000
     - 33effd6735e414dc7b70ded5e8bb47f8: 21300000
     - 09eb61b7009896c4a87b8b5e2839d8c5: 21300000
-    - 482701d7fe23a4094b9fa72ba3be7ccd: 21300000
     - 284f99482071f47839549747513b612b: 21300000
     - 535d5068f6e6f4174a907fe1688dc8c1: 21300000
     - 5c8f1d6936b5344509ed8a53218cf670: 21300000
@@ -164,7 +162,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 4b00db671a20143a8be8c3b5301d6a23, type: 3}
   - {fileID: 21300000, guid: 33effd6735e414dc7b70ded5e8bb47f8, type: 3}
   - {fileID: 21300000, guid: 09eb61b7009896c4a87b8b5e2839d8c5, type: 3}
-  - {fileID: 21300000, guid: 482701d7fe23a4094b9fa72ba3be7ccd, type: 3}
   - {fileID: 21300000, guid: 284f99482071f47839549747513b612b, type: 3}
   - {fileID: 21300000, guid: 535d5068f6e6f4174a907fe1688dc8c1, type: 3}
   - {fileID: 21300000, guid: 5c8f1d6936b5344509ed8a53218cf670, type: 3}
@@ -207,7 +204,6 @@ SpriteAtlas:
   - pause_btn_icon_resume
   - top_status_icon_gold
   - PoiningGlove
-  - check_green
   - character_list_frame_orange
   - button_white
   - fx_rotate_line_small
