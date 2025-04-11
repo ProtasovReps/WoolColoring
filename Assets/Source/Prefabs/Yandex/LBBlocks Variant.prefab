@@ -598,7 +598,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 427125380090051075, guid: f40a236569a66c344b68a9feb3f86a18, type: 3}
       propertyPath: nameLB
-      value: MostColoredBlocks
+      value: test
       objectReference: {fileID: 0}
     - target: {fileID: 427125380090051075, guid: f40a236569a66c344b68a9feb3f86a18, type: 3}
       propertyPath: playerDataPrefab
@@ -607,7 +607,7 @@ PrefabInstance:
     - target: {fileID: 427125380090051075, guid: f40a236569a66c344b68a9feb3f86a18, type: 3}
       propertyPath: isHiddenPlayerPhoto
       value: 
-      objectReference: {fileID: 21300000, guid: 387dc9cb29c56b146a2fadccaf58cef4, type: 3}
+      objectReference: {fileID: 21300000, guid: 772982ff4de28984aa20110a630b321f, type: 3}
     - target: {fileID: 427125380090051075, guid: f40a236569a66c344b68a9feb3f86a18, type: 3}
       propertyPath: rootSpawnPlayersData
       value: 

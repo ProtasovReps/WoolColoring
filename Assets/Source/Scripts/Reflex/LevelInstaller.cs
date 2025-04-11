@@ -43,7 +43,6 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     private Unlocker _unlockHolderStrategy;
     private Filler _fillHolderStrategy;
     private Remover _removeStrategy;
-    private PlayerInput _playerInput;
     private Stopwatch _stopwatch;
 
     private void Start()
@@ -60,9 +59,6 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     public void InstallBindings(ContainerBuilder containerBuilder)
     {
-        _playerInput = new PlayerInput();
-        _disposer.Add(_playerInput);
-
         InstallFigureComposition();
 
         Picture picture = InstallPicture(containerBuilder);
@@ -76,6 +72,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
         _stopwatch = new Stopwatch();
 
+        containerBuilder.AddSingleton(typeof(PlayerInput));
         containerBuilder.AddSingleton(_levelTransitionAnimation);
         containerBuilder.AddSingleton(_uIAnimator);
         containerBuilder.AddSingleton(_stopwatch);
@@ -90,7 +87,6 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
         _figureCompositionFactory.Initialize(_disposer);
         _disposer.Add(_conveyer);
-        _figureClickReader.Initialize(_playerInput);
     }
 
     private Picture InstallPicture(ContainerBuilder containerBuilder)
@@ -116,7 +112,6 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         _boltColorSetter = new BoltColorSetter(boltStash, picture);
 
         _disposer.Add(_boltColorSetter);
-        _boltClickReader.Initialize(stringDistributor, _playerInput);
         containerBuilder.AddSingleton(boltStash);
     }
 

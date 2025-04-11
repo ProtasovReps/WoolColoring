@@ -1,5 +1,4 @@
-using System;
-using TMPro;
+using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,7 +7,6 @@ public abstract class ClickReader : MonoBehaviour
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private LayerMask _layer;
     [SerializeField] private float _maxRaycastDistance;
-    [SerializeField] private TMP_Text _debug;
 
     private PlayerInput _playerInput;
 
@@ -26,11 +24,9 @@ public abstract class ClickReader : MonoBehaviour
         _playerInput.PlayerClick.Click.performed -= OnClickPerformed;
     }
 
-    public void Initialize(PlayerInput playerInput)
+    [Inject]
+    private void Inject(PlayerInput playerInput)
     {
-        if (playerInput == null)
-            throw new ArgumentNullException(nameof(playerInput));
-
         _playerInput = playerInput;
     }
 

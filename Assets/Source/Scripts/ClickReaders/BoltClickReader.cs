@@ -1,21 +1,9 @@
-using System;
+using Reflex.Attributes;
 using UnityEngine;
 
 public class BoltClickReader : ClickReader
 {
     private StringDistributor _distributor;
-
-    public void Initialize(StringDistributor distributor, PlayerInput playerInput)
-    {
-        if (distributor == null)
-            throw new ArgumentNullException(nameof(distributor));
-
-        if(playerInput == null)
-            throw new ArgumentNullException(nameof(playerInput));
-
-        _distributor = distributor;
-        Initialize(playerInput);
-    }
 
     protected override void ValidateHit(RaycastHit hit)
     {
@@ -27,5 +15,11 @@ public class BoltClickReader : ClickReader
 
         _distributor.Distribute(bolt);
         bolt.Unscrew();
+    }
+
+    [Inject]
+    private void Inject(StringDistributor distributor)
+    {
+        _distributor = distributor;
     }
 }

@@ -217,7 +217,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Whool Coloring on Yandex Games
+  m_text: "Yandex oyunlar\u0131nda whool boyama"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -367,7 +367,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Become the best!
+  m_text: En iyisi ol!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -811,6 +811,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5295294135116857837}
     m_Modifications:
+    - target: {fileID: 1857585292861134950, guid: dd31eafc90420c8449739c320ee247c3, type: 3}
+      propertyPath: _animationDelay
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2601229682124064394, guid: dd31eafc90420c8449739c320ee247c3, type: 3}
       propertyPath: m_Name
       value: LBBlocks
