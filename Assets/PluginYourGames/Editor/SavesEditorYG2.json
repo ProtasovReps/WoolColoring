@@ -7,11 +7,11 @@
         false,
         false
     ],
-    "idSave": 955,
-    "Coins": 1255,
-    "Unlockers": 1,
+    "idSave": 966,
+    "Coins": 1125,
+    "Unlockers": 0,
     "Fillers": 1,
-    "Removers": 1,
-    "Breakers": 0,
+    "Removers": 0,
+    "Breakers": 1,
     "BlocksColorized": 646
 }
