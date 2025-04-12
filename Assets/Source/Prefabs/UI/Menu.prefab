@@ -1043,6 +1043,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoldStat
       objectReference: {fileID: 0}
+    - target: {fileID: 4513406283502567683, guid: 1fa984573a039cd4aa6aa96afa3c505f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6898599614032225551, guid: 1fa984573a039cd4aa6aa96afa3c505f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1123,6 +1127,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7966372040017926723, guid: 1fa984573a039cd4aa6aa96afa3c505f, type: 3}
+      propertyPath: _activatable
+      value: 
+      objectReference: {fileID: 455561569128268574}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

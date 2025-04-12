@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using LitMotion;
 using LitMotion.Extensions;
 using System;
@@ -32,14 +33,13 @@ public class LevelTransitionAnimation : MonoBehaviour
     }
 
     [ContextMenu("out")]
-    public void FadeOut(Action callback)
+    public async UniTask FadeOut()
     {
         var randomIndex = Random.Range(0, _colors.Length);
         _spriteRenderer.color = _colors[randomIndex];
 
-        LMotion.Create(Vector3.one * _endScale, Vector3.one * _startScale, _transitionSpeed)
+        await LMotion.Create(Vector3.one * _endScale, Vector3.one * _startScale, _transitionSpeed)
             .WithEase(Ease.InOutCirc)
-            .WithOnComplete(callback)
             .BindToLocalScale(_transform);
     }
 }
