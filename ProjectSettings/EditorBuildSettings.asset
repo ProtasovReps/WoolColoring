@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Source/Scenes/Levels/Level1.unity
+    path: Assets/Source/Scenes/Levels/Doggy.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Source/Scenes/Levels/Level2.unity
+    path: Assets/Source/Scenes/Levels/Pussy.unity
     guid: 1626492f3e4bb8e4e930d43fed255fd2
   - enabled: 1
-    path: Assets/Source/Scenes/Levels/Level4.unity
+    path: Assets/Source/Scenes/Levels/Piggy.unity
     guid: 1946674de2717744392a1aa46d7d0b6f
   m_configObjects: {}

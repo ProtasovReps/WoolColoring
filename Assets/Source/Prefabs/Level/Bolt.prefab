@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7354505523390439793, guid: b31e8d1b3ab95564e87cae3773da06e2, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.01
+      value: 0.011866405
       objectReference: {fileID: 0}
     - target: {fileID: 7354505523390439793, guid: b31e8d1b3ab95564e87cae3773da06e2, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.01
+      value: 0.011866405
       objectReference: {fileID: 0}
     - target: {fileID: 7354505523390439793, guid: b31e8d1b3ab95564e87cae3773da06e2, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.01
+      value: 0.011866405
       objectReference: {fileID: 0}
     - target: {fileID: 7354505523390439793, guid: b31e8d1b3ab95564e87cae3773da06e2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7354505523390439793, guid: b31e8d1b3ab95564e87cae3773da06e2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.00041
       objectReference: {fileID: 0}
     - target: {fileID: 7354505523390439793, guid: b31e8d1b3ab95564e87cae3773da06e2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -222,7 +222,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: 0.0023989673, z: 0}
   m_Axis: {x: 0, y: 1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.84, y: 2.1299484, z: -5.09}
+  m_ConnectedAnchor: {x: 0, y: 0.119948365, z: 0}
   serializedVersion: 2
   m_UseSpring: 1
   m_Spring:
