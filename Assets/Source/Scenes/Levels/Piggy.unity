@@ -1281,11 +1281,11 @@ PrefabInstance:
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _compositionViewsPrefabs.Array.data[1]
       value: 
-      objectReference: {fileID: 188401868045872904, guid: f157b405705aea642a98d499c795fc46, type: 3}
+      objectReference: {fileID: 7805949225084568744, guid: fe11493bf2254594e99e66525dfcf47f, type: 3}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _compositionViewsPrefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 6602807586065977925, guid: d8cd3de4890b941449373347248c0d09, type: 3}
+      objectReference: {fileID: 8181266425469015757, guid: bd402658ed5dfba41ac0b555d6b4026f, type: 3}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _compositionViewsPrefabs.Array.data[3]
       value: 
