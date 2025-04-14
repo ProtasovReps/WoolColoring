@@ -524,7 +524,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ma\u011Faza"
+  m_text: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -852,7 +852,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Duraklamak
+  m_text: "\u041F\u0430\u0443\u0437\u0430"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -1824,6 +1824,7 @@ GameObject:
   - component: {fileID: 2882403776949217828}
   - component: {fileID: 1099702719804536617}
   - component: {fileID: 4505790657647384836}
+  - component: {fileID: 3065141322708061545}
   m_Layer: 5
   m_Name: Text (TMP) (2)
   m_TagString: Untagged
@@ -1947,6 +1948,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3065141322708061545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375114602977329317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9391aec55ef328642ae72f387b21b1b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 4505790657647384836}
 --- !u!1001 &96682744267632622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2401,7 +2415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: "K\u0131rmak"
+      value: "\u0420\u0430\u0437\u0431\u0438\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_characterSpacing
@@ -2614,7 +2628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: "Kilidini a\xE7mak"
+      value: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_fontSizeBase
@@ -2844,7 +2858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: Dikmek
+      value: "\u0421\u0448\u0438\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_fontStyle
@@ -3208,7 +3222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_text
-      value: "Kald\u0131rmak"
+      value: "\u0423\u0431\u0440\u0430\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 8887398360806780548, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_fontStyle

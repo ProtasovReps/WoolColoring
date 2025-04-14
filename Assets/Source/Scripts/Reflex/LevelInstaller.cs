@@ -3,6 +3,7 @@ using Reflex.Core;
 using Ami.BroAudio;
 using YG;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class LevelInstaller : MonoBehaviour, IInstaller
 {

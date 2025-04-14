@@ -12,6 +12,27 @@ EditorBuildSettings:
     path: Assets/Source/Scenes/Levels/Pussy.unity
     guid: 1626492f3e4bb8e4e930d43fed255fd2
   - enabled: 1
+    path: Assets/Source/Scenes/Levels/Watermelon.unity
+    guid: a07b8a022cc00bf4a87cedabec3ab0b1
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/Bear.unity
+    guid: df2aa6c34e34eaf4a9b6eac8b2b98a14
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/Ducky.unity
+    guid: e8d026f759c390f488272a94c0d8d92d
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/PigameBear.unity
+    guid: d15b8b5e0d99e2a48aa77d02f7073c6c
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/Stich.unity
+    guid: 01419c13095fd0842b83ccc34f5111ce
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/XmasPuppy.unity
+    guid: c9168d6162a16294db2cce0576e66a47
+  - enabled: 1
     path: Assets/Source/Scenes/Levels/Piggy.unity
     guid: 1946674de2717744392a1aa46d7d0b6f
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/Coala.unity
+    guid: 726320a85668c2046841dcf1c47b5237
   m_configObjects: {}
