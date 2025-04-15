@@ -832,15 +832,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1270036055861057014, guid: d183c881e00607340ac040360dd42084, type: 3}
       propertyPath: _requiredColor.b
-      value: 0.25943398
+      value: 0.8970217
       objectReference: {fileID: 0}
     - target: {fileID: 1270036055861057014, guid: d183c881e00607340ac040360dd42084, type: 3}
       propertyPath: _requiredColor.g
-      value: 0.71594733
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1270036055861057014, guid: d183c881e00607340ac040360dd42084, type: 3}
       propertyPath: _requiredColor.r
-      value: 1
+      value: 0.1462264
       objectReference: {fileID: 0}
     - target: {fileID: 1320143859307030968, guid: d183c881e00607340ac040360dd42084, type: 3}
       propertyPath: _requiredColor.b
@@ -3844,15 +3844,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7501031730985468052, guid: d183c881e00607340ac040360dd42084, type: 3}
       propertyPath: _requiredColor.b
-      value: 0.25943398
+      value: 0.8970217
       objectReference: {fileID: 0}
     - target: {fileID: 7501031730985468052, guid: d183c881e00607340ac040360dd42084, type: 3}
       propertyPath: _requiredColor.g
-      value: 0.71594733
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7501031730985468052, guid: d183c881e00607340ac040360dd42084, type: 3}
       propertyPath: _requiredColor.r
-      value: 1
+      value: 0.1462264
       objectReference: {fileID: 0}
     - target: {fileID: 7535363569700145365, guid: d183c881e00607340ac040360dd42084, type: 3}
       propertyPath: _requiredColor.b
@@ -4686,9 +4686,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stich Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7501031730985468052, guid: d183c881e00607340ac040360dd42084, type: 3}
-    - {fileID: 1270036055861057014, guid: d183c881e00607340ac040360dd42084, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 709559332301601164, guid: d183c881e00607340ac040360dd42084, type: 3}
