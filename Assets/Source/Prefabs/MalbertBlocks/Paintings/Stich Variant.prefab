@@ -4686,7 +4686,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stich Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7501031730985468052, guid: d183c881e00607340ac040360dd42084, type: 3}
+    - {fileID: 1270036055861057014, guid: d183c881e00607340ac040360dd42084, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 709559332301601164, guid: d183c881e00607340ac040360dd42084, type: 3}
