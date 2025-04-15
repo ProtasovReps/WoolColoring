@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Source/Scenes/Levels/Coala.unity
     guid: 726320a85668c2046841dcf1c47b5237
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/Steve.unity
+    guid: ca64993da399f8f4bbc25a17914f3a8f
   m_configObjects: {}
