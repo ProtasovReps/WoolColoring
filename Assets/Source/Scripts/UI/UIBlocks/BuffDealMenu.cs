@@ -37,7 +37,7 @@ public class BuffDealMenu : ActivatableUI
             throw new ArgumentNullException(nameof(_targetBuffReward));
 
         _wallet.Add(_targetBuffReward.Price);
-        _store.Purchase(_targetBuffReward, AddAmount);
+        _store.TryPurchase(_targetBuffReward, AddAmount);
 
         _targetBuffReward = null;
     }

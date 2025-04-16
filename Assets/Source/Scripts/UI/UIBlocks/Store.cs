@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Store : ActivatableUI
 {
-    [SerializeField] private SoundID _notEnoughMoneySound;
     [SerializeField] private SoundID _mainMusic;
     [SerializeField] private SoundID _storeMusic;
     [SerializeField] private RechargeableButton _counterButton;
@@ -33,16 +32,16 @@ public class Store : ActivatableUI
         base.Deactivate();
     }
 
-    public void Purchase(IBuff buff, int count)
+    public bool TryPurchase(IBuff buff, int count)
     {
         if (_wallet.TrySpend(buff.Price) == false)
         {
-            BroAudio.Play(_notEnoughMoneySound);
             _notEnoughMoneyText.Activate();
-            return;
+            return false;
         }
 
         _bag.AddBuff(buff, count);
+        return true;
     }
 
     [Inject]

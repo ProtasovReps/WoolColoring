@@ -1,9 +1,12 @@
+using Ami.BroAudio;
 using System;
 using TMPro;
 using UnityEngine;
 
 public abstract class BuyBuffButton : ButtonView
 {
+    [SerializeField] private SoundID _purchaseRejectedSound;
+    [SerializeField] private ParticleSystem _purchaseEffect;
     [SerializeField] private TMP_Text _priceText;
     [SerializeField] private Store _store;
     [SerializeField, Min(1)] private int _buffBuyCount;
@@ -12,7 +15,7 @@ public abstract class BuyBuffButton : ButtonView
 
     public void Initialize(IBuff buff)
     {
-        if(buff == null)
+        if (buff == null)
             throw new ArgumentNullException(nameof(buff));
 
         _buff = buff;
@@ -21,7 +24,14 @@ public abstract class BuyBuffButton : ButtonView
 
     protected override void OnButtonClick()
     {
-        _store.Purchase(_buff, _buffBuyCount);
-        base.OnButtonClick();
+        if (_store.TryPurchase(_buff, _buffBuyCount) == false)
+        {
+            BroAudio.Play(_purchaseRejectedSound);
+        }
+        else
+        {
+            _purchaseEffect.Play();
+            base.OnButtonClick();
+        }
     }
 }

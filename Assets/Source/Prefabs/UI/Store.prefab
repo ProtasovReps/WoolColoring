@@ -141,7 +141,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T\xFCm reklamlar\u0131 kald\u0131r"
+  m_text: "\u0423\u0431\u0440\u0430\u0442\u044C \u0432\u0441\u044E \u0440\u0435\u043A\u043B\u0430\u043C\u0443"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -1023,7 +1023,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "T\xFCm reklamlar\u0131 kald\u0131r"
+  m_text: "\u0423\u0431\u0440\u0430\u0442\u044C \u0432\u0441\u044E \u0440\u0435\u043A\u043B\u0430\u043C\u0443"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -1758,7 +1758,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ma\u011Faza"
+  m_text: "\u041C\u0430\u0433\u0430\u0437\u0438\u043D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -2370,17 +2370,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _transformToAnimate: {fileID: 7132804760961632905}
   _animationDuration: 0.5
-  _notEnoughMoneySound:
-    ID: 536870914
-    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
-    <DebugObject>k__BackingField: {fileID: 4847733738391265654}
   _mainMusic:
-    ID: 0
-    _sourceAsset: {fileID: 0}
+    ID: 268435456
+    _sourceAsset: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
     <DebugObject>k__BackingField: {fileID: 4847733738391265654}
   _storeMusic:
-    ID: 0
-    _sourceAsset: {fileID: 0}
+    ID: 268435458
+    _sourceAsset: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
     <DebugObject>k__BackingField: {fileID: 4847733738391265654}
   _counterButton: {fileID: 794625746259754340}
   _notEnoughMoneyText: {fileID: 563896913836620928}
@@ -5347,6 +5343,11 @@ MonoBehaviour:
     ID: 536870915
     _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 3080622499150172534}
+  _purchaseRejectedSound:
+    ID: 536870914
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
+    <DebugObject>k__BackingField: {fileID: 3080622499150172534}
+  _purchaseEffect: {fileID: 0}
   _priceText: {fileID: 6785452978373919660}
   _store: {fileID: 33613608392859536}
   _buffBuyCount: 1
@@ -5893,6 +5894,11 @@ MonoBehaviour:
     ID: 536870915
     _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 2162941686268234927}
+  _purchaseRejectedSound:
+    ID: 536870914
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
+    <DebugObject>k__BackingField: {fileID: 2162941686268234927}
+  _purchaseEffect: {fileID: 0}
   _priceText: {fileID: 2067853641632305846}
   _store: {fileID: 33613608392859536}
   _buffBuyCount: 1
@@ -7324,7 +7330,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7672157697731647140, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: "Kilidini a\xE7mak"
+      value: "\u041E\u0442\u043A\u0440\u044B\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 7672157697731647140, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize
@@ -7384,7 +7390,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8223584920219299470, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: "Kald\u0131rmak"
+      value: "\u0423\u0431\u0440\u0430\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 8223584920219299470, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize
@@ -7424,7 +7430,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8474875132401374711, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: "K\u0131rmak"
+      value: "\u0420\u0430\u0437\u0431\u0438\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 8474875132401374711, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize
@@ -7476,7 +7482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8833549926335003480, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: "S\xFCper fayda!"
+      value: "\u0421\u0443\u043F\u0435\u0440 \u0432\u044B\u0433\u043E\u0434\u0430!"
       objectReference: {fileID: 0}
     - target: {fileID: 8833549926335003480, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize
@@ -7516,7 +7522,7 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: cdec219ba90ca4cd7b967e2a3385b9e6, type: 3}
     - target: {fileID: 9008914426442312654, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: Dikmek
+      value: "\u0421\u0448\u0438\u0442\u044C"
       objectReference: {fileID: 0}
     - target: {fileID: 9008914426442312654, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize
@@ -7951,6 +7957,11 @@ MonoBehaviour:
     ID: 536870915
     _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 6952288447230170919}
+  _purchaseRejectedSound:
+    ID: 536870914
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
+    <DebugObject>k__BackingField: {fileID: 6952288447230170919}
+  _purchaseEffect: {fileID: 0}
   _priceText: {fileID: 7993608549518415985}
   _store: {fileID: 33613608392859536}
   _buffBuyCount: 1
@@ -8203,6 +8214,11 @@ MonoBehaviour:
     ID: 536870915
     _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 7812800547306564411}
+  _purchaseRejectedSound:
+    ID: 536870914
+    _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
+    <DebugObject>k__BackingField: {fileID: 7812800547306564411}
+  _purchaseEffect: {fileID: 0}
   _priceText: {fileID: 3792849593408939833}
   _store: {fileID: 33613608392859536}
   _buffBuyCount: 1
@@ -8492,7 +8508,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8833549926335003480, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_text
-      value: "Ba\u015Flang\u0131\xE7 seti!"
+      value: "\u0421\u0442\u0430\u0440\u0442\u043E\u0432\u044B\u0439 \u043D\u0430\u0431\u043E\u0440!"
       objectReference: {fileID: 0}
     - target: {fileID: 8833549926335003480, guid: 409269c4b8cdd064e85783c33e0dda02, type: 3}
       propertyPath: m_fontSize
