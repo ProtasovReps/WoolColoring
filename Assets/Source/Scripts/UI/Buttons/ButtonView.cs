@@ -1,5 +1,5 @@
 using Ami.BroAudio;
-using Reflex.Attributes;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,20 +7,6 @@ public abstract class ButtonView : Activatable
 {
     [SerializeField] private Button _button;
     [SerializeField] private SoundID _clickSound;
-
-    private ButtonAnimations _animations;
-    private Transform _transform;
-
-    [Inject]
-    private void Inject(ButtonAnimations animations)
-    {
-        _animations = animations;
-    }
-
-    private void Awake()
-    {
-        _transform = transform;
-    }
 
     private void OnEnable()
     {
@@ -46,7 +32,5 @@ public abstract class ButtonView : Activatable
     {
         if (_clickSound != 0)
             BroAudio.Play(_clickSound);
-
-        _animations.Interact(_transform);
     }
 }

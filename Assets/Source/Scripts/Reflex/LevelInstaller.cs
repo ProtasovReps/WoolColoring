@@ -35,7 +35,6 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private ActivatableUIInitializator _activatableInitializator;
     [SerializeField] private BuffInitializer _buffInitializer;
     [SerializeField] private UIAnimations _uIAnimator;
-    [SerializeField] private ButtonAnimations _buttonAnimations;
     [SerializeField] private LevelTransitionAnimation _levelTransitionAnimation;
     [Header("Disposer")]
     [SerializeField] private ObjectDisposer _disposer;
@@ -77,7 +76,6 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         containerBuilder.AddSingleton(typeof(PlayerInput));
         containerBuilder.AddSingleton(_levelTransitionAnimation);
         containerBuilder.AddSingleton(_uIAnimator);
-        containerBuilder.AddSingleton(_buttonAnimations);
         containerBuilder.AddSingleton(_stopwatch);
     }
 

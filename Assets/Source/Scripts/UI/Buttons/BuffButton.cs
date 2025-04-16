@@ -11,6 +11,7 @@ public class BuffButton : ButtonView
     [SerializeField] private BuffCountCounter _counter;
     [SerializeField] private float _coolDownTime;
     [SerializeField] private Image _cooldownImage;
+    [SerializeField] private ParticleSystem _effect;
 
     private BuffBag _bag;
     private IBuff _buff;
@@ -41,6 +42,7 @@ public class BuffButton : ButtonView
             return;
         }
 
+        _effect.Play();
         WaitCoolDown().Forget();
         _buff.Execute();
     }

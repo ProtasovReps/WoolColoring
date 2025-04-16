@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class RechargeableButton : ButtonView
 {
+    private const int SecondsInMinute = 60;
+
     [SerializeField] private TMP_Text _counterText;
     [SerializeField] private MonoBehaviour _activeButtonObject;
     [SerializeField] private float _reloadTime;
@@ -43,8 +45,8 @@ public class RechargeableButton : ButtonView
         while (elapsedTime < _reloadTime)
         {
             int remainingTime = (int)(_reloadTime - elapsedTime);
-            int remainingMinutes = remainingTime / 60;
-            int remainingSeconds = remainingTime % 60;
+            int remainingMinutes = remainingTime / SecondsInMinute;
+            int remainingSeconds = remainingTime % SecondsInMinute;
 
             SetCount(remainingMinutes, remainingSeconds);
             elapsedTime += Time.unscaledDeltaTime;

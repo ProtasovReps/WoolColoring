@@ -20,6 +20,9 @@ public class Store : ActivatableUI
 
     public override void Activate()
     {
+        if (IsAnimating)
+            return;
+
         BroAudio.Pause(_mainMusic);
         BroAudio.Play(_storeMusic);
         base.Activate();
@@ -27,6 +30,9 @@ public class Store : ActivatableUI
 
     public override void Deactivate()
     {
+        if (IsAnimating)
+            return;
+
         BroAudio.Pause(_storeMusic);
         BroAudio.Play(_mainMusic);
         base.Deactivate();

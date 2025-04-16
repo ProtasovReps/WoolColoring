@@ -10,6 +10,7 @@ public class ActivatableUI : Activatable
     private UIAnimations _animator;
 
     protected UIAnimations Animator => _animator;
+    protected bool IsAnimating { get; private set; }
 
     public virtual void Initialize()
     {
@@ -26,10 +27,14 @@ public class ActivatableUI : Activatable
     }
 
     public override void Deactivate()
-        => _animator.PopOut(_transformToAnimate.Transform, _animationDuration, FinalizeDeactivation);
+    {
+        IsAnimating = true;
+        _animator.PopOut(_transformToAnimate.Transform, _animationDuration, FinalizeDeactivation);
+    }
 
     private void FinalizeDeactivation()
     {
+        IsAnimating = false;
         _transform.gameObject.SetActive(false);
         _transformToAnimate.gameObject.SetActive(false);
         _transformToAnimate.Transform.localScale = _transformToAnimate.StartScale;
