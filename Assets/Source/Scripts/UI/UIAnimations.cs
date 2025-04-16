@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIAnimator : MonoBehaviour
+public class UIAnimations : MonoBehaviour
 {
     public void PopUp(Transform transform, float duration)
     {

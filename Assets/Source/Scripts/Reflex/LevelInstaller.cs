@@ -34,7 +34,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [Header("UI")]
     [SerializeField] private ActivatableUIInitializator _activatableInitializator;
     [SerializeField] private BuffInitializer _buffInitializer;
-    [SerializeField] private UIAnimator _uIAnimator;
+    [SerializeField] private UIAnimations _uIAnimator;
+    [SerializeField] private ButtonAnimations _buttonAnimations;
     [SerializeField] private LevelTransitionAnimation _levelTransitionAnimation;
     [Header("Disposer")]
     [SerializeField] private ObjectDisposer _disposer;
@@ -76,6 +77,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         containerBuilder.AddSingleton(typeof(PlayerInput));
         containerBuilder.AddSingleton(_levelTransitionAnimation);
         containerBuilder.AddSingleton(_uIAnimator);
+        containerBuilder.AddSingleton(_buttonAnimations);
         containerBuilder.AddSingleton(_stopwatch);
     }
 
@@ -151,7 +153,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     private void InstallWallet(ContainerBuilder containerBuilder, Picture picture)
     {
-        var wallet = new Wallet(YG2.saves.Coins);
+        var wallet = new Wallet(/*YG2.saves.Coins*/ 20000);
         var moneyRewards = new MoneyRewards(picture, wallet, _figureCompositionFactory);
 
         _disposer.Add(moneyRewards);

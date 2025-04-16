@@ -7,9 +7,9 @@ public class ActivatableUI : Activatable
     [SerializeField] private float _animationDuration;
 
     private Transform _transform;
-    private UIAnimator _animator;
+    private UIAnimations _animator;
 
-    protected UIAnimator Animator => _animator;
+    protected UIAnimations Animator => _animator;
 
     public virtual void Initialize()
     {
@@ -36,5 +36,5 @@ public class ActivatableUI : Activatable
     }
 
     [Inject]
-    private void Inject(UIAnimator animator) => _animator = animator;
+    private void Inject(UIAnimations animator) => _animator = animator;
 }

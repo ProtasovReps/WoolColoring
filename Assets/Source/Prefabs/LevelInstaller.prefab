@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 1106072022432992619}
   - component: {fileID: 1521679592951051183}
   - component: {fileID: 5350750388361906446}
-  - component: {fileID: 9074468529178919698}
   - component: {fileID: 9041677123686443195}
+  - component: {fileID: 2615470808109848522}
+  - component: {fileID: 2551177578417716095}
   m_Layer: 0
   m_Name: LevelInstaller
   m_TagString: Untagged
@@ -83,7 +84,10 @@ MonoBehaviour:
     <DebugObject>k__BackingField: {fileID: 5564509760098111384}
   _activatableInitializator: {fileID: 1106072022432992619}
   _buffInitializer: {fileID: 1521679592951051183}
-  _uIAnimator: {fileID: 9074468529178919698}
+  _uIAnimator: {fileID: 2615470808109848522}
+  _buttonAnimations: {fileID: 2551177578417716095}
+  _levelTransitionAnimation: {fileID: 0}
+  _disposer: {fileID: 0}
 --- !u!114 &7347834897356322926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,8 +135,8 @@ MonoBehaviour:
   _cleaner: {fileID: 0}
   _unlockerBuyButton: {fileID: 0}
   _fillerBuyButton: {fileID: 0}
-  _exploderBuyButton: {fileID: 0}
-  _cleanerBuyButton: {fileID: 0}
+  _breakerBuyButton: {fileID: 0}
+  _removerBuyButton: {fileID: 0}
 --- !u!114 &5350750388361906446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,18 +159,6 @@ MonoBehaviour:
   - _audioType: 11
     _volume: 0.06
     _slider: {fileID: 0}
---- !u!114 &9074468529178919698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5564509760098111384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ffeda385efb0745bb2161b20c258db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &9041677123686443195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,3 +171,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f9f1eb04f3b5144965965f3a82ce87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2615470808109848522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564509760098111384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4c18946b4336804ca722eab475dcf21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2551177578417716095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564509760098111384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a50c0514845244aa06b84726ef78ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetScale: 0.8
+  _animationDuration: 0.1

@@ -2721,6 +2721,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 86911574086745234, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 262028523170809125, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2828,10 +2832,6 @@ PrefabInstance:
     - target: {fileID: 2668482145220149240, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 53.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3256761500285908329, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
-      propertyPath: _purchaseEffect
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3256761500285908329, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
       propertyPath: _purchaseRejectedSound.<DebugObject>k__BackingField

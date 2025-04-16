@@ -7,7 +7,7 @@ public class PausePanel : MonoBehaviour
     [SerializeField] private Image _image;
     [SerializeField] private float _appearDuration;
 
-    private UIAnimator _animator;
+    private UIAnimations _animator;
     private Stopwatch _stopwatch;
     private float _finalAlpha;
 
@@ -23,7 +23,7 @@ public class PausePanel : MonoBehaviour
     private void OnDisable() => _stopwatch.StartCount().Forget();
 
     [Inject]
-    private void Inject(UIAnimator animator, Stopwatch stopwatch)
+    private void Inject(UIAnimations animator, Stopwatch stopwatch)
     {
         _animator = animator;
         _stopwatch = stopwatch;
