@@ -32,7 +32,7 @@ public class Rope : MonoBehaviour, IColorSettable
         _colorView.Initialize();
     }
 
-    private void OnDestroy() => ValidateTask();
+    private void OnDestroy() => _cancellationTokenSource?.Cancel();
 
     public void SetColor(Color color) => _colorView.SetColor(color);
 
