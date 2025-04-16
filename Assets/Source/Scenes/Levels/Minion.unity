@@ -654,11 +654,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!198 &1389808286 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4684537621146919209, guid: cca23d0d25621e84fb1520921ea676dc, type: 3}
-  m_PrefabInstance: {fileID: 2085896685}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1427261154 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4233074949855376120, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
@@ -2199,6 +2194,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2492673361874476265, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492673361874476265, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2492673361874476265, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3344104431396846933, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: _buffDealMenu
       value: 
@@ -2207,10 +2214,22 @@ PrefabInstance:
       propertyPath: _buffDealMenu
       value: 
       objectReference: {fileID: 6071602620943415359}
-    - target: {fileID: 3999626927668465249, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
-      propertyPath: _effect
-      value: 
-      objectReference: {fileID: 1389808286}
+    - target: {fileID: 4109061126078034036, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109061126078034036, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109061126078034036, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109061126078034036, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -331.34998
+      objectReference: {fileID: 0}
     - target: {fileID: 4284084630307655488, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: _rechargeableButton.Array.data[0]
       value: 
@@ -2255,10 +2274,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
-    - target: {fileID: 8832498260288513130, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 157.29999
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8496669260527358087, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
@@ -2522,6 +2537,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 446422738493613814, guid: f3852fcfc7edb51469ef0e4db11676e7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 446422738493613814, guid: f3852fcfc7edb51469ef0e4db11676e7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 446422738493613814, guid: f3852fcfc7edb51469ef0e4db11676e7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1274155705519042943, guid: f3852fcfc7edb51469ef0e4db11676e7, type: 3}
       propertyPath: m_Name
       value: ProgressBar

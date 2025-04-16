@@ -1,4 +1,5 @@
 using Ami.BroAudio;
+using Coffee.UIExtensions;
 using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class CountChangeableEffect : TemporaryActivatableUI
 {
     private const string FirstSymbol = "+";
 
-    [SerializeField] private ParticleSystem _effect;
+    [SerializeField] private UIParticle _effect;
     [SerializeField] private TMP_Text _text;
     [SerializeField] private SoundID _effectSound;
 
