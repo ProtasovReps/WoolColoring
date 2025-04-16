@@ -21,7 +21,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2069168569926670505
 Transform:
@@ -84,7 +84,6 @@ MonoBehaviour:
   _activatableInitializator: {fileID: 1106072022432992619}
   _buffInitializer: {fileID: 1521679592951051183}
   _uIAnimator: {fileID: 2615470808109848522}
-  _buttonAnimations: {fileID: 0}
   _levelTransitionAnimation: {fileID: 0}
   _disposer: {fileID: 0}
 --- !u!114 &7347834897356322926
