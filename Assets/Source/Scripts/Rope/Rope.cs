@@ -32,6 +32,8 @@ public class Rope : MonoBehaviour, IColorSettable
         _colorView.Initialize();
     }
 
+    private void OnDestroy() => ValidateTask();
+
     public void SetColor(Color color) => _colorView.SetColor(color);
 
     public void Connect(Transform startPosition, Transform endPosition)

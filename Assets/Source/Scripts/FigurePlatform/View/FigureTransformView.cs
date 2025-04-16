@@ -7,6 +7,8 @@ public class FigureTransformView : TransformView
     private CancellationTokenSource _cancellationTokenSource;
     private float _minDistance = 0.01f;
 
+    private void OnDestroy() => _cancellationTokenSource?.Cancel();
+
     public void ChangePosition(Vector3 targetPosition, Collider[] colliders, float moveSpeed)
     {
         _cancellationTokenSource?.Cancel();

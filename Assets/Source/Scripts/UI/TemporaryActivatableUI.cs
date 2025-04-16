@@ -8,6 +8,8 @@ public class TemporaryActivatableUI : ActivatableUI
 
     private CancellationTokenSource _tokenSource;
 
+    private void OnDestroy() => _tokenSource?.Cancel();
+
     public override void Activate()
     {
         base.Activate();
