@@ -2914,6 +2914,10 @@ PrefabInstance:
       propertyPath: _levelNumber
       value: 
       objectReference: {fileID: 1319203723}
+    - target: {fileID: 5371999292947465023, guid: cca23d0d25621e84fb1520921ea676dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.47
+      objectReference: {fileID: 0}
     - target: {fileID: 6199639384448558729, guid: cca23d0d25621e84fb1520921ea676dc, type: 3}
       propertyPath: m_Name
       value: Effects
