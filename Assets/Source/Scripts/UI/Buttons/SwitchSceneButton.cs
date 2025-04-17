@@ -1,12 +1,18 @@
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SwitchSceneButton : SceneInteractionButton
 {
-    [SerializeField, Min(0)] private int _nextSceneId;
+    private const int FirstSceneId = 1;
 
     protected override void LoadScene()
     {
-       SceneManager.LoadScene(_nextSceneId, LoadSceneMode.Single);
+        int sceneId = SceneManager.GetActiveScene().buildIndex;
+
+        if (sceneId == SceneManager.sceneCountInBuildSettings - 1)
+            sceneId = FirstSceneId;
+        else
+            sceneId++;
+
+        SceneManager.LoadScene(sceneId, LoadSceneMode.Single);
     }
 }
