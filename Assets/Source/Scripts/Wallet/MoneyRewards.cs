@@ -25,14 +25,14 @@ public class MoneyRewards : IDisposable
         _compositionFactory = compositionFactory;
         _compositions = new List<FigureComposition>();
         _picture.Filled += OnColorFilled;
-        _picture.Colorized += OnPictureColorized;
+        _picture.Finished += OnPictureColorized;
         _compositionFactory.Produced += OnCompositionProduced;
     }
 
     public void Dispose()
     {
         _picture.Filled -= OnColorFilled;
-        _picture.Colorized -= OnPictureColorized;
+        _picture.Finished -= OnPictureColorized;
         _compositionFactory.Produced -= OnCompositionProduced;
 
         for (int i = 0; i < _compositions.Count; i++)

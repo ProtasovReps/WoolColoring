@@ -11,7 +11,7 @@ public class Picture : IFillable<Color>
 
     public event Action<Color> Filled;
     public event Action BlockCountChanged;
-    public event Action Colorized;
+    public event Action Finished;
 
     public Picture(ColorBlock[] colorBlocks)
     {
@@ -34,7 +34,7 @@ public class Picture : IFillable<Color>
     {
         if (_requiredColors.Keys.Count == 0)
         {
-            Colorized?.Invoke();
+            Finished?.Invoke();
             color = default;
             return false;
         }

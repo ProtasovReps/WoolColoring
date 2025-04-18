@@ -5,7 +5,7 @@ public class BuffBag
 {
     private readonly Dictionary<IBuff, int> _buffs;
 
-    public event Action<IBuff> AmountChanged;
+    public event Action AmountChanged;
 
     public BuffBag(Dictionary<IBuff, int> buffs)
     {
@@ -15,11 +15,7 @@ public class BuffBag
         _buffs = buffs;
     }
 
-    public int GetCount(IBuff buff)
-    {
-        ValidateBuff(buff);
-        return _buffs[buff];
-    }
+    public IReadOnlyDictionary<IBuff, int> Buffs => _buffs;
 
     public void AddBuff(IBuff buff, int addCount)
     {
@@ -29,7 +25,7 @@ public class BuffBag
             throw new ArgumentOutOfRangeException(nameof(addCount));
 
         _buffs[buff] += addCount;
-        AmountChanged?.Invoke(buff);
+        AmountChanged?.Invoke();
     }
 
     public bool TryGetBuff(IBuff buff)
@@ -40,7 +36,7 @@ public class BuffBag
             return false;
 
         _buffs[buff]--;
-        AmountChanged?.Invoke(buff);
+        AmountChanged?.Invoke();
         return true;
     }
 

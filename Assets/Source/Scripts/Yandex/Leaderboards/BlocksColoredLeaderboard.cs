@@ -12,14 +12,14 @@ public class BlocksColoredLeaderboard : IDisposable
     {
         _picture = picture;
         _picture.BlockCountChanged += OnBlocksCountChanged;
-        _picture.Colorized += OnColorized;
+        _picture.Finished += OnColorized;
         _blockColorizedCount = YG2.saves.BlocksColorized;
     }
 
     public void Dispose()
     {
         _picture.BlockCountChanged -= OnBlocksCountChanged;
-        _picture.Colorized -= OnColorized;
+        _picture.Finished -= OnColorized;
         YG2.saves.BlocksColorized = _blockColorizedCount;
     }
 

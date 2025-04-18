@@ -38,21 +38,17 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private LevelTransitionAnimation _levelTransitionAnimation;
     [Header("Disposer")]
     [SerializeField] private ObjectDisposer _disposer;
-    [Header("Localiztion")]
-    [SerializeField] private LeanLocalization _localization;
 
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
     private Unlocker _unlockHolderStrategy;
     private Filler _fillHolderStrategy;
     private Remover _removeStrategy;
+    private Breaker _breaker;
     private Stopwatch _stopwatch;
 
     private void Start()
     {
-        if (YG2.isFirstGameSession)
-            InstallLanguage();
-
         _levelTransitionAnimation.FadeIn();
         _conveyer.FillAllFigures();
         _boltColorSetter.SetColors();
@@ -69,14 +65,14 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
         Picture picture = InstallPicture(containerBuilder);
         StringDistributor stringDistributor = InstallHolders(containerBuilder, picture);
+        Wallet wallet = InstallWallet(containerBuilder, picture);
+        BuffBag buffBag = InstallBuffs(containerBuilder);
+        _stopwatch = new Stopwatch();
 
         InstallBolt(containerBuilder, stringDistributor, picture);
-        InstallWallet(containerBuilder, picture);
-        InstallBuffs(containerBuilder);
         InstallRopeConnector(containerBuilder);
         InstallClickReaders(containerBuilder);
-
-        _stopwatch = new Stopwatch();
+        InstallSavers(wallet, buffBag, picture);
 
         containerBuilder.AddSingleton(typeof(PlayerInput));
         containerBuilder.AddSingleton(_levelTransitionAnimation);
@@ -154,39 +150,49 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         containerBuilder.AddSingleton(_ropePool);
     }
 
-    private void InstallWallet(ContainerBuilder containerBuilder, Picture picture)
+    private Wallet InstallWallet(ContainerBuilder containerBuilder, Picture picture)
     {
         var wallet = new Wallet(YG2.saves.Coins);
         var moneyRewards = new MoneyRewards(picture, wallet, _figureCompositionFactory);
 
         _disposer.Add(moneyRewards);
         containerBuilder.AddSingleton(wallet, typeof(ICountChangeable), typeof(Wallet));
+        return wallet;
     }
 
-    private void InstallBuffs(ContainerBuilder containerBuilder)
+    private BuffBag InstallBuffs(ContainerBuilder containerBuilder)
     {
-        var breakStrategy = new Breaker(_figureClickReader);
+        _breaker = new Breaker(_figureClickReader);
         var buffs = new Dictionary<IBuff, int>()
         {
                 { _unlockHolderStrategy, YG2.saves.Unlockers },
                 { _fillHolderStrategy, YG2.saves.Fillers },
                 { _removeStrategy, YG2.saves.Removers },
-                { breakStrategy, YG2.saves.Breakers }
+                { _breaker, YG2.saves.Breakers }
         };
 
         BuffBag buffBag = new(buffs);
-        UnlockerSaver unlockerSaver = new(buffBag);
-        FillerSaver fillerSaver = new(buffBag);
-        RemoverSaver removerSaver = new(buffBag);
-        BreakerSaver breakerSaver = new(buffBag);
-
-        _disposer.Add(unlockerSaver);
-        _disposer.Add(fillerSaver);
-        _disposer.Add(removerSaver);
-        _disposer.Add(breakerSaver);
 
         containerBuilder.AddSingleton(buffBag);
-        _buffInitializer.Initialize(_unlockHolderStrategy, _fillHolderStrategy, breakStrategy, _removeStrategy);
+        _buffInitializer.Initialize(_unlockHolderStrategy, _fillHolderStrategy, _breaker, _removeStrategy);
+        return buffBag;
+    }
+
+    private void InstallSavers(Wallet wallet, BuffBag buffBag, Picture picture)
+    {
+        ISaver[] savers =
+        {
+            new UnlockerSaver(buffBag),
+            new FillerSaver(buffBag),
+            new RemoverSaver(buffBag),
+            new BreakerSaver(buffBag),
+            new WalletSaver(wallet),
+            new LevelSaver()
+        };
+
+        ProgressSaver progressSaver = new(picture, savers);
+
+        _disposer.Add(progressSaver);
     }
 
     private void InstallClickReaders(ContainerBuilder containerBuilder)
@@ -195,25 +201,5 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         containerBuilder.AddSingleton(_figureClickReader);
 
         _figureClickReader.SetPause(true);
-    }
-
-    private void InstallLanguage()
-    {
-        (string, string) russian = ("ru", "Russian");
-        (string, string) turkish = ("tr", "Turkish");
-        string newLanguage;
-        string playerLanguage;
-
-        YG2.GetLanguage();
-        playerLanguage = YG2.lang;
-
-        if (playerLanguage == russian.Item1)
-            newLanguage = russian.Item2;
-        else if (playerLanguage == turkish.Item1)
-            newLanguage = turkish.Item2;
-        else
-            newLanguage = _localization.DefaultLanguage;
-
-        _localization.SetCurrentLanguage(newLanguage);
     }
 }

@@ -4,12 +4,11 @@ public class FillerSaver : BuffSaver
 {
     public FillerSaver(BuffBag bag) : base(bag) { }
 
-    public override void Save(IBuff buff)
+    protected override void ValidateBuff(IBuff buff, int count)
     {
         if (buff is not Filler)
             return;
 
-        YG2.saves.Fillers = BuffBag.GetCount(buff);
-        YG2.SaveProgress();
+        YG2.saves.Fillers = count;
     }
 }

@@ -8,5 +8,6 @@ namespace YG
         public int Removers;
         public int Breakers;
         public int BlocksColorized;
+        public int LastLevelIndex;
     }
 }

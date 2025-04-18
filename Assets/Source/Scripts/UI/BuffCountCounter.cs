@@ -14,7 +14,7 @@ public class BuffCountCounter : MonoBehaviour
 
     private void OnDestroy()
     {
-        _bag.AmountChanged -= buff => OnAmountChanged();
+        _bag.AmountChanged -= OnAmountChanged;
     }
 
     public void Initialize(IBuff buff)
@@ -29,14 +29,14 @@ public class BuffCountCounter : MonoBehaviour
     private void Inject(BuffBag bag)
     {
         _bag = bag;
-        _bag.AmountChanged += buff => OnAmountChanged();
+        _bag.AmountChanged += OnAmountChanged;
 
         OnAmountChanged();
     }
 
     private void OnAmountChanged()
     {
-        int count = _bag.GetCount(_buff);
+        int count = _bag.Buffs[_buff];
 
         if (count == 0)
             _text.text = ZeroBuffsSign;

@@ -4,12 +4,11 @@ public class RemoverSaver : BuffSaver
 {
     public RemoverSaver(BuffBag bag) : base(bag) { }
 
-    public override void Save(IBuff buff)
+    protected override void ValidateBuff(IBuff buff, int count)
     {
         if (buff is not Remover)
             return;
 
-        YG2.saves.Removers = BuffBag.GetCount(buff);
-        YG2.SaveProgress();
+        YG2.saves.Removers = count;
     }
 }

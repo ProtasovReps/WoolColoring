@@ -11,7 +11,7 @@ public class LevelNumberTextField : MonoBehaviour
     private void SetLevelNumber()
     {
         Scene currentScene = SceneManager.GetActiveScene();
-        int currentLevelNumber = currentScene.buildIndex + 1;
+        int currentLevelNumber = currentScene.buildIndex;
 
         _text.text = currentLevelNumber.ToString();
     }

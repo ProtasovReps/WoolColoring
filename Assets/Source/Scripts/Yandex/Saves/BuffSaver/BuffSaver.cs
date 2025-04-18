@@ -1,6 +1,6 @@
 using System;
 
-public abstract class BuffSaver : IDisposable
+public abstract class BuffSaver : ISaver
 {
     private readonly BuffBag _bag;
 
@@ -10,12 +10,13 @@ public abstract class BuffSaver : IDisposable
             throw new ArgumentNullException(nameof(bag));
 
         _bag = bag;
-        _bag.AmountChanged += Save;
     }
 
-    protected BuffBag BuffBag => _bag;
+    public void Save()
+    {
+        foreach (var buff in _bag.Buffs)
+            ValidateBuff(buff.Key, buff.Value);
+    }
 
-    public void Dispose() => _bag.AmountChanged -= Save;
-
-    public abstract void Save(IBuff buff);
+    protected abstract void ValidateBuff(IBuff buff, int count);
 }

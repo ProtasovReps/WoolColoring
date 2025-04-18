@@ -29,7 +29,7 @@ public class LevelFinalizer : MonoBehaviour
         _boltReader = boltClickReader;
         _figureReader = figureClickReader;
         _stopwatch = stopwatch;
-        _picture.Colorized += () => Finalize().Forget();
+        _picture.Finished += () => Finalize().Forget();
     }
 
     [ContextMenu("Test")]
@@ -53,7 +53,7 @@ public class LevelFinalizer : MonoBehaviour
 
     private void Unsubscribe()
     {
-        _picture.Colorized -= () => Finalize().Forget();
+        _picture.Finished -= () => Finalize().Forget();
     }
 
     private void DisableUI()

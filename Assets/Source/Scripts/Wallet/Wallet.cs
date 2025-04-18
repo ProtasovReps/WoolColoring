@@ -1,5 +1,4 @@
 using System;
-using YG;
 
 public class Wallet : ICountChangeable
 {
@@ -21,7 +20,6 @@ public class Wallet : ICountChangeable
             throw new ArgumentException(nameof(count));
 
         Count += count;
-        SaveCoins();
 
         CountChanged?.Invoke();
     }
@@ -32,15 +30,8 @@ public class Wallet : ICountChangeable
             return false;
 
         Count -= count;
-        SaveCoins();
 
         CountChanged?.Invoke();
         return true;
-    }
-
-    private void SaveCoins()
-    {
-        YG2.saves.Coins = Count;
-        YG2.SaveProgress();
     }
 }

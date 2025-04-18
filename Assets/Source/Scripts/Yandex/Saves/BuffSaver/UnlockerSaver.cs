@@ -4,12 +4,11 @@ public class UnlockerSaver : BuffSaver
 {
     public UnlockerSaver(BuffBag bag) : base(bag) { }
 
-    public override void Save(IBuff buff)
+    protected override void ValidateBuff(IBuff buff, int count)
     {
         if (buff is not Unlocker)
             return;
 
-        YG2.saves.Unlockers = BuffBag.GetCount(buff);
-        YG2.SaveProgress();
+        YG2.saves.Unlockers = count;
     }
 }

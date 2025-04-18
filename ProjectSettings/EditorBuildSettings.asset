@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Source/Scenes/InizializationScene.unity
+    guid: 3b92ef51e3b105e44b72c1f0f45e279e
+  - enabled: 1
     path: Assets/Source/Scenes/Levels/Doggy.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
