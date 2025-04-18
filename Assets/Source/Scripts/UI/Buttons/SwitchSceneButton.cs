@@ -8,10 +8,10 @@ public class SwitchSceneButton : SceneInteractionButton
     {
         int sceneId = SceneManager.GetActiveScene().buildIndex;
 
-        if (sceneId >= SceneManager.sceneCountInBuildSettings - 1)
+        sceneId++;
+
+        if (sceneId >= SceneManager.sceneCountInBuildSettings)
             sceneId = FirstSceneId;
-        else
-            sceneId++;
 
         SceneManager.LoadScene(sceneId, LoadSceneMode.Single);
     }

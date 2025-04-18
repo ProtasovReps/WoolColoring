@@ -7,10 +7,10 @@ public class LevelSaver : ISaver
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-        if (sceneIndex >= SceneManager.sceneCountInBuildSettings - 1)
+        sceneIndex++;
+
+        if (sceneIndex >= SceneManager.sceneCountInBuildSettings)
             sceneIndex = 0;
-        else
-            sceneIndex++;
 
         YG2.saves.LastLevelIndex = sceneIndex;
     }
