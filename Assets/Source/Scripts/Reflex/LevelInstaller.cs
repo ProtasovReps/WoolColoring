@@ -3,7 +3,7 @@ using Reflex.Core;
 using Ami.BroAudio;
 using YG;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
+using Lean.Localization;
 
 public class LevelInstaller : MonoBehaviour, IInstaller
 {
@@ -38,6 +38,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private LevelTransitionAnimation _levelTransitionAnimation;
     [Header("Disposer")]
     [SerializeField] private ObjectDisposer _disposer;
+    [Header("Localiztion")]
+    [SerializeField] private LeanLocalization _localization;
 
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
@@ -48,6 +50,9 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     private void Start()
     {
+        if (YG2.isFirstGameSession)
+            InstallLanguage();
+
         _levelTransitionAnimation.FadeIn();
         _conveyer.FillAllFigures();
         _boltColorSetter.SetColors();
@@ -151,7 +156,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     private void InstallWallet(ContainerBuilder containerBuilder, Picture picture)
     {
-        var wallet = new Wallet(/*YG2.saves.Coins*/ 20000);
+        var wallet = new Wallet(YG2.saves.Coins);
         var moneyRewards = new MoneyRewards(picture, wallet, _figureCompositionFactory);
 
         _disposer.Add(moneyRewards);
@@ -190,5 +195,25 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         containerBuilder.AddSingleton(_figureClickReader);
 
         _figureClickReader.SetPause(true);
+    }
+
+    private void InstallLanguage()
+    {
+        (string, string) russian = ("ru", "Russian");
+        (string, string) turkish = ("tr", "Turkish");
+        string newLanguage;
+        string playerLanguage;
+
+        YG2.GetLanguage();
+        playerLanguage = YG2.lang;
+
+        if (playerLanguage == russian.Item1)
+            newLanguage = russian.Item2;
+        else if (playerLanguage == turkish.Item1)
+            newLanguage = turkish.Item2;
+        else
+            newLanguage = _localization.DefaultLanguage;
+
+        _localization.SetCurrentLanguage(newLanguage);
     }
 }
