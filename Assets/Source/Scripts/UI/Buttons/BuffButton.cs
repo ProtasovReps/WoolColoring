@@ -3,6 +3,7 @@ using System;
 using Reflex.Attributes;
 using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
+using System.Threading;
 
 public class BuffButton : ButtonView
 {
@@ -15,6 +16,12 @@ public class BuffButton : ButtonView
 
     private BuffBag _bag;
     private IBuff _buff;
+    private CancellationTokenSource _cancellationTokenSource;
+
+    private void OnDestroy()
+    {
+        _cancellationTokenSource?.Cancel();
+    }
 
     public void Initialize(IBuff buff)
     {
@@ -56,6 +63,7 @@ public class BuffButton : ButtonView
 
     private async UniTaskVoid WaitCoolDown()
     {
+        _cancellationTokenSource = new CancellationTokenSource();
         Deactivate();
 
         float elapsedTime = 0f;
@@ -65,7 +73,7 @@ public class BuffButton : ButtonView
             _cooldownImage.fillAmount = 1 - (elapsedTime / _coolDownTime);
 
             elapsedTime += Time.deltaTime;
-            await UniTask.Yield();
+            await UniTask.Yield(cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
         }
 
         _cooldownImage.fillAmount = 0f;
