@@ -3,7 +3,6 @@ using Reflex.Core;
 using Ami.BroAudio;
 using YG;
 using System.Collections.Generic;
-using Lean.Localization;
 
 public class LevelInstaller : MonoBehaviour, IInstaller
 {
@@ -56,8 +55,6 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         BroAudio.Play(_soundID);
         _stopwatch.StartCount().Forget();
     }
-
-    private void OnDestroy() => YG2.SaveProgress();
 
     public void InstallBindings(ContainerBuilder containerBuilder)
     {
@@ -165,10 +162,10 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         _breaker = new Breaker(_figureClickReader);
         var buffs = new Dictionary<IBuff, int>()
         {
-                { _unlockHolderStrategy, YG2.saves.Unlockers },
-                { _fillHolderStrategy, YG2.saves.Fillers },
-                { _removeStrategy, YG2.saves.Removers },
-                { _breaker, YG2.saves.Breakers }
+            { _unlockHolderStrategy, YG2.saves.Unlockers },
+            { _fillHolderStrategy, YG2.saves.Fillers },
+            { _removeStrategy, YG2.saves.Removers },
+            { _breaker, YG2.saves.Breakers }
         };
 
         BuffBag buffBag = new(buffs);
@@ -187,7 +184,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
             new RemoverSaver(buffBag),
             new BreakerSaver(buffBag),
             new WalletSaver(wallet),
-            new LevelSaver()
+            new LevelSaver(),
+            new UnlockedLevelsSaver()
         };
 
         ProgressSaver progressSaver = new(picture, savers);

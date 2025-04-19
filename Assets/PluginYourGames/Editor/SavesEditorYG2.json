@@ -7,12 +7,13 @@
         false,
         false
     ],
-    "idSave": 2831,
-    "Coins": 19930,
+    "idSave": 1,
+    "Coins": 140,
     "Unlockers": 0,
-    "Fillers": 5,
-    "Removers": 7,
-    "Breakers": 1,
-    "BlocksColorized": 1848,
-    "LastLevelIndex": 2
+    "Fillers": 0,
+    "Removers": 0,
+    "Breakers": 0,
+    "BlocksColorized": 0,
+    "LastLevelIndex": 2,
+    "UnlockedLevelsCount": 1
 }

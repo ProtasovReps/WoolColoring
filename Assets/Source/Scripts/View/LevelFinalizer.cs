@@ -45,10 +45,8 @@ public class LevelFinalizer : MonoBehaviour
         SwitchMusic();
 
         _pictureView.ResetPosition();
-
         await UniTask.WaitForSeconds(_finalMenuAppearDelay);
         _finalBlock.Activate();
-
     }
 
     private void Unsubscribe()

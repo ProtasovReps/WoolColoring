@@ -9,5 +9,6 @@ namespace YG
         public int Breakers;
         public int BlocksColorized;
         public int LastLevelIndex;
+        public int UnlockedLevelsCount;
     }
 }

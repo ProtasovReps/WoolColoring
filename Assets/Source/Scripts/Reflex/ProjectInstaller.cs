@@ -45,8 +45,7 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
     private void InstallLevel()
     {
         int levelIndex;
-        int lastLevelIndex = YG2.saves.LastLevelIndex
-            ;
+        int lastLevelIndex = YG2.saves.LastLevelIndex;
 
         if(lastLevelIndex == 0)
             levelIndex = FirstLevelIndex;
