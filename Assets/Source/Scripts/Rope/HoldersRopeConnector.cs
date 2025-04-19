@@ -12,11 +12,6 @@ public class HoldersRopeConnector : MonoBehaviour
     private RopePool _ropePool;
     private StringDistributor _stringDistributor;
 
-    private void OnDestroy()
-    {
-        _stringDistributor.WhiteHolderDistributing -= ConnectHolders;
-    }
-
     [Inject]
     private void Inject(StringDistributor stringDistributor, ColoredStringHolderView[] coloredViews, WhiteStringHolderView whiteView, RopePool ropePool)
     {
@@ -25,6 +20,11 @@ public class HoldersRopeConnector : MonoBehaviour
         _whiteStringHolderView = whiteView;
         _ropePool = ropePool;
         _stringDistributor.WhiteHolderDistributing += ConnectHolders;
+    }
+
+    private void OnDestroy()
+    {
+        _stringDistributor.WhiteHolderDistributing -= ConnectHolders;
     }
 
     private void ConnectHolders(Color color, int stringFillCount)

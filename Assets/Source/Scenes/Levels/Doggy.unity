@@ -200,17 +200,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d2f59fcb9cec94da83df3b05223a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &405475641 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3881740245118090810, guid: cbb8c29316da5f84c8993e7b47f0739e, type: 3}
-  m_PrefabInstance: {fileID: 8956856226364224744}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e85888e17944da48ae1e9af7921d3e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &508862296 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3999626927668465249, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
@@ -1997,7 +1986,7 @@ PrefabInstance:
     - target: {fileID: 4284084630307655488, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: _rechargeableButton.Array.data[0]
       value: 
-      objectReference: {fileID: 405475641}
+      objectReference: {fileID: 1427261154}
     - target: {fileID: 4284084630307655488, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: _rechargeableButton.Array.data[1]
       value: 

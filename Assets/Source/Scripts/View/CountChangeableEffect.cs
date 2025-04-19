@@ -30,7 +30,7 @@ public class CountChangeableEffect : TemporaryActivatableUI
 
         _lastCount = _countChangeable.Count;
 
-        if (addedAmount < 0)
+        if (addedAmount <= 0)
             return;
 
         _text.text = $"{FirstSymbol}{addedAmount}";

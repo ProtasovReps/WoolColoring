@@ -13,6 +13,15 @@ public class Painter : MonoBehaviour
     private ColoredStringHolderStash _holderStash;
     private ColoredStringHolderSwitcher _switcher;
 
+    [Inject]
+    private void Inject(Picture picture)
+    {
+        _picture = picture;
+
+        Subscribe(_holderStash.ActiveHolders);
+        Subscribe(_holderStash.InactiveHolders);
+    }
+
     private void OnDestroy()
     {
         Unsubscribe(_holderStash.ActiveHolders);
@@ -29,15 +38,6 @@ public class Painter : MonoBehaviour
 
         _holderStash = holderStash;
         _switcher = switcher;
-    }
-
-    [Inject]
-    private void Inject(Picture picture)
-    {
-        _picture = picture;
-
-        Subscribe(_holderStash.ActiveHolders);
-        Subscribe(_holderStash.InactiveHolders);
     }
 
     private void OnHolderFilled(ColoredStringHolder holder)

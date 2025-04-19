@@ -13,7 +13,7 @@ public class RechargeableButton : ButtonView
 
     public event Action Recharged;
 
-    public void SetReload() => Reload().Forget();
+    public void SetReload(float reloadTime) => Reload(reloadTime).Forget();
 
     public override void Activate()
     {
@@ -32,19 +32,19 @@ public class RechargeableButton : ButtonView
 
     protected override void OnButtonClick()
     {
-        Reload().Forget();
+        Reload(_reloadTime).Forget();
         base.OnButtonClick();
     }
 
-    private async UniTaskVoid Reload()
+    private async UniTaskVoid Reload(float reloadTime)
     {
         float elapsedTime = 0f;
 
         Deactivate();
 
-        while (elapsedTime < _reloadTime)
+        while (elapsedTime < reloadTime)
         {
-            int remainingTime = (int)(_reloadTime - elapsedTime);
+            int remainingTime = (int)(reloadTime - elapsedTime);
             int remainingMinutes = remainingTime / SecondsInMinute;
             int remainingSeconds = remainingTime % SecondsInMinute;
 

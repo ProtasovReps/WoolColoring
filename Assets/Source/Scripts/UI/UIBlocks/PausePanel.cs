@@ -11,8 +11,14 @@ public class PausePanel : MonoBehaviour
     private Stopwatch _stopwatch;
     private float _finalAlpha;
 
-    private void Awake()
-        => _finalAlpha = _image.color.a;
+    [Inject]
+    private void Inject(UIAnimations animator, Stopwatch stopwatch)
+    {
+        _animator = animator;
+        _stopwatch = stopwatch;
+    }
+
+    private void Awake() => _finalAlpha = _image.color.a;
 
     private void OnEnable()
     {
@@ -21,11 +27,4 @@ public class PausePanel : MonoBehaviour
     }
 
     private void OnDisable() => _stopwatch.StartCount().Forget();
-
-    [Inject]
-    private void Inject(UIAnimations animator, Stopwatch stopwatch)
-    {
-        _animator = animator;
-        _stopwatch = stopwatch;
-    }
 }

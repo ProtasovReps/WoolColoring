@@ -11,11 +11,6 @@ public class BoltHolderRopeConnector : MonoBehaviour
     private Dictionary<Bolt, Rope> _connections;
     private StringDistributor _stringDistributor;
 
-    private void OnDestroy()
-    {
-        _stringDistributor.BoltDistributing -= SetRope;
-    }
-
     [Inject]
     private void Inject(StringDistributor stringDistributor,
     ColoredStringHolderView[] coloredViews, WhiteStringHolderView whiteView,
@@ -30,6 +25,11 @@ public class BoltHolderRopeConnector : MonoBehaviour
         _ropePool = ropePool;
         _connections = new Dictionary<Bolt, Rope>();
         _stringDistributor.BoltDistributing += SetRope;
+    }
+
+    private void OnDestroy()
+    {
+        _stringDistributor.BoltDistributing -= SetRope;
     }
 
     private void SetRope(Bolt boltView)

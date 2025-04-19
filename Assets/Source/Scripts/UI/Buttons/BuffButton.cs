@@ -18,6 +18,13 @@ public class BuffButton : ButtonView
     private IBuff _buff;
     private CancellationTokenSource _cancellationTokenSource;
 
+    [Inject]
+    private void Inject(BuffBag buffBag)
+    {
+        _bag = buffBag;
+        _counter.Initialize(_buff);
+    }
+
     private void OnDestroy()
     {
         _cancellationTokenSource?.Cancel();
@@ -52,13 +59,6 @@ public class BuffButton : ButtonView
         _effect.Play();
         WaitCoolDown().Forget();
         _buff.Execute();
-    }
-
-    [Inject]
-    private void Inject(BuffBag buffBag)
-    {
-        _bag = buffBag;
-        _counter.Initialize(_buff);
     }
 
     private async UniTaskVoid WaitCoolDown()

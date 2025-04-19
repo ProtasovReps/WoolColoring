@@ -12,6 +12,15 @@ public class BuffCountCounter : MonoBehaviour
     private BuffBag _bag;
     private IBuff _buff;
 
+    [Inject]
+    private void Inject(BuffBag bag)
+    {
+        _bag = bag;
+        _bag.AmountChanged += OnAmountChanged;
+
+        OnAmountChanged();
+    }
+
     private void OnDestroy()
     {
         _bag.AmountChanged -= OnAmountChanged;
@@ -23,15 +32,6 @@ public class BuffCountCounter : MonoBehaviour
             throw new ArgumentNullException(nameof(buff));
 
         _buff = buff;
-    }
-
-    [Inject]
-    private void Inject(BuffBag bag)
-    {
-        _bag = bag;
-        _bag.AmountChanged += OnAmountChanged;
-
-        OnAmountChanged();
     }
 
     private void OnAmountChanged()

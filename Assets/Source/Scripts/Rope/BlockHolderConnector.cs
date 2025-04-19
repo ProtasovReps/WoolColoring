@@ -14,6 +14,15 @@ public class BlockHolderConnector : MonoBehaviour
     private float _disconnectDelay;
     private Dictionary<Color, Rope> _connections;
 
+    [Inject]
+    private void Inject(ColoredStringHolderView[] stringHolderViews, RopePool ropePool)
+    {
+        _stringHolderViews = stringHolderViews;
+        _ropePool = ropePool;
+        _connections = new Dictionary<Color, Rope>();
+        _disconnectDelay = _ropeDisconnectDelay;
+    }
+
     public void Setup(ColorBlockView block)
     {
         Color requiredColor = block.RequiredColor;
@@ -30,15 +39,6 @@ public class BlockHolderConnector : MonoBehaviour
         {
             SetupRope(block, holder, requiredColor);
         }
-    }
-
-    [Inject]
-    private void Inject(ColoredStringHolderView[] stringHolderViews, RopePool ropePool)
-    {
-        _stringHolderViews = stringHolderViews;
-        _ropePool = ropePool;
-        _connections = new Dictionary<Color, Rope>();
-        _disconnectDelay = _ropeDisconnectDelay;
     }
 
     private void SetupRope(ColorBlockView block, ColoredStringHolderView holder, Color color)

@@ -7,17 +7,13 @@ public class ButtonRechargeAppearText : TemporaryActivatableUI
     private void OnDestroy()
     {
         foreach (var button in _rechargeableButton)
-        {
             button.Recharged -= OnRecharged;
-        }
     }
 
     public override void Initialize()
     {
         foreach (var button in _rechargeableButton)
-        {
             button.Recharged += OnRecharged;
-        }
 
         base.Initialize();
     }

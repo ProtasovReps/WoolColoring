@@ -12,6 +12,12 @@ public abstract class ClickReader : MonoBehaviour
 
     public bool IsPaused { get; private set; }
 
+    [Inject]
+    private void Inject(PlayerInput playerInput)
+    {
+        _playerInput = playerInput;
+    }
+
     private void OnEnable()
     {
         _playerInput.PlayerClick.Enable();
@@ -22,12 +28,6 @@ public abstract class ClickReader : MonoBehaviour
     {
         _playerInput.PlayerClick.Disable();
         _playerInput.PlayerClick.Click.performed -= OnClickPerformed;
-    }
-
-    [Inject]
-    private void Inject(PlayerInput playerInput)
-    {
-        _playerInput = playerInput;
     }
 
     public virtual void SetPause(bool isPaused)

@@ -7,6 +7,13 @@ public class ClickReaderStateSwitcher : MonoBehaviour
     private FigureClickReader _figureClickReader;
     private bool _lastFigureClickReaderState;
 
+    [Inject]
+    private void Inject(BoltClickReader boltReader, FigureClickReader figureClickReader)
+    {
+        _boltClickReader = boltReader;
+        _figureClickReader = figureClickReader;
+    }
+
     private void OnEnable()
     {
         _lastFigureClickReaderState = _figureClickReader.IsPaused;
@@ -18,12 +25,5 @@ public class ClickReaderStateSwitcher : MonoBehaviour
     private void OnDisable()
     {
         _figureClickReader.SetPause(_lastFigureClickReaderState);
-    }
-
-    [Inject]
-    private void Inject(BoltClickReader boltReader, FigureClickReader figureClickReader)
-    {
-        _boltClickReader = boltReader;
-        _figureClickReader = figureClickReader;
     }
 }

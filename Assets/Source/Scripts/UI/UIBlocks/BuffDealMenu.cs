@@ -23,9 +23,7 @@ public class BuffDealMenu : ActivatableUI
     public override void Activate()
     {
         for (int i = 0; i < _buyBuffButtons.Length; i++)
-        {
             _buyBuffButtons[i].gameObject.SetActive(_buyBuffButtons[i].CurrentBuff == _targetBuffReward);
-        }
 
         base.Activate();
     }
@@ -48,7 +46,7 @@ public class BuffDealMenu : ActivatableUI
         if (_targetBuffReward == null)
             throw new ArgumentNullException(nameof(_targetBuffReward));
 
-        _wallet.Add(_targetBuffReward.Price);
+        _wallet.AddSilent(_targetBuffReward.Price);
         _store.TryPurchase(_targetBuffReward, AddAmount);
 
         _targetBuffReward = null;

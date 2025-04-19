@@ -6,16 +6,16 @@ public class Store : ActivatableUI
 {
     [SerializeField] private SoundID _mainMusic;
     [SerializeField] private SoundID _storeMusic;
-    [SerializeField] private RechargeableButton _counterButton;
     [SerializeField] private TemporaryActivatableUI _notEnoughMoneyText;
 
     private Wallet _wallet;
     private BuffBag _bag;
 
-    public override void Initialize()
+    [Inject]
+    private void Inject(Wallet wallet, BuffBag buffBag)
     {
-        _counterButton.SetReload();
-        base.Initialize();
+        _wallet = wallet;
+        _bag = buffBag;
     }
 
     public override void Activate()
@@ -48,12 +48,5 @@ public class Store : ActivatableUI
 
         _bag.AddBuff(buff, count);
         return true;
-    }
-
-    [Inject]
-    private void Inject(Wallet wallet, BuffBag buffBag)
-    {
-        _wallet = wallet;
-        _bag = buffBag;
     }
 }

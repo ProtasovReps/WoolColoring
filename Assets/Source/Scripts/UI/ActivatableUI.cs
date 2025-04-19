@@ -12,6 +12,10 @@ public class ActivatableUI : Activatable
     protected UIAnimations Animator => _animator;
     protected bool IsAnimating { get; private set; }
 
+
+    [Inject]
+    private void Inject(UIAnimations animator) => _animator = animator;
+
     public virtual void Initialize()
     {
         _transformToAnimate.Initialize();
@@ -39,7 +43,4 @@ public class ActivatableUI : Activatable
         _transformToAnimate.gameObject.SetActive(false);
         _transformToAnimate.Transform.localScale = _transformToAnimate.StartScale;
     }
-
-    [Inject]
-    private void Inject(UIAnimations animator) => _animator = animator;
 }

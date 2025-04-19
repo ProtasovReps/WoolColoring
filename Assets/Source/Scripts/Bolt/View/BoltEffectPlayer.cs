@@ -9,17 +9,17 @@ public class BoltEffectPlayer : MonoBehaviour
 
     private BoltStash _boltStash;
 
-    private void OnDestroy()
-    {
-        foreach (Bolt bolt in _boltStash.Bolts)
-            bolt.Disabling -= OnBoltDisabling;
-    }
-
     [Inject]
     private void Inject(BoltStash boltStash)
     {
         _boltStash = boltStash;
         _boltStash.BoltsAdded += SubscribeBolts;
+    }
+
+    private void OnDestroy()
+    {
+        foreach (Bolt bolt in _boltStash.Bolts)
+            bolt.Disabling -= OnBoltDisabling;
     }
 
     private void SubscribeBolts(IEnumerable<Bolt> bolts)

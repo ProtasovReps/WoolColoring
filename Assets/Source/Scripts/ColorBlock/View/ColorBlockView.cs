@@ -17,6 +17,13 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
     public Color RequiredColor => _requiredColor;
     public Transform Transform => _transform;
 
+    [Inject]
+    private void Inject(ColorBlockAnimations animations, BlockSoundPlayer soundPlayer)
+    {
+        _animations = animations;
+        _soundPlayer = soundPlayer;
+    }
+
     private void Awake()
     {
         _colorView.Initialize();
@@ -33,13 +40,6 @@ public class ColorBlockView : MonoBehaviour, IColorSettable
 
         _animations.Decrease(_transform);
         _soundPlayer.Play();
-    }
-
-    [Inject]
-    private void Inject(ColorBlockAnimations animations, BlockSoundPlayer soundPlayer)
-    {
-        _animations = animations;
-        _soundPlayer = soundPlayer;
     }
 
     private void OnDrawGizmos()

@@ -11,11 +11,6 @@ public class LevelProgressBar : MonoBehaviour
     private Picture _picture;
     private int _maxBlockCount;
 
-    private void OnDestroy()
-    {
-        _picture.BlockCountChanged -= OnBlockCountChanged;
-    }
-
     [Inject]
     private void Inject(Picture picture)
     {
@@ -24,6 +19,11 @@ public class LevelProgressBar : MonoBehaviour
         _picture.BlockCountChanged += OnBlockCountChanged;
 
         OnBlockCountChanged();
+    }
+
+    private void OnDestroy()
+    {
+        _picture.BlockCountChanged -= OnBlockCountChanged;
     }
 
     private void OnBlockCountChanged()

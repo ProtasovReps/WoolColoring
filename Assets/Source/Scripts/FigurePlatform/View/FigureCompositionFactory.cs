@@ -21,6 +21,9 @@ public class FigureCompositionFactory : MonoBehaviour
     {
         _disposer = objectDisposer;
         _figureFactory.Initialize(_disposer);
+        _colorPallete = new ColorPallete(_figureColors);
+        _newFigures = new Queue<FigureCompositionView>(_compositionViewsPrefabs);
+        _producedCompositions = new List<FigureCompositionView>(_compositionViewsPrefabs.Length);
     }
 
     public FigureComposition Produce()
@@ -41,14 +44,6 @@ public class FigureCompositionFactory : MonoBehaviour
         FigureCompositionView newView = Instantiate(compositionView);
         Figure[] figures = GetFigures(newView);
         return BindComposition(newView, figures);
-    }
-
-    [Inject]
-    private void Inject()
-    {
-        _colorPallete = new ColorPallete(_figureColors);
-        _newFigures = new Queue<FigureCompositionView>(_compositionViewsPrefabs);
-        _producedCompositions = new List<FigureCompositionView>(_compositionViewsPrefabs.Length);
     }
 
     private Figure[] GetFigures(FigureCompositionView compositionView)

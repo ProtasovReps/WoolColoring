@@ -1863,7 +1863,7 @@ RectTransform:
   m_GameObject: {fileID: 8188747218068421174}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 598360014526325288}
@@ -1871,7 +1871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 388.1}
+  m_AnchoredPosition: {x: 0, y: 387.6}
   m_SizeDelta: {x: 1080.0001, y: 187.51587}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3805762501368576626
@@ -1902,7 +1902,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ma\u011Fazada \xFCcretsiz paralar al\u0131n!"
+  m_text: "\u0417\u0430\u0431\u0435\u0440\u0438 \u0431\u0435\u0441\u043F\u043B\u0430\u0442\u043D\u044B\u0435
+    \u043C\u043E\u043D\u0435\u0442\u043A\u0438 \u0432 \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0435!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -1999,7 +2000,6 @@ MonoBehaviour:
   _animationDuration: 0.5
   _disappearDelay: 3
   _rechargeableButton:
-  - {fileID: 0}
   - {fileID: 0}
 --- !u!114 &1414845141641819722
 MonoBehaviour:

@@ -20,8 +20,15 @@ public class Wallet : ICountChangeable
             throw new ArgumentException(nameof(count));
 
         Count += count;
-
         CountChanged?.Invoke();
+    }
+
+    public void AddSilent(int count)
+    {
+        if (count <= 0)
+            throw new ArgumentException(nameof(count));
+
+        Count += count;
     }
 
     public bool TrySpend(int count)
@@ -30,7 +37,6 @@ public class Wallet : ICountChangeable
             return false;
 
         Count -= count;
-
         CountChanged?.Invoke();
         return true;
     }

@@ -6,6 +6,9 @@ public class FigureFactory : MonoBehaviour
     private BoltStash _stash;
     private ObjectDisposer _disposer;
 
+    [Inject]
+    private void Inject(BoltStash stash) => _stash = stash;
+
     public void Initialize(ObjectDisposer disposer)
        => _disposer = disposer;
 
@@ -25,7 +28,4 @@ public class FigureFactory : MonoBehaviour
 
         return model;
     }
-
-    [Inject]
-    private void Inject(BoltStash stash) => _stash = stash;
 }
