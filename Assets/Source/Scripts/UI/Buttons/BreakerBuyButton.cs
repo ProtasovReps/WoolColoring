@@ -1,7 +1,10 @@
+using Reflex.Attributes;
+
 public class BreakerBuyButton : BuyBuffButton
 {
-    public void Initialize(Breaker explodeStrategy)
+    [Inject]
+    private void Inject(Breaker breaker)
     {
-        base.Initialize(explodeStrategy);
+        base.Initialize(breaker);
     }
 }

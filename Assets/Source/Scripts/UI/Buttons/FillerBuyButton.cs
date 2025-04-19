@@ -1,7 +1,10 @@
+using Reflex.Attributes;
+
 public class FillerBuyButton : BuyBuffButton
 {
-    public void Initialize(Filler fillHolderStrategy)
+    [Inject]
+    private void Inject(Filler filler)
     {
-        base.Initialize(fillHolderStrategy);
+        base.Initialize(filler);
     }
 }

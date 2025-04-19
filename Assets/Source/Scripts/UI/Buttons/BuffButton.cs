@@ -44,8 +44,8 @@ public class BuffButton : ButtonView
 
         if (_bag.TryGetBuff(_buff) == false)
         {
-            _buffDealMenu.Activate();
             _buffDealMenu.SetTargetReward(_buff);
+            _buffDealMenu.Activate();
             return;
         }
 

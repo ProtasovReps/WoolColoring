@@ -1,7 +1,10 @@
+using Reflex.Attributes;
+
 public class UnlockerBuyButton : BuyBuffButton
 {
-    public void Initialize(Unlocker unlockHolderStrategy)
+    [Inject]
+    private void Inject(Unlocker unlocker)
     {
-        base.Initialize(unlockHolderStrategy);
+        base.Initialize(unlocker);
     }
 }

@@ -1,4 +1,5 @@
 using Ami.BroAudio;
+using Reflex.Attributes;
 using System;
 using TMPro;
 using UnityEngine;
@@ -8,10 +9,18 @@ public abstract class BuyBuffButton : ButtonView
     [SerializeField] private SoundID _purchaseRejectedSound;
     [SerializeField] private ParticleSystem _purchaseEffect;
     [SerializeField] private TMP_Text _priceText;
-    [SerializeField] private Store _store;
     [SerializeField, Min(1)] private int _buffBuyCount;
 
+    private Store _store;
     private IBuff _buff;
+
+    public IBuff CurrentBuff => _buff;
+
+    [Inject]
+    private void Inject(Store store)
+    {
+        _store = store;
+    }
 
     public void Initialize(IBuff buff)
     {

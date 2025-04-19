@@ -32,9 +32,9 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private SoundID _soundID;
     [Header("UI")]
     [SerializeField] private ActivatableUIInitializator _activatableInitializator;
-    [SerializeField] private BuffInitializer _buffInitializer;
     [SerializeField] private UIAnimations _uIAnimator;
     [SerializeField] private LevelTransitionAnimation _levelTransitionAnimation;
+    [SerializeField] private Store _store;
     [Header("Disposer")]
     [SerializeField] private ObjectDisposer _disposer;
 
@@ -74,6 +74,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         containerBuilder.AddSingleton(typeof(PlayerInput));
         containerBuilder.AddSingleton(_levelTransitionAnimation);
         containerBuilder.AddSingleton(_uIAnimator);
+        containerBuilder.AddSingleton(_store);
         containerBuilder.AddSingleton(_stopwatch);
     }
 
@@ -170,8 +171,11 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
         BuffBag buffBag = new(buffs);
 
+        containerBuilder.AddSingleton(_unlockHolderStrategy);
+        containerBuilder.AddSingleton(_fillHolderStrategy);
+        containerBuilder.AddSingleton(_removeStrategy);
+        containerBuilder.AddSingleton(_breaker);
         containerBuilder.AddSingleton(buffBag);
-        _buffInitializer.Initialize(_unlockHolderStrategy, _fillHolderStrategy, _breaker, _removeStrategy);
         return buffBag;
     }
 

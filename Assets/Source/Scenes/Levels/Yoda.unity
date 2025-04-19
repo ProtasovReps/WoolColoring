@@ -1099,6 +1099,10 @@ PrefabInstance:
       value: LevelInstaller
       objectReference: {fileID: 0}
     - target: {fileID: 8339587222200434884, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
+      propertyPath: _store
+      value: 
+      objectReference: {fileID: 6071602620943415372}
+    - target: {fileID: 8339587222200434884, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
       propertyPath: _malbert
       value: 
       objectReference: {fileID: 1071964235}

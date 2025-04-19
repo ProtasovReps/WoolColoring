@@ -1,7 +1,10 @@
+using Reflex.Attributes;
+
 public class RemoverBuyButton : BuyBuffButton
 {
-    public void Initialize(Remover clearStrategy)
+    [Inject]
+    private void Inject(Remover remover)
     {
-        base.Initialize(clearStrategy);
+        base.Initialize(remover);
     }
 }
