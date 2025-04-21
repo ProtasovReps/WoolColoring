@@ -33,7 +33,7 @@ public class StringDistributor : IDisposable
         _switcher.HolderSwitched -= OnHolderSwitched;
     }
 
-    public void Distribute(Bolt bolt)
+    public Bolt Distribute(Bolt bolt)
     {
         if (bolt == null)
             throw new ArgumentNullException(nameof(bolt));
@@ -46,6 +46,8 @@ public class StringDistributor : IDisposable
             holder.Add(colorString);
         else
             _whiteHolder.Add(colorString);
+
+        return bolt;
     }
 
     private void OnHolderSwitched(ColoredStringHolder holder)

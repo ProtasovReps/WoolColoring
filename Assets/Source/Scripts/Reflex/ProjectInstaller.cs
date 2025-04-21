@@ -52,6 +52,6 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
         else
             levelIndex = lastLevelIndex;
 
-        SceneManager.LoadScene(/*levelIndex*/15, LoadSceneMode.Single);
+        SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
     }
 }
