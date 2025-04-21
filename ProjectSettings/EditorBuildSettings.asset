@@ -15,17 +15,32 @@ EditorBuildSettings:
     path: Assets/Source/Scenes/Levels/Pussy.unity
     guid: 81bd7ad005489714ebbb4531ba9f3288
   - enabled: 1
+    path: Assets/Source/Scenes/Levels/Minion.unity
+    guid: 3c929952e4b22714e9aef26ac58d37f2
+  - enabled: 1
     path: Assets/Source/Scenes/Levels/Watermelon.unity
     guid: a07b8a022cc00bf4a87cedabec3ab0b1
   - enabled: 1
-    path: Assets/Source/Scenes/Levels/Bear.unity
-    guid: df2aa6c34e34eaf4a9b6eac8b2b98a14
+    path: Assets/Source/Scenes/Levels/Steve.unity
+    guid: ca64993da399f8f4bbc25a17914f3a8f
   - enabled: 1
     path: Assets/Source/Scenes/Levels/Ducky.unity
     guid: e8d026f759c390f488272a94c0d8d92d
   - enabled: 1
-    path: Assets/Source/Scenes/Levels/PigameBear.unity
-    guid: d15b8b5e0d99e2a48aa77d02f7073c6c
+    path: Assets/Source/Scenes/Levels/DoggyPatrol.unity
+    guid: 1626492f3e4bb8e4e930d43fed255fd2
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/Monkey.unity
+    guid: 9ab2a1074ab5d2b4a9897cd27a0f2036
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/NinjaTurtle.unity
+    guid: e7070e14dbf55cc46af9a5730292728d
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/Spiderman.unity
+    guid: bf4f9db41174f374ab59ca2d08915f93
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/Bear.unity
+    guid: df2aa6c34e34eaf4a9b6eac8b2b98a14
   - enabled: 1
     path: Assets/Source/Scenes/Levels/Stich.unity
     guid: 01419c13095fd0842b83ccc34f5111ce
@@ -39,9 +54,18 @@ EditorBuildSettings:
     path: Assets/Source/Scenes/Levels/Coala.unity
     guid: 726320a85668c2046841dcf1c47b5237
   - enabled: 1
-    path: Assets/Source/Scenes/Levels/Steve.unity
-    guid: ca64993da399f8f4bbc25a17914f3a8f
+    path: Assets/Source/Scenes/Levels/PussInBoots.unity
+    guid: d7b9be6b84ac1bb40b829e882e28eb9d
   - enabled: 1
-    path: Assets/Source/Scenes/Levels/DoggyPatrol.unity
-    guid: 1626492f3e4bb8e4e930d43fed255fd2
+    path: Assets/Source/Scenes/Levels/Yoda.unity
+    guid: 8768ae8556c73e4469dd691f6e2e5bde
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/PigameBear.unity
+    guid: d15b8b5e0d99e2a48aa77d02f7073c6c
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/Mario.unity
+    guid: 18ca7861f47fc88499944983b344627c
+  - enabled: 1
+    path: Assets/Source/Scenes/Levels/Shrek.unity
+    guid: b5607bb3b9bf0204f9380b0a0d40876e
   m_configObjects: {}

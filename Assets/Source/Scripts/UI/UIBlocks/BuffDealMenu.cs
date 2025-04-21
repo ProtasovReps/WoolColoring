@@ -36,18 +36,21 @@ public class BuffDealMenu : ActivatableUI
         _targetBuffReward = buff;
     }
 
-    public void ShowAd()
+    public void AddReward(int count)
     {
-        YG2.RewardedAdvShow(_targetBuffReward.Id, AddBuff);
+        YG2.RewardedAdvShow(_targetBuffReward.Id, () => AddBuff(count));
     }
 
-    private void AddBuff()
+    private void AddBuff(int count)
     {
         if (_targetBuffReward == null)
             throw new ArgumentNullException(nameof(_targetBuffReward));
 
-        _wallet.AddSilent(_targetBuffReward.Price);
-        _store.TryPurchase(_targetBuffReward, AddAmount);
+        for (int i = 0; i < count; i++)
+        {
+            _wallet.AddSilent(_targetBuffReward.Price);
+            _store.TryPurchase(_targetBuffReward, AddAmount);
+        }
 
         _targetBuffReward = null;
     }

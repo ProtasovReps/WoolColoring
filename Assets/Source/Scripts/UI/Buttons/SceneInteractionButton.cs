@@ -1,6 +1,7 @@
 using Ami.BroAudio;
 using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
+using YG;
 
 public abstract class SceneInteractionButton : ButtonView
 {
@@ -18,6 +19,7 @@ public abstract class SceneInteractionButton : ButtonView
 
     private async UniTaskVoid ValidateClick()
     {
+        YG2.RewardedAdvShow(name);
         Deactivate();
         BroAudio.Stop(BroAudioType.Music);
         base.OnButtonClick();
