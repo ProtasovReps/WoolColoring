@@ -18,6 +18,8 @@ public class BuffButton : ButtonView
     private IBuff _buff;
     private CancellationTokenSource _cancellationTokenSource;
 
+    public bool HasCooldown { get; private set; }
+
     [Inject]
     private void Inject(BuffBag buffBag)
     {
@@ -39,6 +41,8 @@ public class BuffButton : ButtonView
         _buff = buff;
     }
 
+    public void SetHasCooldown(bool hasCooldown) => HasCooldown = hasCooldown;
+
     protected override void OnButtonClick()
     {
         base.OnButtonClick();
@@ -57,7 +61,12 @@ public class BuffButton : ButtonView
         }
 
         _effect.Play();
-        WaitCoolDown().Forget();
+
+        if (HasCooldown)
+        {
+            WaitCoolDown().Forget();
+        }
+
         _buff.Execute();
     }
 

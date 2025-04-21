@@ -10,5 +10,8 @@ namespace YG
         public int BlocksColorized;
         public int LastLevelIndex;
         public int UnlockedLevelsCount;
+        public bool IfFreeBuffsGiven;
+        public bool IfFreeCoinsGiven;
+        public bool IfGuidePassed;
     }
 }

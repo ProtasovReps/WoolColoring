@@ -2898,13 +2898,17 @@ PrefabInstance:
       value: 536870913
       objectReference: {fileID: 0}
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+      propertyPath: _isCoolingDown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _clickSound._sourceAsset
       value: 
       objectReference: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _clickSound.<DebugObject>k__BackingField
       value: 
-      objectReference: {fileID: 1947460551862811663}
+      objectReference: {fileID: 267914803731424717}
     - target: {fileID: 3598033422130043826, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -15.299999
@@ -3043,11 +3047,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 6716493851398694273}
   m_SourcePrefab: {fileID: 100100000, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
---- !u!1 &1947460551862811663 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
-  m_PrefabInstance: {fileID: 3295977896587271009}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6205148661974437779 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8908322080196760818, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
@@ -3254,6 +3253,10 @@ PrefabInstance:
       propertyPath: _ruleText
       value: 
       objectReference: {fileID: 5931464389694980371}
+    - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+      propertyPath: _isCoolingDown
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _clickSound.<DebugObject>k__BackingField
       value: 
@@ -3484,13 +3487,17 @@ PrefabInstance:
       value: 536870913
       objectReference: {fileID: 0}
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+      propertyPath: _isCoolingDown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _clickSound._sourceAsset
       value: 
       objectReference: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _clickSound.<DebugObject>k__BackingField
       value: 
-      objectReference: {fileID: 8465309695396270503}
+      objectReference: {fileID: 267914803731424717}
     - target: {fileID: 3598033422130043826, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -15.299999
@@ -3662,11 +3669,6 @@ MonoBehaviour:
 --- !u!224 &4062539918959157819 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8908322080196760818, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
-  m_PrefabInstance: {fileID: 4882391502040479433}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8465309695396270503 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
   m_PrefabInstance: {fileID: 4882391502040479433}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4885825918731045647
@@ -4388,13 +4390,17 @@ PrefabInstance:
       value: 1073741831
       objectReference: {fileID: 0}
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
+      propertyPath: _isCoolingDown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _clickSound._sourceAsset
       value: 
       objectReference: {fileID: 11400000, guid: 3e0bdde35e139fb4dbaec309f3259d09, type: 2}
     - target: {fileID: 1973730273074675702, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: _clickSound.<DebugObject>k__BackingField
       value: 
-      objectReference: {fileID: 6431981559189877346}
+      objectReference: {fileID: 267914803731424717}
     - target: {fileID: 3598033422130043826, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -15.299999
@@ -4572,8 +4578,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   translationName: RemoveBuff
   FallbackText: "\u0423\u0431\u0440\u0430\u0442\u044C"
---- !u!1 &6431981559189877346 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3943868369253558126, guid: a7113c014b5c17a4fb5bcd9b806e997b, type: 3}
-  m_PrefabInstance: {fileID: 8068641030366418188}
-  m_PrefabAsset: {fileID: 0}

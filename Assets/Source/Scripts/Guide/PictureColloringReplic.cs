@@ -29,6 +29,7 @@ public class PictureColloringReplic : Replic
     private async UniTaskVoid OnBlockColorChanged()
     {
         _picture.BlockCountChanged -= () => OnBlockColorChanged().Forget();
+        _guideBoltClickReader.SetPause(true);
         _player.transform.gameObject.SetActive(false);
         await UniTask.WaitForSeconds(_deactivateDelay);
         Deactivate();

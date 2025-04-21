@@ -39,7 +39,7 @@ public class ProjectInstaller : MonoBehaviour, IInstaller
         else
             newLanguage = english;
 
-        LeanLocalization.SetCurrentLanguageAll(newLanguage);
+        LeanLocalization.SetCurrentLanguageAll(english);
     }
 
     private void InstallLevel()

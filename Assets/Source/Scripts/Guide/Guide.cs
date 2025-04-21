@@ -1,24 +1,37 @@
+using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
+using YG;
 
 public class Guide : MonoBehaviour
 {
     [SerializeField] private ReplicPlayer[] _replicPlayers;
     [SerializeField] private LevelUI _levelUI;
+    [SerializeField] private Button[] _levelUIButtons;
     [SerializeField] private GuideBoltClickReader _guideClickReader;
+    [SerializeField] private float _startDelay;
 
-    private BoltClickReader _reader;
+    private BoltClickReader _boltClickReader;
     private int _replicPlayerIndex;
 
     [Inject]
     private void Inject(BoltClickReader reader)
     {
-        _reader = reader;
+        _boltClickReader = reader;
     }
 
-    private void Awake()
+    private void Start()
     {
-        _reader.SetPause(true);
+        if(YG2.saves.IfGuidePassed)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        SetButtonsInteractable(false);
+        _boltClickReader.SetPause(true);
         _guideClickReader.SetPause(true);
         _levelUI.gameObject.SetActive(false);
         ShowReplicPlayers();
@@ -27,7 +40,10 @@ public class Guide : MonoBehaviour
     private void ShowReplicPlayers()
     {
         if (_replicPlayerIndex == _replicPlayers.Length)
+        {
+            FinalizeGuide();
             return;
+        }
 
         ReplicPlayer player = _replicPlayers[_replicPlayerIndex];
 
@@ -40,5 +56,20 @@ public class Guide : MonoBehaviour
         replic.Executed -= OnPlayerExecuted;
         _replicPlayerIndex++;
         ShowReplicPlayers();
+    }
+
+    private void FinalizeGuide()
+    {
+        SetButtonsInteractable(true);
+        _boltClickReader.SetPause(false);
+        YG2.saves.IfGuidePassed = true;
+    }
+
+    private void SetButtonsInteractable(bool isInteractable)
+    {
+        for (int i = 0; i < _levelUIButtons.Length; i++)
+        {
+            _levelUIButtons[i].interactable = isInteractable;
+        }
     }
 }
