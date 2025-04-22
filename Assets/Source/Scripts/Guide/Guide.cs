@@ -62,7 +62,6 @@ public class Guide : MonoBehaviour
         _boltClickReader.SetPause(false);
         YG2.MetricaSend(MetricParams.GuidePassed.ToString());
         YG2.saves.IfGuidePassed = true;
-        YG2.SaveProgress();
     }
 
     private void SetButtonsInteractable(bool isInteractable)
