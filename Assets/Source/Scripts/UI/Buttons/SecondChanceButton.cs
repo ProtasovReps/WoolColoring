@@ -1,8 +1,11 @@
 using Reflex.Attributes;
+using UnityEngine;
 using YG;
 
 public class SecondChanceButton : ButtonView
 {
+    [SerializeField] private ActivatableUI _block;
+
     private WhiteStringHolder _whiteHolder;
 
     [Inject]
@@ -14,12 +17,14 @@ public class SecondChanceButton : ButtonView
     protected override void OnButtonClick()
     {
         YG2.RewardedAdvShow(RewardIds.SecondChance, OnAdWatched);
-        Deactivate();
         base.OnButtonClick();
     }
 
     private void OnAdWatched()
     {
+        YG2.MetricaSend(MetricParams.RevivedWithAd.ToString());
+        _block.Deactivate();
+        Deactivate();
         _whiteHolder.RemoveAllStrings();
     }
 }

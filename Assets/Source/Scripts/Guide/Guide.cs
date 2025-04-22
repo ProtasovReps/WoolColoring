@@ -1,6 +1,4 @@
-using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
-using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 using YG;
@@ -26,7 +24,7 @@ public class Guide : MonoBehaviour
     {
         if(YG2.saves.IfGuidePassed)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
             return;
         }
 
@@ -62,7 +60,9 @@ public class Guide : MonoBehaviour
     {
         SetButtonsInteractable(true);
         _boltClickReader.SetPause(false);
+        YG2.MetricaSend(MetricParams.GuidePassed.ToString());
         YG2.saves.IfGuidePassed = true;
+        YG2.SaveProgress();
     }
 
     private void SetButtonsInteractable(bool isInteractable)

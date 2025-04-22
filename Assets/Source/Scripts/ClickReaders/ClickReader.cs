@@ -18,15 +18,13 @@ public abstract class ClickReader : MonoBehaviour
         _playerInput = playerInput;
     }
 
-    private void OnEnable()
+    private void Awake()
     {
-        _playerInput.PlayerClick.Enable();
         _playerInput.PlayerClick.Click.performed += OnClickPerformed;
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
-        _playerInput.PlayerClick.Disable();
         _playerInput.PlayerClick.Click.performed -= OnClickPerformed;
     }
 

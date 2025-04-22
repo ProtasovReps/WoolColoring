@@ -3,6 +3,7 @@ using Reflex.Attributes;
 using System;
 using TMPro;
 using UnityEngine;
+using YG;
 
 public abstract class BuyBuffButton : ButtonView
 {
@@ -10,6 +11,7 @@ public abstract class BuyBuffButton : ButtonView
     [SerializeField] private ParticleSystem _purchaseEffect;
     [SerializeField] private TMP_Text _priceText;
     [SerializeField, Min(1)] private int _buffBuyCount;
+    [SerializeField] private MetricParams _metricParams;
 
     private Store _store;
     private IBuff _buff;
@@ -39,6 +41,7 @@ public abstract class BuyBuffButton : ButtonView
         }
         else
         {
+            YG2.MetricaSend(_metricParams.ToString());
             _purchaseEffect.Play();
             base.OnButtonClick();
         }

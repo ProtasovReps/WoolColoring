@@ -9,7 +9,7 @@ public class BuffReplic : Replic
     public override void Activate()
     {
         _buff.interactable = true;
-        _buffButton.SetHasCooldown(false);
+        _buffButton.SetIsNotCooldowning(true);
         _buff.onClick.AddListener(OnBuffClicked);
         base.Activate();
     }
@@ -18,7 +18,7 @@ public class BuffReplic : Replic
     {
         _buff.interactable = false;
         _buff.onClick.RemoveListener(OnBuffClicked);
-        _buffButton.SetHasCooldown(true);
+        _buffButton.SetIsNotCooldowning(false);
         base.Deactivate();
     }
 

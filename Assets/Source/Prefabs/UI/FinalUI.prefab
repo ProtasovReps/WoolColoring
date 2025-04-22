@@ -855,7 +855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1055036397405653141, guid: dd31eafc90420c8449739c320ee247c3, type: 3}
       propertyPath: m_Value
-      value: -3.075242
+      value: -0.000000988645
       objectReference: {fileID: 0}
     - target: {fileID: 1274641249379346148, guid: dd31eafc90420c8449739c320ee247c3, type: 3}
       propertyPath: m_Spacing
@@ -1011,7 +1011,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6944062141311345121, guid: dd31eafc90420c8449739c320ee247c3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 4528.6177
+      value: 1111.2522
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1569,6 +1569,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 51866413954096949, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4922948831086704387}
+    - targetCorrespondingSourceObject: {fileID: 51866413954096949, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2051465215344151727}
   m_SourcePrefab: {fileID: 100100000, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
 --- !u!224 &3340120947535679860 stripped
 RectTransform:
@@ -1608,3 +1611,21 @@ MonoBehaviour:
     ID: 536870913
     _sourceAsset: {fileID: 11400000, guid: 9a4e26720762db04c951d8bef1d475c2, type: 2}
     <DebugObject>k__BackingField: {fileID: 7152180851517743848}
+--- !u!114 &2051465215344151727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7152180851517743848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c578a1fc78b0464c80a02a79b51a987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 5503474672920062533}
+  _clickSound:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 7152180851517743848}
+  _metricParams: 15

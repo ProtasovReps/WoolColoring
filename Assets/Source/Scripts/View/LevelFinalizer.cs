@@ -4,6 +4,8 @@ using LitMotion;
 using LitMotion.Extensions;
 using Reflex.Attributes;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using YG;
 
 public class LevelFinalizer : MonoBehaviour
 {
@@ -17,36 +19,36 @@ public class LevelFinalizer : MonoBehaviour
     [SerializeField] private float _cameraUpTargetPosition = 5f;
     [SerializeField] private float _finalMenuAppearDelay;
 
+    private PlayerInput _playerInput;
     private Picture _picture;
     private BoltClickReader _boltReader;
     private FigureClickReader _figureReader;
-    private Stopwatch _stopwatch;
 
     [Inject]
-    private void Inject(Picture picture, BoltClickReader boltClickReader, FigureClickReader figureClickReader, Stopwatch stopwatch)
+    private void Inject(Picture picture, BoltClickReader boltClickReader, FigureClickReader figureClickReader, PlayerInput input)
     {
         _picture = picture;
         _boltReader = boltClickReader;
         _figureReader = figureClickReader;
-        _stopwatch = stopwatch;
         _picture.Finished += () => Finalize().Forget();
+        _playerInput = input;
     }
 
     [ContextMenu("Test")]
     private async UniTaskVoid Finalize()
     {
-        _stopwatch.Stop();
-
         Unsubscribe();
         DisableUI();
         DisableClickReaders();
         AnimateCamera();
         PlayEffects();
         SwitchMusic();
+        SendMetrics();
 
         _pictureView.ResetPosition();
         await UniTask.WaitForSeconds(_finalMenuAppearDelay);
         _finalBlock.Activate();
+        _playerInput.PlayerClick.Disable();
     }
 
     private void Unsubscribe()
@@ -85,5 +87,13 @@ public class LevelFinalizer : MonoBehaviour
     {
         BroAudio.Stop(BroAudioType.Music);
         BroAudio.Play(_finalMusic);
+    }
+
+    private void SendMetrics()
+    {
+        int levelIndex = SceneManager.GetActiveScene().buildIndex;
+        string metricsFormatedId = $"{levelIndex}{MetricParams.LevelPassed}";
+
+        YG2.MetricaSend(metricsFormatedId);
     }
 }

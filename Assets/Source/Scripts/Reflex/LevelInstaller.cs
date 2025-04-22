@@ -65,13 +65,18 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         Wallet wallet = InstallWallet(containerBuilder, picture);
         BuffBag buffBag = InstallBuffs(containerBuilder);
         _stopwatch = new Stopwatch();
+        PlayerInput input = new();
+        AdWatchedMetrics metrics = new();
+
+        _disposer.Add(metrics);
 
         InstallBolt(containerBuilder, stringDistributor, picture);
         InstallRopeConnector(containerBuilder);
         InstallClickReaders(containerBuilder);
         InstallSavers(wallet, buffBag, picture);
+        input.PlayerClick.Enable();
 
-        containerBuilder.AddSingleton(typeof(PlayerInput));
+        containerBuilder.AddSingleton(input);
         containerBuilder.AddSingleton(_levelTransitionAnimation);
         containerBuilder.AddSingleton(_uIAnimator);
         containerBuilder.AddSingleton(_store);

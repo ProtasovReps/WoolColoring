@@ -183,6 +183,11 @@ MonoBehaviour:
         extraData: 
   Localization:
     setLanguageMod: 0
+  Metrica:
+    enable: 1
+    metricaCounterID: 101294246
+    log: 1
+    useYandexMetrica: 1
   Payments:
     durationPayPanel: 1
     testBuyFail: 0
@@ -275,6 +280,8 @@ MonoBehaviour:
     showFirstAdv: 0
     interAdvInterval: 0
     postponeCallByFail: 0
+    useYandexMetrica: 0
+    metricaCounterID: 0
     skipInterAdvAfterReward: 0
     saveLocal: 0
     saveCloud: 0

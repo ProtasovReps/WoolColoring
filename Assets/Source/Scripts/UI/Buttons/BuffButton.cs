@@ -4,6 +4,7 @@ using Reflex.Attributes;
 using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
 using System.Threading;
+using YG;
 
 public class BuffButton : ButtonView
 {
@@ -13,12 +14,13 @@ public class BuffButton : ButtonView
     [SerializeField] private float _coolDownTime;
     [SerializeField] private Image _cooldownImage;
     [SerializeField] private ParticleSystem _effect;
+    [SerializeField] private MetricParams _metricParams;
 
     private BuffBag _bag;
     private IBuff _buff;
     private CancellationTokenSource _cancellationTokenSource;
 
-    public bool HasCooldown { get; private set; }
+    public bool IsNotCooldowning { get; private set; }
 
     [Inject]
     private void Inject(BuffBag buffBag)
@@ -41,7 +43,7 @@ public class BuffButton : ButtonView
         _buff = buff;
     }
 
-    public void SetHasCooldown(bool hasCooldown) => HasCooldown = hasCooldown;
+    public void SetIsNotCooldowning(bool hasCooldown) => IsNotCooldowning = hasCooldown;
 
     protected override void OnButtonClick()
     {
@@ -62,11 +64,12 @@ public class BuffButton : ButtonView
 
         _effect.Play();
 
-        if (HasCooldown)
+        if (IsNotCooldowning == false)
         {
             WaitCoolDown().Forget();
         }
 
+        YG2.MetricaSend(_metricParams.ToString());
         _buff.Execute();
     }
 

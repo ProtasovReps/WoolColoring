@@ -3944,6 +3944,7 @@ MonoBehaviour:
   _purchaseEffect: {fileID: 1363859547798195071}
   _priceText: {fileID: 1062129760937329269}
   _buffBuyCount: 1
+  _metricParams: 10
 --- !u!114 &2882217480889030205 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3429956913336637336, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
@@ -4116,6 +4117,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 51866413954096949, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6681900039985996489}
+    - targetCorrespondingSourceObject: {fileID: 51866413954096949, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6807029835803142760}
   m_SourcePrefab: {fileID: 100100000, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
 --- !u!1 &1102271086721684630 stripped
 GameObject:
@@ -4180,6 +4184,24 @@ MonoBehaviour:
     _sourceAsset: {fileID: 0}
     <DebugObject>k__BackingField: {fileID: 1102271086721684630}
   _activatable: {fileID: 4719612418985666334}
+--- !u!114 &6807029835803142760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102271086721684630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c578a1fc78b0464c80a02a79b51a987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 2336785670659923003}
+  _clickSound:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 1102271086721684630}
+  _metricParams: 18
 --- !u!114 &2336785670659923003 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3429956913336637336, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
@@ -4349,6 +4371,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 51866413954096949, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6339094134512243055}
+    - targetCorrespondingSourceObject: {fileID: 51866413954096949, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7164698914535639788}
   m_SourcePrefab: {fileID: 100100000, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
 --- !u!1 &1270548384116492217 stripped
 GameObject:
@@ -4413,6 +4438,24 @@ MonoBehaviour:
     _sourceAsset: {fileID: 0}
     <DebugObject>k__BackingField: {fileID: 1270548384116492217}
   _activatable: {fileID: 4719612418985666334}
+--- !u!114 &7164698914535639788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270548384116492217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c578a1fc78b0464c80a02a79b51a987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 4503606908630290196}
+  _clickSound:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 1270548384116492217}
+  _metricParams: 19
 --- !u!114 &4503606908630290196 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3429956913336637336, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
@@ -4998,6 +5041,7 @@ MonoBehaviour:
   _purchaseEffect: {fileID: 1363859547798195071}
   _priceText: {fileID: 1581403723481352465}
   _buffBuyCount: 1
+  _metricParams: 9
 --- !u!224 &8695569938132848113 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5594487663632952489, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
@@ -5156,6 +5200,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 51866413954096949, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6415769326331954020}
+    - targetCorrespondingSourceObject: {fileID: 51866413954096949, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6919064182311098496}
   m_SourcePrefab: {fileID: 100100000, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
 --- !u!114 &1324162724042919148 stripped
 MonoBehaviour:
@@ -5231,6 +5278,24 @@ MonoBehaviour:
     _sourceAsset: {fileID: 0}
     <DebugObject>k__BackingField: {fileID: 4414017338583991361}
   _activatable: {fileID: 4719612418985666334}
+--- !u!114 &6919064182311098496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4414017338583991361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c578a1fc78b0464c80a02a79b51a987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 1324162724042919148}
+  _clickSound:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 4414017338583991361}
+  _metricParams: 21
 --- !u!224 &8095895134556829661 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5594487663632952489, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
@@ -5448,6 +5513,7 @@ MonoBehaviour:
   _purchaseEffect: {fileID: 1363859547798195071}
   _priceText: {fileID: 918375345247246050}
   _buffBuyCount: 1
+  _metricParams: 11
 --- !u!114 &8712215285836738227 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3429956913336637336, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
@@ -5615,6 +5681,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 51866413954096949, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
       insertIndex: -1
       addedObject: {fileID: 85843900841655538}
+    - targetCorrespondingSourceObject: {fileID: 51866413954096949, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6596382739988680453}
   m_SourcePrefab: {fileID: 100100000, guid: 5b0c3ada5a1a2464fab36fd631e06191, type: 3}
 --- !u!224 &2309365441365456634 stripped
 RectTransform:
@@ -5695,6 +5764,24 @@ MonoBehaviour:
     _sourceAsset: {fileID: 0}
     <DebugObject>k__BackingField: {fileID: 7860852258664269158}
   _activatable: {fileID: 4719612418985666334}
+--- !u!114 &6596382739988680453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7860852258664269158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c578a1fc78b0464c80a02a79b51a987, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _button: {fileID: 4771204137395178955}
+  _clickSound:
+    ID: 0
+    _sourceAsset: {fileID: 0}
+    <DebugObject>k__BackingField: {fileID: 7860852258664269158}
+  _metricParams: 20
 --- !u!1001 &8723502501829127062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5926,3 +6013,4 @@ MonoBehaviour:
   _purchaseEffect: {fileID: 1363859547798195071}
   _priceText: {fileID: 3948191185120550063}
   _buffBuyCount: 1
+  _metricParams: 12
