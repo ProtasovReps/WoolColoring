@@ -1649,9 +1649,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 541265138700207541, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 541265138700207541, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 541265138700207541, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -21.39
+      objectReference: {fileID: 0}
     - target: {fileID: 678371023658483545, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
       propertyPath: m_Spacing
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472222799435080643, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472222799435080643, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.99999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1472222799435080643, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.3987435
+      objectReference: {fileID: 0}
+    - target: {fileID: 2810685166033777183, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -166.95001
       objectReference: {fileID: 0}
     - target: {fileID: 3543708467373289715, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
       propertyPath: m_IsActive
@@ -1741,6 +1769,18 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 5670997306418219877, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670997306418219877, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 5696151738752503270, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.0002965184
+      objectReference: {fileID: 0}
     - target: {fileID: 6515875545289987963, guid: 2bcaab97211b7114183a706e87c693f1, type: 3}
       propertyPath: m_IsActive
       value: 0
