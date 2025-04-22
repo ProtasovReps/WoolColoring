@@ -1,12 +1,9 @@
 using Lean.Localization;
 using System;
 using System.Linq;
-using UnityEngine;
 
 public class LanguageButton : ButtonView
 {
-    [SerializeField] private LeanLocalization _localisation;
-
     private string[] _languages;
 
     private void Awake()
@@ -16,10 +13,10 @@ public class LanguageButton : ButtonView
 
     protected override void OnButtonClick()
     {
-        int currentLanguageIndex = Array.IndexOf(_languages, _localisation.CurrentLanguage);
+        int currentLanguageIndex = Array.IndexOf(_languages, LeanLocalization.GetFirstCurrentLanguage());
         int nextIndex = (currentLanguageIndex + 1) % _languages.Length;
 
-        _localisation.CurrentLanguage = _languages[nextIndex];
+        LeanLocalization.SetCurrentLanguageAll(_languages[nextIndex]);
         base.OnButtonClick();
     }
 }

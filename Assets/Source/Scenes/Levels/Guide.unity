@@ -3165,7 +3165,7 @@ MonoBehaviour:
       \u0434\u043B\u044F \u0432\u044B\u0448\u0438\u0432\u0430\u043D\u0438\u044F."
     Object: {fileID: 0}
   - Language: English
-    Text: We use colored spools for embroidery.
+    Text: We use colored coils for embroidery.
     Object: {fileID: 0}
   - Language: Turkish
     Text: "Nak\u0131\u015F i\xE7in renkli makaralar kullan\u0131yoruz."
@@ -5115,10 +5115,10 @@ MonoBehaviour:
       \u043D\u0430 \u044D\u0442\u043E?"
     Object: {fileID: 0}
   - Language: English
-    Text: Now click on any figure that she will say to this?
+    Text: Now click on any shape, what will it say to that?
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "\u015Eimdi buna s\xF6yleyece\u011Fi herhangi bir rakam\u0131 t\u0131klay\u0131n?"
+    Text: "\u015Eimdi herhangi bir \u015Fekle bas, bunun i\xE7in ne diyecek?"
     Object: {fileID: 0}
 --- !u!114 &1141542325 stripped
 MonoBehaviour:
@@ -8242,27 +8242,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _figureColors.Array.data[0].b
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
-      propertyPath: _figureColors.Array.data[0].g
-      value: 0.6862745
-      objectReference: {fileID: 0}
-    - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
-      propertyPath: _figureColors.Array.data[0].r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
+      propertyPath: _figureColors.Array.data[0].g
+      value: 0.65565634
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
+      propertyPath: _figureColors.Array.data[0].r
+      value: 0.514151
+      objectReference: {fileID: 0}
+    - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _figureColors.Array.data[1].b
-      value: 0.65882355
+      value: 0.43867922
       objectReference: {fileID: 0}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _figureColors.Array.data[1].g
-      value: 0.94509804
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _figureColors.Array.data[1].r
-      value: 0.48235294
+      value: 0.48438153
       objectReference: {fileID: 0}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _figureColors.Array.data[2].b
@@ -8270,7 +8270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _figureColors.Array.data[2].g
-      value: 0.62080467
+      value: 0.44198105
       objectReference: {fileID: 0}
     - target: {fileID: 4189711186445350531, guid: 4002df29ded2b394294ad68c63ed7a8b, type: 3}
       propertyPath: _figureColors.Array.data[2].r

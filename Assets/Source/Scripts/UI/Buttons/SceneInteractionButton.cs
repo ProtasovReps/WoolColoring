@@ -19,7 +19,7 @@ public abstract class SceneInteractionButton : ButtonView
 
     private async UniTaskVoid ValidateClick()
     {
-        YG2.RewardedAdvShow(name);
+        YG2.InterstitialAdvShow();
         Deactivate();
         BroAudio.Stop(BroAudioType.Music);
         base.OnButtonClick();
