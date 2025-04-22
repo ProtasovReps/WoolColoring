@@ -45,7 +45,7 @@ public class WhiteStringHolder : StringHolder, IFillable<WhiteStringHolder>
             }
             catch (InvalidOperationException)
             {
-                break;
+                continue;
             }
         }
     }

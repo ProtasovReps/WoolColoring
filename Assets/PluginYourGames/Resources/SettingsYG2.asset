@@ -23,8 +23,8 @@ MonoBehaviour:
   InterstitialAdv:
     showFirstAdv: 1
     interAdvInterval: 90
-    postponeCallByFail: 0
-    postponeCallTimer: 10
+    postponeCallByFail: 1
+    postponeCallTimer: 45
     labelAdvSimLabel: 0
   Leaderboards:
     enable: 1
