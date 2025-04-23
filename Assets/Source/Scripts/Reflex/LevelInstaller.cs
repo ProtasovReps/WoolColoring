@@ -40,9 +40,9 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
-    private Unlocker _unlockHolderStrategy;
-    private Filler _fillHolderStrategy;
-    private Remover _removeStrategy;
+    private Unlocker _unlocker;
+    private Filler _filler;
+    private Remover _remover;
     private Breaker _breaker;
     private Stopwatch _stopwatch;
 
@@ -64,16 +64,14 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         StringDistributor stringDistributor = InstallHolders(containerBuilder, picture);
         Wallet wallet = InstallWallet(containerBuilder, picture);
         BuffBag buffBag = InstallBuffs(containerBuilder);
+        ProgressSaver saver = InstallSavers(wallet, buffBag, picture);
         _stopwatch = new Stopwatch();
         PlayerInput input = new();
-        AdWatchedMetrics metrics = new();
-
-        _disposer.Add(metrics);
 
         InstallBolt(containerBuilder, stringDistributor, picture);
         InstallRopeConnector(containerBuilder);
         InstallClickReaders(containerBuilder);
-        InstallSavers(wallet, buffBag, picture);
+        InstallYandex(picture, wallet, saver);
         input.PlayerClick.Enable();
 
         containerBuilder.AddSingleton(input);
@@ -102,9 +100,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         ColorBlockBinder colorBlockBinder = new(blockViews, _blockHolderConnector, _disposer);
         PictureBinder pictureBinder = new(_pictureView, colorBlockBinder, _malbert);
         Picture picture = pictureBinder.Bind();
-        BlocksColoredLeaderboard leaderboard = new(picture);
 
-        _disposer.Add(leaderboard);
         containerBuilder.AddSingleton(_blockSoundPlayer);
         containerBuilder.AddSingleton(_colorBlockAnimations);
         containerBuilder.AddSingleton(picture);
@@ -131,9 +127,9 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         StringDistributor stringDistributor = new(coloredStringHolderStash, whiteHolderModel, switcher);
         ExtraStringRemover stringRemover = new(picture, whiteHolderModel);
 
-        _unlockHolderStrategy = new(coloredStringHolderStash, switcher, picture);
-        _fillHolderStrategy = new(coloredHolderModels);
-        _removeStrategy = new(whiteHolderModel);
+        _unlocker = new(coloredStringHolderStash, switcher, picture);
+        _filler = new(coloredHolderModels);
+        _remover = new(whiteHolderModel);
 
         _disposer.Add(stringRemover);
         _painter.Initialize(coloredStringHolderStash, switcher);
@@ -169,23 +165,23 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         _breaker = new Breaker(_figureClickReader);
         var buffs = new Dictionary<IBuff, int>()
         {
-            { _unlockHolderStrategy, YG2.saves.Unlockers },
-            { _fillHolderStrategy, YG2.saves.Fillers },
-            { _removeStrategy, YG2.saves.Removers },
+            { _unlocker, YG2.saves.Unlockers },
+            { _filler, YG2.saves.Fillers },
+            { _remover, YG2.saves.Removers },
             { _breaker, YG2.saves.Breakers }
         };
 
         BuffBag buffBag = new(buffs);
 
-        containerBuilder.AddSingleton(_unlockHolderStrategy);
-        containerBuilder.AddSingleton(_fillHolderStrategy);
-        containerBuilder.AddSingleton(_removeStrategy);
+        containerBuilder.AddSingleton(_unlocker);
+        containerBuilder.AddSingleton(_filler);
+        containerBuilder.AddSingleton(_remover);
         containerBuilder.AddSingleton(_breaker);
         containerBuilder.AddSingleton(buffBag);
         return buffBag;
     }
 
-    private void InstallSavers(Wallet wallet, BuffBag buffBag, Picture picture)
+    private ProgressSaver InstallSavers(Wallet wallet, BuffBag buffBag, Picture picture)
     {
         ISaver[] savers =
         {
@@ -201,6 +197,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         ProgressSaver progressSaver = new(picture, savers);
 
         _disposer.Add(progressSaver);
+        return progressSaver;
     }
 
     private void InstallClickReaders(ContainerBuilder containerBuilder)
@@ -209,5 +206,31 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         containerBuilder.AddSingleton(_figureClickReader);
 
         _figureClickReader.SetPause(true);
+    }
+
+    private void InstallYandex(Picture picture, Wallet wallet, ProgressSaver progressSaver)
+    {
+        AdWatchedMetrics metrics = new();
+        BlocksColoredLeaderboard leaderboard = new(picture);
+        InapCoinsAdder coinsAdder = new(wallet);
+        AdsRemover adsRemover = new();
+        InapBuffAdder inapBuffAdder = new(wallet, _store, _unlocker, _filler, _remover, _breaker);
+        SuperDealPurchase superDealPurchase = new(progressSaver, inapBuffAdder);
+        StarterPackPurchase starterPackPurchase = new(coinsAdder, inapBuffAdder, adsRemover, progressSaver);
+        RemoveAdsPackPurchase removeAdsPurchase = new(progressSaver, adsRemover);
+        InapCoinsPack coinsPack = new(progressSaver, coinsAdder);
+
+        if(YG2.saves.IfAdsRemoved)
+            YG2.StickyAdActivity(false);
+
+        if (YG2.saves.PassedLevelIndexes == null)
+            YG2.saves.PassedLevelIndexes = new List<int>();
+
+        _disposer.Add(metrics);
+        _disposer.Add(leaderboard);
+        _disposer.Add(superDealPurchase);
+        _disposer.Add(starterPackPurchase);
+        _disposer.Add(removeAdsPurchase);
+        _disposer.Add(coinsPack);
     }
 }

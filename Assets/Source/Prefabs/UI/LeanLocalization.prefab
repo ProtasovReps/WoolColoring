@@ -1582,13 +1582,13 @@ MonoBehaviour:
   data: 0
   entries:
   - Language: Russian
-    Text: "\u0423\u0431\u0440\u0430\u0442\u044C \u0432\u0441\u044E \u0440\u0435\u043A\u043B\u0430\u043C\u0443"
+    Text: "\u0423\u0431\u0440\u0430\u0442\u044C \u0440\u0435\u043A\u043B\u0430\u043C\u0443"
     Object: {fileID: 0}
   - Language: English
-    Text: Remove all ads
+    Text: Remove ads
     Object: {fileID: 0}
   - Language: Turkish
-    Text: "T\xFCm reklamlar\u0131 kald\u0131r"
+    Text: "Reklamlar\u0131 Kald\u0131r"
     Object: {fileID: 0}
 --- !u!1 &9073022434971746144
 GameObject:

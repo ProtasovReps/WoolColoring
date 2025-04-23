@@ -30,6 +30,6 @@ public class BlocksColoredLeaderboard : IDisposable
 
     private void OnColorized()
     {
-        YG2.SetLeaderboard(LeaderboardName, YG2.saves.BlocksColorized);
+        YG2.SetLeaderboard(LeaderboardName, _blockColorizedCount);
     }
 }

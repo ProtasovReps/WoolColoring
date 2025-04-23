@@ -21,5 +21,6 @@ public enum MetricParams
     UnlockerAdWatched,
     FillerAdWatched,
     RemoverAdWatched,
-    BreakerAdWatched
+    BreakerAdWatched,
+    InappBought
 }

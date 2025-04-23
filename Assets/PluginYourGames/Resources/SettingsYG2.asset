@@ -192,32 +192,59 @@ MonoBehaviour:
     durationPayPanel: 1
     testBuyFail: 0
     purshases:
-    - id: gun
-      title: Gun
-      description: Product - Gun
-      imageURI: demo image
-      price: 5 YAN
-      priceValue: 5
+    - id: starterPack
+      title: 
+      description: 
+      imageURI: 
+      price: 249 YAN
+      priceValue: 249
       priceCurrencyCode: YAN
-      currencyImageURL: https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png
+      currencyImageURL: 
       consumed: 1
-    - id: armor
-      title: Armor
-      description: Product - Armor
-      imageURI: demo image
-      price: 10 YAN
-      priceValue: 10
+    - id: adsRemove
+      title: 
+      description: 
+      imageURI: 
+      price: 89 YAN
+      priceValue: 89
       priceCurrencyCode: YAN
-      currencyImageURL: https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png
+      currencyImageURL: 
       consumed: 1
-    - id: grenade
-      title: Grenade
-      description: Product - Grenade
-      imageURI: demo image
-      price: 30 YAN
-      priceValue: 30
+    - id: superDeal
+      title: 
+      description: 
+      imageURI: 
+      price: 199 YAN
+      priceValue: 199
       priceCurrencyCode: YAN
-      currencyImageURL: https://yastatic.net/s3/games-static/static-data/images/payments/sdk/currency-icon-s@2x.png
+      currencyImageURL: 
+      consumed: 1
+    - id: smallCoins
+      title: 
+      description: 
+      imageURI: 
+      price: 69 YAN
+      priceValue: 69
+      priceCurrencyCode: YAN
+      currencyImageURL: 
+      consumed: 1
+    - id: mediumCoins
+      title: 
+      description: 
+      imageURI: 
+      price: 179 YAN
+      priceValue: 179
+      priceCurrencyCode: YAN
+      currencyImageURL: 
+      consumed: 1
+    - id: largeCoins
+      title: 
+      description: 
+      imageURI: 
+      price: 299 YAN
+      priceValue: 299
+      priceCurrencyCode: YAN
+      currencyImageURL: 
       consumed: 1
   RewardedAdv:
     rewardedAfterClosing: 1
@@ -243,7 +270,7 @@ MonoBehaviour:
   Simulation:
     device: 0
     language: ru
-    advIntervalSimulation: 90
+    advIntervalSimulation: 10
     durationAdv: 0.5
     loadAdv: 0
     testFailAds: 0

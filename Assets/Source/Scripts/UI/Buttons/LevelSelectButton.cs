@@ -12,8 +12,17 @@ public class LevelSelectButton : SceneInteractionButton
 
     private void Awake()
     {
-        if (YG2.saves.UnlockedLevelsCount < _levelNumber - 1)
+        if (YG2.saves.PassedLevelIndexes.Contains(LevelNumber) == false)
             Deactivate();
+
+        if (YG2.saves.PassedLevelIndexes.Contains(LevelNumber - 1))
+            Activate();
+    }
+
+    public override void Activate()
+    {
+        _padlock.enabled = false;
+        base.Activate();
     }
 
     public override void Deactivate()

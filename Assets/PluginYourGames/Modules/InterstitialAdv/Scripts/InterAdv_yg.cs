@@ -87,8 +87,15 @@ namespace YG
 
             if (!nowAdsShow && isTimerAdvCompleted)
             {
+                if (saves.IfAdsRemoved)
+                {
+                    Message("Рекламы не будет)");
+                    return;
+                }
+
                 onAdvNotification?.Invoke();
 #if UNITY_EDITOR
+
                 Message("Interstitial Adv");
                 if (infoYG.Simulation.testFailAds)
                 {
@@ -123,6 +130,9 @@ namespace YG.Insides
 
         public static void OpenInterAdv()
         {
+            if (YG2.saves.IfAdsRemoved)
+                return;
+
             YG2.PauseGame(true);
             YG2.onOpenInterAdv?.Invoke();
             YG2.onOpenAnyAdv?.Invoke();

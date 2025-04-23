@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 5350750388361906446}
   - component: {fileID: 9041677123686443195}
   - component: {fileID: 2615470808109848522}
+  - component: {fileID: 826722355813746812}
   m_Layer: 0
   m_Name: LevelInstaller
   m_TagString: Untagged
@@ -193,11 +194,10 @@ MonoBehaviour:
     _sourceAsset: {fileID: 11400000, guid: 9f313721c1ab9094ab7c7dd8a3189e8c, type: 2}
     <DebugObject>k__BackingField: {fileID: 5564509760098111384}
   _activatableInitializator: {fileID: 1106072022432992619}
-  _buffInitializer: {fileID: 1521679592951051183}
   _uIAnimator: {fileID: 2615470808109848522}
   _levelTransitionAnimation: {fileID: 0}
+  _store: {fileID: 0}
   _disposer: {fileID: 0}
-  _localization: {fileID: 7092379008570190225}
 --- !u!114 &7347834897356322926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,10 +243,6 @@ MonoBehaviour:
   _filler: {fileID: 0}
   _exploder: {fileID: 0}
   _cleaner: {fileID: 0}
-  _unlockerBuyButton: {fileID: 0}
-  _fillerBuyButton: {fileID: 0}
-  _breakerBuyButton: {fileID: 0}
-  _removerBuyButton: {fileID: 0}
 --- !u!114 &5350750388361906446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +289,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c18946b4336804ca722eab475dcf21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &826722355813746812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564509760098111384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c66d3ab56cc71745982569cb28c3dc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7983261296504208309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -303,7 +311,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 911711723973677604, guid: 090f42099aa165c4091b2c8f60103913, type: 3}
       propertyPath: currentLanguage
-      value: ru
+      value: Russian
       objectReference: {fileID: 0}
     - target: {fileID: 5281460238224417640, guid: 090f42099aa165c4091b2c8f60103913, type: 3}
       propertyPath: m_Name
@@ -365,14 +373,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7714013662089392286, guid: 090f42099aa165c4091b2c8f60103913, type: 3}
   m_PrefabInstance: {fileID: 7983261296504208309}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7092379008570190225 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 911711723973677604, guid: 090f42099aa165c4091b2c8f60103913, type: 3}
-  m_PrefabInstance: {fileID: 7983261296504208309}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 806f0696300aeac44a0e17efee222854, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace YG
 {
     public partial class SavesYG
@@ -9,9 +11,11 @@ namespace YG
         public int Breakers;
         public int BlocksColorized;
         public int LastLevelIndex;
+        public List<int> PassedLevelIndexes;
         public int UnlockedLevelsCount;
         public bool IfFreeBuffsGiven;
         public bool IfFreeCoinsGiven;
         public bool IfGuidePassed;
+        public bool IfAdsRemoved;
     }
 }

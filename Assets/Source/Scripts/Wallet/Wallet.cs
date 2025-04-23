@@ -9,7 +9,7 @@ public class Wallet : ICountChangeable
         if (startCount < 0)
             throw new ArgumentOutOfRangeException(nameof(startCount));
 
-        Count = /*startCount*/1500;
+        Count = startCount;
     }
 
     public int Count { get; private set; }

@@ -48,7 +48,7 @@ public class BuffDealMenu : ActivatableUI
 
         for (int i = 0; i < count; i++)
         {
-            _wallet.AddSilent(_targetBuffReward.Price);
+            _wallet.AddSilent(_targetBuffReward.Price * count);
             _store.TryPurchase(_targetBuffReward, AddAmount);
         }
 

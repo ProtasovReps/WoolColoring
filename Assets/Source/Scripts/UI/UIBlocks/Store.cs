@@ -40,7 +40,7 @@ public class Store : ActivatableUI
 
     public bool TryPurchase(IBuff buff, int count)
     {
-        if (_wallet.TrySpend(buff.Price) == false)
+        if (_wallet.TrySpend(buff.Price * count) == false)
         {
             _notEnoughMoneyText.Activate();
             return false;
