@@ -4,7 +4,7 @@ using System.Threading;
 using UnityEngine;
 using YG;
 
-public class AdTimer : ISaver
+public class AdTimer : IDisposable
 {
     private readonly float _coolDownTime;
     private CancellationTokenSource _cancellationTokenSource;
@@ -23,7 +23,7 @@ public class AdTimer : ISaver
     public float CooldownTime => _coolDownTime;
     public bool IsCounting { get; private set; }
 
-    public void Save()
+    public void Dispose()
     {
         _cancellationTokenSource?.Cancel();
         YG2.saves.LastElapsedTimerTime = ElapsedTime;

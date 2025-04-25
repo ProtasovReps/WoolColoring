@@ -185,8 +185,6 @@ public class LevelInstaller : MonoBehaviour, IInstaller
 
     private ProgressSaver InstallSavers(Wallet wallet, BuffBag buffBag, Picture picture, ContainerBuilder containerBuilder)
     {
-        AdTimer adTimer = new AdTimer(_adCooldownTime);
-
         ISaver[] savers =
         {
             new UnlockerSaver(buffBag),
@@ -196,13 +194,12 @@ public class LevelInstaller : MonoBehaviour, IInstaller
             new WalletSaver(wallet),
             new LevelSaver(),
             new UnlockedLevelsSaver(),
-            adTimer
 
     };
 
         ProgressSaver progressSaver = new(picture, savers);
         containerBuilder.AddSingleton(progressSaver);
-        containerBuilder.AddSingleton(adTimer);
+        containerBuilder.AddSingleton(new AdTimer(_adCooldownTime));
 
         _disposer.Add(progressSaver);
         return progressSaver;

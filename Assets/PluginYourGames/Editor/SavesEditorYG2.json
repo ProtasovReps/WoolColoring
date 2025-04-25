@@ -7,8 +7,8 @@
         false,
         false
     ],
-    "idSave": 4,
-    "Coins": 425,
+    "idSave": 5,
+    "Coins": 550,
     "Unlockers": 1,
     "Fillers": 1,
     "Removers": 1,
@@ -18,9 +18,10 @@
     "PassedLevelIndexes": [
         1
     ],
-    "UnlockedLevelsCount": 1,
+    "UnlockedLevelsCount": 2,
     "IfFreeBuffsGiven": true,
     "IfFreeCoinsGiven": true,
     "IfGuidePassed": true,
-    "IfAdsRemoved": false
+    "IfAdsRemoved": false,
+    "LastElapsedTimerTime": 17.87436294555664
 }

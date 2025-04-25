@@ -2116,10 +2116,6 @@ PrefabInstance:
       propertyPath: _clickSound.<DebugObject>k__BackingField
       value: 
       objectReference: {fileID: 1690521190784286253}
-    - target: {fileID: 4450931834099271205, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
-      propertyPath: _clickSound.<DebugObject>k__BackingField
-      value: 
-      objectReference: {fileID: 3917189789214596114}
     - target: {fileID: 5141018741599293250, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       propertyPath: m_SizeDelta.x
       value: 80
@@ -2357,7 +2353,8 @@ PrefabInstance:
       value: -160.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5273673315269132358, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7083447880981638485, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
       insertIndex: 1
@@ -2375,11 +2372,6 @@ GameObject:
 --- !u!224 &2107131549502271745 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7083447880981638485, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
-  m_PrefabInstance: {fileID: 9183823340291136596}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3917189789214596114 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5273673315269132358, guid: f9a17294bd0c83e499eed75efda2f0e5, type: 3}
   m_PrefabInstance: {fileID: 9183823340291136596}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &3944189391653889204 stripped

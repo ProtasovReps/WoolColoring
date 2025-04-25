@@ -1,3 +1,4 @@
+using Ami.BroAudio;
 using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,6 +7,7 @@ using YG;
 public class GameUnpauser : MonoBehaviour
 {
     [SerializeField] private EventSystem _eventSystem;
+    [SerializeField] private SoundID _soundID;
 
     private PlayerInput _playerInput;
 
@@ -30,5 +32,7 @@ public class GameUnpauser : MonoBehaviour
         Time.timeScale = 1;
         _eventSystem.enabled = true;
         _playerInput.PlayerClick.Enable();
+        BroAudio.Stop(BroAudioType.Music);
+        BroAudio.Play(_soundID);
     }
 }
