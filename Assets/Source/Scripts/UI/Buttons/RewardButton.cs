@@ -8,8 +8,9 @@ public abstract class RewardButton : RechargeableButton
 
     protected override void OnButtonClick()
     {
-        base.OnButtonClick();
+        Debug.Log("Меня нажали!");
         ProcessReward();
+        base.OnButtonClick();
     }
 
     protected abstract void ProcessReward();

@@ -5,8 +5,6 @@ using YG;
 
 public class BuffDealMenu : ActivatableUI
 {
-    private const int AddAmount = 1;
-
     [SerializeField] private BuyBuffButton[] _buyBuffButtons;
 
     private Store _store;
@@ -46,11 +44,8 @@ public class BuffDealMenu : ActivatableUI
         if (_targetBuffReward == null)
             throw new ArgumentNullException(nameof(_targetBuffReward));
 
-        for (int i = 0; i < count; i++)
-        {
-            _wallet.AddSilent(_targetBuffReward.Price * count);
-            _store.TryPurchase(_targetBuffReward, AddAmount);
-        }
+        _wallet.AddSilent(_targetBuffReward.Price * count);
+        _store.TryPurchase(_targetBuffReward, count);
 
         _targetBuffReward = null;
     }

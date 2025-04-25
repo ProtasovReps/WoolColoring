@@ -6,7 +6,7 @@ public class Store : ActivatableUI
 {
     [SerializeField] private SoundID _mainMusic;
     [SerializeField] private SoundID _storeMusic;
-    [SerializeField] private TemporaryActivatableUI _notEnoughMoneyText;
+    [SerializeField] private TemporaryActivatableUI[] _notEnoughMoneyText;
 
     private Wallet _wallet;
     private BuffBag _bag;
@@ -42,7 +42,11 @@ public class Store : ActivatableUI
     {
         if (_wallet.TrySpend(buff.Price * count) == false)
         {
-            _notEnoughMoneyText.Activate();
+            for (int i = 0; i < _notEnoughMoneyText.Length; i++)
+            {
+                _notEnoughMoneyText[i].Activate();
+            }
+
             return false;
         }
 

@@ -10,6 +10,7 @@ public class AdTimer : ISaver
     private CancellationTokenSource _cancellationTokenSource;
 
     public event Action TimeElapsed;
+    public event Action Reseted;
 
     public AdTimer(float cooldownTime)
     {
@@ -32,6 +33,7 @@ public class AdTimer : ISaver
     {
         ElapsedTime = 0f;
         StartTimer().Forget();
+        Reseted?.Invoke();
     }
 
     private async UniTaskVoid StartTimer()

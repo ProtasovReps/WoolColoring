@@ -1,7 +1,6 @@
 using Ami.BroAudio;
 using UnityEngine;
 using UnityEngine.UI;
-using YG;
 
 public abstract class ButtonView : Activatable
 {

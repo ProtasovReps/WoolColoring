@@ -1,6 +1,5 @@
 using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
-using System.Threading;
 using TMPro;
 using UnityEngine;
 
@@ -12,42 +11,29 @@ public class RechargeableButton : ButtonView
     [SerializeField] private MonoBehaviour _activeButtonObject;
 
     private AdTimer _timer;
-    private CancellationTokenSource _cancellationToken;
 
     [Inject]
     private void Inject(AdTimer adTimer)
     {
         _timer = adTimer;
         _timer.TimeElapsed += Activate;
+        _timer.Reseted += Deactivate;
     }
 
     private void Awake()
     {
         if (_timer.IsCounting)
-            Deactivate();
-        else
-            Activate();
-    }
-
-    private void OnEnable()
-    {
-        _cancellationToken = new CancellationTokenSource();
-        ShowRemainingTime().Forget();
-    }
-
-    private void OnDisable()
-    {
-        _cancellationToken?.Cancel();
+           Deactivate();
     }
 
     private void OnDestroy()
     {
         _timer.TimeElapsed -= Activate;
+        _timer.Reseted -= Deactivate;
     }
 
     public override void Activate()
     {
-        OnDisable();
         _counterText.gameObject.SetActive(false);
         _activeButtonObject.gameObject.SetActive(true);
         base.Activate();
@@ -57,19 +43,19 @@ public class RechargeableButton : ButtonView
     {
         _counterText.gameObject.SetActive(true);
         _activeButtonObject.gameObject.SetActive(false);
+        ShowRemainingTime().Forget();
         base.Deactivate();
     }
 
     protected override void OnButtonClick()
     {
         _timer.Reset();
-        Deactivate();
         base.OnButtonClick();
     }
 
     private async UniTaskVoid ShowRemainingTime()
     {
-        while(_cancellationToken.IsCancellationRequested == false)
+        while (_timer.ElapsedTime < _timer.CooldownTime)
         {
             int remainingTime = (int)(_timer.CooldownTime - _timer.ElapsedTime);
             int remainingMinutes = remainingTime / SecondsInMinute;
