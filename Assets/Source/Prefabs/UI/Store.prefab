@@ -3111,7 +3111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 703.38885}
+  m_AnchoredPosition: {x: 0, y: 703.38837}
   m_SizeDelta: {x: 0, y: 1874.0704}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &6209046952102104103
@@ -4048,8 +4048,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4429431263104825619}
   m_HandleRect: {fileID: 897845073370306688}
   m_Direction: 2
-  m_Value: -0.0000005206382
-  m_Size: 0.62466824
+  m_Value: 0.00000017354606
+  m_Size: 0.62466305
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4552,7 +4552,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: x150
+  m_text: x200
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
   m_sharedMaterial: {fileID: 942589445191879500, guid: 02fea1fb776e0ad43a5e684a1ab0ce9e, type: 2}
@@ -10551,7 +10551,7 @@ MonoBehaviour:
   _counterText: {fileID: 7073272240592685473}
   _activeButtonObject: {fileID: 16538871078814747}
   _reloadTime: 90
-  _rewardAmount: 150
+  _rewardAmount: 200
   _firstRechargeTime: 30
 --- !u!114 &4598056491611089301
 MonoBehaviour:

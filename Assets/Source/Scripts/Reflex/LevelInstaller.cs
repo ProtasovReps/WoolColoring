@@ -37,6 +37,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [SerializeField] private Store _store;
     [Header("Disposer")]
     [SerializeField] private ObjectDisposer _disposer;
+    [Header("AdTimer")]
+    [SerializeField] private float _adCooldownTime;
 
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
@@ -64,7 +66,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         StringDistributor stringDistributor = InstallHolders(containerBuilder, picture);
         Wallet wallet = InstallWallet(containerBuilder, picture);
         BuffBag buffBag = InstallBuffs(containerBuilder);
-        ProgressSaver saver = InstallSavers(wallet, buffBag, picture);
+        ProgressSaver saver = InstallSavers(wallet, buffBag, picture, containerBuilder);
         _stopwatch = new Stopwatch();
         PlayerInput input = new();
 
@@ -181,8 +183,10 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         return buffBag;
     }
 
-    private ProgressSaver InstallSavers(Wallet wallet, BuffBag buffBag, Picture picture)
+    private ProgressSaver InstallSavers(Wallet wallet, BuffBag buffBag, Picture picture, ContainerBuilder containerBuilder)
     {
+        AdTimer adTimer = new AdTimer(_adCooldownTime);
+
         ISaver[] savers =
         {
             new UnlockerSaver(buffBag),
@@ -191,10 +195,14 @@ public class LevelInstaller : MonoBehaviour, IInstaller
             new BreakerSaver(buffBag),
             new WalletSaver(wallet),
             new LevelSaver(),
-            new UnlockedLevelsSaver()
-        };
+            new UnlockedLevelsSaver(),
+            adTimer
+
+    };
 
         ProgressSaver progressSaver = new(picture, savers);
+        containerBuilder.AddSingleton(progressSaver);
+        containerBuilder.AddSingleton(adTimer);
 
         _disposer.Add(progressSaver);
         return progressSaver;
@@ -220,11 +228,8 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         RemoveAdsPackPurchase removeAdsPurchase = new(progressSaver, adsRemover);
         InapCoinsPack coinsPack = new(progressSaver, coinsAdder);
 
-        if(YG2.saves.IfAdsRemoved)
+        if (YG2.saves.IfAdsRemoved)
             YG2.StickyAdActivity(false);
-
-        if (YG2.saves.PassedLevelIndexes == null)
-            YG2.saves.PassedLevelIndexes = new List<int>();
 
         _disposer.Add(metrics);
         _disposer.Add(leaderboard);

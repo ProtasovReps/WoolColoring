@@ -1,22 +1,18 @@
-using UnityEngine;
+using Reflex.Attributes;
 
 public class ButtonRechargeAppearText : TemporaryActivatableUI
 {
-    [SerializeField] private RechargeableButton[] _rechargeableButton;
+    private AdTimer _timer;
+
+    [Inject]
+    private void Inject(AdTimer adTimer)
+    {
+        _timer = adTimer;
+        _timer.TimeElapsed += Activate;
+    }
 
     private void OnDestroy()
     {
-        foreach (var button in _rechargeableButton)
-            button.Recharged -= OnRecharged;
+        _timer.TimeElapsed -= Activate;
     }
-
-    public override void Initialize()
-    {
-        foreach (var button in _rechargeableButton)
-            button.Recharged += OnRecharged;
-
-        base.Initialize();
-    }
-
-    private void OnRecharged() => Activate();
 }

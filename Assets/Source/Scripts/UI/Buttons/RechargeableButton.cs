@@ -1,5 +1,6 @@
 using Cysharp.Threading.Tasks;
-using System;
+using Reflex.Attributes;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 
@@ -9,15 +10,44 @@ public class RechargeableButton : ButtonView
 
     [SerializeField] private TMP_Text _counterText;
     [SerializeField] private MonoBehaviour _activeButtonObject;
-    [SerializeField] private float _reloadTime;
 
-    public event Action Recharged;
+    private AdTimer _timer;
+    private CancellationTokenSource _cancellationToken;
 
-    public void SetReload(float reloadTime) => Reload(reloadTime).Forget();
+    [Inject]
+    private void Inject(AdTimer adTimer)
+    {
+        _timer = adTimer;
+        _timer.TimeElapsed += Activate;
+    }
+
+    private void Awake()
+    {
+        if (_timer.IsCounting)
+            Deactivate();
+        else
+            Activate();
+    }
+
+    private void OnEnable()
+    {
+        _cancellationToken = new CancellationTokenSource();
+        ShowRemainingTime().Forget();
+    }
+
+    private void OnDisable()
+    {
+        _cancellationToken?.Cancel();
+    }
+
+    private void OnDestroy()
+    {
+        _timer.TimeElapsed -= Activate;
+    }
 
     public override void Activate()
     {
-        Recharged?.Invoke();
+        OnDisable();
         _counterText.gameObject.SetActive(false);
         _activeButtonObject.gameObject.SetActive(true);
         base.Activate();
@@ -32,30 +62,21 @@ public class RechargeableButton : ButtonView
 
     protected override void OnButtonClick()
     {
-        Reload(_reloadTime).Forget();
+        _timer.Reset();
+        Deactivate();
         base.OnButtonClick();
     }
 
-    private async UniTaskVoid Reload(float reloadTime)
+    private async UniTaskVoid ShowRemainingTime()
     {
-        float elapsedTime = 0f;
-
-        Deactivate();
-
-        while (elapsedTime < reloadTime)
+        while(_cancellationToken.IsCancellationRequested == false)
         {
-            int remainingTime = (int)(reloadTime - elapsedTime);
+            int remainingTime = (int)(_timer.CooldownTime - _timer.ElapsedTime);
             int remainingMinutes = remainingTime / SecondsInMinute;
             int remainingSeconds = remainingTime % SecondsInMinute;
 
-            SetCount(remainingMinutes, remainingSeconds);
-            elapsedTime += Time.unscaledDeltaTime;
+            _counterText.text = $"{remainingMinutes}:{remainingSeconds}";
             await UniTask.Yield();
         }
-
-        Activate();
     }
-
-    private void SetCount(int minutes, int seconds)
-       => _counterText.text = $"{minutes}:{seconds}";
 }

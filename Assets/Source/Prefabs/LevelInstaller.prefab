@@ -198,6 +198,7 @@ MonoBehaviour:
   _levelTransitionAnimation: {fileID: 0}
   _store: {fileID: 0}
   _disposer: {fileID: 0}
+  _adCooldownTime: 90
 --- !u!114 &7347834897356322926
 MonoBehaviour:
   m_ObjectHideFlags: 0

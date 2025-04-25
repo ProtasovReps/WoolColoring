@@ -200,6 +200,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d2f59fcb9cec94da83df3b05223a4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &440295007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7862317381696898104, guid: 8b825d431c1a5434187e2b9196173d4e, type: 3}
+  m_PrefabInstance: {fileID: 1329306086}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &440295008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 440295007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbf51be86e70d7941bd40914206e4ddc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  translationName: GameLabel
+  FallbackText: "\u0414\u043E\u0431\u0430\u0432\u043B\u044F\u0439 \u0438\u0433\u0440\u0443
+    \u043D\u0430 \u0440\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B,
+    \u0447\u0442\u043E\u0431\u044B \u043D\u0435 \u043F\u043E\u0442\u0435\u0440\u044F\u0442\u044C!"
 --- !u!114 &508862296 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3999626927668465249, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
@@ -736,6 +757,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7862317381696898104, guid: 8b825d431c1a5434187e2b9196173d4e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 440295008}
     - targetCorrespondingSourceObject: {fileID: 7969190890762641693, guid: 8b825d431c1a5434187e2b9196173d4e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1329306092}
@@ -867,6 +891,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a9832f1df6308747a5075235407b9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1794500122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1794500123}
+  - component: {fileID: 1794500124}
+  m_Layer: 0
+  m_Name: GameLabel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1794500123
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794500122}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1589960263934217897}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1794500124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794500122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: 0
+  entries:
+  - Language: Russian
+    Text: "\u0414\u043E\u0431\u0430\u0432\u043B\u044F\u0439 \u0438\u0433\u0440\u0443
+      \u043D\u0430 \u0440\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B,
+      \u0447\u0442\u043E\u0431\u044B \u043D\u0435 \u043F\u043E\u0442\u0435\u0440\u044F\u0442\u044C!"
+    Object: {fileID: 0}
+  - Language: English
+    Text: Add the game to the desktop so as not to lose!
+    Object: {fileID: 0}
+  - Language: Turkish
+    Text: "Kaybetmemek i\xE7in oyunu masa\xFCst\xFCne ekleyin!"
+    Object: {fileID: 0}
 --- !u!1 &1794630687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,9 +1632,17 @@ PrefabInstance:
       objectReference: {fileID: 1772938206}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 416463479643884331, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1794500123}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
+--- !u!4 &1589960263934217897 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 416463479643884331, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
+  m_PrefabInstance: {fileID: 1589960263934217896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3419118032447620097
 PrefabInstance:
   m_ObjectHideFlags: 0

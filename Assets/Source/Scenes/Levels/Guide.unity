@@ -5980,7 +5980,7 @@ MonoBehaviour:
   _transform: {fileID: 1417808136}
   _clickWaitDuration: 10
   _clickablePanel: {fileID: 1160791236}
-  _addAmount: 500
+  _addAmount: 200
 --- !u!114 &1417808141
 MonoBehaviour:
   m_ObjectHideFlags: 0

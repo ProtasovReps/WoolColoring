@@ -15,10 +15,24 @@ public class AcceptGameLabelButton : ButtonView
         _wallet = wallet;
     }
 
+    private void OnEnable()
+    {
+        _gameLabelYG.onPromptSuccess.AddListener(AddMoney);
+    }
+
+    private void OnDisable()
+    {
+        _gameLabelYG.onPromptSuccess.RemoveListener(AddMoney);
+    }
+
     protected override void OnButtonClick()
     {
-        _wallet.Add(_addAmount);
         _gameLabelYG.GameLabelShowDialog();
         base.OnButtonClick();
+    }
+
+    private void AddMoney()
+    {
+        _wallet.Add(_addAmount);
     }
 }
