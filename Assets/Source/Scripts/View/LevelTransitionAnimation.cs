@@ -1,8 +1,8 @@
 using Cysharp.Threading.Tasks;
 using LitMotion;
 using LitMotion.Extensions;
-using System;
 using UnityEngine;
+using YG;
 using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(SpriteRenderer))]
@@ -28,7 +28,7 @@ public class LevelTransitionAnimation : MonoBehaviour
     {
         LMotion.Create(Vector3.one * _startScale, Vector3.one * _endScale, _transitionSpeed)
             .WithEase(Ease.InOutCirc)
-            .WithOnComplete(() => _levelNumber.Activate())
+            .WithOnComplete(CompleteTransition)
             .BindToLocalScale(_transform);
     }
 
@@ -41,5 +41,11 @@ public class LevelTransitionAnimation : MonoBehaviour
         await LMotion.Create(Vector3.one * _endScale, Vector3.one * _startScale, _transitionSpeed)
             .WithEase(Ease.InOutCirc)
             .BindToLocalScale(_transform);
+    }
+
+    private void CompleteTransition()
+    {
+        YG2.GameReadyAPI();
+        _levelNumber.Activate();
     }
 }

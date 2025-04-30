@@ -1,5 +1,4 @@
 using Cysharp.Threading.Tasks;
-using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 
@@ -12,8 +11,7 @@ public class RechargeableButton : ButtonView
 
     private AdTimer _timer;
 
-    [Inject]
-    private void Inject(AdTimer adTimer)
+    public void Initialize(AdTimer adTimer)
     {
         _timer = adTimer;
         _timer.TimeElapsed += Activate;

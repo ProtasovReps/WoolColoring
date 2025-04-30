@@ -38,7 +38,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
     [Header("Disposer")]
     [SerializeField] private ObjectDisposer _disposer;
     [Header("AdTimer")]
-    [SerializeField] private float _adCooldownTime;
+    [SerializeField] private float _coinAdCooldownTime;
 
     private BoltColorSetter _boltColorSetter;
     private Conveyer _conveyer;
@@ -74,6 +74,7 @@ public class LevelInstaller : MonoBehaviour, IInstaller
         InstallRopeConnector(containerBuilder);
         InstallClickReaders(containerBuilder);
         InstallYandex(picture, wallet, saver);
+        InstallTimers(containerBuilder);
         input.PlayerClick.Enable();
 
         containerBuilder.AddSingleton(input);
@@ -195,14 +196,21 @@ public class LevelInstaller : MonoBehaviour, IInstaller
             new LevelSaver(),
             new UnlockedLevelsSaver(),
 
-    };
+        };
 
         ProgressSaver progressSaver = new(picture, savers);
-        containerBuilder.AddSingleton(progressSaver);
-        containerBuilder.AddSingleton(new AdTimer(_adCooldownTime));
 
+        containerBuilder.AddSingleton(progressSaver);
         _disposer.Add(progressSaver);
         return progressSaver;
+    }
+
+    private void InstallTimers(ContainerBuilder containerBuilder)
+    {
+        var coinAdTimer = new CoinAdTimer(_coinAdCooldownTime);
+
+        containerBuilder.AddSingleton(coinAdTimer);
+        _disposer.Add(coinAdTimer);
     }
 
     private void InstallClickReaders(ContainerBuilder containerBuilder)

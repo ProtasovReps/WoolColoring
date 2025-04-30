@@ -30,7 +30,7 @@ public abstract class StringHolder
         _stringCount++;
         StringAdded?.Invoke();
 
-        if (_stringCount == MaxStringCount)
+        if (_stringCount >= MaxStringCount)
             OnFilled();
     }
 
