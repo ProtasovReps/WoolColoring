@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -47,7 +48,7 @@ namespace YG
             {
                 yield return new WaitForSeconds(1.0f);
 
-                if (YG2.isTimerAdvCompleted && !YG2.nowAdsShow && YG2.saves.IfAdsRemoved == false)
+                if (YG2.isTimerAdvCompleted && !YG2.nowAdsShow && YG2.saves.IfAdsRemoved == false && DateTime.UtcNow >= new DateTime(2025, 05, 05))
                 {
                     onShowTimer?.Invoke();
                     objSecCounter = 0;
