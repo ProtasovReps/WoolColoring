@@ -9,9 +9,7 @@ public class ReplicPlayer : MonoBehaviour
 
     public event Action<ReplicPlayer> Executed;
 
-    public void Activate() => ShowReplics();
-
-    private void ShowReplics()
+    public void ShowReplics()
     {
         transform.gameObject.SetActive(true);
 

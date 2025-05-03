@@ -1,23 +1,15 @@
-using Reflex.Attributes;
 using UnityEngine;
-using UnityEngine.UI;
 using YG;
 
 public class Guide : MonoBehaviour
 {
-    [SerializeField] private ReplicPlayer[] _replicPlayers;
-    [SerializeField] private LevelUI _levelUI;
-    [SerializeField] private Button[] _levelUIButtons;
+    [SerializeField] private ReplicConveyer _conveyer;
     [SerializeField] private GuideBoltClickReader _guideClickReader;
     [SerializeField] private float _startDelay;
 
-    private BoltClickReader _boltClickReader;
-    private int _replicPlayerIndex;
-
-    [Inject]
-    private void Inject(BoltClickReader reader)
+    private void OnEnable()
     {
-        _boltClickReader = reader;
+        _conveyer.AllReplicsPlayed += FinalizeGuide;
     }
 
     private void Start()
@@ -28,47 +20,18 @@ public class Guide : MonoBehaviour
             return;
         }
 
-        SetButtonsInteractable(false);
-        _boltClickReader.SetPause(true);
+        _conveyer.gameObject.SetActive(true);
         _guideClickReader.SetPause(true);
-        _levelUI.gameObject.SetActive(false);
-        ShowReplicPlayers();
     }
 
-    private void ShowReplicPlayers()
+    private void OnDisable()
     {
-        if (_replicPlayerIndex == _replicPlayers.Length)
-        {
-            FinalizeGuide();
-            return;
-        }
-
-        ReplicPlayer player = _replicPlayers[_replicPlayerIndex];
-
-        player.Activate();
-        player.Executed += OnPlayerExecuted;
-    }
-
-    private void OnPlayerExecuted(ReplicPlayer replic)
-    {
-        replic.Executed -= OnPlayerExecuted;
-        _replicPlayerIndex++;
-        ShowReplicPlayers();
+        _conveyer.AllReplicsPlayed -= FinalizeGuide;
     }
 
     private void FinalizeGuide()
     {
-        SetButtonsInteractable(true);
-        _boltClickReader.SetPause(false);
         YG2.MetricaSend(MetricParams.GuidePassed.ToString());
         YG2.saves.IfGuidePassed = true;
-    }
-
-    private void SetButtonsInteractable(bool isInteractable)
-    {
-        for (int i = 0; i < _levelUIButtons.Length; i++)
-        {
-            _levelUIButtons[i].interactable = isInteractable;
-        }
     }
 }

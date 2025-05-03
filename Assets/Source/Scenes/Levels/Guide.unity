@@ -216,61 +216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bedc457f2a05b754cb4f073a7150d163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &116297824
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 116297825}
-  - component: {fileID: 116297826}
-  m_Layer: 0
-  m_Name: TapToContinueGuide
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &116297825
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116297824}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1589960263934217897}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &116297826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116297824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb15fa0e7301ff849bf4d6dcede7c12b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: 0
-  entries:
-  - Language: Russian
-    Text: "\u041D\u0430\u0436\u043C\u0438, \u0447\u0442\u043E\u0431\u044B \u043F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
-    Object: {fileID: 0}
-  - Language: English
-    Text: Click to continue
-    Object: {fileID: 0}
-  - Language: Turkish
-    Text: "Devam etmek i\xE7in t\u0131klay\u0131n"
-    Object: {fileID: 0}
 --- !u!1 &146742097
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +713,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1160791235}
+  - {fileID: 390579750}
   - {fileID: 1873689094}
   - {fileID: 622168202}
   m_Father: {fileID: 0}
@@ -790,20 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7044fd92c4c44de48a890b0ef9ab4969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _replicPlayers:
-  - {fileID: 852738423}
-  - {fileID: 1905273387}
-  - {fileID: 1676022620}
-  - {fileID: 1645115579}
-  - {fileID: 1128936213}
-  - {fileID: 1517062959}
-  _levelUI: {fileID: 1847387157}
-  _levelUIButtons:
-  - {fileID: 286101176}
-  - {fileID: 5071909237855496790}
-  - {fileID: 5071909237855496791}
-  - {fileID: 5071909237855496793}
-  - {fileID: 5071909237855496792}
+  _conveyer: {fileID: 390579749}
   _guideClickReader: {fileID: 622168201}
   _startDelay: 2
 --- !u!114 &188986452
@@ -1094,6 +1026,69 @@ MonoBehaviour:
     Text: "Ayr\u0131ca beyaz bir bobin var, rengi herhangi bir renkli bobine uymayan
       iplikler buraya giriyor."
     Object: {fileID: 0}
+--- !u!1 &390579748
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 390579750}
+  - component: {fileID: 390579749}
+  m_Layer: 5
+  m_Name: ReplicConveyer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &390579749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390579748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47ced285e5647c4aa33fa8670d4b63e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _replicPlayers:
+  - {fileID: 852738423}
+  - {fileID: 1905273387}
+  - {fileID: 1676022620}
+  - {fileID: 1645115579}
+  - {fileID: 1128936213}
+  - {fileID: 1517062959}
+  _levelUI: {fileID: 1847387157}
+  _buttonsToDisable:
+  - {fileID: 286101176}
+  - {fileID: 5071909237855496790}
+  - {fileID: 5071909237855496791}
+  - {fileID: 5071909237855496793}
+  - {fileID: 5071909237855496792}
+--- !u!224 &390579750
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390579748}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1160791235}
+  m_Father: {fileID: 188986450}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &397718096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5249,7 +5244,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160791234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5260,12 +5255,12 @@ RectTransform:
   - {fileID: 1645115576}
   - {fileID: 1128936212}
   - {fileID: 1517062960}
-  m_Father: {fileID: 188986450}
+  m_Father: {fileID: 390579750}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1080.0884, y: 1919.8431}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1160791236
 MonoBehaviour:
@@ -8613,14 +8608,11 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 416463479643884331, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
-      insertIndex: -1
+      insertIndex: 31
       addedObject: {fileID: 1621142608}
     - targetCorrespondingSourceObject: {fileID: 416463479643884331, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
-      insertIndex: -1
+      insertIndex: 32
       addedObject: {fileID: 1039400800}
-    - targetCorrespondingSourceObject: {fileID: 416463479643884331, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 116297825}
     - targetCorrespondingSourceObject: {fileID: 416463479643884331, guid: c2748f33f7542b24e800156dda1caa5a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1505878216}
@@ -9701,6 +9693,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2334187187323968380, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -248.56
+      objectReference: {fileID: 0}
     - target: {fileID: 2475994303767345636, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -9796,6 +9792,10 @@ PrefabInstance:
     - target: {fileID: 4596706772693869031, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4738560512592298040, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -264.5
       objectReference: {fileID: 0}
     - target: {fileID: 4885825918748859093, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: m_Enabled
@@ -9900,6 +9900,10 @@ PrefabInstance:
     - target: {fileID: 8832498260288513130, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 157.29999
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832498260288513130, guid: 0161f50a7ea6a5b48a5ea1e0714e532d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -391.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
