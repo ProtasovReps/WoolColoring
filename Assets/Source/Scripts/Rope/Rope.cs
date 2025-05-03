@@ -2,7 +2,6 @@ using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(ColorView))]
 [RequireComponent(typeof(LineRenderer))]

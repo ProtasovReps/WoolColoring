@@ -38,7 +38,7 @@ public class FigureView : MonoBehaviour, IFallable, IColorSettable
 
     public void Appear()
     {
-        _transformView.SetStartTransform();
+        _transformView.ResetTransform();
 
         foreach (Bolt bolt in _boltContainer.Bolts)
             bolt.SetActive(true);

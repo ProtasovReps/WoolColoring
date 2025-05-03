@@ -1,11 +1,10 @@
 using Ami.BroAudio;
 using Reflex.Attributes;
-using System;
 using TMPro;
 using UnityEngine;
 using YG;
 
-public abstract class BuyBuffButton : ButtonView
+public abstract class BuyBuffButton<T> : ButtonView, IBuffBuyButton<T> where T : IBuff
 {
     [SerializeField] private SoundID _purchaseRejectedSound;
     [SerializeField] private ParticleSystem _purchaseEffect;
@@ -14,24 +13,19 @@ public abstract class BuyBuffButton : ButtonView
     [SerializeField] private MetricParams _metricParams;
 
     private Store _store;
-    private IBuff _buff;
+    private T _buff;
 
-    public IBuff CurrentBuff => _buff;
+    public T CurrentBuff => _buff;
 
     [Inject]
-    private void Inject(Store store)
+    private void Inject(Store store, T buff)
     {
         _store = store;
-    }
-
-    public void Initialize(IBuff buff)
-    {
-        if (buff == null)
-            throw new ArgumentNullException(nameof(buff));
-
         _buff = buff;
         _priceText.text = _buff.Price.ToString();
     }
+
+    public void SetActive(bool isActive) => gameObject.SetActive(isActive);
 
     protected override void OnButtonClick()
     {

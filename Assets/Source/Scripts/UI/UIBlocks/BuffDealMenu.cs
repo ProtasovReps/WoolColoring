@@ -5,8 +5,12 @@ using YG;
 
 public class BuffDealMenu : ActivatableUI
 {
-    [SerializeField] private BuyBuffButton[] _buyBuffButtons;
+    [SerializeField] private UnlockerBuyButton _unlockerBuyButton;
+    [SerializeField] private RemoverBuyButton _removerBuyButton;
+    [SerializeField] private BreakerBuyButton _breakerBuyButton;
+    [SerializeField] private FillerBuyButton _fillerBuyButton;
 
+    private IBuffBuyButton<IBuff>[] _buyBuffButtons;
     private Store _store;
     private Wallet _wallet;
     private IBuff _targetBuffReward;
@@ -16,12 +20,13 @@ public class BuffDealMenu : ActivatableUI
     {
         _wallet = wallet;
         _store = store;
+        _buyBuffButtons = new IBuffBuyButton<IBuff>[] { _unlockerBuyButton, _removerBuyButton, _breakerBuyButton, _fillerBuyButton };
     }
 
     public override void Activate()
     {
         for (int i = 0; i < _buyBuffButtons.Length; i++)
-            _buyBuffButtons[i].gameObject.SetActive(_buyBuffButtons[i].CurrentBuff == _targetBuffReward);
+            _buyBuffButtons[i].SetActive(_buyBuffButtons[i].CurrentBuff == _targetBuffReward);
 
         base.Activate();
     }

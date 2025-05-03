@@ -39,7 +39,7 @@ public class Bolt : MonoBehaviour
 
     private void OnEnable()
     {
-        _transformView.SetStartTransform();
+        _transformView.ResetTransform();
         _hingeJoint.connectedBody = _connectedBody;
     }
 

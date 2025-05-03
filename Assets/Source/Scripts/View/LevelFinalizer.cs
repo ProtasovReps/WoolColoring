@@ -37,7 +37,8 @@ public class LevelFinalizer : MonoBehaviour
     [ContextMenu("Test")]
     private async UniTaskVoid Finalize()
     {
-        Unsubscribe();
+        _picture.Finished -= () => Finalize().Forget();
+
         DisableUI();
         DisableClickReaders();
         AnimateCamera();
@@ -49,11 +50,6 @@ public class LevelFinalizer : MonoBehaviour
         await UniTask.WaitForSeconds(_finalMenuAppearDelay);
         _finalBlock.Activate();
         _playerInput.PlayerClick.Disable();
-    }
-
-    private void Unsubscribe()
-    {
-        _picture.Finished -= () => Finalize().Forget();
     }
 
     private void DisableUI()

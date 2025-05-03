@@ -53,7 +53,7 @@ public class StringDistributor : IDisposable
     private void OnHolderSwitched(ColoredStringHolder holder)
     {
         Color requiredColor = holder.Color;
-        int requiredStringCount = _whiteHolder.GetRequiredColorsCount(requiredColor);
+        int requiredStringCount = _whiteHolder.GetColorCount(requiredColor);
         int holderEmptySlotsCount = holder.MaxStringCount - holder.StringCount;
 
         if (requiredStringCount == 0)
@@ -64,8 +64,8 @@ public class StringDistributor : IDisposable
 
         for (int i = 0; i < requiredStringCount; i++)
         {
-            IColorable colorable = _whiteHolder.GetRequiredColorable(requiredColor);
-            holder.Add(colorable);
+            IColorable newString = _whiteHolder.GetColorable(requiredColor);
+            holder.Add(newString);
         }
     }
 }

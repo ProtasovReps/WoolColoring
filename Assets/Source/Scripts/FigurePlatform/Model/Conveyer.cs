@@ -3,9 +3,10 @@ using System;
 
 public class Conveyer : IDisposable
 {
+    private const int MinFiguresCount = 6;
+
     private readonly FigureCompositionPool _figurePool;
     private readonly PositionDatabase _positionDatabase;
-    private readonly int _minFiguresCount = 6;
 
     public Conveyer(FigureCompositionPool pool, PositionDatabase positionDatabase)
     {
@@ -40,7 +41,7 @@ public class Conveyer : IDisposable
         _positionDatabase.Remove(composition);
         _figurePool.Release(composition);
 
-        if (_positionDatabase.TransformablesCount <= _minFiguresCount)
+        if (_positionDatabase.TransformablesCount <= MinFiguresCount)
             FillAllFigures();
     }
 

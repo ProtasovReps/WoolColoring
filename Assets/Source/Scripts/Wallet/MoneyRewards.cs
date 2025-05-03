@@ -52,7 +52,7 @@ public class MoneyRewards : IDisposable
 
     private void OnPictureColorized()
     {
-        _wallet.Add(RewardValues.PictureColorizedReward); // утраивать за просмотре рекламы
+        _wallet.Add(RewardValues.PictureColorizedReward);
     }
 
     private void OnCompositionEmptied(FigureComposition composition)

@@ -13,7 +13,6 @@ public class Remover : IBuff
     }
 
     public int Price => BuffPrices.ClearWhiteHolderPrice;
-
     public string Id => RewardIds.Remover;
 
     public void Execute() => _whiteHolder.RemoveAllStrings();

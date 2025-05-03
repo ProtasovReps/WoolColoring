@@ -27,12 +27,12 @@ public class ExtraStringRemover : IDisposable
 
     private void OnColorFilled(Color color)
     {
-        int requiredStringsCount = _whiteStringHolder.GetRequiredColorsCount(color);
+        int requiredStringsCount = _whiteStringHolder.GetColorCount(color);
 
         if (requiredStringsCount == 0)
             return;
 
         for (int i = 0; i < requiredStringsCount; i++)
-            _whiteStringHolder.GetRequiredColorable(color);
+            _whiteStringHolder.GetColorable(color);
     }
 }

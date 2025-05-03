@@ -7,22 +7,25 @@
         false,
         false
     ],
-    "idSave": 2,
-    "Coins": 325,
-    "Unlockers": 1,
-    "Fillers": 1,
-    "Removers": 1,
-    "Breakers": 1,
+    "idSave": 16,
+    "Coins": 2175,
+    "Unlockers": 15,
+    "Fillers": 15,
+    "Removers": 16,
+    "Breakers": 15,
     "BlocksColorized": 0,
-    "LastLevelIndex": 3,
+    "LastLevelIndex": 6,
     "PassedLevelIndexes": [
         1,
-        2
+        2,
+        3,
+        4,
+        5
     ],
-    "UnlockedLevelsCount": 2,
+    "UnlockedLevelsCount": 16,
     "IfFreeBuffsGiven": true,
     "IfFreeCoinsGiven": true,
     "IfGuidePassed": true,
-    "IfAdsRemoved": false,
-    "LastElapsedTimerTime": 0.0
+    "IfAdsRemoved": true,
+    "LastElapsedTimerTime": 4.968590259552002
 }

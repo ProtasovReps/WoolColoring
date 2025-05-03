@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 public class Filler : IBuff
 {
     private const int MinActiveCount = 2;
+
     private readonly ColoredStringHolder[] _coloredStringHolders;
     private readonly ColorString _colorString;
 
@@ -21,7 +22,6 @@ public class Filler : IBuff
     }
 
     public int Price => BuffPrices.FillHolderPrice;
-
     public string Id => RewardIds.Filler;
 
     public void Execute()

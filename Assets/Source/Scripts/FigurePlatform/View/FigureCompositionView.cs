@@ -40,7 +40,7 @@ public class FigureCompositionView : MonoBehaviour
 
     public void Disable()
     {
-        _transformMoveView.SetStartTransform();
+        _transformMoveView.ResetTransform();
         _activeStateSwitcher.SetActive(false);
     }
 

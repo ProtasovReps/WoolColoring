@@ -25,11 +25,10 @@ public class Unlocker : IBuff
     }
 
     public int Price => BuffPrices.UnlockHolderPrice;
-
     public string Id => RewardIds.Unlocker;
 
     public bool Validate()
-        => _picture.RequiredColorsCount > _coloredStash.ActiveCount && _coloredStash.ActiveCount < MaxStringHolderCount;
+       => _picture.RequiredColorsCount > _coloredStash.ActiveCount && _coloredStash.ActiveCount < MaxStringHolderCount;
 
     public void Execute()
     {

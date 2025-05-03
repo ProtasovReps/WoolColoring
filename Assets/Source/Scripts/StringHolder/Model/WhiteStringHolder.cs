@@ -9,13 +9,13 @@ public class WhiteStringHolder : StringHolder, IFillable<WhiteStringHolder>
 
     public WhiteStringHolder(ColorString[] strings) : base(strings) { }
 
-    public IColorable GetRequiredColorable(Color color)
+    public IColorable GetColorable(Color color)
     {
         _requiredColor = color;
         return GetString();
     }
 
-    public int GetRequiredColorsCount(Color color)
+    public int GetColorCount(Color color)
     {
         int requiredColorsCount = 0;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public abstract class StringHolder
 {
-    private ColorString[] _strings;
+    private readonly ColorString[] _strings;
     private int _stringCount;
 
     public event Action StringAdded;

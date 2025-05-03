@@ -20,7 +20,7 @@ public class TransformView : MonoBehaviour
         _startScale = transform.localScale;
     }
 
-    public void SetStartTransform()
+    public void ResetTransform()
     {
         _transform.position = _startPosition;
         _transform.rotation = _startRotation;

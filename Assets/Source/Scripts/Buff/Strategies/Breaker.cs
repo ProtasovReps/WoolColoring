@@ -13,7 +13,6 @@ public class Breaker : IBuff
     }
 
     public int Price => BuffPrices.ExplodeFigurePrice;
-
     public string Id => RewardIds.Breaker;
 
     public void Execute() => _figureClickReader.SetPause(false);
