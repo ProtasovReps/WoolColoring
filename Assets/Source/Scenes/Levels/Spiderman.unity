@@ -670,7 +670,7 @@ PrefabInstance:
       objectReference: {fileID: 2048457527}
     - target: {fileID: 2872640162413953, guid: 8a4b1b342ccfb86449cd7c5a0a750eb5, type: 3}
       propertyPath: _clickWaitDuration
-      value: 8
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 41473182341819525, guid: 8a4b1b342ccfb86449cd7c5a0a750eb5, type: 3}
       propertyPath: m_SizeDelta.x
@@ -1219,7 +1219,7 @@ MonoBehaviour:
   _replic: {fileID: 1362553201}
   _replicAnimation: {fileID: 2048457527}
   _transform: {fileID: 1362553200}
-  _clickWaitDuration: 15
+  _clickWaitDuration: 30
   _clickablePanel: {fileID: 613835175}
 --- !u!224 &1362553200
 RectTransform:

@@ -368,7 +368,7 @@ MonoBehaviour:
   _replic: {fileID: 146742099}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 146742098}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 20
   _clickablePanel: {fileID: 1160791236}
 --- !u!114 &146742102
 MonoBehaviour:
@@ -1422,7 +1422,7 @@ MonoBehaviour:
   _replic: {fileID: 460943866}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 460943864}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 20
   _clickablePanel: {fileID: 1160791236}
 --- !u!114 &460943866
 MonoBehaviour:
@@ -1853,7 +1853,7 @@ MonoBehaviour:
   _replic: {fileID: 484493747}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 484493746}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 30
   _clickablePanel: {fileID: 1160791236}
 --- !u!114 &484493750
 MonoBehaviour:
@@ -2712,7 +2712,7 @@ MonoBehaviour:
   _replic: {fileID: 807146671}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 807146670}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 20
   _clickablePanel: {fileID: 1160791236}
 --- !u!114 &807146674
 MonoBehaviour:
@@ -3572,7 +3572,7 @@ MonoBehaviour:
   _replic: {fileID: 962857641}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 962857640}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 20
   _clickablePanel: {fileID: 1160791236}
 --- !u!224 &962857640
 RectTransform:
@@ -4240,7 +4240,7 @@ MonoBehaviour:
   _replic: {fileID: 1048186791}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 1048186790}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 20
   _clickablePanel: {fileID: 1160791236}
 --- !u!224 &1048186790
 RectTransform:
@@ -4727,7 +4727,7 @@ MonoBehaviour:
   _replic: {fileID: 1083564357}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 1083564355}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 20
   _clickablePanel: {fileID: 1160791236}
   _levelUI: {fileID: 1847387157}
   _levelButtons:
@@ -4903,7 +4903,7 @@ MonoBehaviour:
   _replic: {fileID: 1109350668}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 1109350667}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 30
   _clickablePanel: {fileID: 1160791236}
 --- !u!114 &1109350671
 MonoBehaviour:
@@ -5396,7 +5396,7 @@ MonoBehaviour:
   _replic: {fileID: 1182084373}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 1182084372}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 20
   _clickablePanel: {fileID: 1160791236}
 --- !u!224 &1182084372
 RectTransform:
@@ -5916,7 +5916,7 @@ MonoBehaviour:
   _replic: {fileID: 1417808138}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 1417808136}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 20
   _clickablePanel: {fileID: 1160791236}
   _addAmount: 200
 --- !u!114 &1417808141
@@ -7848,7 +7848,7 @@ MonoBehaviour:
   _replic: {fileID: 2060967916}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 2060967914}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 20
   _clickablePanel: {fileID: 1160791236}
   _levelUI: {fileID: 1847387157}
   _levelButtons:
@@ -8706,7 +8706,7 @@ PrefabInstance:
       objectReference: {fileID: 188986452}
     - target: {fileID: 2872640162413953, guid: 8a4b1b342ccfb86449cd7c5a0a750eb5, type: 3}
       propertyPath: _clickWaitDuration
-      value: 8
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 41473182341819525, guid: 8a4b1b342ccfb86449cd7c5a0a750eb5, type: 3}
       propertyPath: m_SizeDelta.x
@@ -8738,7 +8738,7 @@ PrefabInstance:
       objectReference: {fileID: 188986452}
     - target: {fileID: 2064609236047062632, guid: 8a4b1b342ccfb86449cd7c5a0a750eb5, type: 3}
       propertyPath: _clickWaitDuration
-      value: 8
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2597324773210274118, guid: 8a4b1b342ccfb86449cd7c5a0a750eb5, type: 3}
       propertyPath: m_text
@@ -10091,7 +10091,7 @@ MonoBehaviour:
   _replic: {fileID: 7314189586318179652}
   _replicAnimation: {fileID: 188986452}
   _transform: {fileID: 4344179349180204291}
-  _clickWaitDuration: 10
+  _clickWaitDuration: 20
   _clickablePanel: {fileID: 1160791236}
 --- !u!114 &6982137306021856463
 MonoBehaviour:
