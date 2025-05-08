@@ -1,6 +1,7 @@
 using Ami.BroAudio;
 using Reflex.Attributes;
 using UnityEngine;
+using YG;
 
 public class Store : ActivatableUI
 {
@@ -33,6 +34,7 @@ public class Store : ActivatableUI
         if (IsAnimating)
             return;
 
+        YG2.InterstitialAdvShow();
         BroAudio.Pause(_storeMusic);
         BroAudio.Play(_mainMusic);
         base.Deactivate();

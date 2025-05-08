@@ -48,7 +48,7 @@ namespace YG
             {
                 yield return new WaitForSeconds(1.0f);
 
-                if (YG2.isTimerAdvCompleted && !YG2.nowAdsShow && YG2.saves.IfAdsRemoved == false && DateTime.UtcNow >= new DateTime(2025, 05, 05))
+                if (YG2.isTimerAdvCompleted && !YG2.nowAdsShow && YG2.saves.IfAdsRemoved == false)
                 {
                     onShowTimer?.Invoke();
                     objSecCounter = 0;

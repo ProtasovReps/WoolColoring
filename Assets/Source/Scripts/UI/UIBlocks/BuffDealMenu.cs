@@ -31,6 +31,12 @@ public class BuffDealMenu : ActivatableUI
         base.Activate();
     }
 
+    public override void Deactivate()
+    {
+        YG2.InterstitialAdvShow();
+        base.Deactivate();
+    }
+
     public void SetTargetReward(IBuff buff)
     {
         if (buff == null)

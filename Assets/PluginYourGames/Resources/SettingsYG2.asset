@@ -22,7 +22,7 @@ MonoBehaviour:
     payingStatus: 0
   InterstitialAdv:
     showFirstAdv: 1
-    interAdvInterval: 100
+    interAdvInterval: 60
     postponeCallByFail: 1
     postponeCallTimer: 40
     labelAdvSimLabel: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
       consumed: 1
   RewardedAdv:
     rewardedAfterClosing: 1
-    skipInterAdvAfterReward: 0
+    skipInterAdvAfterReward: 1
     labelAdvSimLabel: 0
   Storage:
     saveLocal: 0
