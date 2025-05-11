@@ -2,7 +2,9 @@ using UnityEngine.SceneManagement;
 
 public class SwitchSceneButton : SceneInteractionButton
 {
-    private const int FirstSceneId = 1;
+    private const int FirstSceneId = 3;
+
+    public void Switch() => OnButtonClick();
 
     protected override void LoadScene()
     {

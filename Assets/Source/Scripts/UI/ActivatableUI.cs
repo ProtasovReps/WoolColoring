@@ -9,9 +9,7 @@ public class ActivatableUI : Activatable
     private Transform _transform;
     private UIAnimations _animator;
 
-    protected UIAnimations Animator => _animator;
     protected bool IsAnimating { get; private set; }
-
 
     [Inject]
     private void Inject(UIAnimations animator) => _animator = animator;
