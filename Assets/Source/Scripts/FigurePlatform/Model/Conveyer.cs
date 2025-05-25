@@ -18,15 +18,15 @@ namespace FigurePlatform.Model
             _positionDatabase.PositionChanged += OnPositionChanged;
         }
 
+        public void Dispose()
+        {
+            _positionDatabase.PositionChanged -= OnPositionChanged;
+        }
+
         public void FillAllFigures()
         {
             while (_positionDatabase.PositionsCount > _positionDatabase.TransformablesCount)
                 AddFigure();
-        }
-
-        public void Dispose()
-        {
-            _positionDatabase.PositionChanged -= OnPositionChanged;
         }
 
         private void AddFigure()

@@ -9,6 +9,7 @@ namespace YandexGamesSDK.Leaderboard
         private const string LeaderboardName = "MostColoredBlocks";
 
         private readonly Picture _picture;
+
         private int _blockColorizedCount;
 
         public BlocksColoredLeaderboard(Picture picture)

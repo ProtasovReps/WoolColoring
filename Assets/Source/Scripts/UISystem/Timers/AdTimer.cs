@@ -9,6 +9,7 @@ namespace LevelInterface.Timers
     public class AdTimer : IDisposable
     {
         private readonly float _coolDownTime;
+
         private CancellationTokenSource _cancellationTokenSource;
 
         public AdTimer(float cooldownTime)
