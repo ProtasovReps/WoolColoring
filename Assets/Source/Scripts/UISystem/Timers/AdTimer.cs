@@ -1,6 +1,6 @@
-using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using YG;
 
@@ -22,8 +22,8 @@ namespace LevelInterface.Timers
         public event Action TimeElapsed;
         public event Action Reseted;
 
-        public float ElapsedTime { get; private set; }
         public float CooldownTime => _coolDownTime;
+        public float ElapsedTime { get; private set; }
         public bool IsCounting { get; private set; }
 
         public void Dispose()

@@ -1,6 +1,6 @@
-using Reflex.Attributes;
 using System;
 using UnityEngine;
+using Reflex.Attributes;
 using Bolts.View;
 using ColorStrings.Model;
 using StringHolders.Model;

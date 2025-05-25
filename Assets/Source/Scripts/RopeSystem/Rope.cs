@@ -1,8 +1,8 @@
-using CustomInterface;
-using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
+using CustomInterface;
 using ViewExtensions;
 
 namespace ConnectingRope

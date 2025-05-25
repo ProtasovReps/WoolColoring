@@ -30,7 +30,6 @@ namespace LevelInterface
         {
             _transform.gameObject.SetActive(true);
             _transformToAnimate.gameObject.SetActive(true);
-
             _animator.PopUp(_transformToAnimate.Transform, _animationDuration);
         }
 

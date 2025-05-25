@@ -1,43 +1,43 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Reflex.Core;
 using Ami.BroAudio;
-using YG;
-using System.Collections.Generic;
-using System;
+using StringHolders;
+using StringHolders.Model;
+using StringHolders.View;
+using BlockPicture;
+using BlockPicture.Model;
+using BlockPicture.View;
+using ColorStrings;
+using ColorStrings.Model;
 using Buffs;
 using Buffs.Strategies;
-using BlockPicture.Model;
-using StringHolders.Model;
-using ColorStrings.Model;
-using ColorStrings;
 using Bolts;
-using ColorBlocks.View;
 using ColorBlocks;
-using BlockPicture;
+using ColorBlocks.View;
+using FigurePlatform;
 using FigurePlatform.Model;
-using Extensions;
-using Input;
 using FigurePlatform.View;
-using ConnectingRope;
-using StringHolders.View;
-using BlockPicture.View;
-using ClickReaders;
+using Extensions;
 using ViewExtensions;
+using Input;
+using ConnectingRope;
+using ClickReaders;
 using PlayerWallet;
-using LevelInterface.Initializers;
 using LevelInterface;
+using LevelInterface.Initializers;
 using LevelInterface.Blocks;
-using YandexGamesSDK.Saves;
+using LevelInterface.Timers;
 using CustomInterface;
+using YG;
+using YandexGamesSDK.Saves;
 using YandexGamesSDK.Saves.Buffs;
 using YandexGamesSDK.Saves.PlayerWallet;
 using YandexGamesSDK.Saves.Level;
-using LevelInterface.Timers;
 using YandexGamesSDK.Metrics;
 using YandexGamesSDK.Leaderboard;
 using YandexGamesSDK.Inaps;
-using FigurePlatform;
-using StringHolders;
 
 namespace DependencyInjection
 {
@@ -204,12 +204,12 @@ namespace DependencyInjection
         {
             _breaker = new Breaker(_figureClickReader);
             var buffs = new Dictionary<IBuff, int>()
-        {
-            { _unlocker, YG2.saves.Unlockers },
-            { _filler, YG2.saves.Fillers },
-            { _remover, YG2.saves.Removers },
-            { _breaker, YG2.saves.Breakers }
-        };
+            {
+                { _unlocker, YG2.saves.Unlockers },
+                { _filler, YG2.saves.Fillers },
+                { _remover, YG2.saves.Removers },
+                { _breaker, YG2.saves.Breakers }
+            };
 
             BuffBag buffBag = new(buffs);
 
@@ -225,15 +225,14 @@ namespace DependencyInjection
         {
             ISaver[] savers =
             {
-            new UnlockerSaver(buffBag),
-            new FillerSaver(buffBag),
-            new RemoverSaver(buffBag),
-            new BreakerSaver(buffBag),
-            new WalletSaver(wallet),
-            new LevelSaver(),
-            new UnlockedLevelsSaver(),
-
-        };
+                new UnlockerSaver(buffBag),
+                new FillerSaver(buffBag),
+                new RemoverSaver(buffBag),
+                new BreakerSaver(buffBag),
+                new WalletSaver(wallet),
+                new LevelSaver(),
+                new UnlockedLevelsSaver(),
+            };
 
             ProgressSaver progressSaver = new(picture, savers);
 

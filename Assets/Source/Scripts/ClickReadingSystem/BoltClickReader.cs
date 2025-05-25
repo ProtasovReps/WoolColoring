@@ -26,10 +26,14 @@ namespace ClickReaders
         protected override void ValidateHit(RaycastHit hit)
         {
             if (hit.collider.TryGetComponent(out Bolt bolt) == false)
+            {
                 return;
+            }
 
             if (bolt.IsAnimating)
+            {
                 return;
+            }
 
             if (_picture.RequiredColorsCount <= ImmortalityRequiredColorsCount)
             {

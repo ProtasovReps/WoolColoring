@@ -1,6 +1,6 @@
-using UnityEngine;
 using System;
 using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace Effects
 {

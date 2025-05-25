@@ -1,6 +1,6 @@
-using Reflex.Attributes;
 using System.Collections.Generic;
 using UnityEngine;
+using Reflex.Attributes;
 using Effects;
 
 namespace Bolts.View

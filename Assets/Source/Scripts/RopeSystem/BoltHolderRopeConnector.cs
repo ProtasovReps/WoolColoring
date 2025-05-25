@@ -1,7 +1,7 @@
-using Reflex.Attributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Reflex.Attributes;
 using Bolts.View;
 using ColorStrings.Model;
 using StringHolders.View;

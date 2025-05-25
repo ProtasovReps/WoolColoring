@@ -6,6 +6,7 @@ namespace CustomInterface
         int Price { get; }
 
         void Execute();
+
         bool Validate();
     }
 }

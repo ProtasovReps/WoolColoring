@@ -1,6 +1,6 @@
-using ColorStrings.View;
 using System.Collections.Generic;
 using UnityEngine;
+using ColorStrings.View;
 using ViewExtensions;
 
 namespace StringHolders.View
@@ -44,7 +44,6 @@ namespace StringHolders.View
                     transform = _strings[i].Transform;
                     return true;
                 }
-
             }
 
             transform = null;

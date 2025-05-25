@@ -1,7 +1,7 @@
-using CustomInterface;
-using Reflex.Attributes;
 using System;
 using UnityEngine;
+using CustomInterface;
+using Reflex.Attributes;
 using ViewExtensions;
 
 namespace ColorBlocks.View

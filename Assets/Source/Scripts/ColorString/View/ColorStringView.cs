@@ -1,7 +1,7 @@
-using LitMotion;
-using LitMotion.Extensions;
 using System;
 using UnityEngine;
+using LitMotion;
+using LitMotion.Extensions;
 using ColorStrings.Presenter;
 using Extensions;
 using ViewExtensions;

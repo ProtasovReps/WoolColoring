@@ -1,6 +1,6 @@
-using Reflex.Attributes;
 using System.Collections.Generic;
 using UnityEngine;
+using Reflex.Attributes;
 
 namespace Effects
 {
@@ -18,7 +18,6 @@ namespace Effects
             _freeEffects = new Queue<ParticleSystem>();
             _transform = transform;
             _effectPlayer.EffectCompleted += OnEffectCompleted;
-
         }
 
         public ParticleSystem Get()

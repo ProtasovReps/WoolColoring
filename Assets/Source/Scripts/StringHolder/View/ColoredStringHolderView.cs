@@ -33,7 +33,7 @@ namespace StringHolders.View
             _soundPlayer = holderSoundPlayer;
 
             _colorView.Initialize();
-            base.Initialize(animations);
+            Initialize(animations);
         }
 
         public void PlayFilledSound()

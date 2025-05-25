@@ -1,8 +1,8 @@
-using LitMotion;
-using LitMotion.Extensions;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using LitMotion;
+using LitMotion.Extensions;
 
 namespace LevelInterface
 {
