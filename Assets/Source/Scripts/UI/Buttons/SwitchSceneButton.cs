@@ -1,20 +1,26 @@
 using UnityEngine.SceneManagement;
 
-public class SwitchSceneButton : SceneInteractionButton
+namespace LevelInterface.Buttons
 {
-    private const int FirstSceneId = 3;
-
-    public void Switch() => OnButtonClick();
-
-    protected override void LoadScene()
+    public class SwitchSceneButton : SceneInteractionButton
     {
-        int sceneId = SceneManager.GetActiveScene().buildIndex;
+        private const int FirstSceneId = 3;
 
-        sceneId++;
+        public void Switch()
+        {
+            OnButtonClick();
+        }
 
-        if (sceneId >= SceneManager.sceneCountInBuildSettings)
-            sceneId = FirstSceneId;
+        protected override void LoadScene()
+        {
+            int sceneId = SceneManager.GetActiveScene().buildIndex;
 
-        SceneManager.LoadScene(sceneId, LoadSceneMode.Single);
+            sceneId++;
+
+            if (sceneId >= SceneManager.sceneCountInBuildSettings)
+                sceneId = FirstSceneId;
+
+            SceneManager.LoadScene(sceneId, LoadSceneMode.Single);
+        }
     }
 }

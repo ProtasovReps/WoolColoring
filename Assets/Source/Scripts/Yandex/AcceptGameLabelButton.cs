@@ -1,38 +1,43 @@
+using LevelInterface.Buttons;
+using PlayerWallet;
 using Reflex.Attributes;
 using UnityEngine;
 using YG;
 
-public class AcceptGameLabelButton : ButtonView
+namespace YandexGamesSDK
 {
-    [SerializeField] private GameLabelYG _gameLabelYG;
-    [SerializeField, Min(0)] private int _addAmount;
-
-    private Wallet _wallet;
-
-    [Inject]
-    private void Inject(Wallet wallet)
+    public class AcceptGameLabelButton : ButtonView
     {
-        _wallet = wallet;
-    }
+        [SerializeField] private GameLabelYG _gameLabelYG;
+        [SerializeField, Min(0)] private int _addAmount;
 
-    private void OnEnable()
-    {
-        _gameLabelYG.onPromptSuccess.AddListener(AddMoney);
-    }
+        private Wallet _wallet;
 
-    private void OnDisable()
-    {
-        _gameLabelYG.onPromptSuccess.RemoveListener(AddMoney);
-    }
+        [Inject]
+        private void Inject(Wallet wallet)
+        {
+            _wallet = wallet;
+        }
 
-    protected override void OnButtonClick()
-    {
-        _gameLabelYG.GameLabelShowDialog();
-        base.OnButtonClick();
-    }
+        private void OnEnable()
+        {
+            _gameLabelYG.onPromptSuccess.AddListener(AddMoney);
+        }
 
-    private void AddMoney()
-    {
-        _wallet.Add(_addAmount);
+        private void OnDisable()
+        {
+            _gameLabelYG.onPromptSuccess.RemoveListener(AddMoney);
+        }
+
+        protected override void OnButtonClick()
+        {
+            _gameLabelYG.GameLabelShowDialog();
+            base.OnButtonClick();
+        }
+
+        private void AddMoney()
+        {
+            _wallet.Add(_addAmount);
+        }
     }
 }

@@ -1,14 +1,21 @@
+using LevelInterface.Timers;
 using UnityEngine;
 
-public class FinalCoinRewardButton : CoinAdRewardButton
+namespace LevelInterface.Buttons
 {
-    [SerializeField] private float _cooldownTime = 5;
-
-    private void Awake() => Initialize(new AdTimer(_cooldownTime));
-
-    protected override void OnButtonClick()
+    public class FinalCoinRewardButton : CoinAdRewardButton
     {
-        transform.gameObject.SetActive(false);
-        base.OnButtonClick();
+        [SerializeField] private float _cooldownTime = 5;
+
+        private void Awake()
+        {
+            Initialize(new AdTimer(_cooldownTime));
+        }
+
+        protected override void OnButtonClick()
+        {
+            transform.gameObject.SetActive(false);
+            base.OnButtonClick();
+        }
     }
 }

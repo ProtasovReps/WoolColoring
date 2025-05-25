@@ -1,14 +1,20 @@
 using YG;
+using Buffs;
+using Buffs.Strategies;
+using CustomInterface;
 
-public class UnlockerSaver : BuffSaver
+namespace YandexGamesSDK.Saves.Buffs
 {
-    public UnlockerSaver(BuffBag bag) : base(bag) { }
-
-    protected override void ValidateBuff(IBuff buff, int count)
+    public class UnlockerSaver : BuffSaver
     {
-        if (buff is not Unlocker)
-            return;
+        public UnlockerSaver(BuffBag bag) : base(bag) { }
 
-        YG2.saves.Unlockers = count;
+        protected override void ValidateBuff(IBuff buff, int count)
+        {
+            if (buff is not Unlocker)
+                return;
+
+            YG2.saves.Unlockers = count;
+        }
     }
 }

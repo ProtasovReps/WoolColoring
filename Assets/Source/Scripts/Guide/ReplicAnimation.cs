@@ -3,14 +3,17 @@ using System;
 using TMPro;
 using UnityEngine;
 
-public class ReplicAnimation : MonoBehaviour
+namespace PlayerGuide
 {
-    [SerializeField] private float _duration;
-
-    public void Activate(TMP_Text text, Action callback)
+    public class ReplicAnimation : MonoBehaviour
     {
-        LMotion.Create(0, text.text.Length, _duration)
-            .WithOnComplete(callback)
-            .Bind(x => text.maxVisibleCharacters = x);
+        [SerializeField] private float _duration;
+
+        public void Activate(TMP_Text text, Action callback)
+        {
+            LMotion.Create(0, text.text.Length, _duration)
+                .WithOnComplete(callback)
+                .Bind(x => text.maxVisibleCharacters = x);
+        }
     }
 }

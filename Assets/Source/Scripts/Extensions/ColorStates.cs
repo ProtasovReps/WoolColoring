@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public static class ColorStates
+namespace Extensions
 {
-    public static Color InactiveColor => Color.white;
+    public static class ColorStates
+    {
+        public static readonly Color InactiveColor = Color.white;
+    }
 }

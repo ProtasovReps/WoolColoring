@@ -1,33 +1,37 @@
 using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
+using ViewExtensions;
 
-public class PictureTransformView : TransformView
+namespace BlockPicture.View
 {
-    private CancellationTokenSource _cancellationTokenSource;
-
-    public void ChangePosition(Transform comparer, Vector3 targetPosition, float moveSpeed)
+    public class PictureTransformView : TransformView
     {
-        _cancellationTokenSource?.Cancel();
-        _cancellationTokenSource?.Dispose();
+        private CancellationTokenSource _cancellationTokenSource;
 
-        MoveSmoothly(comparer, targetPosition, moveSpeed).Forget();
-    }
-
-    private async UniTaskVoid MoveSmoothly(Transform comparer, Vector3 targetPosition, float moveSpeed)
-    {
-        _cancellationTokenSource = new CancellationTokenSource();
-
-        Vector3 offset;
-        Vector3 finalPosition;
-
-        while (Mathf.Approximately(targetPosition.y, comparer.position.y) == false)
+        public void ChangePosition(Transform comparer, Vector3 targetPosition, float moveSpeed)
         {
-            offset = targetPosition - comparer.position;
-            finalPosition = Transform.position + new Vector3(0f, offset.y, 0f);
+            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource?.Dispose();
 
-            Transform.position = Vector3.Lerp(Transform.position, finalPosition, moveSpeed * Time.deltaTime);
-            await UniTask.Yield(PlayerLoopTiming.Update, _cancellationTokenSource.Token);
+            MoveSmoothly(comparer, targetPosition, moveSpeed).Forget();
+        }
+
+        private async UniTaskVoid MoveSmoothly(Transform comparer, Vector3 targetPosition, float moveSpeed)
+        {
+            _cancellationTokenSource = new CancellationTokenSource();
+
+            Vector3 offset;
+            Vector3 finalPosition;
+
+            while (Mathf.Approximately(targetPosition.y, comparer.position.y) == false)
+            {
+                offset = targetPosition - comparer.position;
+                finalPosition = Transform.position + new Vector3(0f, offset.y, 0f);
+
+                Transform.position = Vector3.Lerp(Transform.position, finalPosition, moveSpeed * Time.deltaTime);
+                await UniTask.Yield(PlayerLoopTiming.Update, _cancellationTokenSource.Token);
+            }
         }
     }
 }

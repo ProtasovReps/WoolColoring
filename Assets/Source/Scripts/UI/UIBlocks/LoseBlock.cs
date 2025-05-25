@@ -1,20 +1,27 @@
 using Reflex.Attributes;
+using StringHolders.Model;
 
-public class LoseBlock : ActivatableUI
+namespace LevelInterface.Blocks
 {
-    private WhiteStringHolder _whiteStringHolder;
-
-    [Inject]
-    private void Inject(WhiteStringHolder whiteStringHolder)
+    public class LoseBlock : ActivatableUI
     {
-        _whiteStringHolder = whiteStringHolder;
-        _whiteStringHolder.Filled += OnFilled;
-    }
+        private WhiteStringHolder _whiteStringHolder;
 
-    private void OnDestroy()
-    {
-        _whiteStringHolder.Filled -= OnFilled;
-    }
+        [Inject]
+        private void Inject(WhiteStringHolder whiteStringHolder)
+        {
+            _whiteStringHolder = whiteStringHolder;
+            _whiteStringHolder.Filled += OnFilled;
+        }
 
-    private void OnFilled(WhiteStringHolder holder) => Activate();
+        private void OnDestroy()
+        {
+            _whiteStringHolder.Filled -= OnFilled;
+        }
+
+        private void OnFilled(WhiteStringHolder holder)
+        {
+            Activate();
+        }
+    }
 }

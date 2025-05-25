@@ -1,10 +1,19 @@
 using UnityEngine;
 
-public class WhiteStringHolderView : StringHolderView
+namespace StringHolders.View
 {
-    [SerializeField] private float _appearDuration;
+    public class WhiteStringHolderView : StringHolderView
+    {
+        [SerializeField] private float _appearDuration;
 
-    private void Awake() => Appear();
+        private void Awake()
+        {
+            Appear();
+        }
 
-    private void Appear() => Animations.Appear(Transform);
+        private void Appear()
+        {
+            Animations.Appear(Transform);
+        }
+    }
 }

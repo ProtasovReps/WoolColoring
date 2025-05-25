@@ -1,28 +1,33 @@
+using BlockPicture.Model;
+using CustomInterface;
 using System;
 using YG;
 
-public class ProgressSaver : ISaver, IDisposable
+namespace YandexGamesSDK.Saves
 {
-    private readonly Picture _picture;
-    private readonly ISaver[] _savers;
-
-    public ProgressSaver(Picture picture, ISaver[] savers)
+    public class ProgressSaver : ISaver, IDisposable
     {
-        _picture = picture;
-        _savers = savers;
-        _picture.Finished += Save;
-    }
+        private readonly Picture _picture;
+        private readonly ISaver[] _savers;
 
-    public void Dispose()
-    {
-        _picture.Finished -= Save;
-    }
+        public ProgressSaver(Picture picture, ISaver[] savers)
+        {
+            _picture = picture;
+            _savers = savers;
+            _picture.Finished += Save;
+        }
 
-    public void Save()
-    {
-        for (int i = 0; i < _savers.Length; i++)
-            _savers[i].Save();
+        public void Dispose()
+        {
+            _picture.Finished -= Save;
+        }
 
-        YG2.SaveProgress();
+        public void Save()
+        {
+            for (int i = 0; i < _savers.Length; i++)
+                _savers[i].Save();
+
+            YG2.SaveProgress();
+        }
     }
 }

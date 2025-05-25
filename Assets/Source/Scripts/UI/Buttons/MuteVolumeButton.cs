@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class MuteVolumeButton : ButtonView
+namespace LevelInterface.Buttons
 {
-    private bool _isMuted;
-
-    protected override void OnButtonClick()
+    public class MuteVolumeButton : ButtonView
     {
-        _isMuted = !_isMuted;
-        AudioListener.pause = _isMuted;
+        private bool _isMuted;
+
+        protected override void OnButtonClick()
+        {
+            _isMuted = !_isMuted;
+            AudioListener.pause = _isMuted;
+        }
     }
 }

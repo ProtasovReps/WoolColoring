@@ -1,6 +1,9 @@
-public interface IBuffBuyButton<out T> where T : IBuff
+namespace CustomInterface
 {
-    T CurrentBuff { get; }
+    public interface IBuffBuyButton<out T> where T : IBuff
+    {
+        T CurrentBuff { get; }
 
-    void SetActive(bool isActive);
+        void SetActive(bool isActive);
+    }
 }

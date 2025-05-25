@@ -1,31 +1,42 @@
+using Bolts;
+using FigurePlatform.Model;
+using FigurePlatform.Presenter;
 using Reflex.Attributes;
 using UnityEngine;
+using ViewExtensions;
 
-public class FigureFactory : MonoBehaviour
+namespace FigurePlatform.View
 {
-    private BoltStash _stash;
-    private ObjectDisposer _disposer;
-
-    [Inject]
-    private void Inject(BoltStash stash) => _stash = stash;
-
-    public void Initialize(ObjectDisposer disposer)
-       => _disposer = disposer;
-
-    public Figure Produce(FigureView view)
+    public class FigureFactory : MonoBehaviour
     {
-        _stash.Add(view.Bolts);
-        return BindFigure(view);
-    }
+        private BoltStash _stash;
+        private ObjectDisposer _disposer;
 
-    private Figure BindFigure(FigureView view)
-    {
-        var model = new Figure();
-        var presenter = new FigurePresenter(model, view);
+        [Inject]
+        private void Inject(BoltStash stash)
+        {
+            _stash = stash;
+        }
 
-        _disposer.Add(presenter);
-        view.Initialize(presenter);
+        public void Initialize(ObjectDisposer disposer)
+        {
+            _disposer = disposer;
+        }
 
-        return model;
+        public Figure Produce(FigureView view)
+        {
+            _stash.Add(view.Bolts);
+            return BindFigure(view);
+        }
+
+        private Figure BindFigure(FigureView view)
+        {
+            var model = new Figure();
+            var presenter = new FigurePresenter(model, view);
+
+            _disposer.Add(presenter);
+            view.Initialize(presenter);
+            return model;
+        }
     }
 }

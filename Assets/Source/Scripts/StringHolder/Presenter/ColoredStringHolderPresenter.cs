@@ -1,39 +1,55 @@
+using StringHolders.Model;
+using StringHolders.View;
 using System;
 using UnityEngine;
 
-public class ColoredStringHolderPresenter : IDisposable
+namespace StringHolders.Presenter
 {
-    private readonly ColoredStringHolder _model;
-    private readonly ColoredStringHolderView _view;
-
-    public ColoredStringHolderPresenter(ColoredStringHolderView view, ColoredStringHolder model)
+    public class ColoredStringHolderPresenter : IDisposable
     {
-        if (view == null)
-            throw new ArgumentNullException(nameof(view));
+        private readonly ColoredStringHolder _model;
+        private readonly ColoredStringHolderView _view;
 
-        if (model == null)
-            throw new ArgumentNullException(nameof(model));
+        public ColoredStringHolderPresenter(ColoredStringHolderView view, ColoredStringHolder model)
+        {
+            if (view == null)
+                throw new ArgumentNullException(nameof(view));
 
-        _view = view;
-        _model = model;
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
 
-        _model.StringAdded += OnStringAdded;
-        _model.ColorChanged += OnColorChanged;
-        _model.Filled += holder => OnFilled();
+            _view = view;
+            _model = model;
+
+            _model.StringAdded += OnStringAdded;
+            _model.ColorChanged += OnColorChanged;
+            _model.Filled += holder => OnFilled();
+        }
+
+        public void Dispose()
+        {
+            _model.StringAdded -= OnStringAdded;
+            _model.ColorChanged -= OnColorChanged;
+        }
+
+        public Color GetColor()
+        {
+            return _model.Color;
+        }
+
+        private void OnColorChanged()
+        {
+            _view.Switch();
+        }
+
+        private void OnStringAdded()
+        {
+            _view.Shake();
+        }
+
+        private void OnFilled()
+        {
+            _view.PlayFilledSound();
+        }
     }
-
-    public Color GetColor() => _model.Color;
-
-    public void Dispose()
-    {
-        _model.StringAdded -= OnStringAdded;
-        _model.ColorChanged -= OnColorChanged;
-        _model.Filled -= holder => OnFilled();
-    }
-
-    private void OnColorChanged() => _view.Switch();
-
-    private void OnStringAdded() => _view.Shake();
-
-    private void OnFilled() => _view.PlayFilledSound();
 }

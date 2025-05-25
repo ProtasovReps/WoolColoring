@@ -2,21 +2,24 @@ using Lean.Localization;
 using System;
 using System.Linq;
 
-public class LanguageButton : ButtonView
+namespace LevelInterface.Buttons
 {
-    private string[] _languages;
-
-    private void Awake()
+    public class LanguageButton : ButtonView
     {
-        _languages = LeanLocalization.CurrentLanguages.Keys.ToArray();
-    }
+        private string[] _languages;
 
-    protected override void OnButtonClick()
-    {
-        int currentLanguageIndex = Array.IndexOf(_languages, LeanLocalization.GetFirstCurrentLanguage());
-        int nextIndex = (currentLanguageIndex + 1) % _languages.Length;
+        private void Awake()
+        {
+            _languages = LeanLocalization.CurrentLanguages.Keys.ToArray();
+        }
 
-        LeanLocalization.SetCurrentLanguageAll(_languages[nextIndex]);
-        base.OnButtonClick();
+        protected override void OnButtonClick()
+        {
+            int currentLanguageIndex = Array.IndexOf(_languages, LeanLocalization.GetFirstCurrentLanguage());
+            int nextIndex = (currentLanguageIndex + 1) % _languages.Length;
+
+            LeanLocalization.SetCurrentLanguageAll(_languages[nextIndex]);
+            base.OnButtonClick();
+        }
     }
 }

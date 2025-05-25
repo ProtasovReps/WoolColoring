@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class ActivateButton : ButtonView
+namespace LevelInterface.Buttons
 {
-    [SerializeField] private Activatable _activatable;
-
-    protected override void OnButtonClick()
+    public class ActivateButton : ButtonView
     {
-        base.OnButtonClick();
-        _activatable.Activate();
+        [SerializeField] private Activatable _activatable;
+
+        protected override void OnButtonClick()
+        {
+            base.OnButtonClick();
+            _activatable.Activate();
+        }
     }
 }

@@ -1,26 +1,30 @@
+using PlayerWallet;
 using Reflex.Attributes;
 using UnityEngine;
 using YG;
 
-public class MoneyAddReplic : DefaultReplic
+namespace PlayerGuide
 {
-    [SerializeField] private int _addAmount;
-
-    private Wallet _wallet;
-
-    [Inject]
-    private void Inject(Wallet wallet)
+    public class MoneyAddReplic : DefaultReplic
     {
-        _wallet = wallet;
-    }
+        [SerializeField] private int _addAmount;
 
-    protected override void OnAnimationFinalized()
-    {
-        if (YG2.saves.IfFreeCoinsGiven == false)
-            _wallet.Add(_addAmount);
+        private Wallet _wallet;
 
-       YG2.saves.IfFreeCoinsGiven = true;
+        [Inject]
+        private void Inject(Wallet wallet)
+        {
+            _wallet = wallet;
+        }
 
-        base.OnAnimationFinalized();
+        protected override void OnAnimationFinalized()
+        {
+            if (YG2.saves.IfFreeCoinsGiven == false)
+                _wallet.Add(_addAmount);
+
+            YG2.saves.IfFreeCoinsGiven = true;
+
+            base.OnAnimationFinalized();
+        }
     }
 }

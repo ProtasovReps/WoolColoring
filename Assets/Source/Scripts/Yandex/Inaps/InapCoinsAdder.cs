@@ -1,8 +1,19 @@
-public class InapCoinsAdder
+using PlayerWallet;
+
+namespace YandexGamesSDK.Inaps
 {
-    private readonly Wallet _wallet;
+    public class InapCoinsAdder
+    {
+        private readonly Wallet _wallet;
 
-    public InapCoinsAdder(Wallet wallet) => _wallet = wallet;
+        public InapCoinsAdder(Wallet wallet)
+        {
+            _wallet = wallet;
+        }
 
-    public void AddCoins(int amount) => _wallet.Add(amount);
+        public void AddCoins(int amount)
+        {
+            _wallet.Add(amount);
+        }
+    }
 }

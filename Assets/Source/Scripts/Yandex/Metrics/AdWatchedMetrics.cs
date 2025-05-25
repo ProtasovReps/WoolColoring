@@ -1,27 +1,30 @@
+using Extensions;
 using System;
 using YG;
 
-public class AdWatchedMetrics : IDisposable
+namespace YandexGamesSDK.Metrics
 {
-    public AdWatchedMetrics()
+    public class AdWatchedMetrics : IDisposable
     {
-        YG2.onOpenInterAdv += SendMetricsInter;
-        YG2.onRewardAdv += reward => SendMetricsRewarded();
-    }
+        public AdWatchedMetrics()
+        {
+            YG2.onOpenInterAdv += SendMetricsInter;
+            YG2.onRewardAdv += reward => SendMetricsRewarded();
+        }
 
-    public void Dispose()
-    {
-        YG2.onOpenInterAdv -= SendMetricsInter;
-        YG2.onRewardAdv -= reward => SendMetricsRewarded();
-    }
+        public void Dispose()
+        {
+            YG2.onOpenInterAdv -= SendMetricsInter;
+        }
 
-    private void SendMetricsInter()
-    {
-        YG2.MetricaSend(MetricParams.InterAdWatched.ToString());
-    }
+        private void SendMetricsInter()
+        {
+            YG2.MetricaSend(MetricParams.InterAdWatched.ToString());
+        }
 
-    private void SendMetricsRewarded()
-    {
-        YG2.MetricaSend(MetricParams.RewardedAdWatched.ToString());
+        private void SendMetricsRewarded()
+        {
+            YG2.MetricaSend(MetricParams.RewardedAdWatched.ToString());
+        }
     }
 }

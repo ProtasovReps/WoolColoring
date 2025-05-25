@@ -1,6 +1,9 @@
 using System;
 
-public interface IFillable<out T>
+namespace CustomInterface
 {
-     event Action<T> Filled;
+    public interface IFillable<out T>
+    {
+        event Action<T> Filled;
+    }
 }

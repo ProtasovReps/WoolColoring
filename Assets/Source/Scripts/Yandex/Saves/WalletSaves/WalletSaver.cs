@@ -1,16 +1,21 @@
+using CustomInterface;
 using YG;
+using PlayerWallet;
 
-public class WalletSaver : ISaver
+namespace YandexGamesSDK.Saves.PlayerWallet
 {
-    private Wallet _wallet;
-
-    public WalletSaver(Wallet wallet)
+    public class WalletSaver : ISaver
     {
-        _wallet = wallet;
-    }
+        private readonly Wallet _wallet;
 
-    public void Save()
-    {
-        YG2.saves.Coins = _wallet.Count;
+        public WalletSaver(Wallet wallet)
+        {
+            _wallet = wallet;
+        }
+
+        public void Save()
+        {
+            YG2.saves.Coins = _wallet.Count;
+        }
     }
 }

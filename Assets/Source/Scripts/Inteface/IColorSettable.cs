@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 
-public interface IColorSettable
+namespace CustomInterface
 {
-    public void SetColor(Color color);
+    public interface IColorSettable
+    {
+        public void SetColor(Color color);
+    }
 }

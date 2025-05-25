@@ -1,21 +1,26 @@
 using YG;
+using Extensions;
+using YandexGamesSDK.Saves;
 
-public class RemoveAdsPackPurchase : PurchaseValidation
+namespace YandexGamesSDK.Inaps
 {
-    private readonly AdsRemover _adsRemover;
-
-    public RemoveAdsPackPurchase(ProgressSaver progressSaver, AdsRemover adsRemover) : base(progressSaver)
+    public class RemoveAdsPackPurchase : PurchaseValidation
     {
-        _adsRemover = adsRemover;
-    }
+        private readonly AdsRemover _adsRemover;
 
-    protected override void Validate(string purchaseId)
-    {
-        if (purchaseId != PurchaseIds.AdsRemove)
-            return;
+        public RemoveAdsPackPurchase(ProgressSaver progressSaver, AdsRemover adsRemover) : base(progressSaver)
+        {
+            _adsRemover = adsRemover;
+        }
 
-        _adsRemover.RemoveAds();
+        protected override void Validate(string purchaseId)
+        {
+            if (purchaseId != PurchaseIds.AdsRemove)
+                return;
 
-        YG2.MetricaSend(MetricParams.InappBought.ToString());
+            _adsRemover.RemoveAds();
+
+            YG2.MetricaSend(MetricParams.InappBought.ToString());
+        }
     }
 }

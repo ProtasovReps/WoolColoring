@@ -3,36 +3,39 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
 
-public class LevelSelectButton : SceneInteractionButton
+namespace LevelInterface.Buttons
 {
-    [SerializeField, Min(1)] private int _levelNumber;
-    [SerializeField] private Image _padlock;
-
-    public int LevelNumber => _levelNumber;
-
-    private void Awake()
+    public class LevelSelectButton : SceneInteractionButton
     {
-        if (YG2.saves.PassedLevelIndexes.Contains(LevelNumber) == false)
-            Deactivate();
+        [SerializeField, Min(1)] private int _levelNumber;
+        [SerializeField] private Image _padlock;
 
-        if (YG2.saves.PassedLevelIndexes.Contains(LevelNumber - 1))
-            Activate();
-    }
+        public int LevelNumber => _levelNumber;
 
-    public override void Activate()
-    {
-        _padlock.enabled = false;
-        base.Activate();
-    }
+        private void Awake()
+        {
+            if (YG2.saves.PassedLevelIndexes.Contains(LevelNumber) == false)
+                Deactivate();
 
-    public override void Deactivate()
-    {
-        _padlock.enabled = true;
-        base.Deactivate();
-    }
+            if (YG2.saves.PassedLevelIndexes.Contains(LevelNumber - 1))
+                Activate();
+        }
 
-    protected override void LoadScene()
-    {
-        SceneManager.LoadScene(_levelNumber, LoadSceneMode.Single);
+        public override void Activate()
+        {
+            _padlock.enabled = false;
+            base.Activate();
+        }
+
+        public override void Deactivate()
+        {
+            _padlock.enabled = true;
+            base.Deactivate();
+        }
+
+        protected override void LoadScene()
+        {
+            SceneManager.LoadScene(_levelNumber, LoadSceneMode.Single);
+        }
     }
 }

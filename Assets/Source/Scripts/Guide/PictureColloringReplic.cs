@@ -1,37 +1,41 @@
 using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
 using UnityEngine;
+using ClickReaders;
+using BlockPicture.Model;
 
-public class PictureColloringReplic : Replic
+namespace PlayerGuide
 {
-    [SerializeField] private GuideBoltClickReader _guideBoltClickReader;
-    [SerializeField] private ReplicPlayer _player;
-    [SerializeField] private float _deactivateDelay;
-
-    private Picture _picture;
-
-    [Inject]
-    private void Inject(Picture picture)
+    public class PictureColloringReplic : Replic
     {
-        _picture = picture;
-        _picture.BlockCountChanged += () => OnBlockColorChanged().Forget();
-    }
+        [SerializeField] private GuideBoltClickReader _guideBoltClickReader;
+        [SerializeField] private ReplicPlayer _player;
+        [SerializeField] private float _deactivateDelay;
 
-    public override void Activate()
-    {
-        _guideBoltClickReader.SetPause(false);
-        _guideBoltClickReader.SetWhiteStringHolderGuide(false);
-        base.Activate();
-    }
+        private Picture _picture;
 
-    protected override void OnAnimationFinalized() { }
+        [Inject]
+        private void Inject(Picture picture)
+        {
+            _picture = picture;
+            _picture.BlockCountChanged += () => OnBlockColorChanged().Forget();
+        }
 
-    private async UniTaskVoid OnBlockColorChanged()
-    {
-        _picture.BlockCountChanged -= () => OnBlockColorChanged().Forget();
-        _guideBoltClickReader.SetPause(true);
-        _player.transform.gameObject.SetActive(false);
-        await UniTask.WaitForSeconds(_deactivateDelay);
-        Deactivate();
+        public override void Activate()
+        {
+            _guideBoltClickReader.SetPause(false);
+            _guideBoltClickReader.SetWhiteStringHolderGuide(false);
+            base.Activate();
+        }
+
+        protected override void OnAnimationFinalized() { }
+
+        private async UniTaskVoid OnBlockColorChanged()
+        {
+            _guideBoltClickReader.SetPause(true);
+            _player.transform.gameObject.SetActive(false);
+            await UniTask.WaitForSeconds(_deactivateDelay);
+            Deactivate();
+        }
     }
 }

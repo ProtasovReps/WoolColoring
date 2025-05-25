@@ -1,29 +1,36 @@
 using Ami.BroAudio;
 using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
+using ViewExtensions;
 using YG;
 
-public abstract class SceneInteractionButton : ButtonView
+namespace LevelInterface.Buttons
 {
-    private LevelTransitionAnimation _transitionAnimation;
-
-    [Inject]
-    private void Inject(LevelTransitionAnimation transition)
+    public abstract class SceneInteractionButton : ButtonView
     {
-        _transitionAnimation = transition;
-    }
+        private LevelTransitionAnimation _transitionAnimation;
 
-    protected override void OnButtonClick() => ValidateClick().Forget();
+        [Inject]
+        private void Inject(LevelTransitionAnimation transition)
+        {
+            _transitionAnimation = transition;
+        }
 
-    protected abstract void LoadScene();
+        protected abstract void LoadScene();
 
-    private async UniTaskVoid ValidateClick()
-    {
-        YG2.InterstitialAdvShow();
-        Deactivate();
-        BroAudio.Stop(BroAudioType.Music);
-        base.OnButtonClick();
-        await _transitionAnimation.FadeOut();
-        LoadScene();
+        protected override void OnButtonClick()
+        {
+            ValidateClick().Forget();
+        }
+
+        private async UniTaskVoid ValidateClick()
+        {
+            YG2.InterstitialAdvShow();
+            Deactivate();
+            BroAudio.Stop(BroAudioType.Music);
+            base.OnButtonClick();
+            await _transitionAnimation.FadeOut();
+            LoadScene();
+        }
     }
 }

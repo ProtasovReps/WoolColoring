@@ -7,18 +7,20 @@
         false,
         false
     ],
-    "idSave": 1,
-    "Coins": 65,
-    "Unlockers": 2,
+    "idSave": 3,
+    "Coins": 340,
+    "Unlockers": 0,
     "Fillers": 2,
     "Removers": 2,
     "Breakers": 2,
     "BlocksColorized": 0,
-    "LastLevelIndex": 2,
+    "LastLevelIndex": 4,
     "PassedLevelIndexes": [
-        1
+        1,
+        2,
+        3
     ],
-    "UnlockedLevelsCount": 1,
+    "UnlockedLevelsCount": 3,
     "IfFreeBuffsGiven": true,
     "IfFreeCoinsGiven": false,
     "IfGuidePassed": false,

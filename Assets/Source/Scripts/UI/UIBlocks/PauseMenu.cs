@@ -1,10 +1,13 @@
 using YG;
 
-public class PauseMenu : ActivatableUI
+namespace LevelInterface.Blocks
 {
-    public override void Deactivate()
+    public class PauseMenu : ActivatableUI
     {
-        YG2.InterstitialAdvShow();
-        base.Deactivate();
+        public override void Deactivate()
+        {
+            YG2.InterstitialAdvShow();
+            base.Deactivate();
+        }
     }
 }

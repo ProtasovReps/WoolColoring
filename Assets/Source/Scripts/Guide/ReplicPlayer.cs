@@ -1,35 +1,38 @@
 using System;
 using UnityEngine;
 
-public class ReplicPlayer : MonoBehaviour
+namespace PlayerGuide
 {
-    [SerializeField] private Replic[] _replics;
-
-    private int _replicPlayerIndex;
-
-    public event Action<ReplicPlayer> Executed;
-
-    public void ShowReplics()
+    public class ReplicPlayer : MonoBehaviour
     {
-        transform.gameObject.SetActive(true);
+        [SerializeField] private Replic[] _replics;
 
-        if (_replicPlayerIndex == _replics.Length)
+        private int _replicPlayerIndex;
+
+        public event Action<ReplicPlayer> Executed;
+
+        public void ShowReplics()
         {
-            Executed?.Invoke(this);
-            transform.gameObject.SetActive(false);
-            return;
+            transform.gameObject.SetActive(true);
+
+            if (_replicPlayerIndex == _replics.Length)
+            {
+                Executed?.Invoke(this);
+                transform.gameObject.SetActive(false);
+                return;
+            }
+
+            Replic replic = _replics[_replicPlayerIndex];
+
+            replic.Activate();
+            replic.Executed += OnReplicExecuted;
         }
 
-        Replic replic = _replics[_replicPlayerIndex];
-
-        replic.Activate();
-        replic.Executed += OnReplicExecuted;
-    }
-
-    private void OnReplicExecuted(Replic replic)
-    {
-        replic.Executed -= OnReplicExecuted;
-        _replicPlayerIndex++;
-        ShowReplics();
+        private void OnReplicExecuted(Replic replic)
+        {
+            replic.Executed -= OnReplicExecuted;
+            _replicPlayerIndex++;
+            ShowReplics();
+        }
     }
 }

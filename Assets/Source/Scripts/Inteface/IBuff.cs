@@ -1,8 +1,11 @@
-public interface IBuff
+namespace CustomInterface
 {
-    string Id { get; }
-    int Price { get; }
+    public interface IBuff
+    {
+        string Id { get; }
+        int Price { get; }
 
-    void Execute();
-    bool Validate();
+        void Execute();
+        bool Validate();
+    }
 }

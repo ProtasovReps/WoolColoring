@@ -1,60 +1,66 @@
+using Bolts.View;
+using CustomInterface;
+using FigurePlatform.Presenter;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using ViewExtensions;
 
-[RequireComponent(typeof(ActiveStateSwitcher))]
-[RequireComponent(typeof(TransformView))]
-[RequireComponent(typeof(ColorView))]
-public class FigureView : MonoBehaviour, IFallable, IColorSettable
+namespace FigurePlatform.View
 {
-    [SerializeField] private BoltContainer _boltContainer;
-    [SerializeField] private Collider _collider;
-
-    private FigurePresenter _presenter;
-    private TransformView _transformView;
-    private ColorView _colorView;
-    private ActiveStateSwitcher _activeStateSwitcher;
-
-    public Collider Collider => _collider;
-    public IEnumerable<Bolt> Bolts => _boltContainer.Bolts;
-
-    public void Initialize(FigurePresenter figurePresenter)
+    [RequireComponent(typeof(ActiveStateSwitcher))]
+    [RequireComponent(typeof(TransformView))]
+    [RequireComponent(typeof(ColorView))]
+    public class FigureView : MonoBehaviour, IColorSettable
     {
-        if (_boltContainer == null)
-            throw new NullReferenceException(nameof(_boltContainer));
+        [SerializeField] private BoltContainer _boltContainer;
+        [SerializeField] private Collider _collider;
 
-        if (figurePresenter == null)
-            throw new ArgumentNullException(nameof(figurePresenter));
+        private FigurePresenter _presenter;
+        private TransformView _transformView;
+        private ColorView _colorView;
+        private ActiveStateSwitcher _activeStateSwitcher;
 
-        _transformView = GetComponent<TransformView>();
-        _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
-        _colorView = GetComponent<ColorView>();
-        _presenter = figurePresenter;
+        public Collider Collider => _collider;
+        public IEnumerable<Bolt> Bolts => _boltContainer.Bolts;
 
-        _transformView.Initialize();
-        _colorView.Initialize();
-        _activeStateSwitcher.Initialize();
-    }
+        public void Initialize(FigurePresenter figurePresenter)
+        {
+            if (_boltContainer == null)
+                throw new NullReferenceException(nameof(_boltContainer));
 
-    public void Appear()
-    {
-        _transformView.ResetTransform();
+            if (figurePresenter == null)
+                throw new ArgumentNullException(nameof(figurePresenter));
 
-        foreach (Bolt bolt in _boltContainer.Bolts)
-            bolt.SetActive(true);
+            _transformView = GetComponent<TransformView>();
+            _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
+            _colorView = GetComponent<ColorView>();
+            _presenter = figurePresenter;
 
-        _activeStateSwitcher.SetActive(true);
-    }
+            _transformView.Initialize();
+            _colorView.Initialize();
+            _activeStateSwitcher.Initialize();
+        }
 
-    public void Fall()
-    {
-        _activeStateSwitcher.SetActive(false);
+        public void Appear()
+        {
+            _transformView.ResetTransform();
 
-        _presenter.Fall();
-    }
+            foreach (Bolt bolt in _boltContainer.Bolts)
+                bolt.SetActive(true);
 
-    public void SetColor(Color color)
-    {
-        _colorView.SetColor(color);
+            _activeStateSwitcher.SetActive(true);
+        }
+
+        public void Fall()
+        {
+            _activeStateSwitcher.SetActive(false);
+            _presenter.Fall();
+        }
+
+        public void SetColor(Color color)
+        {
+            _colorView.SetColor(color);
+        }
     }
 }

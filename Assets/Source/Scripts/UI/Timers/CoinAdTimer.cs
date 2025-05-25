@@ -1,4 +1,7 @@
-public class CoinAdTimer : AdTimer
+namespace LevelInterface.Timers
 {
-    public CoinAdTimer(float cooldownTime) : base(cooldownTime) { }
+    public class CoinAdTimer : AdTimer
+    {
+        public CoinAdTimer(float cooldownTime) : base(cooldownTime) { }
+    }
 }

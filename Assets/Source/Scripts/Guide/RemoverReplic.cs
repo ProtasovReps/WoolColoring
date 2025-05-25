@@ -1,31 +1,36 @@
+using ColorStrings.Model;
 using Reflex.Attributes;
+using StringHolders.Model;
 using UnityEngine;
 
-public class RemoverReplic : BuffReplic
+namespace PlayerGuide
 {
-    private const int AddStringCount = 3;
-
-    [SerializeField] private Color _stringColor;
-
-    private WhiteStringHolder _whiteStringHolder;
-
-    [Inject]
-    private void Inject(WhiteStringHolder holder)
+    public class RemoverReplic : BuffReplic
     {
-        _whiteStringHolder = holder;
-    }
+        private const int AddStringCount = 3;
 
-    public override void Activate()
-    {
-        var fakeString = new ColorString();
+        [SerializeField] private Color _stringColor;
 
-        fakeString.SetColor(_stringColor);
+        private WhiteStringHolder _whiteStringHolder;
 
-        for (int i = 0; i < AddStringCount; i++)
+        [Inject]
+        private void Inject(WhiteStringHolder holder)
         {
-            _whiteStringHolder.Add(fakeString);
+            _whiteStringHolder = holder;
         }
 
-        base.Activate();
+        public override void Activate()
+        {
+            var fakeString = new ColorString();
+
+            fakeString.SetColor(_stringColor);
+
+            for (int i = 0; i < AddStringCount; i++)
+            {
+                _whiteStringHolder.Add(fakeString);
+            }
+
+            base.Activate();
+        }
     }
 }

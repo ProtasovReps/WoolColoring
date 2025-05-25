@@ -2,30 +2,36 @@ using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
 
-public class DefaultReplic : Replic
+namespace PlayerGuide
 {
-    [SerializeField] private float _clickWaitDuration;
-    [SerializeField] private ClickablePanel _clickablePanel;
-
-    private CancellationTokenSource _cancellationToken;
-
-    protected override void Deactivate()
+    public class DefaultReplic : Replic
     {
-        _cancellationToken?.Cancel();
-        _clickablePanel.Clicked -= Deactivate;
+        [SerializeField] private float _clickWaitDuration;
+        [SerializeField] private ClickablePanel _clickablePanel;
 
-        base.Deactivate();
-    }
+        private CancellationTokenSource _cancellationToken;
 
-    protected override void OnAnimationFinalized() => WaitClick().Forget();
+        protected override void Deactivate()
+        {
+            _cancellationToken?.Cancel();
+            _clickablePanel.Clicked -= Deactivate;
 
-    private async UniTaskVoid WaitClick()
-    {
-        _cancellationToken = new CancellationTokenSource();
-        _clickablePanel.Clicked += Deactivate;
+            base.Deactivate();
+        }
 
-        await UniTask.WaitForSeconds(_clickWaitDuration, cancellationToken: _cancellationToken.Token, cancelImmediately: true);
+        protected override void OnAnimationFinalized()
+        {
+            WaitClick().Forget();
+        }
 
-        Deactivate();
+        private async UniTaskVoid WaitClick()
+        {
+            _cancellationToken = new CancellationTokenSource();
+            _clickablePanel.Clicked += Deactivate;
+
+            await UniTask.WaitForSeconds(_clickWaitDuration, cancellationToken: _cancellationToken.Token, cancelImmediately: true);
+
+            Deactivate();
+        }
     }
 }

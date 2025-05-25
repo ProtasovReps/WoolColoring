@@ -1,13 +1,19 @@
 using UnityEngine;
 
-public class ActiveStateSwitcher : MonoBehaviour
+namespace ViewExtensions
 {
-    private Transform _transform;
-
-    public void Initialize() => _transform = transform;
-
-    public void SetActive(bool isActive)
+    public class ActiveStateSwitcher : MonoBehaviour
     {
-        _transform.gameObject.SetActive(isActive);
+        private Transform _transform;
+
+        public void Initialize()
+        {
+            _transform = transform;
+        }
+
+        public void SetActive(bool isActive)
+        {
+            _transform.gameObject.SetActive(isActive);
+        }
     }
 }

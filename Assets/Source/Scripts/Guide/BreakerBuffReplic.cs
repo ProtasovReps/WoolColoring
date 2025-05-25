@@ -1,29 +1,33 @@
+using ClickReaders;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class BreakerBuffReplic : Replic
+namespace PlayerGuide
 {
-    [SerializeField] private BoltClickReader _boltClickReader;
-    [SerializeField] private FigureClickReader _figureClickReader;
-
-    public override void Activate()
+    public class BreakerBuffReplic : Replic
     {
-        WaitExecution().Forget();
-        base.Activate();
-    }
+        [SerializeField] private BoltClickReader _boltClickReader;
+        [SerializeField] private FigureClickReader _figureClickReader;
 
-    protected override void Deactivate()
-    {
-        _figureClickReader.SetPause(true);
-        _boltClickReader.SetPause(true);
-        base.Deactivate();
-    }
+        public override void Activate()
+        {
+            WaitExecution().Forget();
+            base.Activate();
+        }
 
-    protected override void OnAnimationFinalized() { }
+        protected override void Deactivate()
+        {
+            _figureClickReader.SetPause(true);
+            _boltClickReader.SetPause(true);
+            base.Deactivate();
+        }
 
-    private async UniTaskVoid WaitExecution()
-    {
-        await UniTask.WaitUntil(() => _figureClickReader.IsPaused == true);
-        Deactivate();
+        protected override void OnAnimationFinalized() { }
+
+        private async UniTaskVoid WaitExecution()
+        {
+            await UniTask.WaitUntil(() => _figureClickReader.IsPaused == true);
+            Deactivate();
+        }
     }
 }

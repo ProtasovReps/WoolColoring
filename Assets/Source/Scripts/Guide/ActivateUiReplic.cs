@@ -1,18 +1,22 @@
+using LevelInterface;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ActivateUiReplic : DefaultReplic
+namespace PlayerGuide
 {
-    [SerializeField] private LevelUI _levelUI;
-    [SerializeField] private Button[] _levelButtons;
-
-    public override void Activate()
+    public class ActivateUiReplic : DefaultReplic
     {
-        _levelUI.transform.gameObject.SetActive(true);
+        [SerializeField] private LevelUI _levelUI;
+        [SerializeField] private Button[] _levelButtons;
 
-        for (int i = 0; i < _levelButtons.Length; i++)
-            _levelButtons[i].gameObject.SetActive(true);
+        public override void Activate()
+        {
+            _levelUI.transform.gameObject.SetActive(true);
 
-        base.Activate();
+            for (int i = 0; i < _levelButtons.Length; i++)
+                _levelButtons[i].gameObject.SetActive(true);
+
+            base.Activate();
+        }
     }
 }

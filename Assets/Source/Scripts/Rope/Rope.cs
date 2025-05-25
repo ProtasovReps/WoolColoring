@@ -1,136 +1,145 @@
+using CustomInterface;
 using Cysharp.Threading.Tasks;
 using System;
 using System.Threading;
 using UnityEngine;
+using ViewExtensions;
 
-[RequireComponent(typeof(ColorView))]
-[RequireComponent(typeof(LineRenderer))]
-public class Rope : MonoBehaviour, IColorSettable
+namespace ConnectingRope
 {
-    [SerializeField] private int _segmentsCount;
-    [SerializeField] private float _segmentAppearDelay;
-    [SerializeField] private float _segmentsDisappearDelay;
-    [SerializeField] private float _maxOffset;
-    [SerializeField] private float _waveSpeed;
-
-    private ColorView _colorView;
-    private LineRenderer _lineRenderer;
-    private UniTask _task;
-    private CancellationTokenSource _cancellationTokenSource;
-    private Transform _lastStartPoint;
-
-    public event Action<Rope> Disconected;
-
-    public Color Color => _colorView.Color;
-
-    private void Awake()
+    [RequireComponent(typeof(ColorView))]
+    [RequireComponent(typeof(LineRenderer))]
+    public class Rope : MonoBehaviour, IColorSettable
     {
-        _lineRenderer = GetComponent<LineRenderer>();
-        _colorView = GetComponent<ColorView>();
+        [SerializeField] private int _segmentsCount;
+        [SerializeField] private float _segmentAppearDelay;
+        [SerializeField] private float _segmentsDisappearDelay;
+        [SerializeField] private float _maxOffset;
+        [SerializeField] private float _waveSpeed;
 
-        _colorView.Initialize();
-    }
+        private ColorView _colorView;
+        private LineRenderer _lineRenderer;
+        private UniTask _task;
+        private CancellationTokenSource _cancellationTokenSource;
+        private Transform _lastStartPoint;
 
-    private void OnDestroy() => _cancellationTokenSource?.Cancel();
+        public event Action<Rope> Disconected;
 
-    public void SetColor(Color color) => _colorView.SetColor(color);
+        public Color Color => _colorView.Color;
 
-    public void Connect(Transform startPosition, Transform endPosition)
-    {
-        _lastStartPoint = startPosition;
-        _task = ConnectAnimated(startPosition, endPosition);
-    }
-
-    public void Reconnect(Transform endPosition)
-    {
-        if (_lastStartPoint == null)
-            throw new InvalidOperationException();
-
-        ValidateTask();
-        _task = ReconnectAnimated(endPosition);
-    }
-
-    public async UniTaskVoid Disconnect()
-    {
-        ValidateTask();
-        await DisappearAnimated();
-    }
-
-    private async UniTask ConnectAnimated(Transform startPosition, Transform endPosition)
-    {
-        await AppearAnimated(startPosition.position, endPosition.position);
-        _task = UpdatePositions(startPosition, endPosition);
-    }
-
-    private async UniTask ReconnectAnimated(Transform endPosition)
-    {
-        _lineRenderer.positionCount = _segmentsCount;
-        await UpdatePositions(_lastStartPoint, endPosition);
-    }
-
-    private async UniTask AppearAnimated(Vector3 startPosition, Vector3 endPosition)
-    {
-        int lastIndex = _segmentsCount - 1;
-
-        _lineRenderer.positionCount = 0;
-
-        for (int i = 0; i < _segmentsCount; i++)
+        private void Awake()
         {
-            _lineRenderer.positionCount++;
-            SetPosition(startPosition, endPosition, i);
-            await UniTask.WaitForSeconds(_segmentAppearDelay);
+            _lineRenderer = GetComponent<LineRenderer>();
+            _colorView = GetComponent<ColorView>();
+
+            _colorView.Initialize();
         }
-    }
 
-    private async UniTask UpdatePositions(Transform startPosition, Transform endPosition)
-    {
-        int firstIndex = 1;
-        int lastIndex = _segmentsCount - 1;
-
-        _cancellationTokenSource = new CancellationTokenSource();
-
-        while (_cancellationTokenSource.IsCancellationRequested == false)
+        private void OnDestroy()
         {
-            _lineRenderer.SetPosition(0, startPosition.position);
+            _cancellationTokenSource?.Cancel();
+        }
 
-            for (int i = firstIndex; i < lastIndex; i++)
+        public void SetColor(Color color)
+        {
+            _colorView.SetColor(color);
+        }
+
+        public void Connect(Transform startPosition, Transform endPosition)
+        {
+            _lastStartPoint = startPosition;
+            _task = ConnectAnimated(startPosition, endPosition);
+        }
+
+        public void Reconnect(Transform endPosition)
+        {
+            if (_lastStartPoint == null)
+                throw new InvalidOperationException();
+
+            ValidateTask();
+            _task = ReconnectAnimated(endPosition);
+        }
+
+        public async UniTaskVoid Disconnect()
+        {
+            ValidateTask();
+            await DisappearAnimated();
+        }
+
+        private async UniTask ConnectAnimated(Transform startPosition, Transform endPosition)
+        {
+            await AppearAnimated(startPosition.position, endPosition.position);
+            _task = UpdatePositions(startPosition, endPosition);
+        }
+
+        private async UniTask ReconnectAnimated(Transform endPosition)
+        {
+            _lineRenderer.positionCount = _segmentsCount;
+            await UpdatePositions(_lastStartPoint, endPosition);
+        }
+
+        private async UniTask AppearAnimated(Vector3 startPosition, Vector3 endPosition)
+        {
+            _lineRenderer.positionCount = 0;
+
+            for (int i = 0; i < _segmentsCount; i++)
             {
-                SetPosition(startPosition.position, endPosition.position, i);
-                await UniTask.Yield(cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
+                _lineRenderer.positionCount++;
+                SetPosition(startPosition, endPosition, i);
+                await UniTask.WaitForSeconds(_segmentAppearDelay);
+            }
+        }
+
+        private async UniTask UpdatePositions(Transform startPosition, Transform endPosition)
+        {
+            int firstIndex = 1;
+            int lastIndex = _segmentsCount - 1;
+
+            _cancellationTokenSource = new CancellationTokenSource();
+
+            while (_cancellationTokenSource.IsCancellationRequested == false)
+            {
+                _lineRenderer.SetPosition(0, startPosition.position);
+
+                for (int i = firstIndex; i < lastIndex; i++)
+                {
+                    SetPosition(startPosition.position, endPosition.position, i);
+                    await UniTask.Yield(cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
+                }
+
+                _lineRenderer.SetPosition(lastIndex, endPosition.position);
+            }
+        }
+
+        private void SetPosition(Vector3 startPosition, Vector3 endPosition, int segmentNumber)
+        {
+            float segmentRealNumber = segmentNumber + 1f;
+            var position = Vector3.Lerp(startPosition, endPosition, segmentRealNumber / _segmentsCount);
+            float wavedPosition = Mathf.Sin(Time.time * _waveSpeed + segmentRealNumber) * _maxOffset;
+
+            position = new Vector3(position.x + wavedPosition, position.y, position.z);
+
+            _lineRenderer.SetPosition(segmentNumber, position);
+        }
+
+        private async UniTask DisappearAnimated()
+        {
+            for (int i = 0; i < _lineRenderer.positionCount; i++)
+            {
+                _lineRenderer.positionCount--;
+                await UniTask.WaitForSeconds(_segmentsDisappearDelay);
             }
 
-            _lineRenderer.SetPosition(lastIndex, endPosition.position);
+            Disconected?.Invoke(this);
         }
-    }
 
-    private void SetPosition(Vector3 startPosition, Vector3 endPosition, int segmentNumber)
-    {
-        float segmentRealNumber = segmentNumber + 1f;
-        var position = Vector3.Lerp(startPosition, endPosition, segmentRealNumber / _segmentsCount);
-        float wavedPosition = Mathf.Sin(Time.time * _waveSpeed + segmentRealNumber) * _maxOffset;
-
-        position = new Vector3(position.x + wavedPosition, position.y, position.z);
-
-        _lineRenderer.SetPosition(segmentNumber, position);
-    }
-
-    private async UniTask DisappearAnimated()
-    {
-        for (int i = 0; i < _lineRenderer.positionCount; i++)
+        private void ValidateTask()
         {
-            _lineRenderer.positionCount--;
-            await UniTask.WaitForSeconds(_segmentsDisappearDelay);
+            if (_task.Status.IsCompleted() || _task.Status.IsCanceled())
+                return;
+
+            _cancellationTokenSource?.Cancel();
+            _task.Forget();
         }
-
-        Disconected?.Invoke(this);
-    }
-
-    private void ValidateTask()
-    {
-        if (_task.Status.IsCompleted() || _task.Status.IsCanceled())
-            return;
-
-        _cancellationTokenSource?.Cancel();
-        _task.Forget();
     }
 }

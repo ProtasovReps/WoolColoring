@@ -1,62 +1,68 @@
+using BlockPicture.Model;
+using FigurePlatform;
+using FigurePlatform.Model;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoneyRewards : IDisposable
+namespace PlayerWallet
 {
-    private readonly Picture _picture;
-    private readonly Wallet _wallet;
-    private readonly FigureCompositionFactory _compositionFactory;
-    private readonly List<FigureComposition> _compositions;
-
-    public MoneyRewards(Picture picture, Wallet wallet, FigureCompositionFactory compositionFactory)
+    public class MoneyRewards : IDisposable
     {
-        if (picture == null)
-            throw new ArgumentNullException(nameof(picture));
+        private readonly Picture _picture;
+        private readonly Wallet _wallet;
+        private readonly FigureCompositionFactory _compositionFactory;
+        private readonly List<FigureComposition> _compositions;
 
-        if (wallet == null)
-            throw new ArgumentNullException(nameof(wallet));
+        public MoneyRewards(Picture picture, Wallet wallet, FigureCompositionFactory compositionFactory)
+        {
+            if (picture == null)
+                throw new ArgumentNullException(nameof(picture));
 
-        if(compositionFactory == null)
-            throw new ArgumentNullException(nameof(compositionFactory));
+            if (wallet == null)
+                throw new ArgumentNullException(nameof(wallet));
 
-        _picture = picture;
-        _wallet = wallet;
-        _compositionFactory = compositionFactory;
-        _compositions = new List<FigureComposition>();
-        _picture.Filled += OnColorFilled;
-        _picture.Finished += OnPictureColorized;
-        _compositionFactory.Produced += OnCompositionProduced;
-    }
+            if (compositionFactory == null)
+                throw new ArgumentNullException(nameof(compositionFactory));
 
-    public void Dispose()
-    {
-        _picture.Filled -= OnColorFilled;
-        _picture.Finished -= OnPictureColorized;
-        _compositionFactory.Produced -= OnCompositionProduced;
+            _picture = picture;
+            _wallet = wallet;
+            _compositionFactory = compositionFactory;
+            _compositions = new List<FigureComposition>();
+            _picture.Filled += OnColorFilled;
+            _picture.Finished += OnPictureColorized;
+            _compositionFactory.Produced += OnCompositionProduced;
+        }
 
-        for (int i = 0; i < _compositions.Count; i++)
-            _compositions[i].Emptied -= OnCompositionEmptied;
-    }
+        public void Dispose()
+        {
+            _picture.Filled -= OnColorFilled;
+            _picture.Finished -= OnPictureColorized;
+            _compositionFactory.Produced -= OnCompositionProduced;
 
-    private void OnCompositionProduced(FigureComposition composition)
-    {
-        composition.Emptied += OnCompositionEmptied;
-        _compositions.Add(composition);
-    }
+            for (int i = 0; i < _compositions.Count; i++)
+                _compositions[i].Emptied -= OnCompositionEmptied;
+        }
 
-    private void OnColorFilled(Color color)
-    {
-        _wallet.Add(RewardValues.ColorFilledReward);
-    }
+        private void OnCompositionProduced(FigureComposition composition)
+        {
+            composition.Emptied += OnCompositionEmptied;
+            _compositions.Add(composition);
+        }
 
-    private void OnPictureColorized()
-    {
-        _wallet.Add(RewardValues.PictureColorizedReward);
-    }
+        private void OnColorFilled(Color color)
+        {
+            _wallet.Add(RewardValues.ColorFilledReward);
+        }
 
-    private void OnCompositionEmptied(FigureComposition composition)
-    {
-        _wallet.Add(RewardValues.CompositionFalledReward);
+        private void OnPictureColorized()
+        {
+            _wallet.Add(RewardValues.PictureColorizedReward);
+        }
+
+        private void OnCompositionEmptied(FigureComposition composition)
+        {
+            _wallet.Add(RewardValues.CompositionFalledReward);
+        }
     }
 }

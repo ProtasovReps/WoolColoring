@@ -3,15 +3,18 @@ using System;
 using UnityEngine;
 using YG;
 
-public class SDKAwaiter : MonoBehaviour
+namespace YandexGamesSDK
 {
-    public async UniTaskVoid WaitSDKInitialization(Action callback)
+    public class SDKAwaiter : MonoBehaviour
     {
-        while(YG2.isSDKEnabled == false)
+        public async UniTaskVoid WaitSDKInitialization(Action callback)
         {
-            await UniTask.Yield();
-        }
+            while (YG2.isSDKEnabled == false)
+            {
+                await UniTask.Yield();
+            }
 
-        callback?.Invoke();
+            callback?.Invoke();
+        }
     }
 }

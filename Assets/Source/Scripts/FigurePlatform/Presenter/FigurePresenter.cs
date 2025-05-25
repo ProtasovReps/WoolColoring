@@ -1,44 +1,49 @@
 using System;
 using UnityEngine;
+using FigurePlatform.Model;
+using FigurePlatform.View;
 
-public class FigurePresenter : IDisposable
+namespace FigurePlatform.Presenter
 {
-    private readonly Figure _model;
-    private readonly FigureView _view;
-
-    public FigurePresenter(Figure model, FigureView view)
+    public class FigurePresenter : IDisposable
     {
-        if (model == null)
-            throw new ArgumentNullException(nameof(model));
+        private readonly Figure _model;
+        private readonly FigureView _view;
 
-        if (view == null)
-            throw new ArgumentNullException(nameof(view));
+        public FigurePresenter(Figure model, FigureView view)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
 
-        _model = model;
-        _view = view;
+            if (view == null)
+                throw new ArgumentNullException(nameof(view));
 
-        _model.Appeared += OnAppeared;
-        _model.ColorChanged += OnColorChanged;
-    }
+            _model = model;
+            _view = view;
 
-    public void Dispose()
-    {
-        _model.Appeared -= OnAppeared;
-        _model.ColorChanged -= OnColorChanged;
-    }
+            _model.Appeared += OnAppeared;
+            _model.ColorChanged += OnColorChanged;
+        }
 
-    public void Fall()
-    {
-        _model.Fall();
-    }
+        public void Dispose()
+        {
+            _model.Appeared -= OnAppeared;
+            _model.ColorChanged -= OnColorChanged;
+        }
 
-    private void OnAppeared()
-    {
-        _view.Appear();
-    }
+        public void Fall()
+        {
+            _model.Fall();
+        }
 
-    private void OnColorChanged(Color color)
-    {
-        _view.SetColor(color);
+        private void OnAppeared()
+        {
+            _view.Appear();
+        }
+
+        private void OnColorChanged(Color color)
+        {
+            _view.SetColor(color);
+        }
     }
 }

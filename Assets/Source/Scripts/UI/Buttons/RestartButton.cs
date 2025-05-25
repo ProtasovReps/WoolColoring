@@ -1,10 +1,13 @@
 using UnityEngine.SceneManagement;
 
-public class RestartButton : SceneInteractionButton
+namespace LevelInterface.Buttons
 {
-    protected override void LoadScene()
+    public class RestartButton : SceneInteractionButton
     {
-        Scene targetScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(targetScene.name, LoadSceneMode.Single);
+        protected override void LoadScene()
+        {
+            Scene targetScene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(targetScene.name, LoadSceneMode.Single);
+        }
     }
 }

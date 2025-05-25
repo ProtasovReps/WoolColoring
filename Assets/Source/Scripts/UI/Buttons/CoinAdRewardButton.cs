@@ -1,24 +1,39 @@
+using Extensions;
+using PlayerWallet;
 using Reflex.Attributes;
 using UnityEngine;
 using YG;
 
-public class CoinAdRewardButton : CoinTimerRechargeableButton
+namespace LevelInterface.Buttons
 {
-    [SerializeField] private int _rewardAmount;
-
-    private readonly string _id = RewardIds.Coin;
-    private Wallet _wallet;
-
-    [Inject]
-    private void Inject(Wallet wallet) => _wallet = wallet;
-
-    protected override void OnButtonClick()
+    public class CoinAdRewardButton : CoinTimerRechargeableButton
     {
-        ProcessReward();
-        base.OnButtonClick();
+        private readonly string _id = RewardIds.Coin;
+
+        [SerializeField] private int _rewardAmount;
+
+        private Wallet _wallet;
+
+        [Inject]
+        private void Inject(Wallet wallet)
+        {
+            _wallet = wallet;
+        }
+
+        protected override void OnButtonClick()
+        {
+            ProcessReward();
+            base.OnButtonClick();
+        }
+
+        private void ProcessReward()
+        {
+            YG2.RewardedAdvShow(_id, AddCoins);
+        }
+
+        private void AddCoins()
+        {
+            _wallet.Add(_rewardAmount);
+        }
     }
-
-    private void ProcessReward() => YG2.RewardedAdvShow(_id, AddCoins);
-
-    private void AddCoins() => _wallet.Add(_rewardAmount);
 }

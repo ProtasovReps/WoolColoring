@@ -1,54 +1,60 @@
 using System;
 using UnityEngine;
+using FigurePlatform.Model;
+using FigurePlatform.View;
+using Extensions;
 
-public class FigureCompositionPresenter : IDisposable
+namespace FigurePlatform.Presenter
 {
-    private readonly FigureComposition _model;
-    private readonly FigureCompositionView _view;
-    private readonly ColorPallete _colorPallete;
-
-    public FigureCompositionPresenter(FigureComposition model, FigureCompositionView view, ColorPallete colorPallete)
+    public class FigureCompositionPresenter : IDisposable
     {
-        if (model == null)
-            throw new ArgumentNullException(nameof(model));
+        private readonly FigureComposition _model;
+        private readonly FigureCompositionView _view;
+        private readonly ColorPallete _colorPallete;
 
-        if (view == null)
-            throw new ArgumentNullException(nameof(view));
+        public FigureCompositionPresenter(FigureComposition model, FigureCompositionView view, ColorPallete colorPallete)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
 
-        if (colorPallete == null)
-            throw new ArgumentNullException(nameof(colorPallete));
+            if (view == null)
+                throw new ArgumentNullException(nameof(view));
 
-        _model = model;
-        _view = view;
-        _colorPallete = colorPallete;
+            if (colorPallete == null)
+                throw new ArgumentNullException(nameof(colorPallete));
 
-        _model.Appeared += OnAppeared;
-        _model.PositionChanged += OnPositionChanged;
-        _model.Emptied += OnEmptied;
-    }
+            _model = model;
+            _view = view;
+            _colorPallete = colorPallete;
 
-    public void Dispose()
-    {
-        _model.Appeared -= OnAppeared;
-        _model.PositionChanged -= OnPositionChanged;
-        _model.Emptied -= OnEmptied;
-    }
+            _model.Appeared += OnAppeared;
+            _model.PositionChanged += OnPositionChanged;
+            _model.Emptied += OnEmptied;
+        }
 
-    private void OnAppeared()
-    {
-        Color newColor = _colorPallete.GetRandomColor();
+        public void Dispose()
+        {
+            _model.Appeared -= OnAppeared;
+            _model.PositionChanged -= OnPositionChanged;
+            _model.Emptied -= OnEmptied;
+        }
 
-        _model.SetColor(newColor);
-        _view.Enable();
-    }
+        private void OnAppeared()
+        {
+            Color newColor = _colorPallete.GetRandomColor();
 
-    private void OnPositionChanged()
-    {
-        _view.Move(_model.Position);
-    }
+            _model.SetColor(newColor);
+            _view.Enable();
+        }
 
-    private void OnEmptied(FigureComposition composition)
-    {
-        _view.Disable();
+        private void OnPositionChanged()
+        {
+            _view.Move(_model.Position);
+        }
+
+        private void OnEmptied(FigureComposition composition)
+        {
+            _view.Disable();
+        }
     }
 }

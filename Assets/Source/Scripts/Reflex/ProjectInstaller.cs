@@ -2,56 +2,60 @@ using Lean.Localization;
 using Reflex.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using YandexGamesSDK;
 using YG;
 
-public class ProjectInstaller : MonoBehaviour, IInstaller
+namespace DependencyInjection
 {
-    private const int FirstLevelIndex = 1;
-
-    public void InstallBindings(ContainerBuilder containerBuilder)
+    public class ProjectInstaller : MonoBehaviour, IInstaller
     {
-        var awaiter = GameObject.CreatePrimitive(PrimitiveType.Cube).AddComponent<SDKAwaiter>();
+        private const int FirstLevelIndex = 1;
 
-        awaiter.WaitSDKInitialization(InstallProject).Forget();
-    }
+        public void InstallBindings(ContainerBuilder containerBuilder)
+        {
+            var awaiter = GameObject.CreatePrimitive(PrimitiveType.Cube).AddComponent<SDKAwaiter>();
 
-    private void InstallProject()
-    {
-        InstallLocalization();
-        InstallLevel();
-    }
+            awaiter.WaitSDKInitialization(InstallProject).Forget();
+        }
 
-    private void InstallLocalization()
-    {
-        (string, string) russian = ("ru", "Russian");
-        (string, string) turkish = ("tr", "Turkish");
-        string english = "English";
-        string newLanguage;
-        string playerLanguage;
+        private void InstallProject()
+        {
+            InstallLocalization();
+            InstallLevel();
+        }
 
-        YG2.GetLanguage();
-        playerLanguage = YG2.lang;
+        private void InstallLocalization()
+        {
+            (string, string) russian = ("ru", "Russian");
+            (string, string) turkish = ("tr", "Turkish");
+            string english = "English";
+            string newLanguage;
+            string playerLanguage;
 
-        if (playerLanguage == russian.Item1)
-            newLanguage = russian.Item2;
-        else if (playerLanguage == turkish.Item1)
-            newLanguage = turkish.Item2;
-        else
-            newLanguage = english;
+            YG2.GetLanguage();
+            playerLanguage = YG2.lang;
 
-        LeanLocalization.SetCurrentLanguageAll(newLanguage);
-    }
+            if (playerLanguage == russian.Item1)
+                newLanguage = russian.Item2;
+            else if (playerLanguage == turkish.Item1)
+                newLanguage = turkish.Item2;
+            else
+                newLanguage = english;
 
-    private void InstallLevel()
-    {
-        int levelIndex;
-        int lastLevelIndex = YG2.saves.LastLevelIndex;
+            LeanLocalization.SetCurrentLanguageAll(newLanguage);
+        }
 
-        if(lastLevelIndex == 0)
-            levelIndex = FirstLevelIndex;
-        else
-            levelIndex = lastLevelIndex;
+        private void InstallLevel()
+        {
+            int levelIndex;
+            int lastLevelIndex = YG2.saves.LastLevelIndex;
 
-        SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
+            if (lastLevelIndex == 0)
+                levelIndex = FirstLevelIndex;
+            else
+                levelIndex = lastLevelIndex;
+
+            SceneManager.LoadScene(levelIndex, LoadSceneMode.Single);
+        }
     }
 }

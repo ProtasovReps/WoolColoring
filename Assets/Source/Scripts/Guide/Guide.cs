@@ -1,37 +1,42 @@
 using UnityEngine;
 using YG;
+using ClickReaders;
+using Extensions;
 
-public class Guide : MonoBehaviour
+namespace PlayerGuide
 {
-    [SerializeField] private ReplicConveyer _conveyer;
-    [SerializeField] private GuideBoltClickReader _guideClickReader;
-    [SerializeField] private float _startDelay;
-
-    private void OnEnable()
+    public class Guide : MonoBehaviour
     {
-        _conveyer.AllReplicsPlayed += FinalizeGuide;
-    }
+        [SerializeField] private ReplicConveyer _conveyer;
+        [SerializeField] private GuideBoltClickReader _guideClickReader;
+        [SerializeField] private float _startDelay;
 
-    private void Start()
-    {
-        if(YG2.saves.IfGuidePassed)
+        private void OnEnable()
         {
-            gameObject.SetActive(false);
-            return;
+            _conveyer.AllReplicsPlayed += FinalizeGuide;
         }
 
-        _conveyer.gameObject.SetActive(true);
-        _guideClickReader.SetPause(true);
-    }
+        private void Start()
+        {
+            if (YG2.saves.IfGuidePassed)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
 
-    private void OnDisable()
-    {
-        _conveyer.AllReplicsPlayed -= FinalizeGuide;
-    }
+            _conveyer.gameObject.SetActive(true);
+            _guideClickReader.SetPause(true);
+        }
 
-    private void FinalizeGuide()
-    {
-        YG2.MetricaSend(MetricParams.GuidePassed.ToString());
-        YG2.saves.IfGuidePassed = true;
+        private void OnDisable()
+        {
+            _conveyer.AllReplicsPlayed -= FinalizeGuide;
+        }
+
+        private void FinalizeGuide()
+        {
+            YG2.MetricaSend(MetricParams.GuidePassed.ToString());
+            YG2.saves.IfGuidePassed = true;
+        }
     }
 }

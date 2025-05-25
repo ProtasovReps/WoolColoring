@@ -1,6 +1,9 @@
 using UnityEngine;
 
-public interface IColorable
+namespace CustomInterface
 {
-    Color Color { get; }
+    public interface IColorable
+    {
+        Color Color { get; }
+    }
 }

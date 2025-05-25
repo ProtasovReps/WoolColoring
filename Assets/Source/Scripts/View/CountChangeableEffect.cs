@@ -1,42 +1,47 @@
 using Ami.BroAudio;
 using Coffee.UIExtensions;
+using CustomInterface;
+using LevelInterface;
 using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 
-public class CountChangeableEffect : TemporaryActivatableUI
+namespace ViewExtensions
 {
-    private const string FirstSymbol = "+";
-
-    [SerializeField] private UIParticle _effect;
-    [SerializeField] private TMP_Text _text;
-    [SerializeField] private SoundID _effectSound;
-
-    private ICountChangeable _countChangeable;
-    private int _lastCount;
-
-    [Inject]
-    private void Inject(ICountChangeable countChangeable)
+    public class CountChangeableEffect : TemporaryActivatableUI
     {
-        _countChangeable = countChangeable;
-        _countChangeable.CountChanged += OnCountChanged;
+        private const string FirstSymbol = "+";
 
-        _lastCount = _countChangeable.Count;
-    }
+        [SerializeField] private UIParticle _effect;
+        [SerializeField] private TMP_Text _text;
+        [SerializeField] private SoundID _effectSound;
 
-    private void OnCountChanged()
-    {
-        int addedAmount = _countChangeable.Count - _lastCount;
+        private ICountChangeable _countChangeable;
+        private int _lastCount;
 
-        _lastCount = _countChangeable.Count;
+        [Inject]
+        private void Inject(ICountChangeable countChangeable)
+        {
+            _countChangeable = countChangeable;
+            _countChangeable.CountChanged += OnCountChanged;
 
-        if (addedAmount <= 0)
-            return;
+            _lastCount = _countChangeable.Count;
+        }
 
-        _text.text = $"{FirstSymbol}{addedAmount}";
+        private void OnCountChanged()
+        {
+            int addedAmount = _countChangeable.Count - _lastCount;
 
-        Activate();
-        _effect.Play();
-        BroAudio.Play(_effectSound);
+            _lastCount = _countChangeable.Count;
+
+            if (addedAmount <= 0)
+                return;
+
+            _text.text = $"{FirstSymbol}{addedAmount}";
+
+            Activate();
+            _effect.Play();
+            BroAudio.Play(_effectSound);
+        }
     }
 }

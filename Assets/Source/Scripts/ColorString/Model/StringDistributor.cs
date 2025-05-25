@@ -1,71 +1,75 @@
 using System;
 using UnityEngine;
+using Bolts.View;
+using StringHolders.Model;
+using CustomInterface;
 
-public class StringDistributor : IDisposable
+namespace ColorStrings.Model
 {
-    private readonly ColoredStringHolderStash _coloredHolderStash;
-    private readonly WhiteStringHolder _whiteHolder;
-    private readonly ColoredStringHolderSwitcher _switcher;
-
-    public event Action<Bolt> BoltDistributing;
-    public event Action<Color, int> WhiteHolderDistributing;
-
-    public StringDistributor(ColoredStringHolderStash stash, WhiteStringHolder whiteHolder, ColoredStringHolderSwitcher switcher)
+    public class StringDistributor : IDisposable
     {
-        if (stash == null)
-            throw new ArgumentNullException(nameof(stash));
+        private readonly ColoredStringHolderStash _coloredHolderStash;
+        private readonly WhiteStringHolder _whiteHolder;
+        private readonly ColoredStringHolderSwitcher _switcher;
 
-        if (whiteHolder == null)
-            throw new ArgumentNullException(nameof(whiteHolder));
-
-        if (switcher == null)
-            throw new ArgumentNullException(nameof(switcher));
-
-        _coloredHolderStash = stash;
-        _whiteHolder = whiteHolder;
-        _switcher = switcher;
-
-        _switcher.HolderSwitched += OnHolderSwitched;
-    }
-
-    public void Dispose()
-    {
-        _switcher.HolderSwitched -= OnHolderSwitched;
-    }
-
-    public Bolt Distribute(Bolt bolt)
-    {
-        if (bolt == null)
-            throw new ArgumentNullException(nameof(bolt));
-
-        IColorable colorString = bolt.Colorable;
-
-        BoltDistributing?.Invoke(bolt);
-
-        if (_coloredHolderStash.TryGetColoredStringHolder(colorString.Color, out ColoredStringHolder holder))
-            holder.Add(colorString);
-        else
-            _whiteHolder.Add(colorString);
-
-        return bolt;
-    }
-
-    private void OnHolderSwitched(ColoredStringHolder holder)
-    {
-        Color requiredColor = holder.Color;
-        int requiredStringCount = _whiteHolder.GetColorCount(requiredColor);
-        int holderEmptySlotsCount = holder.MaxStringCount - holder.StringCount;
-
-        if (requiredStringCount == 0)
-            return;
-
-        requiredStringCount = Mathf.Clamp(requiredStringCount, 0, holderEmptySlotsCount);
-        WhiteHolderDistributing?.Invoke(requiredColor, holderEmptySlotsCount);
-
-        for (int i = 0; i < requiredStringCount; i++)
+        public StringDistributor(ColoredStringHolderStash stash, WhiteStringHolder whiteHolder, ColoredStringHolderSwitcher switcher)
         {
-            IColorable newString = _whiteHolder.GetColorable(requiredColor);
-            holder.Add(newString);
+            if (stash == null)
+                throw new ArgumentNullException(nameof(stash));
+
+            if (whiteHolder == null)
+                throw new ArgumentNullException(nameof(whiteHolder));
+
+            if (switcher == null)
+                throw new ArgumentNullException(nameof(switcher));
+
+            _coloredHolderStash = stash;
+            _whiteHolder = whiteHolder;
+            _switcher = switcher;
+
+            _switcher.HolderSwitched += OnHolderSwitched;
+        }
+
+        public event Action<Bolt> BoltDistributing;
+        public event Action<Color, int> WhiteHolderDistributing;
+
+        public void Dispose()
+        {
+            _switcher.HolderSwitched -= OnHolderSwitched;
+        }
+
+        public void Distribute(Bolt bolt)
+        {
+            if (bolt == null)
+                throw new ArgumentNullException(nameof(bolt));
+
+            IColorable colorString = bolt.Colorable;
+
+            BoltDistributing?.Invoke(bolt);
+
+            if (_coloredHolderStash.TryGetColoredStringHolder(colorString.Color, out ColoredStringHolder holder))
+                holder.Add(colorString);
+            else
+                _whiteHolder.Add(colorString);
+        }
+
+        private void OnHolderSwitched(ColoredStringHolder holder)
+        {
+            Color requiredColor = holder.Color;
+            int requiredStringCount = _whiteHolder.GetColorCount(requiredColor);
+            int holderEmptySlotsCount = holder.MaxStringCount - holder.StringCount;
+
+            if (requiredStringCount == 0)
+                return;
+
+            requiredStringCount = Mathf.Clamp(requiredStringCount, 0, holderEmptySlotsCount);
+            WhiteHolderDistributing?.Invoke(requiredColor, holderEmptySlotsCount);
+
+            for (int i = 0; i < requiredStringCount; i++)
+            {
+                IColorable newString = _whiteHolder.GetColorable(requiredColor);
+                holder.Add(newString);
+            }
         }
     }
 }

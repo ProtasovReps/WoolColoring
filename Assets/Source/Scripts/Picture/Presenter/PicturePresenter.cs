@@ -1,15 +1,20 @@
 using UnityEngine;
+using BlockPicture.View;
 
-public class PicturePresenter
+namespace BlockPicture.Presenter
 {
-    private readonly Picture _picture;
-    private readonly PictureView _pictureView;
-
-    public PicturePresenter(Picture picture, PictureView pictureView)
+    public class PicturePresenter
     {
-        _picture = picture;
-        _pictureView = pictureView;
-    }
+        private readonly PictureView _pictureView;
 
-    public void Move(Transform colorBlock, Vector3 tasrgetBound) => _pictureView.Move(colorBlock, tasrgetBound);
+        public PicturePresenter(PictureView pictureView)
+        {
+            _pictureView = pictureView;
+        }
+
+        public void Move(Transform colorBlock, Vector3 tasrgetBound)
+        {
+            _pictureView.Move(colorBlock, tasrgetBound);
+        }
+    }
 }

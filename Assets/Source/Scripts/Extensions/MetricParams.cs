@@ -1,26 +1,29 @@
-public enum MetricParams
+namespace Extensions
 {
-    None,
-    RewardedAdWatched,
-    InterAdWatched,
-    UnlockerUsed,
-    RemoverUsed,
-    FillerUsed,
-    BreakerUsed,
-    LevelFailed,
-    StoreOpened,
-    UnlockerBought,
-    FillerBought,
-    RemoverBought,
-    BreakerBought,
-    FreeCoinsGot,
-    RevivedWithAd,
-    RestartButtonPressed,
-    GuidePassed,
-    LevelPassed,
-    UnlockerAdWatched,
-    FillerAdWatched,
-    RemoverAdWatched,
-    BreakerAdWatched,
-    InappBought
+    public enum MetricParams
+    {
+        None,
+        RewardedAdWatched,
+        InterAdWatched,
+        UnlockerUsed,
+        RemoverUsed,
+        FillerUsed,
+        BreakerUsed,
+        LevelFailed,
+        StoreOpened,
+        UnlockerBought,
+        FillerBought,
+        RemoverBought,
+        BreakerBought,
+        FreeCoinsGot,
+        RevivedWithAd,
+        RestartButtonPressed,
+        GuidePassed,
+        LevelPassed,
+        UnlockerAdWatched,
+        FillerAdWatched,
+        RemoverAdWatched,
+        BreakerAdWatched,
+        InappBought
+    }
 }

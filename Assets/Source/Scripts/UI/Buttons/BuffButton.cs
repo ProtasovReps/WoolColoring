@@ -5,90 +5,100 @@ using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
 using System.Threading;
 using YG;
+using Extensions;
+using Buffs;
+using LevelInterface.Blocks;
+using CustomInterface;
 
-public class BuffButton : ButtonView
+namespace LevelInterface.Buttons
 {
-    [SerializeField] private BuffDealMenu _buffDealMenu;
-    [SerializeField] private TemporaryActivatableUI _ruleText;
-    [SerializeField] private BuffCountCounter _counter;
-    [SerializeField] private float _coolDownTime;
-    [SerializeField] private Image _cooldownImage;
-    [SerializeField] private ParticleSystem _effect;
-    [SerializeField] private MetricParams _metricParams;
-
-    private BuffBag _bag;
-    private IBuff _buff;
-    private CancellationTokenSource _cancellationTokenSource;
-
-    public bool IsNotCooldowning { get; private set; }
-
-    [Inject]
-    private void Inject(BuffBag buffBag)
+    public class BuffButton : ButtonView
     {
-        _bag = buffBag;
-        _counter.Initialize(_buff);
-    }
+        [SerializeField] private BuffDealMenu _buffDealMenu;
+        [SerializeField] private TemporaryActivatableUI _ruleText;
+        [SerializeField] private BuffCountCounter _counter;
+        [SerializeField] private float _coolDownTime;
+        [SerializeField] private Image _cooldownImage;
+        [SerializeField] private ParticleSystem _effect;
+        [SerializeField] private MetricParams _metricParams;
 
-    private void OnDestroy()
-    {
-        _cancellationTokenSource?.Cancel();
-    }
+        private BuffBag _bag;
+        private IBuff _buff;
+        private CancellationTokenSource _cancellationTokenSource;
 
-    public void Initialize(IBuff buff)
-    {
-        if (buff == null)
-            throw new ArgumentNullException(nameof(buff));
+        public bool IsNotCooldowning { get; private set; }
 
-        _ruleText.Initialize();
-        _buff = buff;
-    }
-
-    public void SetIsNotCooldowning(bool hasCooldown) => IsNotCooldowning = hasCooldown;
-
-    protected override void OnButtonClick()
-    {
-        base.OnButtonClick();
-
-        if (_buff.Validate() == false)
+        [Inject]
+        private void Inject(BuffBag buffBag)
         {
-            _ruleText.Activate();
-            return;
+            _bag = buffBag;
+            _counter.Initialize(_buff);
         }
 
-        if (_bag.TryGetBuff(_buff) == false)
+        private void OnDestroy()
         {
-            _buffDealMenu.SetTargetReward(_buff);
-            _buffDealMenu.Activate();
-            return;
+            _cancellationTokenSource?.Cancel();
         }
 
-        _effect.Play();
-
-        if (IsNotCooldowning == false)
+        public void Initialize(IBuff buff)
         {
-            WaitCoolDown().Forget();
+            if (buff == null)
+                throw new ArgumentNullException(nameof(buff));
+
+            _ruleText.Initialize();
+            _buff = buff;
         }
 
-        YG2.MetricaSend(_metricParams.ToString());
-        _buff.Execute();
-    }
-
-    private async UniTaskVoid WaitCoolDown()
-    {
-        _cancellationTokenSource = new CancellationTokenSource();
-        Deactivate();
-
-        float elapsedTime = 0f;
-
-        while (elapsedTime < _coolDownTime)
+        public void SetIsNotCooldowning(bool hasCooldown)
         {
-            _cooldownImage.fillAmount = 1 - (elapsedTime / _coolDownTime);
-
-            elapsedTime += Time.deltaTime;
-            await UniTask.Yield(cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
+            IsNotCooldowning = hasCooldown;
         }
 
-        _cooldownImage.fillAmount = 0f;
-        Activate();
+        protected override void OnButtonClick()
+        {
+            base.OnButtonClick();
+
+            if (_buff.Validate() == false)
+            {
+                _ruleText.Activate();
+                return;
+            }
+
+            if (_bag.TryGetBuff(_buff) == false)
+            {
+                _buffDealMenu.SetTargetReward(_buff);
+                _buffDealMenu.Activate();
+                return;
+            }
+
+            _effect.Play();
+
+            if (IsNotCooldowning == false)
+            {
+                WaitCoolDown().Forget();
+            }
+
+            YG2.MetricaSend(_metricParams.ToString());
+            _buff.Execute();
+        }
+
+        private async UniTaskVoid WaitCoolDown()
+        {
+            _cancellationTokenSource = new CancellationTokenSource();
+            Deactivate();
+
+            float elapsedTime = 0f;
+
+            while (elapsedTime < _coolDownTime)
+            {
+                _cooldownImage.fillAmount = 1 - (elapsedTime / _coolDownTime);
+
+                elapsedTime += Time.deltaTime;
+                await UniTask.Yield(cancellationToken: _cancellationTokenSource.Token, cancelImmediately: true);
+            }
+
+            _cooldownImage.fillAmount = 0f;
+            Activate();
+        }
     }
 }

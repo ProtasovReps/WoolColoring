@@ -1,38 +1,41 @@
 using System;
 using UnityEngine;
+using BlockPicture.Model;
 
-public class ExtraStringRemover : IDisposable
+namespace StringHolders.Model
 {
-    private readonly Picture _picture;
-    private readonly WhiteStringHolder _whiteStringHolder;
-
-    public ExtraStringRemover(Picture picture, WhiteStringHolder holder)
+    public class ExtraStringRemover : IDisposable
     {
-        if (picture == null)
-            throw new ArgumentNullException(nameof(picture));
+        private readonly Picture _picture;
+        private readonly WhiteStringHolder _whiteStringHolder;
 
-        if (holder == null)
-            throw new ArgumentNullException(nameof(holder));
+        public ExtraStringRemover(Picture picture, WhiteStringHolder holder)
+        {
+            if (picture == null)
+                throw new ArgumentNullException(nameof(picture));
 
-        _picture = picture;
-        _whiteStringHolder = holder;
+            if (holder == null)
+                throw new ArgumentNullException(nameof(holder));
 
-        _picture.Filled += OnColorFilled;
-    }
+            _picture = picture;
+            _whiteStringHolder = holder;
+            _picture.Filled += OnColorFilled;
+        }
 
-    public void Dispose()
-    {
-        _picture.Filled -= OnColorFilled;
-    }
+        public void Dispose()
+        {
+            _picture.Filled -= OnColorFilled;
+        }
 
-    private void OnColorFilled(Color color)
-    {
-        int requiredStringsCount = _whiteStringHolder.GetColorCount(color);
+        private void OnColorFilled(Color color)
+        {
+            int requiredStringsCount = _whiteStringHolder.GetColorCount(color);
 
-        if (requiredStringsCount == 0)
-            return;
+            if (requiredStringsCount == 0)
+                return;
 
-        for (int i = 0; i < requiredStringsCount; i++)
-            _whiteStringHolder.GetColorable(color);
+            for (int i = 0; i < requiredStringsCount; i++)
+                _whiteStringHolder.GetColorable(color);
+        }
     }
 }

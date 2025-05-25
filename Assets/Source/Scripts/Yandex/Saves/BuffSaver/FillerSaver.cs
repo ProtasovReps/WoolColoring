@@ -1,14 +1,20 @@
 using YG;
+using Buffs;
+using Buffs.Strategies;
+using CustomInterface;
 
-public class FillerSaver : BuffSaver
+namespace YandexGamesSDK.Saves.Buffs
 {
-    public FillerSaver(BuffBag bag) : base(bag) { }
-
-    protected override void ValidateBuff(IBuff buff, int count)
+    public class FillerSaver : BuffSaver
     {
-        if (buff is not Filler)
-            return;
+        public FillerSaver(BuffBag bag) : base(bag) { }
 
-        YG2.saves.Fillers = count;
+        protected override void ValidateBuff(IBuff buff, int count)
+        {
+            if (buff is not Filler)
+                return;
+
+            YG2.saves.Fillers = count;
+        }
     }
 }

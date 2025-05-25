@@ -1,84 +1,90 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using Extensions;
+using FigurePlatform.View;
+using CustomInterface;
 
-public class PositionDatabase
+namespace FigurePlatform.Model
 {
-    private readonly ConveyerPosition[] _positions;
-    private ITransformable[] _transformables;
-
-    public event Action<ITransformable, Vector3> PositionChanged;
-
-    public int TransformablesCount { get; private set; }
-
-    public PositionDatabase(ConveyerPosition[] positions)
+    public class PositionDatabase
     {
-        if (positions == null)
-            throw new ArgumentNullException();
+        private readonly ConveyerPosition[] _positions;
 
-        if (positions.Length == 0)
-            throw new EmptyCollectionException();
+        private IPositionSettable[] _positionSettables;
 
-        _transformables = new FigureComposition[positions.Length];
-        var tempPositions = new List<ConveyerPosition>(positions.Length);
-
-        foreach (var position in positions)
-            tempPositions.Add(position);
-
-        _positions = tempPositions.ToArray();
-    }
-
-    public int PositionsCount => _positions.Length;
-
-    public void Add(ITransformable transformable)
-    {
-        int lastIndex = _transformables.Length - 1;
-        ITransformable targetCell = _transformables[lastIndex];
-
-        if (targetCell != null)
-            throw new InvalidOperationException(nameof(transformable));
-
-        _transformables[lastIndex] = transformable;
-        TransformablesCount++;
-
-        Sort();
-    }
-
-    public void Remove(ITransformable transformableToRemove)
-    {
-        if (transformableToRemove == null)
-            throw new ArgumentNullException(nameof(transformableToRemove));
-
-        int searchedIndex = Array.FindIndex(_transformables, transformable => transformable == transformableToRemove);
-
-        if (_transformables[searchedIndex] == null)
-            throw new InvalidOperationException(nameof(transformableToRemove));
-
-        _transformables[searchedIndex] = null;
-        TransformablesCount--;
-
-        Sort();
-    }
-
-    private void Sort()
-    {
-        int needFeelCount = 0;
-
-        for (int i = 0; i < _transformables.Length; i++)
+        public PositionDatabase(ConveyerPosition[] positions)
         {
-            if (_transformables[i] == null)
-            {
-                needFeelCount++;
-            }
-            else
-            {
-                ITransformable tempTransformable = _transformables[i];
-                int emptyPositionIndex = i - needFeelCount;
+            if (positions == null)
+                throw new ArgumentNullException();
 
-                _transformables[i] = null;
-                _transformables[emptyPositionIndex] = tempTransformable;
+            if (positions.Length == 0)
+                throw new EmptyCollectionException();
 
-                PositionChanged?.Invoke(_transformables[emptyPositionIndex], _positions[emptyPositionIndex].Position);
+            _positionSettables = new FigureComposition[positions.Length];
+            var tempPositions = new List<ConveyerPosition>(positions.Length);
+
+            foreach (var position in positions)
+                tempPositions.Add(position);
+
+            _positions = tempPositions.ToArray();
+        }
+
+        public event Action<IPositionSettable, Vector3> PositionChanged;
+
+        public int TransformablesCount { get; private set; }
+        public int PositionsCount => _positions.Length;
+
+        public void Add(IPositionSettable transformable)
+        {
+            int lastIndex = _positionSettables.Length - 1;
+            IPositionSettable targetCell = _positionSettables[lastIndex];
+
+            if (targetCell != null)
+                throw new InvalidOperationException(nameof(transformable));
+
+            _positionSettables[lastIndex] = transformable;
+            TransformablesCount++;
+
+            Sort();
+        }
+
+        public void Remove(IPositionSettable transformableToRemove)
+        {
+            if (transformableToRemove == null)
+                throw new ArgumentNullException(nameof(transformableToRemove));
+
+            int searchedIndex = Array.FindIndex(_positionSettables, transformable => transformable == transformableToRemove);
+
+            if (_positionSettables[searchedIndex] == null)
+                throw new InvalidOperationException(nameof(transformableToRemove));
+
+            _positionSettables[searchedIndex] = null;
+            TransformablesCount--;
+
+            Sort();
+        }
+
+        private void Sort()
+        {
+            int needFeelCount = 0;
+
+            for (int i = 0; i < _positionSettables.Length; i++)
+            {
+                if (_positionSettables[i] == null)
+                {
+                    needFeelCount++;
+                }
+                else
+                {
+                    IPositionSettable tempTransformable = _positionSettables[i];
+                    int emptyPositionIndex = i - needFeelCount;
+
+                    _positionSettables[i] = null;
+                    _positionSettables[emptyPositionIndex] = tempTransformable;
+
+                    PositionChanged?.Invoke(_positionSettables[emptyPositionIndex], _positions[emptyPositionIndex].Position);
+                }
             }
         }
     }

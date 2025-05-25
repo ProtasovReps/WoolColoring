@@ -1,51 +1,55 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Extensions;
+using ViewExtensions;
 
-[RequireComponent(typeof(FigureTransformView))]
-[RequireComponent(typeof(ActiveStateSwitcher))]
-public class FigureCompositionView : MonoBehaviour
+namespace FigurePlatform.View
 {
-    [SerializeField] private FigureView[] _figureViews;
-    [SerializeField] private float _moveSpeed;
-
-    private Collider[] _colliders;
-    private FigureTransformView _transformMoveView;
-    private ActiveStateSwitcher _activeStateSwitcher;
-
-    public Transform Transform => _transformMoveView.Transform;
-
-    public IEnumerable<FigureView> FigureViews => _figureViews;
-
-    public void Initialize()
+    [RequireComponent(typeof(FigureTransformView))]
+    [RequireComponent(typeof(ActiveStateSwitcher))]
+    public class FigureCompositionView : MonoBehaviour
     {
-        if (_figureViews.Length == 0)
-            throw new EmptyCollectionException();
+        [SerializeField] private FigureView[] _figureViews;
+        [SerializeField] private float _moveSpeed;
 
-        _transformMoveView = GetComponent<FigureTransformView>();
-        _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
+        private Collider[] _colliders;
+        private FigureTransformView _transformMoveView;
+        private ActiveStateSwitcher _activeStateSwitcher;
 
-        _transformMoveView.Initialize();
-        _activeStateSwitcher.Initialize();
+        public Transform Transform => _transformMoveView.Transform;
+        public IEnumerable<FigureView> FigureViews => _figureViews;
 
-        _colliders = new Collider[_figureViews.Length];
+        public void Initialize()
+        {
+            if (_figureViews.Length == 0)
+                throw new EmptyCollectionException();
 
-        for (int i = 0; i < _colliders.Length; i++)
-            _colliders[i] = _figureViews[i].Collider;
-    }
+            _transformMoveView = GetComponent<FigureTransformView>();
+            _activeStateSwitcher = GetComponent<ActiveStateSwitcher>();
 
-    public void Enable()
-    {
-        _activeStateSwitcher.SetActive(true);
-    }
+            _transformMoveView.Initialize();
+            _activeStateSwitcher.Initialize();
 
-    public void Disable()
-    {
-        _transformMoveView.ResetTransform();
-        _activeStateSwitcher.SetActive(false);
-    }
+            _colliders = new Collider[_figureViews.Length];
 
-    public void Move(Vector3 targetPosition)
-    {
-        _transformMoveView.ChangePosition(targetPosition, _colliders, _moveSpeed);
+            for (int i = 0; i < _colliders.Length; i++)
+                _colliders[i] = _figureViews[i].Collider;
+        }
+
+        public void Enable()
+        {
+            _activeStateSwitcher.SetActive(true);
+        }
+
+        public void Disable()
+        {
+            _transformMoveView.ResetTransform();
+            _activeStateSwitcher.SetActive(false);
+        }
+
+        public void Move(Vector3 targetPosition)
+        {
+            _transformMoveView.ChangePosition(targetPosition, _colliders, _moveSpeed);
+        }
     }
 }

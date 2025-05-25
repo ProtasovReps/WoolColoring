@@ -1,52 +1,56 @@
 using UnityEngine;
 using System;
+using CustomInterface;
 
-public class Conveyer : IDisposable
+namespace FigurePlatform.Model
 {
-    private const int MinFiguresCount = 6;
-
-    private readonly FigureCompositionPool _figurePool;
-    private readonly PositionDatabase _positionDatabase;
-
-    public Conveyer(FigureCompositionPool pool, PositionDatabase positionDatabase)
+    public class Conveyer : IDisposable
     {
-        _figurePool = pool;
-        _positionDatabase = positionDatabase;
-        _positionDatabase.PositionChanged += OnPositionChanged;
-    }
+        private const int MinFiguresCount = 6;
 
-    public void FillAllFigures()
-    {
-        while (_positionDatabase.PositionsCount > _positionDatabase.TransformablesCount)
-            AddFigure();
-    }
+        private readonly FigureCompositionPool _figurePool;
+        private readonly PositionDatabase _positionDatabase;
 
-    public void Dispose()
-    {
-        _positionDatabase.PositionChanged -= OnPositionChanged;
-    }
+        public Conveyer(FigureCompositionPool pool, PositionDatabase positionDatabase)
+        {
+            _figurePool = pool;
+            _positionDatabase = positionDatabase;
+            _positionDatabase.PositionChanged += OnPositionChanged;
+        }
 
-    private void AddFigure()
-    {
-        FigureComposition newComposition = _figurePool.Get();
+        public void FillAllFigures()
+        {
+            while (_positionDatabase.PositionsCount > _positionDatabase.TransformablesCount)
+                AddFigure();
+        }
 
-        newComposition.Emptied += RemoveFigure;
-        _positionDatabase.Add(newComposition);
-    }
+        public void Dispose()
+        {
+            _positionDatabase.PositionChanged -= OnPositionChanged;
+        }
 
-    private void RemoveFigure(FigureComposition composition)
-    {
-        composition.Emptied -= RemoveFigure;
+        private void AddFigure()
+        {
+            FigureComposition newComposition = _figurePool.Get();
 
-        _positionDatabase.Remove(composition);
-        _figurePool.Release(composition);
+            newComposition.Emptied += RemoveFigure;
+            _positionDatabase.Add(newComposition);
+        }
 
-        if (_positionDatabase.TransformablesCount <= MinFiguresCount)
-            FillAllFigures();
-    }
+        private void RemoveFigure(FigureComposition composition)
+        {
+            composition.Emptied -= RemoveFigure;
 
-    private void OnPositionChanged(ITransformable transformable, Vector3 position)
-    {
-        transformable.SetPosition(position);
+            _positionDatabase.Remove(composition);
+            _figurePool.Release(composition);
+
+            if (_positionDatabase.TransformablesCount <= MinFiguresCount)
+                FillAllFigures();
+        }
+
+        private void OnPositionChanged(IPositionSettable transformable, Vector3 position)
+        {
+            transformable.SetPosition(position);
+        }
     }
 }

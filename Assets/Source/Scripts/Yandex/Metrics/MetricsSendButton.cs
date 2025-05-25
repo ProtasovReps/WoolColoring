@@ -1,15 +1,20 @@
+using Extensions;
+using LevelInterface.Buttons;
 using UnityEngine;
 using YG;
 
-public class MetricsSendButton : ButtonView
+namespace YandexGamesSDK.Metrics
 {
-    [SerializeField] private MetricParams _metricParams;
-
-    protected override void OnButtonClick()
+    public class MetricsSendButton : ButtonView
     {
-        if (_metricParams == MetricParams.None)
-            return;
+        [SerializeField] private MetricParams _metricParams;
 
-        YG2.MetricaSend(_metricParams.ToString());
+        protected override void OnButtonClick()
+        {
+            if (_metricParams == MetricParams.None)
+                return;
+
+            YG2.MetricaSend(_metricParams.ToString());
+        }
     }
 }

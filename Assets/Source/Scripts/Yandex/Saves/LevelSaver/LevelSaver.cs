@@ -1,22 +1,26 @@
+using CustomInterface;
 using UnityEngine.SceneManagement;
 using YG;
 
-public class LevelSaver : ISaver
+namespace YandexGamesSDK.Saves.Level
 {
-    public void Save()
+    public class LevelSaver : ISaver
     {
-        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-        if (YG2.saves.PassedLevelIndexes.Contains(sceneIndex) == false)
+        public void Save()
         {
-            YG2.saves.PassedLevelIndexes.Add(sceneIndex);
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            if (YG2.saves.PassedLevelIndexes.Contains(sceneIndex) == false)
+            {
+                YG2.saves.PassedLevelIndexes.Add(sceneIndex);
+            }
+
+            sceneIndex++;
+
+            if (sceneIndex >= SceneManager.sceneCountInBuildSettings)
+                sceneIndex = 0;
+
+            YG2.saves.LastLevelIndex = sceneIndex;
         }
-
-        sceneIndex++;
-
-        if (sceneIndex >= SceneManager.sceneCountInBuildSettings)
-            sceneIndex = 0;
-
-        YG2.saves.LastLevelIndex = sceneIndex;
     }
 }

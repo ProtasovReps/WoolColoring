@@ -1,37 +1,45 @@
 using System;
 using UnityEngine;
+using ColorStrings.Model;
+using ColorStrings.View;
 
-public class ColorStringPresenter : IDisposable
+namespace ColorStrings.Presenter
 {
-    private readonly ColorString _model;
-    private readonly ColorStringView _view;
-
-    public ColorStringPresenter(ColorString model, ColorStringView view)
+    public class ColorStringPresenter : IDisposable
     {
-        if (model == null)
-            throw new ArgumentNullException(nameof(model));
+        private readonly ColorString _model;
+        private readonly ColorStringView _view;
 
-        if (view == null)
-            throw new ArgumentNullException(nameof(view));
+        public ColorStringPresenter(ColorString model, ColorStringView view)
+        {
+            if (model == null)
+                throw new ArgumentNullException(nameof(model));
 
-        _model = model;
-        _view = view;
+            if (view == null)
+                throw new ArgumentNullException(nameof(view));
 
-        _model.EnableStateSwitched += OnStateSwitched;
-    }
+            _model = model;
+            _view = view;
 
-    public void Dispose()
-    {
-        _model.EnableStateSwitched -= OnStateSwitched;
-    }
+            _model.EnableStateSwitched += OnStateSwitched;
+        }
 
-    public Color GetColor() => _model.Color;
+        public void Dispose()
+        {
+            _model.EnableStateSwitched -= OnStateSwitched;
+        }
 
-    private void OnStateSwitched()
-    {
-        if (_model.IsEnabled)
-            _view.Appear();
-        else
-            _view.Disappear();
+        public Color GetColor()
+        {
+            return _model.Color;
+        }
+
+        private void OnStateSwitched()
+        {
+            if (_model.IsEnabled)
+                _view.Appear();
+            else
+                _view.Disappear();
+        }
     }
 }

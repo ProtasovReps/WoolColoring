@@ -3,78 +3,84 @@ using Reflex.Attributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using BlockPicture.Model;
+using StringHolders.Model;
+using CustomInterface;
 
-public class Painter : MonoBehaviour
+namespace BlockPicture.View
 {
-    [SerializeField] private float _colorizeDelay;
-    [SerializeField, Min(1)] private int _blocksPerString;
-
-    private Picture _picture;
-    private ColoredStringHolderStash _holderStash;
-    private ColoredStringHolderSwitcher _switcher;
-
-    [Inject]
-    private void Inject(Picture picture)
+    public class Painter : MonoBehaviour
     {
-        _picture = picture;
+        [SerializeField] private float _colorizeDelay;
+        [SerializeField, Min(1)] private int _blocksPerString;
 
-        Subscribe(_holderStash.ActiveHolders);
-        Subscribe(_holderStash.InactiveHolders);
-    }
+        private Picture _picture;
+        private ColoredStringHolderStash _holderStash;
+        private ColoredStringHolderSwitcher _switcher;
 
-    private void OnDestroy()
-    {
-        Unsubscribe(_holderStash.ActiveHolders);
-        Unsubscribe(_holderStash.InactiveHolders);
-    }
-
-    public void Initialize(ColoredStringHolderStash holderStash, ColoredStringHolderSwitcher switcher)
-    {
-        if (holderStash == null)
-            throw new ArgumentNullException(nameof(holderStash));
-
-        if(switcher == null)
-            throw new ArgumentNullException(nameof(switcher));
-
-        _holderStash = holderStash;
-        _switcher = switcher;
-    }
-
-    private void OnHolderFilled(ColoredStringHolder holder)
-    {
-        FillImage(holder).Forget();
-    }
-
-    private async UniTaskVoid FillImage(ColoredStringHolder holder)
-    {
-        Color color = holder.Color;
-
-        holder.SetEnabled(false);
-
-        for (int i = 0; i < holder.MaxStringCount; i++)
+        [Inject]
+        private void Inject(Picture picture)
         {
-            holder.GetLastString();
+            _picture = picture;
 
-            for (int j = 0; j < _blocksPerString; j++)
-            {
-                _picture.Colorize(color);
-                await UniTask.WaitForSeconds(_colorizeDelay);
-            }
+            Subscribe(_holderStash.ActiveHolders);
+            Subscribe(_holderStash.InactiveHolders);
         }
 
-        holder.SetEnabled(true);
-        _switcher.Switch(holder);
-    }
+        private void OnDestroy()
+        {
+            Unsubscribe(_holderStash.ActiveHolders);
+            Unsubscribe(_holderStash.InactiveHolders);
+        }
 
-    private void Subscribe(IEnumerable<IFillable<ColoredStringHolder>> holders)
-    {
-        foreach (IFillable<ColoredStringHolder> holder in holders)
-            holder.Filled += OnHolderFilled;
-    }
+        public void Initialize(ColoredStringHolderStash holderStash, ColoredStringHolderSwitcher switcher)
+        {
+            if (holderStash == null)
+                throw new ArgumentNullException(nameof(holderStash));
 
-    private void Unsubscribe(IEnumerable<IFillable<ColoredStringHolder>> holders)
-    {
-        foreach (IFillable<ColoredStringHolder> holder in holders)
-            holder.Filled -= OnHolderFilled;
+            if (switcher == null)
+                throw new ArgumentNullException(nameof(switcher));
+
+            _holderStash = holderStash;
+            _switcher = switcher;
+        }
+
+        private void OnHolderFilled(ColoredStringHolder holder)
+        {
+            FillImage(holder).Forget();
+        }
+
+        private async UniTaskVoid FillImage(ColoredStringHolder holder)
+        {
+            Color color = holder.Color;
+
+            holder.SetEnabled(false);
+
+            for (int i = 0; i < holder.MaxStringCount; i++)
+            {
+                holder.GetLastString();
+
+                for (int j = 0; j < _blocksPerString; j++)
+                {
+                    _picture.Colorize(color);
+                    await UniTask.WaitForSeconds(_colorizeDelay);
+                }
+            }
+
+            holder.SetEnabled(true);
+            _switcher.Switch(holder);
+        }
+
+        private void Subscribe(IEnumerable<IFillable<ColoredStringHolder>> holders)
+        {
+            foreach (IFillable<ColoredStringHolder> holder in holders)
+                holder.Filled += OnHolderFilled;
+        }
+
+        private void Unsubscribe(IEnumerable<IFillable<ColoredStringHolder>> holders)
+        {
+            foreach (IFillable<ColoredStringHolder> holder in holders)
+                holder.Filled -= OnHolderFilled;
+        }
     }
 }

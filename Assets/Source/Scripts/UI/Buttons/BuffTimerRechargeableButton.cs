@@ -1,10 +1,17 @@
+using LevelInterface.Timers;
 using Reflex.Attributes;
 using UnityEngine;
 
-public class BuffTimerRechargeableButton : RechargeableButton
+namespace LevelInterface.Buttons
 {
-    [SerializeField] private float _rechargeTime = 30f;
+    public class BuffTimerRechargeableButton : RechargeableButton
+    {
+        [SerializeField] private float _rechargeTime = 30f;
 
-    [Inject]
-    private void Inject() => Initialize(new AdTimer(_rechargeTime));
+        [Inject]
+        private void Inject()
+        {
+            Initialize(new AdTimer(_rechargeTime));
+        }
+    }
 }

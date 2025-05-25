@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public abstract class Activatable : MonoBehaviour
+namespace LevelInterface
 {
-    public abstract void Activate();
+    public abstract class Activatable : MonoBehaviour
+    {
+        public abstract void Activate();
 
-    public abstract void Deactivate();
+        public abstract void Deactivate();
+    }
 }

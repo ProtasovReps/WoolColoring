@@ -1,27 +1,32 @@
 using System;
 using YG;
+using Extensions;
+using YandexGamesSDK.Saves;
 
-public abstract class PurchaseValidation : IDisposable
+namespace YandexGamesSDK.Inaps
 {
-    private readonly ProgressSaver _progressSaver;
-
-    public PurchaseValidation(ProgressSaver progressSaver)
+    public abstract class PurchaseValidation : IDisposable
     {
-        YG2.onPurchaseSuccess += OnPurchaseSuccess;
-        _progressSaver = progressSaver;
-    }
+        private readonly ProgressSaver _progressSaver;
 
-    public void Dispose()
-    {
-        YG2.onPurchaseSuccess -= OnPurchaseSuccess;
-    }
+        public PurchaseValidation(ProgressSaver progressSaver)
+        {
+            YG2.onPurchaseSuccess += OnPurchaseSuccess;
+            _progressSaver = progressSaver;
+        }
 
-    protected abstract void Validate(string purchaseId);
+        public void Dispose()
+        {
+            YG2.onPurchaseSuccess -= OnPurchaseSuccess;
+        }
 
-    private void OnPurchaseSuccess(string purchaseId)
-    {
-        Validate(purchaseId);
-        _progressSaver.Save();
-        YG2.MetricaSend(MetricParams.InappBought.ToString());
+        protected abstract void Validate(string purchaseId);
+
+        private void OnPurchaseSuccess(string purchaseId)
+        {
+            Validate(purchaseId);
+            _progressSaver.Save();
+            YG2.MetricaSend(MetricParams.InappBought.ToString());
+        }
     }
 }

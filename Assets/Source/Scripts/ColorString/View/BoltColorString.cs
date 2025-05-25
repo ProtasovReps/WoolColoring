@@ -1,20 +1,25 @@
+using CustomInterface;
 using UnityEngine;
+using ViewExtensions;
 
-[RequireComponent(typeof(ColorView))]
-public class BoltColorString : MonoBehaviour, IColorSettable, IColorable
+namespace ColorStrings.View
 {
-    private ColorView _colorView;
-
-    public Color Color => _colorView.Color;
-
-    public void Initialize()
+    [RequireComponent(typeof(ColorView))]
+    public class BoltColorString : MonoBehaviour, IColorSettable, IColorable
     {
-        _colorView = GetComponent<ColorView>();
-        _colorView.Initialize();
-    }
+        private ColorView _colorView;
 
-    public void SetColor(Color color)
-    {
-        _colorView.SetColor(color);
+        public Color Color => _colorView.Color;
+
+        public void Initialize()
+        {
+            _colorView = GetComponent<ColorView>();
+            _colorView.Initialize();
+        }
+
+        public void SetColor(Color color)
+        {
+            _colorView.SetColor(color);
+        }
     }
 }

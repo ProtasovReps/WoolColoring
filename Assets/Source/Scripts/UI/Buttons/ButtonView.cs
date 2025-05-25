@@ -2,34 +2,37 @@ using Ami.BroAudio;
 using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class ButtonView : Activatable
+namespace LevelInterface.Buttons
 {
-    [SerializeField] private Button _button;
-    [SerializeField] private SoundID _clickSound;
-
-    private void OnEnable()
+    public abstract class ButtonView : Activatable
     {
-        _button.onClick.AddListener(OnButtonClick);
-    }
+        [SerializeField] private Button _button;
+        [SerializeField] private SoundID _clickSound;
 
-    private void OnDisable()
-    {
-        _button.onClick.RemoveListener(OnButtonClick);
-    }
+        private void OnEnable()
+        {
+            _button.onClick.AddListener(OnButtonClick);
+        }
 
-    public override void Activate()
-    {
-        _button.interactable = true;
-    }
+        private void OnDisable()
+        {
+            _button.onClick.RemoveListener(OnButtonClick);
+        }
 
-    public override void Deactivate()
-    {
-        _button.interactable = false;
-    }
+        public override void Activate()
+        {
+            _button.interactable = true;
+        }
 
-    protected virtual void OnButtonClick()
-    {
-        if (_clickSound != 0)
-            BroAudio.Play(_clickSound);
+        public override void Deactivate()
+        {
+            _button.interactable = false;
+        }
+
+        protected virtual void OnButtonClick()
+        {
+            if (_clickSound != 0)
+                BroAudio.Play(_clickSound);
+        }
     }
 }

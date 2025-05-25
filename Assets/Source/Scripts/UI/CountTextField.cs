@@ -1,28 +1,32 @@
+using CustomInterface;
 using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 
-public class CountTextField : MonoBehaviour
+namespace LevelInterface
 {
-    [SerializeField] private TMP_Text _text;
-
-    private ICountChangeable _countChangeable;
-
-    [Inject]
-    private void Inject(ICountChangeable countChangeable)
+    public class CountTextField : MonoBehaviour
     {
-        _countChangeable = countChangeable;
-        OnCountChanged();
-        _countChangeable.CountChanged += OnCountChanged;
-    }
+        [SerializeField] private TMP_Text _text;
 
-    private void OnDestroy()
-    {
-        _countChangeable.CountChanged -= OnCountChanged;
-    }
+        private ICountChangeable _countChangeable;
 
-    private void OnCountChanged()
-    {
-        _text.text = _countChangeable.Count.ToString();
+        [Inject]
+        private void Inject(ICountChangeable countChangeable)
+        {
+            _countChangeable = countChangeable;
+            OnCountChanged();
+            _countChangeable.CountChanged += OnCountChanged;
+        }
+
+        private void OnDestroy()
+        {
+            _countChangeable.CountChanged -= OnCountChanged;
+        }
+
+        private void OnCountChanged()
+        {
+            _text.text = _countChangeable.Count.ToString();
+        }
     }
 }

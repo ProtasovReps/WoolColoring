@@ -1,18 +1,22 @@
+using LevelInterface.Timers;
 using Reflex.Attributes;
 
-public class ButtonRechargeAppearText : TemporaryActivatableUI
+namespace LevelInterface
 {
-    private AdTimer _timer;
-
-    [Inject]
-    private void Inject(CoinAdTimer adTimer)
+    public class ButtonRechargeAppearText : TemporaryActivatableUI
     {
-        _timer = adTimer;
-        _timer.TimeElapsed += Activate;
-    }
+        private AdTimer _timer;
 
-    private void OnDestroy()
-    {
-        _timer.TimeElapsed -= Activate;
+        [Inject]
+        private void Inject(CoinAdTimer adTimer)
+        {
+            _timer = adTimer;
+            _timer.TimeElapsed += Activate;
+        }
+
+        private void OnDestroy()
+        {
+            _timer.TimeElapsed -= Activate;
+        }
     }
 }

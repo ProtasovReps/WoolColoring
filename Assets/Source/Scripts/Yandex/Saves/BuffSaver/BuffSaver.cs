@@ -1,22 +1,27 @@
 using System;
+using Buffs;
+using CustomInterface;
 
-public abstract class BuffSaver : ISaver
+namespace YandexGamesSDK.Saves.Buffs
 {
-    private readonly BuffBag _bag;
-
-    public BuffSaver(BuffBag bag)
+    public abstract class BuffSaver : ISaver
     {
-        if (bag == null)
-            throw new ArgumentNullException(nameof(bag));
+        private readonly BuffBag _bag;
 
-        _bag = bag;
+        public BuffSaver(BuffBag bag)
+        {
+            if (bag == null)
+                throw new ArgumentNullException(nameof(bag));
+
+            _bag = bag;
+        }
+
+        public void Save()
+        {
+            foreach (var buff in _bag.Buffs)
+                ValidateBuff(buff.Key, buff.Value);
+        }
+
+        protected abstract void ValidateBuff(IBuff buff, int count);
     }
-
-    public void Save()
-    {
-        foreach (var buff in _bag.Buffs)
-            ValidateBuff(buff.Key, buff.Value);
-    }
-
-    protected abstract void ValidateBuff(IBuff buff, int count);
 }

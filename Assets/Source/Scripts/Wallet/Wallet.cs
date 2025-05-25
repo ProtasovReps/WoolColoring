@@ -1,43 +1,47 @@
+using CustomInterface;
 using System;
 
-public class Wallet : ICountChangeable
+namespace PlayerWallet
 {
-    public event Action CountChanged;
-
-    public Wallet(int startCount)
+    public class Wallet : ICountChangeable
     {
-        if (startCount < 0)
-            throw new ArgumentOutOfRangeException(nameof(startCount));
+        public Wallet(int startCount)
+        {
+            if (startCount < 0)
+                throw new ArgumentOutOfRangeException(nameof(startCount));
 
-        Count = startCount;
-    }
+            Count = startCount;
+        }
 
-    public int Count { get; private set; }
+        public event Action CountChanged;
 
-    public void Add(int count)
-    {
-        if (count <= 0)
-            throw new ArgumentException(nameof(count));
+        public int Count { get; private set; }
 
-        Count += count;
-        CountChanged?.Invoke();
-    }
+        public void Add(int count)
+        {
+            if (count <= 0)
+                throw new ArgumentException(nameof(count));
 
-    public void AddSilent(int count)
-    {
-        if (count <= 0)
-            throw new ArgumentException(nameof(count));
+            Count += count;
+            CountChanged?.Invoke();
+        }
 
-        Count += count;
-    }
+        public void AddSilent(int count)
+        {
+            if (count <= 0)
+                throw new ArgumentException(nameof(count));
 
-    public bool TrySpend(int count)
-    {
-        if (Count < count)
-            return false;
+            Count += count;
+        }
 
-        Count -= count;
-        CountChanged?.Invoke();
-        return true;
+        public bool TrySpend(int count)
+        {
+            if (Count < count)
+                return false;
+
+            Count -= count;
+            CountChanged?.Invoke();
+            return true;
+        }
     }
 }

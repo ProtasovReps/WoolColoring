@@ -1,9 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuActivateReplic : Replic
+namespace PlayerGuide
 {
-    [SerializeField] private Button[] _buttonsToActivate;
+    public class MenuActivateReplic : Replic
+    {
+        [SerializeField] private Button[] _buttonsToActivate;
 
-    protected override void OnAnimationFinalized() { }
+        protected override void OnAnimationFinalized() { }
+    }
 }

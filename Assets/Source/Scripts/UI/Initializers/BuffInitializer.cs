@@ -1,20 +1,25 @@
 using Reflex.Attributes;
 using UnityEngine;
+using Buffs.Strategies;
+using LevelInterface.Buttons;
 
-public class BuffInitializer : MonoBehaviour
+namespace LevelInterface.Initializers
 {
-    [SerializeField] private BuffButton _unlocker;
-    [SerializeField] private BuffButton _filler;
-    [SerializeField] private BuffButton _exploder;
-    [SerializeField] private BuffButton _cleaner;
-
-    [Inject]
-    private void Inject(Unlocker unlockStrategy, Filler fillStrategy,
-    Breaker explodeStrategy, Remover clearStrategy)
+    public class BuffInitializer : MonoBehaviour
     {
-        _unlocker.Initialize(unlockStrategy);
-        _filler.Initialize(fillStrategy);
-        _exploder.Initialize(explodeStrategy);
-        _cleaner.Initialize(clearStrategy);
+        [SerializeField] private BuffButton _unlocker;
+        [SerializeField] private BuffButton _filler;
+        [SerializeField] private BuffButton _exploder;
+        [SerializeField] private BuffButton _cleaner;
+
+        [Inject]
+        private void Inject(Unlocker unlockStrategy, Filler fillStrategy,
+        Breaker explodeStrategy, Remover clearStrategy)
+        {
+            _unlocker.Initialize(unlockStrategy);
+            _filler.Initialize(fillStrategy);
+            _exploder.Initialize(explodeStrategy);
+            _cleaner.Initialize(clearStrategy);
+        }
     }
 }

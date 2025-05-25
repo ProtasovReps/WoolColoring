@@ -1,23 +1,32 @@
-public class PictureBinder
+using BlockPicture.Model;
+using BlockPicture.View;
+using BlockPicture.Presenter;
+using ColorBlocks;
+using ColorBlocks.Model;
+
+namespace BlockPicture
 {
-    private readonly PictureView _pictureView;
-    private readonly Malbert _malbert;
-    private readonly ColorBlockBinder _colorBlockBinder;
-
-    public PictureBinder(PictureView pictureView, ColorBlockBinder colorBlockBinder, Malbert malbert)
+    public class PictureBinder
     {
-        _pictureView = pictureView;
-        _colorBlockBinder = colorBlockBinder;
-        _malbert = malbert;
-    }
+        private readonly PictureView _pictureView;
+        private readonly Malbert _malbert;
+        private readonly ColorBlockBinder _colorBlockBinder;
 
-    public Picture Bind()
-    {
-        ColorBlock[] colorBlocks = _colorBlockBinder.Bind();
-        Picture pictureModel = new (colorBlocks);
-        PicturePresenter picturePresenter = new(pictureModel, _pictureView);
+        public PictureBinder(PictureView pictureView, ColorBlockBinder colorBlockBinder, Malbert malbert)
+        {
+            _pictureView = pictureView;
+            _colorBlockBinder = colorBlockBinder;
+            _malbert = malbert;
+        }
 
-        _malbert.Initilize(picturePresenter);
-        return pictureModel;
+        public Picture Bind()
+        {
+            ColorBlock[] colorBlocks = _colorBlockBinder.Bind();
+            Picture pictureModel = new(colorBlocks);
+            PicturePresenter picturePresenter = new(_pictureView);
+
+            _malbert.Initilize(picturePresenter);
+            return pictureModel;
+        }
     }
 }

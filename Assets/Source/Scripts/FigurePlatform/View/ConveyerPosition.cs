@@ -1,8 +1,14 @@
 using UnityEngine;
 
-public class ConveyerPosition : MonoBehaviour
+namespace FigurePlatform.View
 {
-    public Vector3 Position { get; private set; }
+    public class ConveyerPosition : MonoBehaviour
+    {
+        public Vector3 Position { get; private set; }
 
-    private void Awake() => Position = transform.position;
+        private void Awake()
+        {
+            Position = transform.position;
+        }
+    }
 }

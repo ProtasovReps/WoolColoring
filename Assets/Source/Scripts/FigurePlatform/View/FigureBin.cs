@@ -1,18 +1,21 @@
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider))]
-public class FigureBin : MonoBehaviour
+namespace FigurePlatform.View
 {
-    private void Awake()
+    [RequireComponent(typeof(BoxCollider))]
+    public class FigureBin : MonoBehaviour
     {
-        GetComponent<BoxCollider>().isTrigger = true;
-    }
+        private void Awake()
+        {
+            GetComponent<BoxCollider>().isTrigger = true;
+        }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent(out FigureView fallable) == false)
-            return;
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out FigureView fallable) == false)
+                return;
 
-        fallable.Fall();
+            fallable.Fall();
+        }
     }
 }

@@ -1,19 +1,24 @@
-public class SuperDealPurchase : PurchaseValidation
+using YandexGamesSDK.Saves;
+
+namespace YandexGamesSDK.Inaps
 {
-    private const int BuffsAddCount = 10;
-
-    private readonly InapBuffAdder _buffAdder;
-
-    public SuperDealPurchase(ProgressSaver progressSaver, InapBuffAdder buffAdder) : base(progressSaver)
+    public class SuperDealPurchase : PurchaseValidation
     {
-        _buffAdder = buffAdder;
-    }
+        private const int BuffsAddCount = 10;
 
-    protected override void Validate(string purchaseId)
-    {
-        if (purchaseId != PurchaseIds.SuperDeal)
-            return;
+        private readonly InapBuffAdder _buffAdder;
 
-        _buffAdder.AddBuffs(BuffsAddCount);
+        public SuperDealPurchase(ProgressSaver progressSaver, InapBuffAdder buffAdder) : base(progressSaver)
+        {
+            _buffAdder = buffAdder;
+        }
+
+        protected override void Validate(string purchaseId)
+        {
+            if (purchaseId != PurchaseIds.SuperDeal)
+                return;
+
+            _buffAdder.AddBuffs(BuffsAddCount);
+        }
     }
 }

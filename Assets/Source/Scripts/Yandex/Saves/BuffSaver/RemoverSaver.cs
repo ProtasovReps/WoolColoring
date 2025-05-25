@@ -1,14 +1,20 @@
 using YG;
+using Buffs;
+using Buffs.Strategies;
+using CustomInterface;
 
-public class RemoverSaver : BuffSaver
+namespace YandexGamesSDK.Saves.Buffs
 {
-    public RemoverSaver(BuffBag bag) : base(bag) { }
-
-    protected override void ValidateBuff(IBuff buff, int count)
+    public class RemoverSaver : BuffSaver
     {
-        if (buff is not Remover)
-            return;
+        public RemoverSaver(BuffBag bag) : base(bag) { }
 
-        YG2.saves.Removers = count;
+        protected override void ValidateBuff(IBuff buff, int count)
+        {
+            if (buff is not Remover)
+                return;
+
+            YG2.saves.Removers = count;
+        }
     }
 }

@@ -1,14 +1,17 @@
 using Ami.BroAudio;
 using UnityEngine;
 
-public class ExplodableFigure : MonoBehaviour
+namespace FigurePlatform.View
 {
-    [SerializeField] private FigureView _figureView;
-    [SerializeField] private SoundID _explosionSound;
-
-    public void Explode()
+    public class ExplodableFigure : MonoBehaviour
     {
-        _explosionSound.Play();
-        _figureView.Fall();
+        [SerializeField] private FigureView _figureView;
+        [SerializeField] private SoundID _explosionSound;
+
+        public void Explode()
+        {
+            _explosionSound.Play();
+            _figureView.Fall();
+        }
     }
 }

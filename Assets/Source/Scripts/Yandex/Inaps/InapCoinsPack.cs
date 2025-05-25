@@ -1,21 +1,26 @@
-public class InapCoinsPack : PurchaseValidation
+using YandexGamesSDK.Saves;
+
+namespace YandexGamesSDK.Inaps
 {
-    private readonly InapCoinsAdder _coinsAdder;
-
-    public InapCoinsPack(ProgressSaver progressSaver, InapCoinsAdder coinsAdder) : base(progressSaver)
+    public class InapCoinsPack : PurchaseValidation
     {
-        _coinsAdder = coinsAdder;
-    }
+        private readonly InapCoinsAdder _coinsAdder;
 
-    protected override void Validate(string purchaseId)
-    {
-        if (purchaseId == PurchaseIds.SmallCoins)
-            _coinsAdder.AddCoins(CoinsAddValues.SmallPackage);
+        public InapCoinsPack(ProgressSaver progressSaver, InapCoinsAdder coinsAdder) : base(progressSaver)
+        {
+            _coinsAdder = coinsAdder;
+        }
 
-        if (purchaseId == PurchaseIds.MediumCoins)
-            _coinsAdder.AddCoins(CoinsAddValues.MediumPackage);
+        protected override void Validate(string purchaseId)
+        {
+            if (purchaseId == PurchaseIds.SmallCoins)
+                _coinsAdder.AddCoins(CoinsAddValues.SmallPackage);
 
-        if (purchaseId == PurchaseIds.LargeCoins)
-            _coinsAdder.AddCoins(CoinsAddValues.LargePackage);
+            if (purchaseId == PurchaseIds.MediumCoins)
+                _coinsAdder.AddCoins(CoinsAddValues.MediumPackage);
+
+            if (purchaseId == PurchaseIds.LargeCoins)
+                _coinsAdder.AddCoins(CoinsAddValues.LargePackage);
+        }
     }
 }

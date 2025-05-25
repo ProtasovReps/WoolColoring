@@ -1,13 +1,17 @@
+using CustomInterface;
 using UnityEngine.SceneManagement;
 using YG;
 
-public class UnlockedLevelsSaver : ISaver
+namespace YandexGamesSDK.Saves
 {
-    public void Save()
+    public class UnlockedLevelsSaver : ISaver
     {
-        if (YG2.saves.UnlockedLevelsCount >= SceneManager.sceneCountInBuildSettings - 1)
-            return;
+        public void Save()
+        {
+            if (YG2.saves.UnlockedLevelsCount >= SceneManager.sceneCountInBuildSettings - 1)
+                return;
 
-        YG2.saves.UnlockedLevelsCount++;
+            YG2.saves.UnlockedLevelsCount++;
+        }
     }
 }

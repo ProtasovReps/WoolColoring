@@ -3,83 +3,88 @@ using Reflex.Attributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using ColorBlocks.View;
+using StringHolders.View;
 
-public class BlockHolderConnector : MonoBehaviour
+namespace ConnectingRope
 {
-    [SerializeField] private float _ropeDisconnectDelay;
-    [SerializeField] private float _connectDelay = 0.5f;
-
-    private ColoredStringHolderView[] _stringHolderViews;
-    private RopePool _ropePool;
-    private float _disconnectDelay;
-    private Dictionary<Color, Rope> _connections;
-
-    [Inject]
-    private void Inject(ColoredStringHolderView[] stringHolderViews, RopePool ropePool)
+    public class BlockHolderConnector : MonoBehaviour
     {
-        _stringHolderViews = stringHolderViews;
-        _ropePool = ropePool;
-        _connections = new Dictionary<Color, Rope>();
-        _disconnectDelay = _ropeDisconnectDelay;
-    }
+        [SerializeField] private float _ropeDisconnectDelay;
+        [SerializeField] private float _connectDelay = 0.5f;
 
-    public void Setup(ColorBlockView block)
-    {
-        Color requiredColor = block.RequiredColor;
-        ColoredStringHolderView holder = GetColoredHolder(requiredColor);
+        private ColoredStringHolderView[] _stringHolderViews;
+        private RopePool _ropePool;
+        private float _disconnectDelay;
+        private Dictionary<Color, Rope> _connections;
 
-        if (holder.IsAnimating)
+        [Inject]
+        private void Inject(ColoredStringHolderView[] stringHolderViews, RopePool ropePool)
         {
-            if (_connections.ContainsKey(requiredColor) == false)
+            _stringHolderViews = stringHolderViews;
+            _ropePool = ropePool;
+            _connections = new Dictionary<Color, Rope>();
+            _disconnectDelay = _ropeDisconnectDelay;
+        }
+
+        public void Setup(ColorBlockView block)
+        {
+            Color requiredColor = block.RequiredColor;
+            ColoredStringHolderView holder = GetColoredHolder(requiredColor);
+
+            if (holder.IsAnimating)
             {
-                ConnectDelayed(block, holder, requiredColor).Forget();
+                if (_connections.ContainsKey(requiredColor) == false)
+                {
+                    ConnectDelayed(block, holder, requiredColor).Forget();
+                }
+            }
+            else
+            {
+                SetupRope(block, holder, requiredColor);
             }
         }
-        else
-        {
-            SetupRope(block, holder, requiredColor);
-        }
-    }
 
-    private void SetupRope(ColorBlockView block, ColoredStringHolderView holder, Color color)
-    {
-        if (_connections.ContainsKey(color))
+        private void SetupRope(ColorBlockView block, ColoredStringHolderView holder, Color color)
         {
-            _connections[color].Reconnect(block.Transform);
-        }
-        else
-        {
-            Rope newRope = _ropePool.Get();
+            if (_connections.ContainsKey(color))
+            {
+                _connections[color].Reconnect(block.Transform);
+            }
+            else
+            {
+                Rope newRope = _ropePool.Get();
 
-            newRope.SetColor(color);
-            newRope.Connect(holder.Transform, block.Transform);
-            _connections.Add(color, newRope);
+                newRope.SetColor(color);
+                newRope.Connect(holder.Transform, block.Transform);
+                _connections.Add(color, newRope);
 
-            DisconnectDelayed(newRope).Forget();
-        }
-    }
-
-    private ColoredStringHolderView GetColoredHolder(Color color)
-    {
-        for (int i = 0; i < _stringHolderViews.Length; i++)
-        {
-            if (_stringHolderViews[i].Color == color)
-                return _stringHolderViews[i];
+                DisconnectDelayed(newRope).Forget();
+            }
         }
 
-        throw new InvalidOperationException();
-    }
+        private ColoredStringHolderView GetColoredHolder(Color color)
+        {
+            for (int i = 0; i < _stringHolderViews.Length; i++)
+            {
+                if (_stringHolderViews[i].Color == color)
+                    return _stringHolderViews[i];
+            }
 
-    private async UniTaskVoid ConnectDelayed(ColorBlockView block, ColoredStringHolderView holder, Color color)
-    {
-        await UniTask.WaitForSeconds(_connectDelay);
-        SetupRope(block, holder, color);
-    }
+            throw new InvalidOperationException();
+        }
 
-    private async UniTaskVoid DisconnectDelayed(Rope rope)
-    {
-        await UniTask.WaitForSeconds(_disconnectDelay);
-        rope.Disconnect().Forget();
-        _connections.Remove(rope.Color);
+        private async UniTaskVoid ConnectDelayed(ColorBlockView block, ColoredStringHolderView holder, Color color)
+        {
+            await UniTask.WaitForSeconds(_connectDelay);
+            SetupRope(block, holder, color);
+        }
+
+        private async UniTaskVoid DisconnectDelayed(Rope rope)
+        {
+            await UniTask.WaitForSeconds(_disconnectDelay);
+            rope.Disconnect().Forget();
+            _connections.Remove(rope.Color);
+        }
     }
 }

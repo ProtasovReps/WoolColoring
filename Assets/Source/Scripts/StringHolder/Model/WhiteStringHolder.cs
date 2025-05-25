@@ -1,60 +1,72 @@
 using System;
 using UnityEngine;
+using ColorStrings.Model;
+using CustomInterface;
 
-public class WhiteStringHolder : StringHolder, IFillable<WhiteStringHolder>
+namespace StringHolders.Model
 {
-    private Color _requiredColor;
-
-    public event Action<WhiteStringHolder> Filled;
-
-    public WhiteStringHolder(ColorString[] strings) : base(strings) { }
-
-    public IColorable GetColorable(Color color)
+    public class WhiteStringHolder : StringHolder, IFillable<WhiteStringHolder>
     {
-        _requiredColor = color;
-        return GetString();
-    }
+        private Color _requiredColor;
 
-    public int GetColorCount(Color color)
-    {
-        int requiredColorsCount = 0;
+        public WhiteStringHolder(ColorString[] strings) : base(strings) { }
 
-        foreach (ColorString colorString in Strings)
+        public event Action<WhiteStringHolder> Filled;
+
+        public IColorable GetColorable(Color color)
         {
-            if (IsEnabledString(colorString, false))
-                continue;
-
-            if (colorString.Color != color)
-                continue;
-
-            requiredColorsCount++;
+            _requiredColor = color;
+            return GetString();
         }
 
-        return requiredColorsCount;
-    }
-
-    public void RemoveAllStrings()
-    {
-        foreach (ColorString colorString in Strings)
+        public int GetColorCount(Color color)
         {
-            _requiredColor = colorString.Color;
+            int requiredColorsCount = 0;
 
-            try
+            foreach (ColorString colorString in Strings)
             {
-                GetString();
+                if (IsEnabledString(colorString, false))
+                    continue;
+
+                if (colorString.Color != color)
+                    continue;
+
+                requiredColorsCount++;
             }
-            catch (InvalidOperationException)
+
+            return requiredColorsCount;
+        }
+
+        public void RemoveAllStrings()
+        {
+            foreach (ColorString colorString in Strings)
             {
-                continue;
+                _requiredColor = colorString.Color;
+
+                try
+                {
+                    GetString();
+                }
+                catch (InvalidOperationException)
+                {
+                    continue;
+                }
             }
         }
+
+        protected override void PrepareString(IColorSettable freeString, IColorable newString)
+        {
+            freeString.SetColor(newString.Color);
+        }
+
+        protected override bool IsValidString(IColorable colorString)
+        {
+            return colorString.Color == _requiredColor;
+        }
+
+        protected override void OnFilled()
+        {
+            Filled?.Invoke(this);
+        }
     }
-
-    protected override void PrepareString(IColorSettable freeString, IColorable newString)
-        => freeString.SetColor(newString.Color);
-
-    protected override bool IsValidString(IColorable colorString)
-        => colorString.Color == _requiredColor;
-
-    protected override void OnFilled() => Filled?.Invoke(this);
 }

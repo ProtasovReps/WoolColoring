@@ -1,11 +1,14 @@
 using UnityEngine;
 using YG;
 
-public class AdsRemover : MonoBehaviour
+namespace YandexGamesSDK.Inaps
 {
-    public void RemoveAds()
+    public class AdsRemover : MonoBehaviour
     {
-        YG2.saves.IfAdsRemoved = true;
-        YG2.StickyAdActivity(false);
+        public void RemoveAds()
+        {
+            YG2.saves.IfAdsRemoved = true;
+            YG2.StickyAdActivity(false);
+        }
     }
 }

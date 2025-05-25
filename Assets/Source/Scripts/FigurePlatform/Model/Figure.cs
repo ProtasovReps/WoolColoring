@@ -1,15 +1,27 @@
 using System;
 using UnityEngine;
 
-public class Figure
+namespace FigurePlatform.Model
 {
-    public event Action Appeared;
-    public event Action<Color> ColorChanged;
-    public event Action Falled;
+    public class Figure
+    {
+        public event Action Appeared;
+        public event Action<Color> ColorChanged;
+        public event Action Falled;
 
-    public void SetColor(Color color) => ColorChanged?.Invoke(color);
+        public void SetColor(Color color)
+        {
+            ColorChanged?.Invoke(color);
+        }
 
-    public void Appear() => Appeared?.Invoke();
+        public void Appear()
+        {
+            Appeared?.Invoke();
+        }
 
-    public void Fall() => Falled?.Invoke();
+        public void Fall()
+        {
+            Falled?.Invoke();
+        }
+    }
 }

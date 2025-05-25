@@ -1,13 +1,17 @@
+using LevelInterface.Buttons;
 using UnityEngine;
 using YG;
 
-public class InapBuyButton : ButtonView
+namespace YandexGamesSDK.Inaps
 {
-    [SerializeField] private PurchaseYG _purchaseYG;
-
-    protected override void OnButtonClick()
+    public class InapBuyButton : ButtonView
     {
-        _purchaseYG.BuyPurchase();
-        base.OnButtonClick();
+        [SerializeField] private PurchaseYG _purchaseYG;
+
+        protected override void OnButtonClick()
+        {
+            _purchaseYG.BuyPurchase();
+            base.OnButtonClick();
+        }
     }
 }

@@ -1,22 +1,29 @@
+using CustomInterface;
 using UnityEngine;
 
-public class ColorView : MonoBehaviour, IColorSettable
+namespace ViewExtensions
 {
-    private const string ColorMaterialProperty = "_Color";
-
-    [SerializeField] private Renderer _renderer;
-
-    private MaterialPropertyBlock _propertyBlock;
-
-    public Color Color { get; private set; }
-
-    public void Initialize() => _propertyBlock = new MaterialPropertyBlock();
-
-    public void SetColor(Color color)
+    public class ColorView : MonoBehaviour, IColorSettable
     {
-        Color = color;
+        private const string ColorMaterialProperty = "_Color";
 
-        _propertyBlock.SetColor(ColorMaterialProperty, color);
-        _renderer.SetPropertyBlock(_propertyBlock);
+        [SerializeField] private Renderer _renderer;
+
+        private MaterialPropertyBlock _propertyBlock;
+
+        public Color Color { get; private set; }
+
+        public void Initialize()
+        {
+            _propertyBlock = new MaterialPropertyBlock();
+        }
+
+        public void SetColor(Color color)
+        {
+            Color = color;
+
+            _propertyBlock.SetColor(ColorMaterialProperty, color);
+            _renderer.SetPropertyBlock(_propertyBlock);
+        }
     }
 }

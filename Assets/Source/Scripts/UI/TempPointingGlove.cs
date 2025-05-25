@@ -1,8 +1,11 @@
-public class TempPointingGlove : TemporaryActivatableUI
+namespace LevelInterface
 {
-    public override void Initialize()
+    public class TempPointingGlove : TemporaryActivatableUI
     {
-        base.Initialize();
-        Activate();
+        public override void Initialize()
+        {
+            base.Initialize();
+            Activate();
+        }
     }
 }

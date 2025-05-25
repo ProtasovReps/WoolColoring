@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class ActivatableUIInitializator : MonoBehaviour
+namespace LevelInterface.Initializers
 {
-    [SerializeField] private ActivatableUI[] _activatables;
-
-    public void Initialize()
+    public class ActivatableUIInitializator : MonoBehaviour
     {
-        for (int i = 0; i < _activatables.Length; i++)
-            _activatables[i].Initialize();
+        [SerializeField] private ActivatableUI[] _activatables;
+
+        public void Initialize()
+        {
+            for (int i = 0; i < _activatables.Length; i++)
+                _activatables[i].Initialize();
+        }
     }
 }

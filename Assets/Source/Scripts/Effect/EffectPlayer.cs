@@ -2,17 +2,20 @@ using UnityEngine;
 using System;
 using Cysharp.Threading.Tasks;
 
-public class EffectPlayer : MonoBehaviour
+namespace Effects
 {
-    public event Action<ParticleSystem> EffectCompleted;
-
-    public async UniTaskVoid Play(ParticleSystem effect)
+    public class EffectPlayer : MonoBehaviour
     {
-        effect.gameObject.SetActive(true);
-        effect.Play();
+        public event Action<ParticleSystem> EffectCompleted;
 
-        await UniTask.WaitForSeconds(effect.main.duration);
-        EffectCompleted?.Invoke(effect);
-        effect.gameObject.SetActive(false);
+        public async UniTaskVoid Play(ParticleSystem effect)
+        {
+            effect.gameObject.SetActive(true);
+            effect.Play();
+
+            await UniTask.WaitForSeconds(effect.main.duration);
+            EffectCompleted?.Invoke(effect);
+            effect.gameObject.SetActive(false);
+        }
     }
 }

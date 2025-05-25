@@ -1,24 +1,28 @@
 using UnityEngine;
+using ClickReaders;
 
-public class HolderStringAddingReplic : Replic
+namespace PlayerGuide
 {
-    [SerializeField] private GuideBoltClickReader _clickReader;
-    [SerializeField] private bool _isWhiteStringHolderGuide;
-
-    public override void Activate()
+    public class HolderStringAddingReplic : Replic
     {
-        base.Activate();
-        _clickReader.SetWhiteStringHolderGuide(_isWhiteStringHolderGuide);
-        _clickReader.SetPause(false);
-        _clickReader.Unscrewed += OnUnscrewed;
-    }
+        [SerializeField] private GuideBoltClickReader _clickReader;
+        [SerializeField] private bool _isWhiteStringHolderGuide;
 
-    private void OnUnscrewed()
-    {
-        _clickReader.SetPause(true);
-        _clickReader.Unscrewed -= OnUnscrewed;
-        Deactivate();
-    }
+        public override void Activate()
+        {
+            base.Activate();
+            _clickReader.SetWhiteStringHolderGuide(_isWhiteStringHolderGuide);
+            _clickReader.SetPause(false);
+            _clickReader.Unscrewed += OnUnscrewed;
+        }
 
-    protected override void OnAnimationFinalized() { }
+        private void OnUnscrewed()
+        {
+            _clickReader.SetPause(true);
+            _clickReader.Unscrewed -= OnUnscrewed;
+            Deactivate();
+        }
+
+        protected override void OnAnimationFinalized() { }
+    }
 }

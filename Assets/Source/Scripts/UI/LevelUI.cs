@@ -1,3 +1,6 @@
 using UnityEngine;
 
-public class LevelUI : MonoBehaviour { }
+namespace LevelInterface
+{
+    public class LevelUI : MonoBehaviour { }
+}

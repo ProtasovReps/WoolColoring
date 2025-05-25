@@ -2,18 +2,21 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectDisposer : MonoBehaviour
+namespace ViewExtensions
 {
-    private List<IDisposable> _disposables = new List<IDisposable>();
-
-    private void OnDestroy()
+    public class ObjectDisposer : MonoBehaviour
     {
-        for (int i = 0; i < _disposables.Count; i++)
-            _disposables[i].Dispose();
+        private List<IDisposable> _disposables = new List<IDisposable>();
 
-        Debug.Log($"{_disposables.Count} objects disposed");
+        private void OnDestroy()
+        {
+            for (int i = 0; i < _disposables.Count; i++)
+                _disposables[i].Dispose();
+        }
+
+        public void Add(IDisposable disposable)
+        {
+            _disposables.Add(disposable);
+        }
     }
-
-    public void Add(IDisposable disposable)
-        => _disposables.Add(disposable);
 }

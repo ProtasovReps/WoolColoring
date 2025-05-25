@@ -1,14 +1,20 @@
 using YG;
+using Buffs;
+using Buffs.Strategies;
+using CustomInterface;
 
-public class BreakerSaver : BuffSaver
+namespace YandexGamesSDK.Saves.Buffs
 {
-    public BreakerSaver(BuffBag bag) : base(bag) { }
-
-    protected override void ValidateBuff(IBuff buff, int count)
+    public class BreakerSaver : BuffSaver
     {
-        if (buff is not Breaker)
-            return;
+        public BreakerSaver(BuffBag bag) : base(bag) { }
 
-        YG2.saves.Breakers = count;
+        protected override void ValidateBuff(IBuff buff, int count)
+        {
+            if (buff is not Breaker)
+                return;
+
+            YG2.saves.Breakers = count;
+        }
     }
 }

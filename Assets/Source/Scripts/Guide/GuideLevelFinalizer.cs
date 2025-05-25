@@ -1,31 +1,36 @@
+using BlockPicture.Model;
 using Cysharp.Threading.Tasks;
+using LevelInterface.Buttons;
 using Reflex.Attributes;
 using UnityEngine;
 using YG;
 
-public class GuideLevelFinalizer : MonoBehaviour
+namespace PlayerGuide
 {
-    [SerializeField] private SwitchSceneButton _switchButton;
-    [SerializeField] private float _switchSceneDelay;
-
-    private Picture _picture;
-
-    [Inject]
-    private void Inject(Picture picture)
+    public class GuideLevelFinalizer : MonoBehaviour
     {
-        _picture = picture;
-        _picture.Finished += () => OnFinished().Forget();
-    }
+        [SerializeField] private SwitchSceneButton _switchButton;
+        [SerializeField] private float _switchSceneDelay;
 
-    private void OnDestroy()
-    {
-        _picture.Finished -= () => OnFinished().Forget();
-    }
+        private Picture _picture;
 
-    private async UniTaskVoid OnFinished()
-    {
-        await UniTask.WaitForSeconds(_switchSceneDelay);
-        YG2.SkipNextInterAdCall();
-        _switchButton.Switch();
+        [Inject]
+        private void Inject(Picture picture)
+        {
+            _picture = picture;
+            _picture.Finished += () => OnFinished().Forget();
+        }
+
+        private void OnDestroy()
+        {
+            _picture.Finished -= () => OnFinished().Forget();
+        }
+
+        private async UniTaskVoid OnFinished()
+        {
+            await UniTask.WaitForSeconds(_switchSceneDelay);
+            YG2.SkipNextInterAdCall();
+            _switchButton.Switch();
+        }
     }
 }

@@ -1,18 +1,25 @@
+using CustomInterface;
 using System;
 using UnityEngine;
 
-public class ColorString : IColorable, IColorSettable
+namespace ColorStrings.Model
 {
-    public event Action EnableStateSwitched;
-
-    public Color Color { get; private set; }
-    public bool IsEnabled { get; private set; }
-
-    public void SetEnable(bool isEnabled)
+    public class ColorString : IColorable, IColorSettable
     {
-        IsEnabled = isEnabled;
-        EnableStateSwitched?.Invoke();
-    }
+        public event Action EnableStateSwitched;
 
-    public void SetColor(Color color) => Color = color;
+        public Color Color { get; private set; }
+        public bool IsEnabled { get; private set; }
+
+        public void SetEnable(bool isEnabled)
+        {
+            IsEnabled = isEnabled;
+            EnableStateSwitched?.Invoke();
+        }
+
+        public void SetColor(Color color)
+        {
+            Color = color;
+        }
+    }
 }

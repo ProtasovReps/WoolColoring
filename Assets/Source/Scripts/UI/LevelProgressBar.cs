@@ -2,43 +2,47 @@ using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using BlockPicture.Model;
 
-public class LevelProgressBar : MonoBehaviour
+namespace LevelInterface
 {
-    [SerializeField] private Slider _slider;
-    [SerializeField] private TMP_Text _text;
-
-    private Picture _picture;
-    private int _maxBlockCount;
-
-    [Inject]
-    private void Inject(Picture picture)
+    public class LevelProgressBar : MonoBehaviour
     {
-        _picture = picture;
-        _maxBlockCount = _picture.UncoloredBlocksCount;
-        _picture.BlockCountChanged += OnBlockCountChanged;
+        [SerializeField] private Slider _slider;
+        [SerializeField] private TMP_Text _text;
 
-        OnBlockCountChanged();
-    }
+        private Picture _picture;
+        private int _maxBlockCount;
 
-    private void OnDestroy()
-    {
-        _picture.BlockCountChanged -= OnBlockCountChanged;
-    }
+        [Inject]
+        private void Inject(Picture picture)
+        {
+            _picture = picture;
+            _maxBlockCount = _picture.UncoloredBlocksCount;
+            _picture.BlockCountChanged += OnBlockCountChanged;
 
-    private void OnBlockCountChanged()
-    {
-        float targetValue = 1f - (float)_picture.UncoloredBlocksCount / _maxBlockCount;
+            OnBlockCountChanged();
+        }
 
-        _slider.value = targetValue;
-        SetPercentValue();
-    }
+        private void OnDestroy()
+        {
+            _picture.BlockCountChanged -= OnBlockCountChanged;
+        }
 
-    private void SetPercentValue()
-    {
-        int percentValue = (int)(_slider.value / _slider.maxValue * 100);
-        string percent = $"{percentValue}%";
+        private void OnBlockCountChanged()
+        {
+            float targetValue = 1f - (float)_picture.UncoloredBlocksCount / _maxBlockCount;
 
-        _text.text = percent;
+            _slider.value = targetValue;
+            SetPercentValue();
+        }
+
+        private void SetPercentValue()
+        {
+            int percentValue = (int)(_slider.value / _slider.maxValue * 100);
+            string percent = $"{percentValue}%";
+
+            _text.text = percent;
+        }
     }
 }

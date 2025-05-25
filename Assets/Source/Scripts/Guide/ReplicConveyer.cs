@@ -2,67 +2,72 @@ using Reflex.Attributes;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using ClickReaders;
+using LevelInterface;
 
-public class ReplicConveyer : MonoBehaviour
+namespace PlayerGuide
 {
-    [SerializeField] private ReplicPlayer[] _replicPlayers;
-    [SerializeField] private LevelUI _levelUI;
-    [SerializeField] private Button[] _buttonsToDisable;
-
-    private BoltClickReader _boltClickReader;
-    private int _replicPlayerIndex;
-
-    public event Action AllReplicsPlayed;
-
-    [Inject]
-    private void Inject(BoltClickReader reader)
+    public class ReplicConveyer : MonoBehaviour
     {
-        _boltClickReader = reader;
-    }
+        [SerializeField] private ReplicPlayer[] _replicPlayers;
+        [SerializeField] private LevelUI _levelUI;
+        [SerializeField] private Button[] _buttonsToDisable;
 
-    private void Start()
-    {
-        SetButtonsInteractable(false);
-        _boltClickReader.SetPause(true);
-        _levelUI.gameObject.SetActive(false);
-        ShowReplicPlayer();
-    }
+        private BoltClickReader _boltClickReader;
+        private int _replicPlayerIndex;
 
-    private void SetButtonsInteractable(bool isInteractable)
-    {
-        for (int i = 0; i < _buttonsToDisable.Length; i++)
+        public event Action AllReplicsPlayed;
+
+        [Inject]
+        private void Inject(BoltClickReader reader)
         {
-            _buttonsToDisable[i].interactable = isInteractable;
-        }
-    }
-
-    private void ShowReplicPlayer()
-    {
-        if (_replicPlayerIndex == _replicPlayers.Length)
-        {
-            FinalizeReplics();
-            return;
+            _boltClickReader = reader;
         }
 
-        ReplicPlayer player = _replicPlayers[_replicPlayerIndex];
+        private void Start()
+        {
+            SetButtonsInteractable(false);
+            _boltClickReader.SetPause(true);
+            _levelUI.gameObject.SetActive(false);
+            ShowReplicPlayer();
+        }
 
-        player.ShowReplics();
-        player.Executed += OnPlayerExecuted;
-    }
+        private void SetButtonsInteractable(bool isInteractable)
+        {
+            for (int i = 0; i < _buttonsToDisable.Length; i++)
+            {
+                _buttonsToDisable[i].interactable = isInteractable;
+            }
+        }
 
-    private void OnPlayerExecuted(ReplicPlayer replic)
-    {
-        replic.Executed -= OnPlayerExecuted;
-        _replicPlayerIndex++;
-        ShowReplicPlayer();
-    }
+        private void ShowReplicPlayer()
+        {
+            if (_replicPlayerIndex == _replicPlayers.Length)
+            {
+                FinalizeReplics();
+                return;
+            }
 
-    private void FinalizeReplics()
-    {
-        _levelUI.gameObject.SetActive(true);
-        SetButtonsInteractable(true);
-        _boltClickReader.SetPause(false);
+            ReplicPlayer player = _replicPlayers[_replicPlayerIndex];
 
-        AllReplicsPlayed?.Invoke();
+            player.ShowReplics();
+            player.Executed += OnPlayerExecuted;
+        }
+
+        private void OnPlayerExecuted(ReplicPlayer replic)
+        {
+            replic.Executed -= OnPlayerExecuted;
+            _replicPlayerIndex++;
+            ShowReplicPlayer();
+        }
+
+        private void FinalizeReplics()
+        {
+            _levelUI.gameObject.SetActive(true);
+            SetButtonsInteractable(true);
+            _boltClickReader.SetPause(false);
+
+            AllReplicsPlayed?.Invoke();
+        }
     }
 }

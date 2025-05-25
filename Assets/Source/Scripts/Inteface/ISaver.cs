@@ -1,4 +1,7 @@
-public interface ISaver
+namespace CustomInterface
 {
-    void Save();
+    public interface ISaver
+    {
+        void Save();
+    }
 }

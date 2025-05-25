@@ -2,62 +2,68 @@ using Reflex.Attributes;
 using System;
 using UnityEngine;
 using YG;
+using LevelInterface.Buttons;
+using PlayerWallet;
+using CustomInterface;
 
-public class BuffDealMenu : ActivatableUI
+namespace LevelInterface.Blocks
 {
-    [SerializeField] private UnlockerBuyButton _unlockerBuyButton;
-    [SerializeField] private RemoverBuyButton _removerBuyButton;
-    [SerializeField] private BreakerBuyButton _breakerBuyButton;
-    [SerializeField] private FillerBuyButton _fillerBuyButton;
-
-    private IBuffBuyButton<IBuff>[] _buyBuffButtons;
-    private Store _store;
-    private Wallet _wallet;
-    private IBuff _targetBuffReward;
-
-    [Inject]
-    private void Inject(Wallet wallet, Store store)
+    public class BuffDealMenu : ActivatableUI
     {
-        _wallet = wallet;
-        _store = store;
-        _buyBuffButtons = new IBuffBuyButton<IBuff>[] { _unlockerBuyButton, _removerBuyButton, _breakerBuyButton, _fillerBuyButton };
-    }
+        [SerializeField] private UnlockerBuyButton _unlockerBuyButton;
+        [SerializeField] private RemoverBuyButton _removerBuyButton;
+        [SerializeField] private BreakerBuyButton _breakerBuyButton;
+        [SerializeField] private FillerBuyButton _fillerBuyButton;
 
-    public override void Activate()
-    {
-        for (int i = 0; i < _buyBuffButtons.Length; i++)
-            _buyBuffButtons[i].SetActive(_buyBuffButtons[i].CurrentBuff == _targetBuffReward);
+        private IBuffBuyButton<IBuff>[] _buyBuffButtons;
+        private Store _store;
+        private Wallet _wallet;
+        private IBuff _targetBuffReward;
 
-        base.Activate();
-    }
+        [Inject]
+        private void Inject(Wallet wallet, Store store)
+        {
+            _wallet = wallet;
+            _store = store;
+            _buyBuffButtons = new IBuffBuyButton<IBuff>[] { _unlockerBuyButton, _removerBuyButton, _breakerBuyButton, _fillerBuyButton };
+        }
 
-    public override void Deactivate()
-    {
-        YG2.InterstitialAdvShow();
-        base.Deactivate();
-    }
+        public override void Activate()
+        {
+            for (int i = 0; i < _buyBuffButtons.Length; i++)
+                _buyBuffButtons[i].SetActive(_buyBuffButtons[i].CurrentBuff == _targetBuffReward);
 
-    public void SetTargetReward(IBuff buff)
-    {
-        if (buff == null)
-            throw new ArgumentNullException(nameof(buff));
+            base.Activate();
+        }
 
-        _targetBuffReward = buff;
-    }
+        public override void Deactivate()
+        {
+            YG2.InterstitialAdvShow();
+            base.Deactivate();
+        }
 
-    public void AddReward(int count)
-    {
-        YG2.RewardedAdvShow(_targetBuffReward.Id, () => AddBuff(count));
-    }
+        public void SetTargetReward(IBuff buff)
+        {
+            if (buff == null)
+                throw new ArgumentNullException(nameof(buff));
 
-    private void AddBuff(int count)
-    {
-        if (_targetBuffReward == null)
-            throw new ArgumentNullException(nameof(_targetBuffReward));
+            _targetBuffReward = buff;
+        }
 
-        _wallet.AddSilent(_targetBuffReward.Price * count);
-        _store.TryPurchase(_targetBuffReward, count);
+        public void AddReward(int count)
+        {
+            YG2.RewardedAdvShow(_targetBuffReward.Id, () => AddBuff(count));
+        }
 
-        _targetBuffReward = null;
+        private void AddBuff(int count)
+        {
+            if (_targetBuffReward == null)
+                throw new ArgumentNullException(nameof(_targetBuffReward));
+
+            _wallet.AddSilent(_targetBuffReward.Price * count);
+            _store.TryPurchase(_targetBuffReward, count);
+
+            _targetBuffReward = null;
+        }
     }
 }

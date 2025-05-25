@@ -1,31 +1,34 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-public class Pointer : MonoBehaviour
+namespace PlayerGuide
 {
-    [SerializeField] private float _upPosition = 0.5f;
-    [SerializeField] private PointerAnimation _pointerAnimation;
-
-    private Transform _transform;
-    private Transform _target;
-
-    public void SetTarget(Transform target)
+    public class Pointer : MonoBehaviour
     {
-        _target = target;
-        _transform = transform;
-        _pointerAnimation.PopUp(_transform);
+        [SerializeField] private float _upPosition = 0.5f;
+        [SerializeField] private PointerAnimation _pointerAnimation;
 
-        Point().Forget();
-    }
+        private Transform _transform;
+        private Transform _target;
 
-    private async UniTaskVoid Point()
-    {
-        while (_target.gameObject.activeSelf)
+        public void SetTarget(Transform target)
         {
-            _transform.position = _target.position + Vector3.up * _upPosition;
-            await UniTask.Yield();
+            _target = target;
+            _transform = transform;
+            _pointerAnimation.PopUp(_transform);
+
+            Point().Forget();
         }
 
-        _transform.gameObject.SetActive(false);
+        private async UniTaskVoid Point()
+        {
+            while (_target.gameObject.activeSelf)
+            {
+                _transform.position = _target.position + Vector3.up * _upPosition;
+                await UniTask.Yield();
+            }
+
+            _transform.gameObject.SetActive(false);
+        }
     }
 }

@@ -1,8 +1,11 @@
 using System;
 
-public interface ICountChangeable
+namespace CustomInterface
 {
-    event Action CountChanged;
+    public interface ICountChangeable
+    {
+        event Action CountChanged;
 
-    int Count { get; }
+        int Count { get; }
+    }
 }

@@ -1,7 +1,14 @@
+using LevelInterface.Timers;
 using Reflex.Attributes;
 
-public class CoinTimerRechargeableButton : RechargeableButton
+namespace LevelInterface.Buttons
 {
-    [Inject]
-    private void Inject(CoinAdTimer adTimer) => Initialize(adTimer);
+    public class CoinTimerRechargeableButton : RechargeableButton
+    {
+        [Inject]
+        private void Inject(CoinAdTimer adTimer)
+        {
+            Initialize(adTimer);
+        }
+    }
 }

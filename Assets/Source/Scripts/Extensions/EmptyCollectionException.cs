@@ -1,8 +1,11 @@
 using System;
 
-public class EmptyCollectionException : Exception
+namespace Extensions
 {
-    private const string ErrorMessage = "The collection is empty";
+    public class EmptyCollectionException : Exception
+    {
+        private const string ErrorMessage = "The collection is empty";
 
-    public override string Message => ErrorMessage;
+        public override string Message => ErrorMessage;
+    }
 }
