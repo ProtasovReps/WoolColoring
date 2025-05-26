@@ -7,7 +7,7 @@ namespace LevelInterface.Buttons
 {
     public class LevelSelectButton : SceneInteractionButton
     {
-        [SerializeField, Min(1)] private int _levelNumber;
+        [SerializeField][Min(1)] private int _levelNumber;
         [SerializeField] private Image _padlock;
 
         public int LevelNumber => _levelNumber;

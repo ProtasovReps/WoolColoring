@@ -9,12 +9,13 @@ using YG;
 
 namespace LevelInterface.Buttons
 {
-    public abstract class BuyBuffButton<T> : ButtonView, IBuffBuyButton<T> where T : IBuff
+    public abstract class BuyBuffButton<T> : ButtonView, IBuffBuyButton<T>
+        where T : IBuff
     {
         [SerializeField] private SoundID _purchaseRejectedSound;
         [SerializeField] private ParticleSystem _purchaseEffect;
         [SerializeField] private TMP_Text _priceText;
-        [SerializeField, Min(1)] private int _buffBuyCount;
+        [SerializeField][Min(1)] private int _buffBuyCount;
         [SerializeField] private MetricParams _metricParams;
 
         private Store _store;

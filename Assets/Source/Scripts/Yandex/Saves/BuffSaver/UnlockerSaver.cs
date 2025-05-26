@@ -7,7 +7,11 @@ namespace YandexGamesSDK.Saves.Buffs
 {
     public class UnlockerSaver : BuffSaver
     {
-        public UnlockerSaver(BuffBag bag) : base(bag) { }
+        public UnlockerSaver(BuffBag bag)
+            : base(bag)
+        {
+
+        }
 
         protected override void ValidateBuff(IBuff buff, int count)
         {

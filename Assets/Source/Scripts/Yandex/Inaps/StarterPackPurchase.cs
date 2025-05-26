@@ -11,7 +11,8 @@ namespace YandexGamesSDK.Inaps
         private readonly InapBuffAdder _buffAdder;
         private readonly AdsRemover _adsRemover;
 
-        public StarterPackPurchase(InapCoinsAdder coinAdder, InapBuffAdder buffAdder, AdsRemover adsRemover, ProgressSaver progressSaver) : base(progressSaver)
+        public StarterPackPurchase(InapCoinsAdder coinAdder, InapBuffAdder buffAdder, AdsRemover adsRemover, ProgressSaver progressSaver)
+            : base(progressSaver)
         {
             _coinAdder = coinAdder;
             _buffAdder = buffAdder;

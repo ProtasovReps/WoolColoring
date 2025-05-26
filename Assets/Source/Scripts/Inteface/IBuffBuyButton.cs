@@ -1,6 +1,7 @@
 namespace CustomInterface
 {
-    public interface IBuffBuyButton<out T> where T : IBuff
+    public interface IBuffBuyButton<out T>
+        where T : IBuff
     {
         T CurrentBuff { get; }
 

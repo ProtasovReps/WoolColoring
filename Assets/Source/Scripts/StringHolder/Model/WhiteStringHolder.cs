@@ -9,7 +9,11 @@ namespace StringHolders.Model
     {
         private Color _requiredColor;
 
-        public WhiteStringHolder(ColorString[] strings) : base(strings) { }
+        public WhiteStringHolder(ColorString[] strings)
+            : base(strings)
+        {
+
+        }
 
         public event Action<WhiteStringHolder> Filled;
 

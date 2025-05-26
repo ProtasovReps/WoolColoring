@@ -7,7 +7,8 @@ namespace StringHolders.Model
 {
     public class ColoredStringHolder : StringHolder, IFillable<ColoredStringHolder>
     {
-        public ColoredStringHolder(ColorString[] strings) : base(strings)
+        public ColoredStringHolder(ColorString[] strings)
+            : base(strings)
         {
             SetEnabled(true);
         }

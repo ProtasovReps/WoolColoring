@@ -9,7 +9,7 @@ namespace YandexGamesSDK
     public class AcceptGameLabelButton : ButtonView
     {
         [SerializeField] private GameLabelYG _gameLabelYG;
-        [SerializeField, Min(0)] private int _addAmount;
+        [SerializeField][Min(0)] private int _addAmount;
 
         private Wallet _wallet;
 

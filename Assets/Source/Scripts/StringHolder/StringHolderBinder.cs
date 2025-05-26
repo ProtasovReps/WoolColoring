@@ -16,8 +16,11 @@ namespace StringHolders
         private readonly WhiteStringHolderView _whiteView;
         private readonly ObjectDisposer _disposer;
 
-        public StringHolderBinder(ColorStringFactory colorStringFactory, ColoredStringHolderView[] coloredViews,
-            WhiteStringHolderView whiteView, ObjectDisposer disposer)
+        public StringHolderBinder(
+            ColorStringFactory colorStringFactory,
+            ColoredStringHolderView[] coloredViews,
+            WhiteStringHolderView whiteView,
+            ObjectDisposer disposer)
         {
             _colorStringFactory = colorStringFactory;
             _coloredViews = coloredViews;

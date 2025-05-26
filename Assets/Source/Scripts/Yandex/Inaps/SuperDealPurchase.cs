@@ -8,7 +8,8 @@ namespace YandexGamesSDK.Inaps
 
         private readonly InapBuffAdder _buffAdder;
 
-        public SuperDealPurchase(ProgressSaver progressSaver, InapBuffAdder buffAdder) : base(progressSaver)
+        public SuperDealPurchase(ProgressSaver progressSaver, InapBuffAdder buffAdder)
+            : base(progressSaver)
         {
             _buffAdder = buffAdder;
         }

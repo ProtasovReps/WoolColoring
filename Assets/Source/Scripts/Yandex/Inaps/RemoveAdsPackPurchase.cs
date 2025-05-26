@@ -8,7 +8,8 @@ namespace YandexGamesSDK.Inaps
     {
         private readonly AdsRemover _adsRemover;
 
-        public RemoveAdsPackPurchase(ProgressSaver progressSaver, AdsRemover adsRemover) : base(progressSaver)
+        public RemoveAdsPackPurchase(ProgressSaver progressSaver, AdsRemover adsRemover)
+            : base(progressSaver)
         {
             _adsRemover = adsRemover;
         }

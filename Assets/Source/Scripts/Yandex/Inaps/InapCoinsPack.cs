@@ -6,7 +6,8 @@ namespace YandexGamesSDK.Inaps
     {
         private readonly InapCoinsAdder _coinsAdder;
 
-        public InapCoinsPack(ProgressSaver progressSaver, InapCoinsAdder coinsAdder) : base(progressSaver)
+        public InapCoinsPack(ProgressSaver progressSaver, InapCoinsAdder coinsAdder)
+            : base(progressSaver)
         {
             _coinsAdder = coinsAdder;
         }

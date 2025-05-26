@@ -54,7 +54,7 @@ namespace DependencyInjection
         [SerializeField] private WhiteStringHolderView _whiteStringHolderView;
         [SerializeField] private StringHolderAnimations _holderAnimations;
         [SerializeField] private HolderSoundPlayer _holderSoundPlayer;
-        [SerializeField, Range(1, 4)] private int _startHoldersCount;
+        [SerializeField][Range(1, 4)] private int _startHoldersCount;
         [Header("Picture")]
         [SerializeField] private ColorBlockViewStash _colorBlockViewStash;
         [SerializeField] private ColorBlockAnimations _colorBlockAnimations;

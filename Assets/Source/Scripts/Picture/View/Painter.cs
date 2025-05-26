@@ -12,7 +12,7 @@ namespace BlockPicture.View
     public class Painter : MonoBehaviour
     {
         [SerializeField] private float _colorizeDelay;
-        [SerializeField, Min(1)] private int _blocksPerString;
+        [SerializeField][Min(1)] private int _blocksPerString;
 
         private Picture _picture;
         private ColoredStringHolderStash _holderStash;

@@ -7,7 +7,11 @@ namespace YandexGamesSDK.Saves.Buffs
 {
     public class FillerSaver : BuffSaver
     {
-        public FillerSaver(BuffBag bag) : base(bag) { }
+        public FillerSaver(BuffBag bag)
+            : base(bag)
+        {
+
+        }
 
         protected override void ValidateBuff(IBuff buff, int count)
         {

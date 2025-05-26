@@ -13,8 +13,11 @@ namespace LevelInterface.Initializers
         [SerializeField] private BuffButton _cleaner;
 
         [Inject]
-        private void Inject(Unlocker unlockStrategy, Filler fillStrategy,
-        Breaker explodeStrategy, Remover clearStrategy)
+        private void Inject(
+            Unlocker unlockStrategy,
+            Filler fillStrategy,
+            Breaker explodeStrategy,
+            Remover clearStrategy)
         {
             _unlocker.Initialize(unlockStrategy);
             _filler.Initialize(fillStrategy);
