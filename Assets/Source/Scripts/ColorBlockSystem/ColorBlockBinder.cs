@@ -3,7 +3,7 @@ using ColorBlocks.Presenter;
 using ColorBlocks.View;
 using ColorBlocks.Model;
 using ConnectingRope;
-using ViewExtensions;
+using Extensions.View;
 
 namespace ColorBlocks
 {

@@ -3,7 +3,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using CustomInterface;
-using ViewExtensions;
+using Extensions.View;
 
 namespace ConnectingRope
 {

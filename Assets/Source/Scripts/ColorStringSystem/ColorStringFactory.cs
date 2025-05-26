@@ -1,0 +1,20 @@
+using ColorStrings.Model;
+using ColorStrings.Presenter;
+using ColorStrings.View;
+using Extensions.View;
+
+namespace ColorStrings
+{
+    public class ColorStringFactory
+    {
+        public ColorString Produce(ColorStringView view, ObjectDisposer disposer)
+        {
+            var model = new ColorString();
+            var presenter = new ColorStringPresenter(model, view);
+
+            disposer.Add(presenter);
+            view.Initialize(presenter);
+            return model;
+        }
+    }
+}

@@ -1,6 +1,6 @@
 using Reflex.Attributes;
 using UnityEngine;
-using ViewExtensions;
+using Extensions.View;
 
 namespace LevelInterface
 {

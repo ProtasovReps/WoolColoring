@@ -1,7 +1,7 @@
 using Ami.BroAudio;
 using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
-using ViewExtensions;
+using Extensions.View;
 using YG;
 
 namespace LevelInterface.Buttons
