@@ -5,7 +5,6 @@ namespace LevelInterface.Timers
         public CoinAdTimer(float cooldownTime)
             : base(cooldownTime)
         {
-
         }
     }
 }

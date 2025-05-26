@@ -2,5 +2,7 @@ using UnityEngine;
 
 namespace LevelInterface
 {
-    public class LevelUI : MonoBehaviour { }
+    public class LevelUI : MonoBehaviour
+    {
+    }
 }

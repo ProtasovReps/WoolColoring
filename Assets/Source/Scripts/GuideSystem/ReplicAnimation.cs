@@ -9,10 +9,12 @@ namespace PlayerGuide
     {
         [SerializeField] private float _duration;
 
-        public void Activate(TMP_Text text, Action callback)
+        public event Action Finalized;
+
+        public void Activate(TMP_Text text)
         {
             LMotion.Create(0, text.text.Length, _duration)
-                .WithOnComplete(callback)
+                .WithOnComplete(() => Finalized?.Invoke())
                 .Bind(x => text.maxVisibleCharacters = x);
         }
     }

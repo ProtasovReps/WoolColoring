@@ -25,8 +25,6 @@ namespace PlayerGuide
             base.Deactivate();
         }
 
-        protected override void OnAnimationFinalized() { }
-
         private void OnBuffClicked()
         {
             Deactivate();

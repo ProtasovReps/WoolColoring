@@ -8,7 +8,9 @@ namespace YandexGamesSDK.Saves.Buffs
     public class BreakerSaver : BuffSaver
     {
         public BreakerSaver(BuffBag bag)
-            : base(bag) { }
+            : base(bag)
+        {
+        }
 
         protected override void ValidateBuff(IBuff buff, int count)
         {

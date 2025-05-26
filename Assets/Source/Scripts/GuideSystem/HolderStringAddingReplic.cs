@@ -22,7 +22,5 @@ namespace PlayerGuide
             _clickReader.Unscrewed -= OnUnscrewed;
             Deactivate();
         }
-
-        protected override void OnAnimationFinalized() { }
     }
 }

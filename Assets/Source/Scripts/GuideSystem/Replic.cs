@@ -12,13 +12,13 @@ namespace PlayerGuide
 
         public event Action<Replic> Executed;
 
+        protected ReplicAnimation ReplicAnimation => _replicAnimation;
+
         public virtual void Activate()
         {
             _transform.gameObject.SetActive(true);
-            _replicAnimation.Activate(_replic, OnAnimationFinalized);
+            _replicAnimation.Activate(_replic);
         }
-
-        protected abstract void OnAnimationFinalized();
 
         protected virtual void Deactivate()
         {

@@ -12,7 +12,6 @@ namespace StringHolders.Model
         public WhiteStringHolder(ColorString[] strings)
             : base(strings)
         {
-
         }
 
         public event Action<WhiteStringHolder> Filled;

@@ -10,7 +10,6 @@ namespace YandexGamesSDK.Saves.Buffs
         public FillerSaver(BuffBag bag)
             : base(bag)
         {
-
         }
 
         protected override void ValidateBuff(IBuff buff, int count)

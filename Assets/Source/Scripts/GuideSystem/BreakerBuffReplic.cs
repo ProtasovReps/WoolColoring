@@ -22,8 +22,6 @@ namespace PlayerGuide
             base.Deactivate();
         }
 
-        protected override void OnAnimationFinalized() { }
-
         private async UniTaskVoid WaitExecution()
         {
             await UniTask.WaitUntil(() => _figureClickReader.IsPaused == true);

@@ -11,16 +11,22 @@ namespace PlayerGuide
 
         private CancellationTokenSource _cancellationToken;
 
+        public override void Activate()
+        {
+            ReplicAnimation.Finalized += OnAnimationFinalized;
+            base.Activate();
+        }
+
         protected override void Deactivate()
         {
             _cancellationToken?.Cancel();
             _clickablePanel.Clicked -= Deactivate;
-
             base.Deactivate();
         }
 
-        protected override void OnAnimationFinalized()
+        protected virtual void OnAnimationFinalized()
         {
+            ReplicAnimation.Finalized -= OnAnimationFinalized;
             WaitClick().Forget();
         }
 

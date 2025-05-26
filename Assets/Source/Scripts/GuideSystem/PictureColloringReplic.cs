@@ -28,8 +28,6 @@ namespace PlayerGuide
             base.Activate();
         }
 
-        protected override void OnAnimationFinalized() { }
-
         private async UniTaskVoid OnBlockColorChanged()
         {
             _guideBoltClickReader.SetPause(true);

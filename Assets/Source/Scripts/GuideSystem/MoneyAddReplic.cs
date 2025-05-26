@@ -23,7 +23,6 @@ namespace PlayerGuide
                 _wallet.Add(_addAmount);
 
             YG2.saves.IfFreeCoinsGiven = true;
-
             base.OnAnimationFinalized();
         }
     }
