@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace LevelInterface
+namespace UISystem
 {
     public class LevelNumberTextField : MonoBehaviour
     {

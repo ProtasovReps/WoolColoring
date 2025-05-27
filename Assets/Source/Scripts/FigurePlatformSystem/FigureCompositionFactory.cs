@@ -2,13 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using FigurePlatform.Model;
-using FigurePlatform.Presenter;
-using FigurePlatform.View;
+using FigurePlatformSystem.Model;
+using FigurePlatformSystem.Presenter;
+using FigurePlatformSystem.View;
 using Extensions;
 using Extensions.View;
 
-namespace FigurePlatform
+namespace FigurePlatformSystem
 {
     public class FigureCompositionFactory : MonoBehaviour
     {

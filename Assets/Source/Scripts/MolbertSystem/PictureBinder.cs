@@ -1,10 +1,10 @@
-using BlockPicture.Model;
-using BlockPicture.View;
-using BlockPicture.Presenter;
-using ColorBlocks;
-using ColorBlocks.Model;
+using MolbertSystem.Model;
+using MolbertSystem.View;
+using MolbertSystem.Presenter;
+using ColorBlockSystem;
+using ColorBlockSystem.Model;
 
-namespace BlockPicture
+namespace MolbertSystem
 {
     public class PictureBinder
     {

@@ -1,9 +1,9 @@
-using StringHolders.Model;
-using StringHolders.View;
+using StringHolderSystem.Model;
+using StringHolderSystem.View;
 using System;
 using UnityEngine;
 
-namespace StringHolders.Presenter
+namespace StringHolderSystem.Presenter
 {
     public class ColoredStringHolderPresenter : IDisposable
     {

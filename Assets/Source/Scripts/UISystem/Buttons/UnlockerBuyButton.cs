@@ -1,6 +1,6 @@
-using Buffs.Strategies;
+using BuffSystem.Strategies;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class UnlockerBuyButton : BuyBuffButton<Unlocker>
     {

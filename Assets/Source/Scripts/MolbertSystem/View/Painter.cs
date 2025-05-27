@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Reflex.Attributes;
-using BlockPicture.Model;
-using StringHolders.Model;
-using CustomInterface;
+using MolbertSystem.Model;
+using StringHolderSystem.Model;
+using Interface;
 
-namespace BlockPicture.View
+namespace MolbertSystem.View
 {
     public class Painter : MonoBehaviour
     {
@@ -58,7 +58,7 @@ namespace BlockPicture.View
 
             for (int i = 0; i < holder.MaxStringCount; i++)
             {
-                holder.GetLastString();
+                holder.RemoveLastString();
 
                 for (int j = 0; j < _blocksPerString; j++)
                 {

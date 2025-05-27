@@ -6,11 +6,11 @@ using UnityEngine.UI;
 using Reflex.Attributes;
 using YG;
 using Extensions;
-using Buffs;
-using LevelInterface.Blocks;
-using CustomInterface;
+using BuffSystem;
+using UISystem.Blocks;
+using Interface;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class BuffButton : ButtonView
     {

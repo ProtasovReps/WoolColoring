@@ -1,9 +1,9 @@
-using ColorStrings.Model;
-using CustomInterface;
+using ColorStringSystem.Model;
+using Interface;
 using System;
 using System.Collections.Generic;
 
-namespace StringHolders.Model
+namespace StringHolderSystem.Model
 {
     public abstract class StringHolder
     {

@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Extensions;
-using CustomInterface;
+using Interface;
 
-namespace StringHolders.Model
+namespace StringHolderSystem.Model
 {
     public class ColoredStringHolderStash
     {

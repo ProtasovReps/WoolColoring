@@ -1,11 +1,11 @@
-using Bolts;
-using FigurePlatform.Model;
-using FigurePlatform.Presenter;
+using BoltSystem;
+using FigurePlatformSystem.Model;
+using FigurePlatformSystem.Presenter;
 using Reflex.Attributes;
 using UnityEngine;
 using Extensions.View;
 
-namespace FigurePlatform.View
+namespace FigurePlatformSystem.View
 {
     public class FigureFactory : MonoBehaviour
     {

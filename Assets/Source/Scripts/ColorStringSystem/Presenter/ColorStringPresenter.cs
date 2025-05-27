@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
-using ColorStrings.Model;
-using ColorStrings.View;
+using ColorStringSystem.Model;
+using ColorStringSystem.View;
 
-namespace ColorStrings.Presenter
+namespace ColorStringSystem.Presenter
 {
     public class ColorStringPresenter : IDisposable
     {

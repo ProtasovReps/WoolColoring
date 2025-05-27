@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using ColorBlocks.Presenter;
-using ColorBlocks.View;
-using ColorBlocks.Model;
-using ConnectingRope;
+using ColorBlockSystem.Presenter;
+using ColorBlockSystem.View;
+using ColorBlockSystem.Model;
+using RopeSystem;
 using Extensions.View;
 
-namespace ColorBlocks
+namespace ColorBlockSystem
 {
     public class ColorBlockBinder
     {

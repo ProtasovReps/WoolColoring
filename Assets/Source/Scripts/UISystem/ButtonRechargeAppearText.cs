@@ -1,7 +1,7 @@
-using LevelInterface.Timers;
+using UISystem.Timers;
 using Reflex.Attributes;
 
-namespace LevelInterface
+namespace UISystem
 {
     public class ButtonRechargeAppearText : TemporaryActivatableUI
     {

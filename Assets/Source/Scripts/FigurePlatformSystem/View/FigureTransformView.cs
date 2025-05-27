@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Extensions.View;
 
-namespace FigurePlatform.View
+namespace FigurePlatformSystem.View
 {
     public class FigureTransformView : TransformView
     {

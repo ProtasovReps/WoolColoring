@@ -1,7 +1,7 @@
-using CustomInterface;
+using Interface;
 using System;
 
-namespace PlayerWallet
+namespace WalletSystem
 {
     public class Wallet : ICountChangeable
     {

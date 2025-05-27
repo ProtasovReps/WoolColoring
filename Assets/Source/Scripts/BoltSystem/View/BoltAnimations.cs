@@ -3,7 +3,7 @@ using UnityEngine;
 using LitMotion;
 using LitMotion.Extensions;
 
-namespace Bolts.View
+namespace BoltSystem.View
 {
     public class BoltAnimations : MonoBehaviour
     {

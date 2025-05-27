@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace FigurePlatform.Model
+namespace FigurePlatformSystem.Model
 {
     public class FigureCompositionPool
     {

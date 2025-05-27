@@ -2,7 +2,7 @@ using LitMotion;
 using LitMotion.Extensions;
 using UnityEngine;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class PointerAnimation : MonoBehaviour
     {

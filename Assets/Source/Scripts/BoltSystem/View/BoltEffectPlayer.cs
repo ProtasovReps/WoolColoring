@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Reflex.Attributes;
-using Effects;
+using EffectSystem;
 
-namespace Bolts.View
+namespace BoltSystem.View
 {
     public class BoltEffectPlayer : MonoBehaviour
     {

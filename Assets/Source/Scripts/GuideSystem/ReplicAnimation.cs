@@ -3,7 +3,7 @@ using UnityEngine;
 using LitMotion;
 using TMPro;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class ReplicAnimation : MonoBehaviour
     {

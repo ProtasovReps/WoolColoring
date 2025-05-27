@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using BlockPicture.Model;
+using MolbertSystem.Model;
 
-namespace StringHolders.Model
+namespace StringHolderSystem.Model
 {
     public class ColoredStringHolderSwitcher
     {

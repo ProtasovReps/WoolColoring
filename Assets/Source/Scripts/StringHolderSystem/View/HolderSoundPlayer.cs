@@ -1,7 +1,7 @@
 using Ami.BroAudio;
 using UnityEngine;
 
-namespace StringHolders.View
+namespace StringHolderSystem.View
 {
     public class HolderSoundPlayer : MonoBehaviour
     {

@@ -1,9 +1,9 @@
 using Reflex.Attributes;
 using UnityEngine;
-using Buffs.Strategies;
-using LevelInterface.Buttons;
+using BuffSystem.Strategies;
+using UISystem.Buttons;
 
-namespace LevelInterface.Initializers
+namespace UISystem.Initializers
 {
     public class BuffInitializer : MonoBehaviour
     {

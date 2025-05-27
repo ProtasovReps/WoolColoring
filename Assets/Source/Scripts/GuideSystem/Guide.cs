@@ -1,9 +1,9 @@
 using UnityEngine;
 using YG;
-using ClickReaders;
+using ClickReadingSystem;
 using Extensions;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class Guide : MonoBehaviour
     {

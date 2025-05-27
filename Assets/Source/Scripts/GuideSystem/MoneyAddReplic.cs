@@ -1,9 +1,9 @@
-using PlayerWallet;
+using WalletSystem;
 using Reflex.Attributes;
 using UnityEngine;
 using YG;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class MoneyAddReplic : DefaultReplic
     {

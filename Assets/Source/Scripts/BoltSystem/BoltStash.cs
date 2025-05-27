@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Bolts.View;
+using BoltSystem.View;
 
-namespace Bolts
+namespace BoltSystem
 {
     public class BoltStash
     {

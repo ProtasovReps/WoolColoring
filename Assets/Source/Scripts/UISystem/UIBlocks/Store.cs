@@ -2,11 +2,11 @@ using Ami.BroAudio;
 using Reflex.Attributes;
 using UnityEngine;
 using YG;
-using Buffs;
-using PlayerWallet;
-using CustomInterface;
+using BuffSystem;
+using WalletSystem;
+using Interface;
 
-namespace LevelInterface.Blocks
+namespace UISystem.Blocks
 {
     public class Store : ActivatableUI
     {

@@ -2,7 +2,7 @@ using Reflex.Attributes;
 using UnityEngine;
 using Extensions.View;
 
-namespace LevelInterface
+namespace UISystem
 {
     public class ActivatableUI : Activatable
     {

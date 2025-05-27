@@ -1,7 +1,7 @@
 using Reflex.Attributes;
 using UnityEngine;
 
-namespace ClickReaders
+namespace ClickReadingSystem
 {
     public class ClickReaderStateSwitcher : MonoBehaviour
     {

@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
-using ColorStrings.Model;
-using CustomInterface;
+using ColorStringSystem.Model;
+using Interface;
 
-namespace StringHolders.Model
+namespace StringHolderSystem.Model
 {
     public class ColoredStringHolder : StringHolder, IFillable<ColoredStringHolder>
     {
@@ -30,7 +30,7 @@ namespace StringHolders.Model
             IsEnabled = isEnabled;
         }
 
-        public void GetLastString()
+        public void RemoveLastString()
         {
             GetString();
         }

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class LevelSelectButton : SceneInteractionButton
     {

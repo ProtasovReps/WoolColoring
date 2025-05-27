@@ -1,8 +1,8 @@
-using CustomInterface;
+using Interface;
 using System;
 using UnityEngine;
 
-namespace ColorStrings.Model
+namespace ColorStringSystem.Model
 {
     public class ColorString : IColorable, IColorSettable
     {

@@ -2,10 +2,10 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using Reflex.Attributes;
-using ClickReaders;
-using LevelInterface;
+using ClickReadingSystem;
+using UISystem;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class ReplicConveyer : MonoBehaviour
     {

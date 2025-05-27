@@ -1,13 +1,13 @@
-using ColorStrings;
-using ColorStrings.Model;
-using ColorStrings.View;
-using StringHolders.Model;
-using StringHolders.Presenter;
-using StringHolders.View;
+using ColorStringSystem;
+using ColorStringSystem.Model;
+using ColorStringSystem.View;
+using StringHolderSystem.Model;
+using StringHolderSystem.Presenter;
+using StringHolderSystem.View;
 using System.Collections.Generic;
 using Extensions.View;
 
-namespace StringHolders
+namespace StringHolderSystem
 {
     public class StringHolderBinder
     {

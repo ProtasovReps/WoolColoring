@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using ColorStrings.Model;
-using CustomInterface;
+using ColorStringSystem.Model;
+using Interface;
 using Extensions;
-using StringHolders.Model;
+using StringHolderSystem.Model;
 using Random = UnityEngine.Random;
 
-namespace Buffs.Strategies
+namespace BuffSystem.Strategies
 {
     public class Filler : IBuff
     {

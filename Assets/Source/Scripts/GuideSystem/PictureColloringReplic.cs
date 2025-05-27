@@ -1,10 +1,10 @@
 using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
 using UnityEngine;
-using ClickReaders;
-using BlockPicture.Model;
+using ClickReadingSystem;
+using MolbertSystem.Model;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class PictureColloringReplic : Replic
     {

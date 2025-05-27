@@ -2,10 +2,10 @@ using System;
 using UnityEngine;
 using TMPro;
 using Reflex.Attributes;
-using Buffs;
-using CustomInterface;
+using BuffSystem;
+using Interface;
 
-namespace LevelInterface
+namespace UISystem
 {
     public class BuffCountCounter : MonoBehaviour
     {

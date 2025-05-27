@@ -2,7 +2,7 @@ using Ami.BroAudio;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public abstract class ButtonView : Activatable
     {

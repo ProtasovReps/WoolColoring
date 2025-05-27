@@ -1,11 +1,11 @@
-using BlockPicture.Model;
-using FigurePlatform;
-using FigurePlatform.Model;
+using MolbertSystem.Model;
+using FigurePlatformSystem;
+using FigurePlatformSystem.Model;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace PlayerWallet
+namespace WalletSystem
 {
     public class MoneyRewards : IDisposable
     {

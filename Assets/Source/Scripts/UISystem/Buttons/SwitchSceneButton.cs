@@ -1,6 +1,6 @@
 using UnityEngine.SceneManagement;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class SwitchSceneButton : SceneInteractionButton
     {

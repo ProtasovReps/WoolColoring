@@ -2,7 +2,7 @@ using LitMotion;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LevelInterface
+namespace UISystem
 {
     public class ScrollAnimation : MonoBehaviour
     {

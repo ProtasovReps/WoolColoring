@@ -2,9 +2,9 @@ using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using BlockPicture.Model;
+using MolbertSystem.Model;
 
-namespace LevelInterface
+namespace UISystem
 {
     public class LevelProgressBar : MonoBehaviour
     {

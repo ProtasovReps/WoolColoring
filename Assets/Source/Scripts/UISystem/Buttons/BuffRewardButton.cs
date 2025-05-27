@@ -1,7 +1,7 @@
-using LevelInterface.Blocks;
+using UISystem.Blocks;
 using UnityEngine;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class BuffRewardButton : BuffTimerRechargeableButton
     {

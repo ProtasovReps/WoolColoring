@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FigurePlatform.View
+namespace FigurePlatformSystem.View
 {
     [RequireComponent(typeof(BoxCollider))]
     public class FigureBin : MonoBehaviour

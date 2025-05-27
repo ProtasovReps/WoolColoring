@@ -1,12 +1,12 @@
-using Bolts.View;
-using CustomInterface;
-using FigurePlatform.Presenter;
+using BoltSystem.View;
+using Interface;
+using FigurePlatformSystem.Presenter;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Extensions.View;
 
-namespace FigurePlatform.View
+namespace FigurePlatformSystem.View
 {
     [RequireComponent(typeof(ActiveStateSwitcher))]
     [RequireComponent(typeof(TransformView))]

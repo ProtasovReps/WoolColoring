@@ -1,8 +1,8 @@
-using ClickReaders;
+using ClickReadingSystem;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class BreakerBuffReplic : Replic
     {

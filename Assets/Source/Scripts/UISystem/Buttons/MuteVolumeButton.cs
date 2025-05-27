@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class MuteVolumeButton : ButtonView
     {

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using ColorBlocks.Model;
+using ColorBlockSystem.Model;
 using Extensions;
-using CustomInterface;
+using Interface;
 
-namespace BlockPicture.Model
+namespace MolbertSystem.Model
 {
     public class Picture : IFillable<Color>
     {

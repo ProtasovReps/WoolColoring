@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using CustomInterface;
+using Interface;
 
-namespace Buffs
+namespace BuffSystem
 {
     public class BuffBag
     {

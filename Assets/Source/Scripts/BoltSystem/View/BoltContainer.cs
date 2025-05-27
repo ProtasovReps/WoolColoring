@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Bolts.View
+namespace BoltSystem.View
 {
     public class BoltContainer : MonoBehaviour
     {

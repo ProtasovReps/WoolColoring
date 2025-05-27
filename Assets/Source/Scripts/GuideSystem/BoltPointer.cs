@@ -1,12 +1,12 @@
-using Bolts.View;
+using BoltSystem.View;
 using Cysharp.Threading.Tasks;
-using FigurePlatform.View;
+using FigurePlatformSystem.View;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class BoltPointer : MonoBehaviour
     {

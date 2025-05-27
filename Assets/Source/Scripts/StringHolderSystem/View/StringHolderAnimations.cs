@@ -3,7 +3,7 @@ using UnityEngine;
 using LitMotion;
 using LitMotion.Extensions;
 
-namespace StringHolders.View
+namespace StringHolderSystem.View
 {
     public class StringHolderAnimations : MonoBehaviour
     {

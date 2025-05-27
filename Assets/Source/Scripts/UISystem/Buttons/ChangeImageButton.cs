@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class ChangeImageButton : ButtonView
     {

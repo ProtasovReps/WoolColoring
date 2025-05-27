@@ -1,8 +1,8 @@
-using LevelInterface.Timers;
+using UISystem.Timers;
 using Reflex.Attributes;
 using UnityEngine;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class BuffTimerRechargeableButton : RechargeableButton
     {

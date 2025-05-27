@@ -1,4 +1,4 @@
-namespace PlayerWallet
+namespace WalletSystem
 {
     public static class RewardValues
     {

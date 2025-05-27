@@ -1,4 +1,4 @@
-namespace LevelInterface
+namespace UISystem
 {
     public class TempPointingGlove : TemporaryActivatableUI
     {

@@ -1,13 +1,13 @@
 using Ami.BroAudio;
-using CustomInterface;
+using Interface;
 using Extensions;
-using LevelInterface.Blocks;
+using UISystem.Blocks;
 using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 using YG;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public abstract class BuyBuffButton<T> : ButtonView, IBuffBuyButton<T>
         where T : IBuff

@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using CustomInterface;
+using Interface;
 
-namespace FigurePlatform.Model
+namespace FigurePlatformSystem.Model
 {
     public class Conveyer : IDisposable
     {

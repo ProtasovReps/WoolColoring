@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BlockPicture.View
+namespace MolbertSystem.View
 {
     public class PictureView : MonoBehaviour
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 using LitMotion;
 using LitMotion.Extensions;
 
-namespace ColorBlocks.View
+namespace ColorBlockSystem.View
 {
     public class ColorBlockAnimations : MonoBehaviour
     {

@@ -1,10 +1,10 @@
 using Extensions;
-using PlayerWallet;
+using WalletSystem;
 using Reflex.Attributes;
 using UnityEngine;
 using YG;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class CoinAdRewardButton : CoinTimerRechargeableButton
     {

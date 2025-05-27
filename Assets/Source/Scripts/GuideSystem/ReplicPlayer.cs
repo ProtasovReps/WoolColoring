@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class ReplicPlayer : MonoBehaviour
     {

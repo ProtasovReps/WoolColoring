@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
 using Extensions;
-using CustomInterface;
+using Interface;
 
-namespace FigurePlatform.Model
+namespace FigurePlatformSystem.Model
 {
     public class FigureComposition : IPositionSettable, IDisposable, IColorSettable
     {

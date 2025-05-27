@@ -1,11 +1,11 @@
 using Reflex.Attributes;
 using UnityEngine;
-using Bolts.View;
-using ColorStrings.Model;
-using StringHolders.Model;
-using BlockPicture.Model;
+using BoltSystem.View;
+using ColorStringSystem.Model;
+using StringHolderSystem.Model;
+using MolbertSystem.Model;
 
-namespace ClickReaders
+namespace ClickReadingSystem
 {
     public class BoltClickReader : ClickReader
     {

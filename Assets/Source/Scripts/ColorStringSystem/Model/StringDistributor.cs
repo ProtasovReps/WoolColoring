@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
-using Bolts.View;
-using StringHolders.Model;
-using CustomInterface;
+using BoltSystem.View;
+using StringHolderSystem.Model;
+using Interface;
 
-namespace ColorStrings.Model
+namespace ColorStringSystem.Model
 {
     public class StringDistributor : IDisposable
     {

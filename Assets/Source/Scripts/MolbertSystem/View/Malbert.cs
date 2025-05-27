@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
-using ColorBlocks.View;
-using BlockPicture.Presenter;
+using ColorBlockSystem.View;
+using MolbertSystem.Presenter;
 
-namespace BlockPicture.View
+namespace MolbertSystem.View
 {
     public class Malbert : MonoBehaviour
     {

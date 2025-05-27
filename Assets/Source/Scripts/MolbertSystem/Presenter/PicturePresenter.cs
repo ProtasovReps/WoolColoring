@@ -1,7 +1,7 @@
 using UnityEngine;
-using BlockPicture.View;
+using MolbertSystem.View;
 
-namespace BlockPicture.Presenter
+namespace MolbertSystem.Presenter
 {
     public class PicturePresenter
     {

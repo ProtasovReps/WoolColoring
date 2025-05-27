@@ -1,9 +1,9 @@
-using CustomInterface;
+using Interface;
 using Reflex.Attributes;
 using TMPro;
 using UnityEngine;
 
-namespace LevelInterface
+namespace UISystem
 {
     public class CountTextField : MonoBehaviour
     {

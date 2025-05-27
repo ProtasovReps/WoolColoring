@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace FigurePlatform.Model
+namespace FigurePlatformSystem.Model
 {
     public class Figure
     {

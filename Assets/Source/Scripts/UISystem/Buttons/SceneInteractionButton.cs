@@ -4,7 +4,7 @@ using Reflex.Attributes;
 using Extensions.View;
 using YG;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public abstract class SceneInteractionButton : ButtonView
     {

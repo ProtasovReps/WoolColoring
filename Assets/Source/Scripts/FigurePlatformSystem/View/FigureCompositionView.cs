@@ -3,7 +3,7 @@ using UnityEngine;
 using Extensions;
 using Extensions.View;
 
-namespace FigurePlatform.View
+namespace FigurePlatformSystem.View
 {
     [RequireComponent(typeof(FigureTransformView))]
     [RequireComponent(typeof(ActiveStateSwitcher))]

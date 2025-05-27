@@ -1,7 +1,7 @@
 using Ami.BroAudio;
 using UnityEngine;
 
-namespace FigurePlatform.View
+namespace FigurePlatformSystem.View
 {
     public class ExplodableFigure : MonoBehaviour
     {

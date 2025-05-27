@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 using YG;
 using Reflex.Attributes;
-using LevelInterface.Buttons;
-using PlayerWallet;
-using CustomInterface;
+using UISystem.Buttons;
+using WalletSystem;
+using Interface;
 
-namespace LevelInterface.Blocks
+namespace UISystem.Blocks
 {
     public class BuffDealMenu : ActivatableUI
     {

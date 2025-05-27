@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public abstract class Replic : MonoBehaviour
     {

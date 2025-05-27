@@ -1,8 +1,8 @@
 using UnityEngine;
-using CustomInterface;
+using Interface;
 using Extensions.View;
 
-namespace ColorStrings.View
+namespace ColorStringSystem.View
 {
     [RequireComponent(typeof(ColorView))]
     public class BoltColorString : MonoBehaviour, IColorSettable, IColorable

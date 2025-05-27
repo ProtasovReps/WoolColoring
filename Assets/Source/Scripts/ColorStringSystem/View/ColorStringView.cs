@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 using LitMotion;
 using LitMotion.Extensions;
-using ColorStrings.Presenter;
+using ColorStringSystem.Presenter;
 using Extensions;
 using Extensions.View;
 
-namespace ColorStrings.View
+namespace ColorStringSystem.View
 {
     [RequireComponent(typeof(ColorView))]
     [RequireComponent(typeof(TransformView))]

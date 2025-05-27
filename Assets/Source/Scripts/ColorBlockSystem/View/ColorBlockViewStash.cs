@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ColorBlocks.View
+namespace ColorBlockSystem.View
 {
     public class ColorBlockViewStash : MonoBehaviour
     {

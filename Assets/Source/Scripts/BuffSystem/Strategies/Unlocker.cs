@@ -1,10 +1,10 @@
 using System;
-using BlockPicture.Model;
-using CustomInterface;
+using MolbertSystem.Model;
+using Interface;
 using Extensions;
-using StringHolders.Model;
+using StringHolderSystem.Model;
 
-namespace Buffs.Strategies
+namespace BuffSystem.Strategies
 {
     public class Unlocker : IBuff
     {

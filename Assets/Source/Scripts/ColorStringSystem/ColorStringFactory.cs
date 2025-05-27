@@ -1,9 +1,9 @@
-using ColorStrings.Model;
-using ColorStrings.Presenter;
-using ColorStrings.View;
+using ColorStringSystem.Model;
+using ColorStringSystem.Presenter;
+using ColorStringSystem.View;
 using Extensions.View;
 
-namespace ColorStrings
+namespace ColorStringSystem
 {
     public class ColorStringFactory
     {

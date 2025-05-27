@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
-using Bolts.View;
-using BlockPicture.Model;
+using BoltSystem.View;
+using MolbertSystem.Model;
 
-namespace Bolts
+namespace BoltSystem
 {
     public class BoltColorSetter : IDisposable
     {

@@ -1,9 +1,9 @@
 using System;
-using ClickReaders;
-using CustomInterface;
+using ClickReadingSystem;
+using Interface;
 using Extensions;
 
-namespace Buffs.Strategies
+namespace BuffSystem.Strategies
 {
     public class Breaker : IBuff
     {

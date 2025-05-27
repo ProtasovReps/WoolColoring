@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Reflex.Attributes;
 
-namespace Effects
+namespace EffectSystem
 {
     public class EffectPool : MonoBehaviour
     {

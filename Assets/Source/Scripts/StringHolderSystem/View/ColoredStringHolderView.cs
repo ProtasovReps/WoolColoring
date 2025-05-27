@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 using Extensions;
-using StringHolders.Presenter;
+using StringHolderSystem.Presenter;
 using Extensions.View;
-using CustomInterface;
+using Interface;
 
-namespace StringHolders.View
+namespace StringHolderSystem.View
 {
     [RequireComponent(typeof(ColorView))]
     public class ColoredStringHolderView : StringHolderView, IColorable

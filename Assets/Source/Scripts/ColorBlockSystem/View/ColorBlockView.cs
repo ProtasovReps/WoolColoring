@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
-using CustomInterface;
+using Interface;
 using Reflex.Attributes;
 using Extensions.View;
 
-namespace ColorBlocks.View
+namespace ColorBlockSystem.View
 {
     public class ColorBlockView : MonoBehaviour, IColorSettable
     {

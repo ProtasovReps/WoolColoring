@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LevelInterface
+namespace UISystem
 {
     public abstract class Activatable : MonoBehaviour
     {

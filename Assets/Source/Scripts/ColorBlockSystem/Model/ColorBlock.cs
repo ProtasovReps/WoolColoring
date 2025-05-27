@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
-using CustomInterface;
+using Interface;
 
-namespace ColorBlocks.Model
+namespace ColorBlockSystem.Model
 {
     public class ColorBlock : IColorSettable
     {

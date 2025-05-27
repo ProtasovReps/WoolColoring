@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 using Reflex.Attributes;
 using PlayerInput = Input.PlayerInput;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class ClickablePanel : MonoBehaviour
     {

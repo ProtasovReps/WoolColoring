@@ -1,7 +1,7 @@
 using UnityEngine;
-using ClickReaders;
+using ClickReadingSystem;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class HolderStringAddingReplic : Replic
     {

@@ -3,7 +3,7 @@ using Reflex.Attributes;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LevelInterface.Blocks
+namespace UISystem.Blocks
 {
     public class PausePanel : MonoBehaviour
     {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Reflex.Attributes;
-using ColorBlocks.View;
-using StringHolders.View;
+using ColorBlockSystem.View;
+using StringHolderSystem.View;
 
-namespace ConnectingRope
+namespace RopeSystem
 {
     public class BlockHolderConnector : MonoBehaviour
     {

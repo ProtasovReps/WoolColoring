@@ -1,10 +1,10 @@
-using ColorBlocks.Model;
-using ColorBlocks.View;
-using ConnectingRope;
+using ColorBlockSystem.Model;
+using ColorBlockSystem.View;
+using RopeSystem;
 using System;
 using UnityEngine;
 
-namespace ColorBlocks.Presenter
+namespace ColorBlockSystem.Presenter
 {
     public class ColorBlockPresenter : IDisposable
     {

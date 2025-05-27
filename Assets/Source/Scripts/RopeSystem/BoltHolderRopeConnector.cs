@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Reflex.Attributes;
-using Bolts.View;
-using ColorStrings.Model;
-using StringHolders.View;
+using BoltSystem.View;
+using ColorStringSystem.Model;
+using StringHolderSystem.View;
 
-namespace ConnectingRope
+namespace RopeSystem
 {
     public class BoltHolderRopeConnector : MonoBehaviour
     {

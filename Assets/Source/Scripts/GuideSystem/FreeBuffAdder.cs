@@ -1,11 +1,11 @@
 using Reflex.Attributes;
 using UnityEngine;
 using YG;
-using Buffs;
-using Buffs.Strategies;
-using CustomInterface;
+using BuffSystem;
+using BuffSystem.Strategies;
+using Interface;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class FreeBuffAdder : MonoBehaviour
     {

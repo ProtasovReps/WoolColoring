@@ -1,7 +1,7 @@
 using Reflex.Attributes;
-using StringHolders.Model;
+using StringHolderSystem.Model;
 
-namespace LevelInterface.Blocks
+namespace UISystem.Blocks
 {
     public class LoseBlock : ActivatableUI
     {

@@ -1,8 +1,8 @@
-using LevelInterface;
+using UISystem;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class ActivateUiReplic : DefaultReplic
     {

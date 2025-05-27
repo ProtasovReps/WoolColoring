@@ -1,8 +1,8 @@
-using LevelInterface.Buttons;
+using UISystem.Buttons;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class BuffReplic : Replic
     {

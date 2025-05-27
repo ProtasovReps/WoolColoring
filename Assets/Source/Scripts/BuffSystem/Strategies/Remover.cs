@@ -1,9 +1,9 @@
 using System;
-using CustomInterface;
+using Interface;
 using Extensions;
-using StringHolders.Model;
+using StringHolderSystem.Model;
 
-namespace Buffs.Strategies
+namespace BuffSystem.Strategies
 {
     public class Remover : IBuff
     {

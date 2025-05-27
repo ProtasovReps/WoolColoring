@@ -1,10 +1,10 @@
 using Cysharp.Threading.Tasks;
 using Reflex.Attributes;
 using UnityEngine;
-using ColorStrings.Model;
-using StringHolders.View;
+using ColorStringSystem.Model;
+using StringHolderSystem.View;
 
-namespace ConnectingRope
+namespace RopeSystem
 {
     public class HoldersRopeConnector : MonoBehaviour
     {

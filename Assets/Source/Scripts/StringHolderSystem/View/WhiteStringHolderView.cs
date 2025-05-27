@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace StringHolders.View
+namespace StringHolderSystem.View
 {
     public class WhiteStringHolderView : StringHolderView
     {

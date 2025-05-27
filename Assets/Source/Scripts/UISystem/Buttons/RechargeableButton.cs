@@ -1,9 +1,9 @@
 using Cysharp.Threading.Tasks;
-using LevelInterface.Timers;
+using UISystem.Timers;
 using TMPro;
 using UnityEngine;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class RechargeableButton : ButtonView
     {

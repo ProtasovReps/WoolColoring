@@ -1,7 +1,7 @@
-using LevelInterface.Timers;
+using UISystem.Timers;
 using UnityEngine;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class FinalCoinRewardButton : CoinAdRewardButton
     {

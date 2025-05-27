@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ConnectingRope
+namespace RopeSystem
 {
     public class RopePool : MonoBehaviour
     {

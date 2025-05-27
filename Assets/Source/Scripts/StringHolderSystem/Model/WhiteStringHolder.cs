@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
-using ColorStrings.Model;
-using CustomInterface;
+using ColorStringSystem.Model;
+using Interface;
 
-namespace StringHolders.Model
+namespace StringHolderSystem.Model
 {
     public class WhiteStringHolder : StringHolder, IFillable<WhiteStringHolder>
     {

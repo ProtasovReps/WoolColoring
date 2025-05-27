@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 using Reflex.Attributes;
-using Bolts.View;
-using ColorStrings.Model;
-using StringHolders.Model;
+using BoltSystem.View;
+using ColorStringSystem.Model;
+using StringHolderSystem.Model;
 
-namespace ClickReaders
+namespace ClickReadingSystem
 {
     public class GuideBoltClickReader : ClickReader
     {

@@ -2,10 +2,10 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using CustomInterface;
+using Interface;
 using Extensions.View;
 
-namespace ConnectingRope
+namespace RopeSystem
 {
     [RequireComponent(typeof(ColorView))]
     [RequireComponent(typeof(LineRenderer))]

@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using YG;
 
-namespace LevelInterface.Timers
+namespace UISystem.Timers
 {
     public class AdTimer : IDisposable
     {

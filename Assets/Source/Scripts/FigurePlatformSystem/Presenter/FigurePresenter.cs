@@ -1,9 +1,9 @@
 using System;
 using UnityEngine;
-using FigurePlatform.Model;
-using FigurePlatform.View;
+using FigurePlatformSystem.Model;
+using FigurePlatformSystem.View;
 
-namespace FigurePlatform.Presenter
+namespace FigurePlatformSystem.Presenter
 {
     public class FigurePresenter : IDisposable
     {

@@ -1,7 +1,7 @@
-using LevelInterface.Timers;
+using UISystem.Timers;
 using Reflex.Attributes;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class CoinTimerRechargeableButton : RechargeableButton
     {

@@ -1,8 +1,8 @@
 using System;
-using StringHolders.Model;
-using StringHolders.View;
+using StringHolderSystem.Model;
+using StringHolderSystem.View;
 
-namespace StringHolders.Presenter
+namespace StringHolderSystem.Presenter
 {
     public class WhiteStringHolderPresenter : IDisposable
     {

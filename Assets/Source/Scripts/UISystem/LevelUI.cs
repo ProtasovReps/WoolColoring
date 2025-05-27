@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LevelInterface
+namespace UISystem
 {
     public class LevelUI : MonoBehaviour
     {

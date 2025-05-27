@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine;
 using Extensions.View;
 
-namespace BlockPicture.View
+namespace MolbertSystem.View
 {
     public class PictureTransformView : TransformView
     {

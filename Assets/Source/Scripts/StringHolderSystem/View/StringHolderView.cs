@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
-using ColorStrings.View;
+using ColorStringSystem.View;
 using Extensions.View;
 
-namespace StringHolders.View
+namespace StringHolderSystem.View
 {
     [RequireComponent(typeof(TransformView))]
     public class StringHolderView : MonoBehaviour

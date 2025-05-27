@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Extensions;
-using FigurePlatform.View;
-using CustomInterface;
+using FigurePlatformSystem.View;
+using Interface;
 
-namespace FigurePlatform.Model
+namespace FigurePlatformSystem.Model
 {
     public class PositionDatabase
     {

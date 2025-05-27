@@ -2,7 +2,7 @@ using System;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Effects
+namespace EffectSystem
 {
     public class EffectPlayer : MonoBehaviour
     {

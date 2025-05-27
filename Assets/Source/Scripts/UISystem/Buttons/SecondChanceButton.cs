@@ -1,10 +1,10 @@
 using Extensions;
 using Reflex.Attributes;
-using StringHolders.Model;
+using StringHolderSystem.Model;
 using UnityEngine;
 using YG;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class SecondChanceButton : ButtonView
     {

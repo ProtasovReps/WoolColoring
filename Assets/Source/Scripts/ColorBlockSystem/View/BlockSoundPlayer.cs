@@ -1,7 +1,7 @@
 using Ami.BroAudio;
 using UnityEngine;
 
-namespace ColorBlocks.View
+namespace ColorBlockSystem.View
 {
     public class BlockSoundPlayer : MonoBehaviour
     {

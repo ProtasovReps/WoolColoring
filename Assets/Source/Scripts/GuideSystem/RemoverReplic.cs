@@ -1,9 +1,9 @@
-using ColorStrings.Model;
+using ColorStringSystem.Model;
 using Reflex.Attributes;
-using StringHolders.Model;
+using StringHolderSystem.Model;
 using UnityEngine;
 
-namespace PlayerGuide
+namespace GuideSystem
 {
     public class RemoverReplic : BuffReplic
     {

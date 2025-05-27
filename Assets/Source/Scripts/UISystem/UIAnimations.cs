@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using LitMotion;
 using LitMotion.Extensions;
 
-namespace LevelInterface
+namespace UISystem
 {
     public class UIAnimations : MonoBehaviour
     {

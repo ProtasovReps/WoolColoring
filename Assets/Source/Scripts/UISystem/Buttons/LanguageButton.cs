@@ -2,7 +2,7 @@ using System;
 using System.Linq;
 using Lean.Localization;
 
-namespace LevelInterface.Buttons
+namespace UISystem.Buttons
 {
     public class LanguageButton : ButtonView
     {

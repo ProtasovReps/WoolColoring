@@ -1,7 +1,7 @@
-using FigurePlatform.View;
+using FigurePlatformSystem.View;
 using UnityEngine;
 
-namespace ClickReaders
+namespace ClickReadingSystem
 {
     public class FigureClickReader : ClickReader
     {

@@ -2,7 +2,7 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace LevelInterface
+namespace UISystem
 {
     public class TemporaryActivatableUI : ActivatableUI
     {

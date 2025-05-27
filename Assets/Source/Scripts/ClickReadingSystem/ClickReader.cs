@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using PlayerInput = Input.PlayerInput;
 
-namespace ClickReaders
+namespace ClickReadingSystem
 {
     public abstract class ClickReader : MonoBehaviour
     {

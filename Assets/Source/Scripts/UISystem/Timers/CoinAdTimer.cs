@@ -1,4 +1,4 @@
-namespace LevelInterface.Timers
+namespace UISystem.Timers
 {
     public class CoinAdTimer : AdTimer
     {

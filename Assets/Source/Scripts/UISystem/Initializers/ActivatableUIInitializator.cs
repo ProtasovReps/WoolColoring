@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace LevelInterface.Initializers
+namespace UISystem.Initializers
 {
     public class ActivatableUIInitializator : MonoBehaviour
     {

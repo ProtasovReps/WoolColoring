@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
 using Ami.BroAudio;
-using ColorStrings.View;
+using ColorStringSystem.View;
 using Extensions.View;
-using CustomInterface;
+using Interface;
 
-namespace Bolts.View
+namespace BoltSystem.View
 {
     [RequireComponent(typeof(BoltAnimations))]
     [RequireComponent(typeof(TransformView))]

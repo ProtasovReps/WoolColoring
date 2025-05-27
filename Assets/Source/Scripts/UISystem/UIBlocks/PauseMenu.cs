@@ -1,6 +1,6 @@
 using YG;
 
-namespace LevelInterface.Blocks
+namespace UISystem.Blocks
 {
     public class PauseMenu : ActivatableUI
     {
